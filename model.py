@@ -109,7 +109,7 @@ class Event(db.Model):
 
 
 class EventBook(db.Model):
-    """Book of a specific Event"""
+    """Book of a specific Event."""
 
     __tablename__ = 'events_books'
 
@@ -125,6 +125,19 @@ class EventBook(db.Model):
         return f'<EventBook id={self.id}>'
 
 
+class UserEvent(db.Model):
+    """Event of a specific user."""
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    is_attending = db.Column(db.Boolean(), nullable=False, default=True)
+
+
+    def __repr__(self):
+
+        return f'<UserEvent id={self.id}>'
+        
 
 def connect_to_db(flask_app, db_name, echo=True):
     """Connect to database."""
