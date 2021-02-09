@@ -72,10 +72,23 @@ def Category():
     in_category = db.Column(db.Boolean(), nullable=False, default=True)
 
 
-    def __repr__():
+    def __repr__(self):
 
         return f'<Category id={self.id} label={self.label}>'
 
+
+def UserBookCategory():
+    """Category of a specific UserBook"""
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_book_id = db.Column(db.Integer, db.ForeignKey('users_books.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+
+
+    def __repr__(self):
+
+        return f'<UserBookCategory id={id}>'
+        
 
 def connect_to_db(flask_app, db_name, echo=True):
     """Connect to database."""
