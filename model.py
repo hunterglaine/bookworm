@@ -80,6 +80,8 @@ class Category(db.Model):
 class UserBookCategory(db.Model):
     """Category of a specific UserBook"""
 
+    __tablename__ = 'users_books_categories'
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_book_id = db.Column(db.Integer, db.ForeignKey('users_books.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
@@ -128,6 +130,8 @@ class EventBook(db.Model):
 class UserEvent(db.Model):
     """Event of a specific user."""
 
+    __tablename__ = 'users_events'
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
@@ -137,17 +141,33 @@ class UserEvent(db.Model):
     def __repr__(self):
 
         return f'<UserEvent id={self.id}>'
-        
 
-def connect_to_db(flask_app, db_name, echo=True):
+    
+class Friendship(db.Model):
+    """Friendship class."""
+
+    __tablename__ = 'friendships'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    requestor_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # requested_id = db.Column(db.Integer, db.ForeignKey('users.id')) - need to figure this out
+    is_friend = db.Column(db.Boolean(), nullable=False, default=True)
+    pending = db.Column(db.Boolean(), nullable=False, default=True)
+
+    def __repr__(self):
+
+        return f'<Friendship id={self.id}>'
+
+
+def connect_to_db(flask_app, echo=True):
     """Connect to database."""
 
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///{db_name}' # DB_URI
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///bookworm' # DB_URI
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-# if __name__ == '__main__':
-#     from server import app
+if __name__ == '__main__':
+    from server import app
 
-#     connect_to_db(app, 'bookworm')
+    connect_to_db(app)
