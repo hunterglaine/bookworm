@@ -87,7 +87,26 @@ class UserBookCategory():
 
     def __repr__(self):
 
-        return f'<UserBookCategory id={id}>'
+        return f'<UserBookCategory id={self.id}>'
+
+
+class Event(db.Model):
+    """Event class."""
+
+    __tablename__ = 'events'
+
+    id = db.Column(db.Integer, primary_key=True, autincrement=True)
+    host_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    city = db.Column(db.String(30), nullable=False)
+    state = db.Column(db.String(2))
+    start_datetime = db.Column(db.DateTime(), nullable=False)
+    end_datetime = db.Column(db.DateTime(), nullable=False)
+
+
+    __repr__(self):
+
+        return f'<Event id={self.id} city={self.city}>'
+
 
 
 def connect_to_db(flask_app, db_name, echo=True):
