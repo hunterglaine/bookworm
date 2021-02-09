@@ -62,7 +62,7 @@ class UserBook(db.Model):
         return f'<UserBook id={self.id} in_bookshelf={self.in_bookshelf}>'
 
 
-class Category():
+class Category(db.Model):
     """Category class."""
 
     __tablename__ = 'categories'
@@ -77,7 +77,7 @@ class Category():
         return f'<Category id={self.id} label={self.label}>'
 
 
-class UserBookCategory():
+class UserBookCategory(db.Model):
     """Category of a specific UserBook"""
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -106,6 +106,23 @@ class Event(db.Model):
     __repr__(self):
 
         return f'<Event id={self.id} city={self.city}>'
+
+
+class EventBook(db.Model):
+    """Book of a specific Event"""
+
+    __tablename__ = 'events_books'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    isbn = db.Column(db.Integer, db.ForeignKey('books.isbn'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    vote_count = db.Column(db.Integer, default=0)
+    is_the_one = db.Column(db.Boolean(), nullable=False, default=True)
+
+
+    def __repr__(self):
+
+        return f'<EventBook id={self.id}>'
 
 
 
