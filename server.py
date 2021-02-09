@@ -8,6 +8,11 @@ app = Flask(__name__)
 app.secret_key = 'BD647hgfyetEHU789hfehd9svsru5HwgYkghjwrfishvs'
 
 
+@app.route('/')
+def homepage():
+    """Show the homepage"""
+
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
