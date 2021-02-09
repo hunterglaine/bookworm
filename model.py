@@ -24,6 +24,27 @@ class Book(db.Model):
         return f'<Book ISBN={self.isbn} title={self.title}>'
 
 
+class User(db.Model):
+    """User class."""
+
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    first_name = db.Column(db.String(20), nullable=False)
+    last_name = db.Column(db.String(25), nullable=False)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    password = db.Column(db.String(20), nullable=False)
+    city = db.Column(db.String(30))
+    state = db.Column(db.String(2))
+    is_searchable = db.Column(db.Boolean(), nullable=False, default=True) 
+    # Won't deafult to True
+
+
+    def __repr__(self):
+
+        return f'<User id={self.id} email={self.email}>'
+
+
 def connect_to_db(flask_app, db_name, echo=True):
     """Connect to database."""
 
