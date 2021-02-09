@@ -97,7 +97,7 @@ class Event(db.Model):
 
     __tablename__ = 'events'
 
-    id = db.Column(db.Integer, primary_key=True, autincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     city = db.Column(db.String(30), nullable=False)
     state = db.Column(db.String(2))
@@ -105,7 +105,7 @@ class Event(db.Model):
     end_datetime = db.Column(db.DateTime(), nullable=False)
 
 
-    __repr__(self):
+    def __repr__(self):
 
         return f'<Event id={self.id} city={self.city}>'
 
@@ -116,7 +116,7 @@ class EventBook(db.Model):
     __tablename__ = 'events_books'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    isbn = db.Column(db.Integer, db.ForeignKey('books.isbn'))
+    isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     vote_count = db.Column(db.Integer, default=0)
     is_the_one = db.Column(db.Boolean(), nullable=False, default=True)
@@ -165,6 +165,9 @@ def connect_to_db(flask_app, echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///bookworm' # DB_URI
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.app = flask_app
+    db.init_app(flask_app)
 
 
 if __name__ == '__main__':
