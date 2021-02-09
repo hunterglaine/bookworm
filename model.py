@@ -62,7 +62,7 @@ class UserBook(db.Model):
         return f'<UserBook id={self.id} in_bookshelf={self.in_bookshelf}>'
 
 
-def Category():
+class Category():
     """Category class."""
 
     __tablename__ = 'categories'
@@ -77,7 +77,7 @@ def Category():
         return f'<Category id={self.id} label={self.label}>'
 
 
-def UserBookCategory():
+class UserBookCategory():
     """Category of a specific UserBook"""
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -88,7 +88,7 @@ def UserBookCategory():
     def __repr__(self):
 
         return f'<UserBookCategory id={id}>'
-        
+
 
 def connect_to_db(flask_app, db_name, echo=True):
     """Connect to database."""
