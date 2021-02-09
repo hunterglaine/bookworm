@@ -36,7 +36,7 @@ class User(db.Model):
     password = db.Column(db.String(20), nullable=False)
     city = db.Column(db.String(30))
     state = db.Column(db.String(2))
-    is_searchable = db.Column(db.Boolean(), nullable=False, default=True) 
+    is_searchable = db.Column(db.Boolean, nullable=False, default=True) 
     # Won't deafult to True
 
 
@@ -53,7 +53,7 @@ class UserBook(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    in_bookshelf = db.Column(db.Boolean(), nullable=False, default=True)
+    in_bookshelf = db.Column(db.Boolean, nullable=False, default=True)
     comment = db.Column(db.Text)
 
 
@@ -69,7 +69,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     label = db.Column(db.String(50), nullable=False, unique=True)
-    in_category = db.Column(db.Boolean(), nullable=False, default=True)
+    in_category = db.Column(db.Boolean, default=True, nullable=False)
 
 
     def __repr__(self):
@@ -119,7 +119,7 @@ class EventBook(db.Model):
     isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     vote_count = db.Column(db.Integer, default=0)
-    is_the_one = db.Column(db.Boolean(), nullable=False, default=True)
+    is_the_one = db.Column(db.Boolean, nullable=False, default=True)
 
 
     def __repr__(self):
@@ -135,7 +135,7 @@ class UserEvent(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
-    is_attending = db.Column(db.Boolean(), nullable=False, default=True)
+    is_attending = db.Column(db.Boolean, nullable=False, default=True)
 
 
     def __repr__(self):
@@ -151,8 +151,8 @@ class Friendship(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     requestor_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # requested_id = db.Column(db.Integer, db.ForeignKey('users.id')) - need to figure this out
-    is_friend = db.Column(db.Boolean(), nullable=False, default=True)
-    pending = db.Column(db.Boolean(), nullable=False, default=True)
+    is_friend = db.Column(db.Boolean, nullable=False, default=True)
+    pending = db.Column(db.Boolean, nullable=False, default=True)
 
     def __repr__(self):
 

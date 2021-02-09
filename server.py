@@ -1,6 +1,6 @@
 """Server for Bookword app."""
 
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
 import crud
 
