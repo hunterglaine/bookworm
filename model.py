@@ -18,6 +18,8 @@ class Book(db.Model):
     image_thumb = db.Column(db.String)
     image_large = db.Column(db.String)
 
+    # users = a list of user objects, with secondary users_books
+    # events = a list of event objects, with secondary events_books
 
     def __repr__(self):
 
@@ -37,7 +39,9 @@ class User(db.Model):
     city = db.Column(db.String(30))
     state = db.Column(db.String(2))
     is_searchable = db.Column(db.Boolean, default=True) 
-    # Won't deafult to True
+    
+    books = db.relationship("Book", secondary='users_books', backref='users')
+    # events = a list of event objects, with secondary users_events
 
 
     def __repr__(self):
@@ -56,6 +60,9 @@ class UserBook(db.Model):
     in_bookshelf = db.Column(db.Boolean, default=True)
     comment = db.Column(db.Text)
 
+    categories = db.relationship('Category', secondary='users_books_categories',
+                                backref='users_books')
+
 
     def __repr__(self):
 
@@ -70,6 +77,8 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     label = db.Column(db.String(50), nullable=False, unique=True)
     in_category = db.Column(db.Boolean, default=True)
+
+    # users_books = a list of user_book objects, with secondary users_books_categories
 
 
     def __repr__(self):
@@ -103,6 +112,9 @@ class Event(db.Model):
     state = db.Column(db.String(2))
     start_datetime = db.Column(db.DateTime(), nullable=False)
     end_datetime = db.Column(db.DateTime(), nullable=False)
+
+    users = db.relationship('User', secondary='users_events', backref='events')
+    books = db.relationship('Book', secondary='events_books', backref='events')
 
 
     def __repr__(self):
@@ -151,8 +163,11 @@ class Friendship(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     requestor_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # requested_id = db.Column(db.Integer, db.ForeignKey('users.id')) - need to figure this out
-    is_friend = db.Column(db.Boolean, default=True)
+    is_friend = db.Column(db.Boolean, default=False)
     pending = db.Column(db.Boolean, default=True)
+
+    users = db.relationship('User', backref='friendships')
+
 
     def __repr__(self):
 
