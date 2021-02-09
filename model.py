@@ -45,6 +45,23 @@ class User(db.Model):
         return f'<User id={self.id} email={self.email}>'
 
 
+class UserBook(db.Model):
+    """Book of a specific user."""
+
+    __tablename__ = 'users_books'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    in_bookshelf = db.Column(db.Boolean(), nullable=False, default=True)
+    comment = db.Column(db.Text)
+
+
+    def __repr__(self):
+
+        return f'<UserBook id={self.id} in_bookshelf={in_bookshelf}>'
+
+
 def connect_to_db(flask_app, db_name, echo=True):
     """Connect to database."""
 
