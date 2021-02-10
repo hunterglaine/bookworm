@@ -27,6 +27,17 @@ def create_user(first_name, last_name, email, password, city=None,
     return user
 
 
+def create_user_book(isbn, user_id, comment=''):
+    """Create and return a new user_book"""
+
+    user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
+
+    db.session.add(user_book)
+    db.session.commit()
+
+    return user_book
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
