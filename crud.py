@@ -39,7 +39,7 @@ def create_user_book(isbn, user_id, comment=''):
 
 
 def create_category(label):
-    """Create and return a new user_book"""
+    """Create and return a new category"""
 
     category = Category(label=label)
 
@@ -47,6 +47,18 @@ def create_category(label):
     db.session.commit()
 
     return category
+
+
+def create_user_book_category(user_book_id, category_id):
+    """Create and return a new user_book_category"""
+
+    user_book_category = UserBookCategory(user_book_id=user_book_id, 
+                                        category_id=category_id)
+
+    db.session.add(user_book_category)
+    db.session.commit()
+
+    return user_book_category
 
 
 if __name__ == '__main__':
