@@ -14,6 +14,19 @@ def create_book(isbn, title, author, description, page_length, image):
     return book
 
 
+def create_user(first_name, last_name, email, password, city=None, 
+                state=None):
+    """Create and return a new user"""
+
+    user = User(first_name=first_name, last_name=last_name, email=email, 
+                password=password, city=city, state=state)
+
+    db.session.add(user)
+    db.session.commit()
+
+    return user
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
