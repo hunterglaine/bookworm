@@ -1,0 +1,13 @@
+img#logo {
+    height: 5em;
+    display: inline;
+}
+
+.topnav {
+    display: inline;
+    margin: 2em;
+}
+
+button.topnav {
+    float: right;
+}
