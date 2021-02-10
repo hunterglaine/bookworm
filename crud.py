@@ -84,6 +84,17 @@ def create_event_book(isbn, event_id):
     return event_book
 
 
+def create_user_event(user_id, event_id):
+    """Create and return a new event_book"""
+
+    user_event = UserEvent(user_id=user_id, event_id=event_id)
+
+    db.session.add(user_event)
+    db.session.commit()
+
+    return user_event
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
