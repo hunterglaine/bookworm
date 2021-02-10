@@ -15,8 +15,7 @@ class Book(db.Model):
     author = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text)
     page_length = db.Column(db.Integer, nullable=False)
-    image_thumb = db.Column(db.String)
-    image_large = db.Column(db.String)
+    image = db.Column(db.String)
 
     # users = a list of user objects, with secondary users_books
     # events = a list of event objects, with secondary events_books

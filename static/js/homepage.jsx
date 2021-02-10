@@ -1,13 +1,16 @@
 "use strict";
 
-// import "secrets.sh";
-
 // Create and dsiplay the navigation bar at the top of the page - logo, search bar, create account button, and log in butto
 function TopNavigation() {
     function bookSearch(evt) {
         evt.preventDefault();
         console.log("Clicked")
-    }
+        const bookQuery = document.getElementById('book-search').value
+
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=10&key=`)
+        .then (response => response.json())
+        .then(data => console.log(data))
+    };
     // React.useEffect(() => {
     //     document.addEventListener('click', (evt) => {
     //         // const bookQuery = document.getElementById('book-search').value.split().join("+")
