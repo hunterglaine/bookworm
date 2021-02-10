@@ -9,7 +9,14 @@ function TopNavigation() {
 
         fetch(`https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=10&key=`)
         .then (response => response.json())
-        .then(data => console.log(data))
+        .then(data => cosole.log(data))
+        // {
+            
+        //     const bookSearchData = [
+        //         {
+
+        //         },
+        //     ]};
     };
     // React.useEffect(() => {
     //     document.addEventListener('click', (evt) => {

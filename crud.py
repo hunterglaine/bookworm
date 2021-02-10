@@ -95,6 +95,42 @@ def create_user_event(user_id, event_id):
     return user_event
 
 
+# Still need to create a function to create Friendships, but need to finalize 
+# how they work...
+
+
+def get_all_user_books(user_id):
+    """Returns all users_books for given user"""
+
+    user = User.query.filter(User.id == user_id).options(db.joinedload('books')).first()
+
+    return user.books
+
+
+def get_user_book_by_search(user_id, search):
+    """Returns a user_book by title or author"""
+
+    their_books = get_all_user_books(user_id)
+
+    books = []
+    for book in their_books:
+        print(book.title)
+        print(book.author)
+        if book.title == search or book.author == search:
+            books.append(book)
+    
+    return books
+
+
+def get_book_by_search(search):
+    """Returns a book by title or author"""
+
+    book = Book.query.filter((Book.author == search) | (Book.title == search)).all()
+
+    return book
+
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
