@@ -38,6 +38,17 @@ def create_user_book(isbn, user_id, comment=''):
     return user_book
 
 
+def create_category(label):
+    """Create and return a new user_book"""
+
+    category = Category(label=label)
+
+    db.session.add(category)
+    db.session.commit()
+
+    return category
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
