@@ -73,6 +73,17 @@ def create_event(host_id, city, start_datetime, end_datetime, state=None):
     return event
 
 
+def create_event_book(isbn, event_id):
+    """Create and return a new event_book"""
+
+    event_book = EventBook(isbn=isbn, event_id=event_id)
+
+    db.session.add(event_book)
+    db.session.commit()
+
+    return event_book
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
