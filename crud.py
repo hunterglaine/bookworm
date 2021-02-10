@@ -61,6 +61,18 @@ def create_user_book_category(user_book_id, category_id):
     return user_book_category
 
 
+def create_event(host_id, city, start_datetime, end_datetime, state=None):
+    """Create and return a new event"""
+
+    event = Event(host_id=host_id, city=city, state=state, 
+                    start_datetime=start_datetime, end_datetime=end_datetime)
+
+    db.session.add(event)
+    db.session.commit()
+
+    return event
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
