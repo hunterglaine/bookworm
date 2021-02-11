@@ -113,6 +113,7 @@ class Event(db.Model):
     state = db.Column(db.String(2))
     start_datetime = db.Column(db.DateTime(), nullable=False)
     end_datetime = db.Column(db.DateTime(), nullable=False)
+    is_private = db.Column(db.Boolean, default=False)
 
     users = db.relationship('User', secondary='users_events', backref='events')
     books = db.relationship('Book', secondary='events_books', backref='events')

@@ -2,6 +2,8 @@
 
 from model import db, Book, User, UserBook, Category, UserBookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
 
+
+# ***** CREATE FUNCTIONS *****
 def create_book(isbn, title, author, description, page_length, image):
     """Create and return a new book"""
 
@@ -102,7 +104,8 @@ def create_user_event(user_id, event_id):
 def get_all_user_books(user_id):
     """Returns all users_books for given user"""
 
-    user = User.query.filter(User.id == user_id).options(db.joinedload('books')).one()
+    user = User.query.filter(User.id == user_id).options(db.\
+                            joinedload('books')).one()
 
     return user.books
 
@@ -129,6 +132,7 @@ def get_user_book_by_search(user_id, search):
 
 #     return book
 
+# ***** READ Functions *****
 def get_user_by_id(user_id):
     """Returns a user for a given user_id"""
 
@@ -154,6 +158,27 @@ def get_all_books_in_category(user_id, label):
                                     options(db.joinedload('users_books')).one()
 
     return category.users_books
+
+
+def get_all_users():
+    """Returns a list of all users with is_searchable set to True"""
+
+    return User.query.filter(User.is_searchable == True).all()
+
+
+def get_all_events():
+    """Returns a list of all events with is_private set to False"""
+
+    return Event.query.filter(Event.is_private == False).all()
+
+
+# ***** UPDATE Functions *****
+def make_user_private(user_id):
+    """Updates is_searchable for a given user to False"""
+
+    user = get_user_by_id(user_id)
+    user.is_searchable = False
+    db.session.commit()
 
 
 if __name__ == '__main__':
