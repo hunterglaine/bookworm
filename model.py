@@ -74,10 +74,11 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     label = db.Column(db.String(50), nullable=False, unique=True)
-    in_category = db.Column(db.Boolean, default=True)
 
     # users_books = a list of user_book objects, with secondary users_books_categories
+    user = db.relationship('User', backref='categories')
 
 
     def __repr__(self):
@@ -93,6 +94,7 @@ class UserBookCategory(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_book_id = db.Column(db.Integer, db.ForeignKey('users_books.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    in_category = db.Column(db.Boolean, default=True)
 
 
     def __repr__(self):

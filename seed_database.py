@@ -84,9 +84,10 @@ new_categories = []
 
 for n in range(10):
 
+    user_id = n + 1
     label = f'Category {n}'
 
-    new_category = crud.create_category(label)
+    new_category = crud.create_category(user_id, label)
 
     new_categories.append(new_category)
 

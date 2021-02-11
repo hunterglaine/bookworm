@@ -38,10 +38,10 @@ def create_user_book(isbn, user_id, comment=''):
     return user_book
 
 
-def create_category(label):
+def create_category(user_id, label):
     """Create and return a new category"""
 
-    category = Category(label=label)
+    category = Category(user_id=user_id, label=label)
 
     db.session.add(category)
     db.session.commit()
@@ -102,7 +102,7 @@ def create_user_event(user_id, event_id):
 def get_all_user_books(user_id):
     """Returns all users_books for given user"""
 
-    user = User.query.filter(User.id == user_id).options(db.joinedload('books')).first()
+    user = User.query.filter(User.id == user_id).options(db.joinedload('books')).one()
 
     return user.books
 
@@ -121,14 +121,39 @@ def get_user_book_by_search(user_id, search):
     
     return books
 
+# Unnecessary function
+# def get_book_by_search(search):
+#     """Returns a book by title or author"""
 
-def get_book_by_search(search):
-    """Returns a book by title or author"""
+#     book = Book.query.filter((Book.author == search) | (Book.title == search)).all()
 
-    book = Book.query.filter((Book.author == search) | (Book.title == search)).all()
+#     return book
 
-    return book
+def get_user_by_id(user_id):
+    """Returns a user for a given user_id"""
 
+    user = User.query.filter(User.id == user_id).one()
+
+    return user
+
+
+def get_all_user_categories(user_id):
+    """Returns a list of all categories for given user"""
+
+    user = User.query.filter(User.id == user_id).options(db.\
+                            joinedload('categories')).one()
+
+    return user.categories
+
+
+def get_all_books_in_category(user_id, label):
+    """Returns a list of all book objects in a given user's category"""
+
+    category = Category.query.filter(Category.label == label, Category.\
+                                    user_id == user_id).\
+                                    options(db.joinedload('users_books')).one()
+
+    return category.users_books
 
 
 if __name__ == '__main__':
