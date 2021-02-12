@@ -52,7 +52,8 @@ def create_category(user_id, label):
 
 
 def create_user_book_category(user_book_id, category_id):
-    """Create and return a new user_book_category"""
+    """Create and return a new user_book_category / place a user's book in 
+    one of their existing categories"""
 
     user_book_category = UserBookCategory(user_book_id=user_book_id, 
                                         category_id=category_id)
@@ -87,7 +88,7 @@ def create_event_book(isbn, event_id):
 
 
 def create_user_event(user_id, event_id):
-    """Create and return a new event_book"""
+    """Create and return a new event_user (attendee)"""
 
     user_event = UserEvent(user_id=user_id, event_id=event_id)
 
@@ -100,6 +101,14 @@ def create_user_event(user_id, event_id):
 # Still need to create a function to create Friendships, but need to finalize 
 # how they work...
 
+# ***** READ Functions *****
+def get_book_by_isbn(isbn):
+    """Returns a book with given ISBN if it exists in the database, otherwise, 
+    returns None"""
+
+    book = Book.query.filter(Book.isbn == isbn).first()
+
+    return book
 
 def get_all_user_books(user_id):
     """Returns all users_books for given user"""
@@ -132,11 +141,19 @@ def get_user_book_by_search(user_id, search):
 
 #     return book
 
-# ***** READ Functions *****
+
 def get_user_by_id(user_id):
     """Returns a user for a given user_id"""
 
-    user = User.query.filter(User.id == user_id).one()
+    user = User.query.filter(User.id == user_id).first()
+
+    return user
+
+
+def get_user_by_email(email):
+    """Returns a user for a given email"""
+
+    user = User.query.filter(User.email == email).first()
 
     return user
 
@@ -172,6 +189,17 @@ def get_all_events():
     return Event.query.filter(Event.is_private == False).all()
 
 
+def get_all_users_events(user_id):
+    """Returns a list of all events for a given user"""
+
+    user = User.query.filter(User.id == user_id).options(db.\
+                            joinedload('events')).first()
+
+    return user.events
+
+
+
+
 # ***** UPDATE Functions *****
 def make_user_private(user_id):
     """Updates is_searchable for a given user to False"""
@@ -181,7 +209,44 @@ def make_user_private(user_id):
     db.session.commit()
 
 
+def update_user_email(user_id, new_email):
+    """Updates email on a given user"""
+
+    user = get_user_by_id(user_id)
+    user.email = new_email
+    db.session.commit()
+
+
+def update_user_location(user_id, new_city, new_state):
+    """Updates location on a given user"""
+
+    user = get_user_by_id(user_id)
+    user.city = new_city
+    user.state = new_state
+    db.session.commit()
+
+
+def change_password(user_id, new_password):
+    """Change given user's password"""
+
+    user = get_user_by_id(user_id)
+    user.password = new_password
+    db.session.commit()
+
+
+def add_comment_to_user_book(user_book_id, new_comment):
+    """Add a comment to user's book, given it's id"""
+
+    user_book = UserBook.query.filter(UserBook.id == user_book_id).one()
+    user_book.comment = new_comment
+    db.session.commit()
+
+    return user_book
+
+
+
+
 if __name__ == '__main__':
     from server import app
-    connect_to_db(app)
+    connect_to_db(app, 'bookworm')
 

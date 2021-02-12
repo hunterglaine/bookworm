@@ -10,7 +10,7 @@ function TopNavigation() {
         console.log("Clicked")
         const bookQuery = document.getElementById('book-search').value
         console.log(bookQuery)
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookQuery}&maxResults=10&key=${GBOOKS_API_KEY}`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookQuery}&maxResults=10&key=`)
         .then (response => response.json())
         .then(data => {
             setBooks(data)
