@@ -1,4 +1,4 @@
-"""Models for bookword app."""
+"""Models for bookworm app."""
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,6 +19,7 @@ class Book(db.Model):
 
     # users = a list of user objects, with secondary users_books
     # events = a list of event objects, with secondary events_books
+    # categories = a list of category objects, with secondary books_categories
 
     def __repr__(self):
 
@@ -59,9 +60,6 @@ class UserBook(db.Model):
     in_bookshelf = db.Column(db.Boolean, default=True)
     comment = db.Column(db.Text)
 
-    categories = db.relationship('Category', secondary='users_books_categories',
-                                backref='users_books')
-
 
     def __repr__(self):
 
@@ -75,10 +73,11 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    label = db.Column(db.String(50), nullable=False, unique=True)
+    label = db.Column(db.String(50), nullable=False)
 
-    # users_books = a list of user_book objects, with secondary users_books_categories
+
     user = db.relationship('User', backref='categories')
+    books = db.relationship('Book', secondary='books_categories', backref='categories')
 
 
     def __repr__(self):
@@ -86,20 +85,19 @@ class Category(db.Model):
         return f'<Category id={self.id} label={self.label}>'
 
 
-class UserBookCategory(db.Model):
-    """Category of a specific UserBook"""
+class BookCategory(db.Model):
+    """Category of a specific Book"""
 
-    __tablename__ = 'users_books_categories'
+    __tablename__ = 'books_categories'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_book_id = db.Column(db.Integer, db.ForeignKey('users_books.id'))
+    isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    in_category = db.Column(db.Boolean, default=True)
 
 
     def __repr__(self):
 
-        return f'<UserBookCategory id={self.id}>'
+        return f'<BookCategory id={self.id}>'
 
 
 class Event(db.Model):
@@ -190,4 +188,4 @@ def connect_to_db(flask_app, database, echo=True):
 if __name__ == '__main__':
     from server import app
 
-    connect_to_db(app, 'bookworm')
+    connect_to_db(app, 'testbookworm')

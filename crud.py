@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-from model import db, Book, User, UserBook, Category, UserBookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
+from model import db, Book, User, UserBook, Category, BookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
 
 
 # ***** CREATE FUNCTIONS *****
@@ -29,16 +29,20 @@ def create_user(first_name, last_name, email, password, city=None,
     return user
 
 
-def create_user_book(isbn, user_id, comment=''):
+# def create_user_book(isbn, user_id, comment=''):
+def create_user_book(user, book):
     """Create and return a new user_book"""
 
-    user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
+    # user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
 
-    db.session.add(user_book)
+    # db.session.add(user_book)
+    # db.session.commit()
+
+    # return user_book
+    user.books.append(book)
     db.session.commit()
 
-    return user_book
-
+    return user.books
 
 def create_category(user_id, label):
     """Create and return a new category"""
@@ -51,17 +55,20 @@ def create_category(user_id, label):
     return category
 
 
-def create_user_book_category(user_book_id, category_id):
-    """Create and return a new user_book_category / place a user's book in 
-    one of their existing categories"""
+# def create_user_book_category(user_book_id, category_id):
+def create_book_category(book, category):
+    """Create and return a new book_category / place a book in 
+    a user's existing categories"""
 
-    user_book_category = UserBookCategory(user_book_id=user_book_id, 
-                                        category_id=category_id)
-
-    db.session.add(user_book_category)
+    # user_book_category = UserBookCategory(user_book_id=user_book_id, 
+    #                                     category_id=category_id)
+    # db.session.add(user_book_category)
+    # db.sessions.commit()
+    #return user_book
+    book.categories.append(category)
     db.session.commit()
 
-    return user_book_category
+    return category.books
 
 
 def create_event(host_id, city, start_datetime, end_datetime, state=None):
@@ -76,26 +83,37 @@ def create_event(host_id, city, start_datetime, end_datetime, state=None):
     return event
 
 
-def create_event_book(isbn, event_id):
+# def create_event_book(isbn, event_id):
+def create_event_book(event, book):
     """Create and return a new event_book"""
 
-    event_book = EventBook(isbn=isbn, event_id=event_id)
+    # event_book = EventBook(isbn=isbn, event_id=event_id)
 
-    db.session.add(event_book)
+    # db.session.add(event_book)
+    # db.session.commit()
+
+    # return event_book
+    event.books.append(book)
     db.session.commit()
 
-    return event_book
+    return event.books
 
 
-def create_user_event(user_id, event_id):
+
+# def create_user_event(user_id, event_id):
+def create_user_event(user, event):
     """Create and return a new event_user (attendee)"""
 
-    user_event = UserEvent(user_id=user_id, event_id=event_id)
+    # user_event = UserEvent(user_id=user_id, event_id=event_id)
 
-    db.session.add(user_event)
+    # db.session.add(user_event)
+    # db.session.commit()
+
+    # return user_event
+    event.users.append(user)
     db.session.commit()
 
-    return user_event
+    return event.users
 
 
 # Still need to create a function to create Friendships, but need to finalize 
@@ -172,9 +190,10 @@ def get_all_books_in_category(user_id, label):
 
     category = Category.query.filter(Category.label == label, Category.\
                                     user_id == user_id).\
-                                    options(db.joinedload('users_books')).one()
+                                    options(db.joinedload('books')).one()
 
-    return category.users_books
+
+    return category.books
 
 
 def get_all_users():
@@ -244,9 +263,21 @@ def add_comment_to_user_book(user_book_id, new_comment):
     return user_book
 
 
+# ***** DELETE Functions *****
+
+# def delete_user_book(book_id, user_id):
+#     """Deletes given user_book given user and book ids"""
+
+#     UserBook.query.filter(UserBook.id)
+#     db.session.commit()
+    
+
+# def delete_book_from_category():
+
+
 
 
 if __name__ == '__main__':
     from server import app
-    connect_to_db(app, 'bookworm')
+    connect_to_db(app, 'testbookworm')
 

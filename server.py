@@ -44,7 +44,7 @@ def log_in_user():
 
     if user:
             if user.password == password:
-                session["user"] = user.id
+                session['user'] = user.id
                 return jsonify ({'status': '200',
                                 'message': 'Successfully logged in',
                                 'user_id': user.id})
@@ -54,6 +54,35 @@ def log_in_user():
     else:
         return jsonify ({'status': '400',
                         'message': 'User does not exist'})
+
+
+@app.route('/api/books', methods=["POST"])
+def add_user_book():
+    """Adds a new book to a user's books"""
+
+    if session.get('user'):
+        isbn = request.form.get('isbn')
+        title = request.form.get('title')
+        author = request.form.get('author')
+        description = request.form.get('description')
+        page_length = request.form.get('page-length')
+        image = request.form.get('image')
+        if not crud.get_book_by_isbn(isbn):
+            crud.create_book(isbn, title, author, description, page_length, 
+                            image)
+        
+        user_id = session['user']
+        if not get_user_book_by_search(title):
+            crud.create_user_book(isbn, user_id)
+            return jsonify ({'status': '200',
+                        'message': 'Book has been added to bookshelf'})
+
+        else:
+            return jsonify ({'status': '404',
+                            'message': 'Book is already in your shelf'})
+    else:
+        return jsonify ({'status': '400',
+                        'message': 'User must be logged in first'})
 
 
 

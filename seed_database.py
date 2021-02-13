@@ -11,7 +11,7 @@ from random import choice
 os.system('dropdb bookworm')
 os.system('createdb bookworm')
 
-model.connect_to_db(server.app)
+model.connect_to_db(server.app, 'bookworm')
 model.db.create_all()
 
 

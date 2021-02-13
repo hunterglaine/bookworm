@@ -3,11 +3,11 @@ img#logo {
     display: inline;
 }
 
-.topnav {
+.search-bar {
     display: inline;
     margin: 2em;
 }
 
-button.topnav {
+button.search-bar {
     float: right;
 }
