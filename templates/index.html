@@ -4,15 +4,27 @@
     <title>Bookworm</title>
     <link rel="stylesheet" href="/static/css/styles.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script> -->
+
+    <!-- React & React Router scripts -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js" integrity="sha512-NG4Cm3Ubs7d/nPyzrTFM53RP8tPjQhRT0hea48yJ/qEXsuhq7wGbjX68A5gBiW6BoCQbqE3/M+UOj2lLXPauhw==" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/jsx" src="/static/components/App.jsx"></script>
-    <script type="text/jsx" src="/static/components/TopNavigation.jsx"></script>
+
+    <script type="text/jsx" src="/static/components/BookTile.jsx"></script>
+    <script type="text/jsx" src="/static/components/SearchResults.jsx"></script>
     <script type="text/jsx" src="/static/components/SearchBar.jsx"></script>
+    <script type="text/jsx" src="/static/components/TopNavigation.jsx"></script>
+    <script type="text/jsx" src="/static/components/CreateAccount.jsx"></script>
     <script type="text/jsx" src="/static/components/LogIn.jsx"></script>
+    <script type="text/jsx" src="/static/components/App.jsx"></script>
+    
 </body>
 </html>

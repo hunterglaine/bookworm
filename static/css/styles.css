@@ -1,13 +1,15 @@
 img#logo {
-    height: 5em;
+    height: 5rem;
     display: inline;
 }
 
 .search-bar {
     display: inline;
-    margin: 2em;
+    margin: 2rem;
 }
 
-button.search-bar {
+button {
     float: right;
+    margin: 1rem;
+    display: inline;
 }

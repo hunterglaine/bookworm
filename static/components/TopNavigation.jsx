@@ -6,31 +6,12 @@
 function TopNavigation() {
 
     return (
-        <React.Fragment>
+        <div>
             <img src="/static/img/bookworm_logo.jpg" alt="Bookworm Logo" id="logo"></img>
             <SearchBar />
             <button id="create-account" >Create Account</button>
             <button id="log-in">Log In</button>
-        </React.Fragment>
+        </div>
     );
 };
 
-
-// function SearchResults(bookSearchData) {
-//     for (book of bookSearchData) {
-//         return (
-//             <React.Fragment>
-//                 {book}
-//             </React.Fragment>
-//         );
-//     };
-// };
-
-
-ReactDOM.render(
-    <TopNavigation />, document.querySelector('#root')
-);
-
-// ReactDOM.render(
-//     <SearchResults />, document.querySelector('#root')
-// );

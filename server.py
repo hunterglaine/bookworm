@@ -29,30 +29,41 @@ def create_new_user():
         return jsonify ({'status': '404',
                         'message': 'An account with this email already exists.'})
     else:
-        crud.create_user(first_name, last_name, email, password, city, state)
-        return jsonify ({'status': '200',
-                        'message': 'Account has successfully been created'})
+        new_user = crud.create_user(first_name, last_name, email, password, city, state)
+        # return jsonify ({'status': '200',
+        #                 'message': 'Account has successfully been created'})
+        return jsonify ({'user': {'id': user.id, 
+                                    'first_name': user.first_name,
+                                    'last_name': user.last_name,
+                                    'email': user.email,
+                                    'city': user.city,
+                                    'state': user.state}})
 
-@app.route('/api/login', methods=["POST"])
+@app.route('/api/login', methods=["GET", "POST"])
 def log_in_user():
     """Log a user in and show them they were successful or not."""
-
+    # data = request.get_json()
+    # print(data)
     email = request.form.get('email')
     password = request.form.get('password')
+    # email = request.json["email"]
+    # password = request.json["password"]
+    print(email, password)
 
     user = crud.get_user_by_email(email)
 
     if user:
             if user.password == password:
                 session['user'] = user.id
-                return jsonify ({'status': '200',
+                return jsonify ({'status': 'success',
                                 'message': 'Successfully logged in',
-                                'user_id': user.id})
+                                'user_id': user.id,
+                                'user_first_name': user.first_name})
             else:
-                return jsonify ({'status': '404',
+                return jsonify ({'status': 'error',
                                 'message': 'Incorrect Password'})
     else:
-        return jsonify ({'status': '400',
+        return jsonify ({'status': 'error',
                         'message': 'User does not exist'})
 
 
@@ -87,5 +98,5 @@ def add_user_book():
 
 
 if __name__ == '__main__':
-    connect_to_db(app, 'bookworm')
+    connect_to_db(app, 'testbookworm')
     app.run(host='0.0.0.0', debug=True)
