@@ -1,4 +1,4 @@
-"""Script to seed database"""
+"""Script to seed test database"""
 
 import os
 import json
@@ -45,11 +45,11 @@ for n in range(10):
 
     new_users.append(new_user)
 
-    # Create fake user_books for testing
-    for n in range(4):
-        random_book = choice(new_books)
-        user = new_user
-        user_books = crud.create_user_book(user, random_book)
+    # # Create fake user_books for testing
+    # for n in range(4):
+    #     random_book = choice(new_books)
+    #     user = new_user
+    #     user_books = crud.create_user_book(user, random_book)
 
 # Create fake events for testing
 new_events = []
@@ -83,14 +83,15 @@ new_categories = []
 for n in range(10):
 
     user_id = n + 1
-    label = f'Category {n}'
+    for i in range(10):
+        label = f'Category {i}'
 
-    new_category = crud.create_category(user_id, label)
+        new_category = crud.create_category(user_id, label)
 
-    new_categories.append(new_category)
+        new_categories.append(new_category)
 
     # Create fake book_categories for testing
-    for n in range(1,5):
-        random_book = choice(new_books)
-        category = new_category
-        book_categories = crud.create_book_category(random_book, category)
+        for n in range(1,10):
+            random_book = choice(new_books)
+            category = new_category
+            book_categories = crud.create_book_category(random_book, category)

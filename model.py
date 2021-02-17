@@ -17,7 +17,7 @@ class Book(db.Model):
     page_length = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String)
 
-    # users = a list of user objects, with secondary users_books
+    ###REMOVE### users = a list of user objects, with secondary users_books
     # events = a list of event objects, with secondary events_books
     # categories = a list of category objects, with secondary books_categories
 
@@ -40,30 +40,30 @@ class User(db.Model):
     state = db.Column(db.String(2))
     is_searchable = db.Column(db.Boolean, default=True) 
     
-    books = db.relationship("Book", secondary='users_books', backref='users')
+    ###REMOVE### books = db.relationship("Book", secondary='users_books', backref='users')
     # events = a list of event objects, with secondary users_events
-
+    # categories = a list of category objects
 
     def __repr__(self):
 
         return f'<User id={self.id} email={self.email}>'
 
 
-class UserBook(db.Model):
-    """Book of a specific user."""
+# class UserBook(db.Model):
+#     """Book of a specific user."""
 
-    __tablename__ = 'users_books'
+#     __tablename__ = 'users_books'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    in_bookshelf = db.Column(db.Boolean, default=True)
-    comment = db.Column(db.Text)
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     isbn = db.Column(db.String(13), db.ForeignKey('books.isbn'))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     in_bookshelf = db.Column(db.Boolean, default=True)
+#     comment = db.Column(db.Text)
 
 
-    def __repr__(self):
+#     def __repr__(self):
 
-        return f'<UserBook id={self.id} in_bookshelf={self.in_bookshelf}>'
+#         return f'<UserBook id={self.id} in_bookshelf={self.in_bookshelf}>'
 
 
 class Category(db.Model):
@@ -174,7 +174,7 @@ class Friendship(db.Model):
         return f'<Friendship id={self.id}>'
 
 
-def connect_to_db(flask_app, database, echo=True):
+def connect_to_db(flask_app, database='bookworm', echo=True):
     """Connect to database."""
 
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql:///{database}' # DB_URI

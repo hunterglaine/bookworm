@@ -1,14 +1,18 @@
 """CRUD operations"""
 
-from model import db, Book, User, UserBook, Category, BookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
+from model import db, Book, User, Category, BookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
 
 
 # ***** CREATE FUNCTIONS *****
 def create_book(isbn, title, author, description, page_length, image):
     """Create and return a new book"""
 
-    book = Book(isbn=isbn, title=title, author=author, description=description,
-                page_length=page_length, image=image)
+    book = Book(isbn=isbn, 
+                title=title, 
+                author=author, 
+                description=description,
+                page_length=page_length, 
+                image=image)
 
     db.session.add(book)
     db.session.commit()
@@ -20,29 +24,33 @@ def create_user(first_name, last_name, email, password, city=None,
                 state=None):
     """Create and return a new user"""
 
-    user = User(first_name=first_name, last_name=last_name, email=email, 
-                password=password, city=city, state=state)
+    user = User(first_name=first_name, 
+                last_name=last_name, 
+                email=email, 
+                password=password, 
+                city=city, 
+                state=state)
 
     db.session.add(user)
     db.session.commit()
 
     return user
 
+###REMOVED category
+# # def create_user_book(isbn, user_id, comment=''):
+# def create_user_book(user, book):
+#     """Create and return a new user_book"""
 
-# def create_user_book(isbn, user_id, comment=''):
-def create_user_book(user, book):
-    """Create and return a new user_book"""
+#     # user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
 
-    # user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
+#     # db.session.add(user_book)
+#     # db.session.commit()
 
-    # db.session.add(user_book)
-    # db.session.commit()
+#     # return user_book
+#     user.books.append(book)
+#     db.session.commit()
 
-    # return user_book
-    user.books.append(book)
-    db.session.commit()
-
-    return user.books
+#     return user.books
 
 def create_category(user_id, label):
     """Create and return a new category"""
@@ -55,16 +63,10 @@ def create_category(user_id, label):
     return category
 
 
-# def create_user_book_category(user_book_id, category_id):
 def create_book_category(book, category):
     """Create and return a new book_category / place a book in 
     a user's existing categories"""
 
-    # user_book_category = UserBookCategory(user_book_id=user_book_id, 
-    #                                     category_id=category_id)
-    # db.session.add(user_book_category)
-    # db.sessions.commit()
-    #return user_book
     book.categories.append(category)
     db.session.commit()
 
@@ -83,33 +85,18 @@ def create_event(host_id, city, start_datetime, end_datetime, state=None):
     return event
 
 
-# def create_event_book(isbn, event_id):
 def create_event_book(event, book):
     """Create and return a new event_book"""
 
-    # event_book = EventBook(isbn=isbn, event_id=event_id)
-
-    # db.session.add(event_book)
-    # db.session.commit()
-
-    # return event_book
     event.books.append(book)
     db.session.commit()
 
     return event.books
 
 
-
-# def create_user_event(user_id, event_id):
 def create_user_event(user, event):
     """Create and return a new event_user (attendee)"""
 
-    # user_event = UserEvent(user_id=user_id, event_id=event_id)
-
-    # db.session.add(user_event)
-    # db.session.commit()
-
-    # return user_event
     event.users.append(user)
     db.session.commit()
 
@@ -128,13 +115,19 @@ def get_book_by_isbn(isbn):
 
     return book
 
+
 def get_all_user_books(user_id):
-    """Returns all users_books for given user"""
+    """Returns all books for given user"""
 
-    user = User.query.filter(User.id == user_id).options(db.\
-                            joinedload('books')).one()
+    categories = Category.query.filter(Category.user_id == user_id).options(db.\
+                            joinedload('books')).all()
+    # categories is a list of category objects belonging to given user
 
-    return user.books
+    users_books = []
+    for category in categories:
+        users_books.extend(category.books)
+
+    return users_books
 
 
 def get_user_book_by_search(user_id, search):
@@ -144,20 +137,18 @@ def get_user_book_by_search(user_id, search):
 
     books = []
     for book in their_books:
-        print(book.title)
-        print(book.author)
         if book.title == search or book.author == search:
             books.append(book)
     
     return books
 
-# Unnecessary function
-# def get_book_by_search(search):
-#     """Returns a book by title or author"""
 
-#     book = Book.query.filter((Book.author == search) | (Book.title == search)).all()
+def get_book_by_search(search):
+    """Returns a book by title or author"""
 
-#     return book
+    book = Book.query.filter((Book.author == search) | (Book.title == search)).all()
+
+    return book
 
 
 def get_user_by_id(user_id):
@@ -179,21 +170,27 @@ def get_user_by_email(email):
 def get_all_user_categories(user_id):
     """Returns a list of all categories for given user"""
 
-    user = User.query.filter(User.id == user_id).options(db.\
-                            joinedload('categories')).one()
+    categories = Category.query.filter(Category.user_id == user_id).all()
 
-    return user.categories
+    return categories
 
 
 def get_all_books_in_category(user_id, label):
     """Returns a list of all book objects in a given user's category"""
 
+    category = get_category_by_label(user_id, label)
+
+    return category.books
+
+
+def get_category_by_label(user_id, label):
+    """Returns a category with a given label"""
+
     category = Category.query.filter(Category.label == label, Category.\
                                     user_id == user_id).\
                                     options(db.joinedload('books')).one()
 
-
-    return category.books
+    return category
 
 
 def get_all_users():
@@ -253,14 +250,15 @@ def change_password(user_id, new_password):
     db.session.commit()
 
 
-def add_comment_to_user_book(user_book_id, new_comment):
-    """Add a comment to user's book, given it's id"""
+# Maybe add comments to book_categories?
+# def add_comment_to_user_book(user_book_id, new_comment):
+#     """Add a comment to user's book, given it's id"""
 
-    user_book = UserBook.query.filter(UserBook.id == user_book_id).one()
-    user_book.comment = new_comment
-    db.session.commit()
+#     user_book = UserBook.query.filter(UserBook.id == user_book_id).one()
+#     user_book.comment = new_comment
+#     db.session.commit()
 
-    return user_book
+#     return user_book
 
 
 # ***** DELETE Functions *****
@@ -272,7 +270,16 @@ def add_comment_to_user_book(user_book_id, new_comment):
 #     db.session.commit()
     
 
-# def delete_book_from_category():
+# def delete_book_from_category(book, category):
+#     """Deletes a given book from a user'category"""
+
+#     BookCategory.query.filter(BookCategory.)
+
+
+#     book.categories.remove(category)
+#     db.session.commit()
+
+#     return category.books
 
 
 
