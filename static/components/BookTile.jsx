@@ -3,15 +3,15 @@
 function BookTile(props) {
     const { book } = props;
 
-    // const authors_str = "";
-    // for (const [index, author] of book.authors.entries()) {
-    //     if (index < (book.authors.length() - 1)) {
-    //         authors_str += author, ",";
-    //     }
-    //     else {
-    //         authors_str += author;
-    //     }
-    // };
+    let authors_str = "";
+    for (const [index, author] of book.authors.entries()) {
+        if (index < (book.authors.length() - 1)) {
+            authors_str += author, ",";
+        }
+        else {
+            authors_str += author;
+        }
+    };
 
     return (
         <div className="book-tile">

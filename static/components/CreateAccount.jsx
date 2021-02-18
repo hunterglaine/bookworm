@@ -1,16 +1,59 @@
 "use strict";
 
+const Link = ReactRouterDOM.Link;
+
 function CreateAccount() {
+
+    const [firstName, setFirstName] = React.useState('');
+    const [lastName, setLastName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [city, setCity] = React.useState('');
 
     function createUser(evt) {
         evt.preventDefault();
 
-        const newDetails = {"first-name": document.getElementById("first-name").value,
-                            "last-name": document.getElementById("last-name").value,
-                            "email": document.getElementById("login-email").value,
-                            "password": document.getElementById("login-password").value};
+        // const newDetails = {"first-name": document.getElementById("first-name").value,
+        //                     "last-name": document.getElementById("last-name").value,
+        //                     "email": document.getElementById("login-email").value,
+        //                     "password": document.getElementById("login-password").value};
+        const newUserDetails = {"first_name": firstName,
+                                "last_name": lastName,
+                                "email": email,
+                                "password": password,
+                                "city": city,
+                                "state": state}
+        console.log(newUserDetails);
 
-    }
+        fetch("/api/users", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(newUserDetails),
+            headers: {
+                // 'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            // mode: "cors"
+        })
+        .then (response => response.json())
+        .then(data => {
+            console.log(data);
+            if ("error" in data) {
+                alert(data["error"]);
+                history.push("/create-account");
+            }
+            else {
+                // props.setUserLoggedIn(data["user_id"]);
+                alert("Your account has been created!");
+                history.push("/login")
+            // redirect using useHistory to a User Detail page -> nav bar (w/ logout and search on top), horizontal row, category and books within for each
+            }
+        });
+    };
+
+
+
+
     return(
         <div>
             <h1>Welcome!</h1>
@@ -19,26 +62,26 @@ function CreateAccount() {
             <form onSubmit={createUser}>
                 <p>
                     <label htmlFor="your-first-name">First Name* </label>
-                    <input type="text" placeholder="Jane" id="first-name" required />
+                    <input type="text" placeholder="Jane" id="first-name" onChange={(e) => setFirstName(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-last-name">Last Name* </label>
-                    <input type="text" placeholder="Doe" id="last-name"required />
+                    <input type="text" placeholder="Doe" id="last-name" onChange={(e) => setLastName(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-email">Email* </label>
-                    <input type="text" placeholder="janedoe@text.com" id="email" required />
+                    <input type="text" placeholder="janedoe@text.com" id="email" onChange={(e) => setEmail(e.target.value)} required />
                 </p>        
                 <p>
                     <label htmlFor="your-password">Password* </label>
-                    <input type="password" placeholder="Up to 20 characters" name="password" required />
+                    <input type="password" placeholder="Up to 20 characters" name="password" onChange={(e) => setPassword(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-city">City </label>
-                    <input type="text" placeholder="San Fransisco" name="city" />
+                    <input type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
                 </p>
                     <label htmlFor="your-sate">State</label>
-                    <select name="state" placeholder="California">
+                    <select name="state" placeholder="California" onChange={(e) => setState(e.target.value)}>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -96,10 +139,10 @@ function CreateAccount() {
                 </p>
         </form>
         <p>
-            Already have an account? <a href="/login">Log in here!</a>
+            Already have an account? <Link to="/login">Log in here!</Link>
         </p>
     </div>
   );
-};
+}
 
 // ReactDOM.render(<CreateAccount />, document.getElementById("root"));

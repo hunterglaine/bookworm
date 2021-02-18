@@ -26,8 +26,7 @@ def create_new_user():
     state = request.form.get('state')
 
     if crud.get_user_by_email(email):
-        return jsonify ({'status': '404',
-                        'message': 'An account with this email already exists.'})
+        return jsonify ({'error': 'An account with this email already exists.'})
     else:
         new_user = crud.create_user(first_name, last_name, email, password, city, state)
         # return jsonify ({'status': '200',
@@ -39,32 +38,29 @@ def create_new_user():
                                     'city': user.city,
                                     'state': user.state}})
 
-@app.route('/api/login', methods=["GET", "POST"])
+@app.route('/api/login', methods=["POST"])
 def log_in_user():
     """Log a user in and show them they were successful or not."""
     # data = request.get_json()
     # print(data)
-    email = request.form.get('email')
-    password = request.form.get('password')
-    # email = request.json["email"]
-    # password = request.json["password"]
-    print(email, password)
+    # email = request.form.get('email')
+    # password = request.form.get('password')
+    email = request.json["email"]
+    password = request.json["password"]
+    print("****", email, password, "*****")
 
     user = crud.get_user_by_email(email)
 
     if user:
             if user.password == password:
                 session['user'] = user.id
-                return jsonify ({'status': 'success',
-                                'message': 'Successfully logged in',
+                return jsonify ({'success': 'Successfully logged in!',
                                 'user_id': user.id,
                                 'user_first_name': user.first_name})
             else:
-                return jsonify ({'status': 'error',
-                                'message': 'Incorrect Password'})
+                return jsonify ({'error': 'Incorrect password. Please try again or create a new account.'})
     else:
-        return jsonify ({'status': 'error',
-                        'message': 'User does not exist'})
+        return jsonify ({'error': 'Sorry, but no account exists with that email.'})
 
 
 @app.route('/api/books', methods=["POST"])

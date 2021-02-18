@@ -13,9 +13,9 @@ function SearchBar(props) {
         
     }
     return (
-            <form className="search-bar">
+            <form className="search-bar" onSubmit={bookSearch}>
                 <input  type="text" id="book-search" placeholder="Search for book by title or author"></input>
-                <input type="submit" onClick={bookSearch}></input>
+                <input type="submit" ></input>
             </form>
     );
     

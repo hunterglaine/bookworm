@@ -9,39 +9,39 @@ const useHistory = ReactRouterDOM.useHistory;
 
 function App() {
 
-    const [userLoggedIn, setUserLoggedIn] = React.useState('');
-    const [bookQuery, setBookQuery] = React.useState('')
+    const [userLoggedIn, setUserLoggedIn] = React.useState(''); // How do I set the initial state if I will be passing in an integer
+    const [bookQuery, setBookQuery] = React.useState('');
+    console.log(userLoggedIn);
 
   // if (!userLoggedIn) {
       return (
           <Router>
             <div>
               <nav>
-                <ul>
-                  <li>
-                    <img src="./static/img/bookworm_logo2.jpg" alt="Bookworm Logo"/>
-                  </li>
-                  <li>
-                    <SearchBar bookQuery={bookQuery} setBookQuery />
-                  </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/create-account">Create Account</Link>
-                  </li>
-                </ul>
+                <div>
+                  <img src="./static/img/bookworm_logo2.jpg" alt="Bookworm Logo"/>
+                </div>
+                <div>
+                  <SearchBar bookQuery={bookQuery} setBookQuery={setBookQuery} />
+                </div>
+                <div>
+                  <Link to="/login">Login</Link>
+                </div>
+                <div>
+                  <Link to="/create-account">Create Account</Link>
+                </div>
               </nav>
               <Switch>
                 <Route path="/login">
-                  <LogIn />
+                  <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
                 </Route>
                 <Route path="/create-account">
                   <CreateAccount />
                 </Route>
-                {/* <Route path="/create-account">
-                  <CreateAccount />
+                <Route path="/user">
+                  <UserPage userLoggedIn={userLoggedIn} />
                 </Route>
+                {/*
                 <Route path="/book-search/{bookQuery}">
                   <SearchResults bookQuery='harry potter' userLoggedIn={userLoggedIn} />
                 </Route> */} 
