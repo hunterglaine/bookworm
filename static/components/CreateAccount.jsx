@@ -1,28 +1,27 @@
 "use strict";
 
 const Link = ReactRouterDOM.Link;
+const useHistory = ReactRouterDOM.useHistory;
 
 function CreateAccount() {
+    let history = useHistory();
 
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [city, setCity] = React.useState('');
+    const [userState, setUserState] = React.useState('');
 
     function createUser(evt) {
         evt.preventDefault();
 
-        // const newDetails = {"first-name": document.getElementById("first-name").value,
-        //                     "last-name": document.getElementById("last-name").value,
-        //                     "email": document.getElementById("login-email").value,
-        //                     "password": document.getElementById("login-password").value};
         const newUserDetails = {"first_name": firstName,
                                 "last_name": lastName,
                                 "email": email,
                                 "password": password,
                                 "city": city,
-                                "state": state}
+                                "state": userState}
         console.log(newUserDetails);
 
         fetch("/api/users", {
@@ -45,13 +44,10 @@ function CreateAccount() {
             else {
                 // props.setUserLoggedIn(data["user_id"]);
                 alert("Your account has been created!");
-                history.push("/login")
-            // redirect using useHistory to a User Detail page -> nav bar (w/ logout and search on top), horizontal row, category and books within for each
+                history.push("/login");
             }
         });
     };
-
-
 
 
     return(
@@ -81,7 +77,7 @@ function CreateAccount() {
                     <input type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
                 </p>
                     <label htmlFor="your-sate">State</label>
-                    <select name="state" placeholder="California" onChange={(e) => setState(e.target.value)}>
+                    <select name="state" placeholder="California" onChange={(e) => setUserState(e.target.value)}>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>

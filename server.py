@@ -18,17 +18,17 @@ def show_homepage():
 def create_new_user():
     """Create a new user."""
 
-    first_name = request.form.get('first-name')
-    last_name = request.form.get('last-name')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    city = request.form.get('city')
-    state = request.form.get('state')
+    first_name = request.json.get("first_name")
+    last_name = request.json.get("last_name")
+    email = request.json.get("email")
+    password = request.json.get("password")
+    city = request.json.get("city")
+    state = request.json.get("state")
 
     if crud.get_user_by_email(email):
         return jsonify ({'error': 'An account with this email already exists.'})
     else:
-        new_user = crud.create_user(first_name, last_name, email, password, city, state)
+        user = crud.create_user(first_name, last_name, email, password, city, state)
         # return jsonify ({'status': '200',
         #                 'message': 'Account has successfully been created'})
         return jsonify ({'user': {'id': user.id, 
@@ -45,8 +45,8 @@ def log_in_user():
     # print(data)
     # email = request.form.get('email')
     # password = request.form.get('password')
-    email = request.json["email"]
-    password = request.json["password"]
+    email = request.json.get("email")
+    password = request.json.get("password")
     print("****", email, password, "*****")
 
     user = crud.get_user_by_email(email)

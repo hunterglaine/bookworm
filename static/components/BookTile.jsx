@@ -2,23 +2,24 @@
 
 function BookTile(props) {
     const { book } = props;
+    console.log(book.volumeInfo.imageLinks)
 
-    let authors_str = "";
-    for (const [index, author] of book.authors.entries()) {
-        if (index < (book.authors.length() - 1)) {
-            authors_str += author, ",";
-        }
-        else {
-            authors_str += author;
-        }
-    };
+    // let authors_str = "";
+    // for (const [index, author] of book.authors.entries()) {
+    //     if (index < (book.authors.length() - 1)) {
+    //         authors_str += author, ",";
+    //     }
+    //     else {
+    //         authors_str += author;
+    //     }
+    // };
 
     return (
         <div className="book-tile">
-            <img src={book.image} alt="Book Cover" />
-            <h2>{book.title}</h2>
-            <h3>{authors_str}</h3>
-            <p>{book.description}</p>
+            {/* <img src={ book.volumeInfo.imageLinks.thumbnail } alt="Book Cover" /> */}
+            <h2>{book.volumeInfo.title}</h2>
+            <h3>{book.volumeInfo.authors}</h3>
+            <p>{book.volumeInfo.description}</p>
             {/* {% if session.get("user") %}
                 <form id="add-to-category">
                     <label for="category-add">

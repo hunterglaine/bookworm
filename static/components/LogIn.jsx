@@ -4,14 +4,19 @@ const useHistory = ReactRouterDOM.useHistory;
 
 
 function LogIn(props) {
-    // const[userDetails, setUserDetails] = React.useState({});
+    const[userEmail, setUserEmail] = React.useState('');
+    const[userPassword, setUserPassword] = React.useState('');
+    
     let history = useHistory();
     
         function logUserIn(evt) {
             evt.preventDefault();
             
-            const userDetails = {"email": document.getElementById("login-email").value,
-                                "password": document.getElementById("login-password").value};
+            // const userDetails = {"email": document.getElementById("login-email").value,
+            //                     "password": document.getElementById("login-password").value};
+
+            const userDetails = {"email": userEmail,
+                                "password": userPassword};
             console.log(userDetails);
     
             fetch("/api/login", {
@@ -48,11 +53,13 @@ function LogIn(props) {
         <div>
             <h1>Log In</h1>
             <form action="/api/login" onSubmit={logUserIn}>
-                <input type="text" id="login-email" name="email" placeholder="Your Email" />
-                <input type="password" id="login-password" name="password" placeholder="Your Password" />
+                <input type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} />
+                <input type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} />
                 <input type="submit" value="Submit" />
             </form>
-            {/* <p>Don't have an account yet? <a href="/">Create one here!</a></p> ----Reroute to Create Account Component */}
+            <p>
+                Don't have an account yet? <Link to="/create-account">Create one here!</Link>
+            </p>
         </div>
         );
     

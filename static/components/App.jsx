@@ -41,10 +41,9 @@ function App() {
                 <Route path="/user">
                   <UserPage userLoggedIn={userLoggedIn} />
                 </Route>
-                {/*
-                <Route path="/book-search/{bookQuery}">
-                  <SearchResults bookQuery='harry potter' userLoggedIn={userLoggedIn} />
-                </Route> */} 
+                <Route path="/book-search">
+                  <SearchResults bookQuery={bookQuery} userLoggedIn={userLoggedIn} />
+                </Route>
               </Switch>
           </div>
       </Router>
