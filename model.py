@@ -85,6 +85,16 @@ class Category(db.Model):
         return f'<Category id={self.id} label={self.label}>'
 
 
+    def to_dict(self):
+        """Turns category object into a dictionary"""
+
+        category = {'id': self.id,
+                    'user_id': self.user_id,
+                    'label': self.label}
+
+        return category
+
+
 class BookCategory(db.Model):
     """Category of a specific Book"""
 

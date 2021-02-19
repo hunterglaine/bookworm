@@ -6,18 +6,25 @@ function SearchBar(props) {
 
     function bookSearch(evt) {
         evt.preventDefault();
-
+        // var = document.getElementById("book-search")
+        props.setBookQuery(document.getElementById("book-search").value)
         console.log("Clicked")
-        // console.log(document.getElementById('book-search').value)
-        // props.setBookQuery(document.getElementById('book-search').value)
-        console.log(props.bookQuery)
-        // ^ this is not working; also need to find a way to pass bookQuery to SearchResults component
+
+        fetch("/api/categories")
+        .then (response => response.json())
+        // .then((result) => {console.log(result.categories); return result})
+        .then((data) => props.setUserCategories(data["categories"]))
+            // console.log(`This is the data from request ${data.categories[0].id}`)})
+        .catch(console.error)
+
         history.push("/book-search")
         
     }
+    
     return (
             <form className="search-bar" onSubmit={bookSearch}>
-                <input  type="text" id="book-search" placeholder="Search for book by title or author" onChange={(e) => props.setBookQuery(e.target.value)}></input>
+                <input  type="text" id="book-search" placeholder="Search for book by title or author" ></input>
+                {/* onChange={(e) => props.setBookQuery(e.target.value)} */}
                 <input type="submit" ></input>
             </form>
     );

@@ -38,7 +38,7 @@ function LogIn(props) {
                     history.push("/login");
                 }
                 else {
-                    props.setUserLoggedIn(data["user_id"]);
+                    props.setUserLoggedIn({userId: data["user_id"], userFirstName: data["user_first_name"]});
                     history.push("/user")
                 // redirect using useHistory to a User Detail page -> nav bar (w/ logout and search on top), horizontal row, category and books within for each
                 }

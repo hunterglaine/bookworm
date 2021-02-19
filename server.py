@@ -41,10 +41,7 @@ def create_new_user():
 @app.route('/api/login', methods=["POST"])
 def log_in_user():
     """Log a user in and show them they were successful or not."""
-    # data = request.get_json()
-    # print(data)
-    # email = request.form.get('email')
-    # password = request.form.get('password')
+    
     email = request.json.get("email")
     password = request.json.get("password")
     print("****", email, password, "*****")
@@ -61,6 +58,25 @@ def log_in_user():
                 return jsonify ({'error': 'Incorrect password. Please try again or create a new account.'})
     else:
         return jsonify ({'error': 'Sorry, but no account exists with that email.'})
+
+
+@app.route('/api/categories')
+def get_user_categories():
+    """Returns the categories for a given user."""
+
+    categories = []
+
+    if session.get('user'):
+        category_objects = crud.get_all_user_categories(session['user'])
+
+        for category_object in category_objects:
+
+            dict_category = category_object.to_dict()
+            categories.append(dict_category)
+    print('****'*5, categories, '****'*5)
+
+    return jsonify({'categories': categories})
+
 
 
 @app.route('/api/books', methods=["POST"])

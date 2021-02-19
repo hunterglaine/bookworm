@@ -9,9 +9,10 @@ const useHistory = ReactRouterDOM.useHistory;
 
 function App() {
 
-    const [userLoggedIn, setUserLoggedIn] = React.useState(''); // How do I set the initial state if I will be passing in an integer
-    const [bookQuery, setBookQuery] = React.useState('');
-    console.log(userLoggedIn);
+    const [userLoggedIn, setUserLoggedIn] = React.useState({}); // How do I set the initial state if I will be passing in an integer
+    const [bookQuery, setBookQuery] = React.useState(null);
+    const [userCategories, setUserCategories] = React.useState([]);
+
 
   // if (!userLoggedIn) {
       return (
@@ -19,10 +20,13 @@ function App() {
             <div>
               <nav>
                 <div>
-                  <img src="./static/img/bookworm_logo2.jpg" alt="Bookworm Logo"/>
+                  <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/>
                 </div>
                 <div>
-                  <SearchBar bookQuery={bookQuery} setBookQuery={setBookQuery} />
+                  <SearchBar bookQuery={bookQuery} 
+                            setBookQuery={setBookQuery} 
+                            userCategories={userCategories} 
+                            setUserCategories={setUserCategories} />
                 </div>
                 <div>
                   <Link to="/login">Login</Link>
@@ -42,7 +46,10 @@ function App() {
                   <UserPage userLoggedIn={userLoggedIn} />
                 </Route>
                 <Route path="/book-search">
-                  <SearchResults bookQuery={bookQuery} userLoggedIn={userLoggedIn} />
+                  <SearchResults bookQuery={bookQuery} 
+                                userLoggedIn={userLoggedIn} 
+                                userCategories={userCategories}
+                                setUserCategories={setUserCategories} />
                 </Route>
               </Switch>
           </div>
