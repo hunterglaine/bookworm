@@ -9,7 +9,8 @@ const useHistory = ReactRouterDOM.useHistory;
 
 function App() {
 
-    const [userLoggedIn, setUserLoggedIn] = React.useState({}); // How do I set the initial state if I will be passing in an integer
+    const [userLoggedIn, setUserLoggedIn] = React.useState(null); // How do I set the initial state if I will be passing in an integer
+    console.log(userLoggedIn)
     const [bookQuery, setBookQuery] = React.useState(null);
     const [userCategories, setUserCategories] = React.useState([]);
 
@@ -23,21 +24,30 @@ function App() {
                   <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/>
                 </div>
                 <div>
-                  <SearchBar bookQuery={bookQuery} 
-                            setBookQuery={setBookQuery} 
-                            userCategories={userCategories} 
-                            setUserCategories={setUserCategories} />
+                  <SearchBar 
+                    bookQuery={bookQuery} 
+                    setBookQuery={setBookQuery} 
+                    userCategories={userCategories} 
+                    setUserCategories={setUserCategories} 
+                    />
                 </div>
                 <div>
-                  <Link to="/login">Login</Link>
+                  <Link to={userLoggedIn ? "/logout" : "/login"}>
+                    {userLoggedIn ? "Log Out" : "Log In"}
+                  </Link>
                 </div>
                 <div>
-                  <Link to="/create-account">Create Account</Link>
+                  <Link to="/create-account">
+                    Create Account
+                  </Link>
                 </div>
               </nav>
               <Switch>
                 <Route path="/login">
                   <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+                </Route>
+                <Route path="/logout">
+                  <LogOut userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
                 </Route>
                 <Route path="/create-account">
                   <CreateAccount />
@@ -46,10 +56,11 @@ function App() {
                   <UserPage userLoggedIn={userLoggedIn} />
                 </Route>
                 <Route path="/book-search">
-                  <SearchResults bookQuery={bookQuery} 
-                                userLoggedIn={userLoggedIn} 
-                                userCategories={userCategories}
-                                setUserCategories={setUserCategories} />
+                  <SearchResults 
+                    bookQuery={bookQuery} 
+                    userLoggedIn={userLoggedIn} 
+                    userCategories={userCategories}
+                    setUserCategories={setUserCategories} />
                 </Route>
               </Switch>
           </div>

@@ -60,6 +60,17 @@ def log_in_user():
         return jsonify ({'error': 'Sorry, but no account exists with that email.'})
 
 
+@app.route('/api/logout', methods=["POST"])
+def log_out_user():
+    """Log a user out and show them they were successful or not."""
+    print('1111111111111111111111111', session.get('user'), '1111111111111111111')
+    user_id = session.pop('user')
+    print('22222222222222222222222222', session.get('user'), '22222222222222222222')
+    user = crud.get_user_by_id(user_id)
+
+    return jsonify ({'success': f'{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!'})
+
+
 @app.route('/api/categories')
 def get_user_categories():
     """Returns the categories for a given user."""
