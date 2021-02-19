@@ -5,6 +5,32 @@ function BookTile(props) {
     console.log(book.volumeInfo.title);
     console.log(props.userCategories);
 
+    const addToCategory = (evt) => {
+        evt.preventDefault();
+        const category = document.getElementById("category-add").value
+        console.log(category)
+        const categoryDetails = {"label": category,
+                                "book": book}
+
+        if (category === "add-new") {
+            console.log(category)
+        }
+        else {
+            fetch("/api/add-book-to-category", {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(categoryDetails),
+                headers: {
+                    // 'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                // mode: "cors"
+            })
+            .then (response => response.json())
+            .then(data => console.log(data))
+        }
+    }
+
     
 
     // let authors_str = "";
@@ -16,28 +42,23 @@ function BookTile(props) {
     //         authors_str += author;
     //     }
     // };
-    // const items = []
-    // for (const [index, value] of props.userCategories.entries()) {
-    //     items.push(<option key={index}>{value}</option>)
-    //   }
-    // const items = []
-    // for (const [index, value] of props.userCategories.entries()) {
-    //     items.push(<option key={index}>{value}</option>)
-    //   }
-    // console.log(userLoggedIn["userId"])
+ 
     if (props.userLoggedIn["userId"]) {
         return (
             <div className="book-tile">
                 <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/blank_book_cover.jpg"} alt="Book Cover" />
                 <h2>{book.volumeInfo.title}</h2>
                 <h3>{book.volumeInfo.authors}</h3>
+                {/* {book.volumeInfo.authors.map(author => 
+                            (<div><h3>{author}</h3></div>))
+                        } */}
                 <p>{book.volumeInfo.description}</p>
                 
-                <form id="add-to-category">
+                <form id="add-to-category" onSubmit={addToCategory}>
                     <label htmlFor="category-add">
                         Add to your bookshelf
                     </label>
-                    <select id="category-add" name="category">
+                    <select id="category-add" name="category" >
                         {props.userCategories.map(category => 
                             (<option value={category.label}>{category.label} </option>))
                         }

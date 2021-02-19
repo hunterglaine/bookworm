@@ -73,39 +73,48 @@ def get_user_categories():
 
             dict_category = category_object.to_dict()
             categories.append(dict_category)
-    print('****'*5, categories, '****'*5)
+    # print('****'*5, categories, '****'*5)
 
     return jsonify({'categories': categories})
 
 
 
-@app.route('/api/books', methods=["POST"])
+@app.route('/api/add-book-to-category', methods=["POST"])
 def add_user_book():
     """Adds a new book to a user's books"""
-
+    print(session.get('user'))
     if session.get('user'):
-        isbn = request.form.get('isbn')
-        title = request.form.get('title')
-        author = request.form.get('author')
-        description = request.form.get('description')
-        page_length = request.form.get('page-length')
-        image = request.form.get('image')
-        if not crud.get_book_by_isbn(isbn):
-            crud.create_book(isbn, title, author, description, page_length, 
-                            image)
-        
         user_id = session['user']
-        if not get_user_book_by_search(title):
-            crud.create_user_book(isbn, user_id)
-            return jsonify ({'status': '200',
-                        'message': 'Book has been added to bookshelf'})
-
+        label = request.json.get("label")
+        book = request.json.get("book")
+        print("999999999999999999", "label:", label, "book:", book, "99999999999999999999999999")
+        
+        if book['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_13': 
+            isbn = book['volumeInfo']['industryIdentifiers'][0].get('identifier')
         else:
-            return jsonify ({'status': '404',
-                            'message': 'Book is already in your shelf'})
-    else:
-        return jsonify ({'status': '400',
-                        'message': 'User must be logged in first'})
+            isbn = book['volumeInfo']['industryIdentifiers'][1].get('identifier')
+
+        the_book = crud.get_book_by_isbn(isbn)
+        this_category = crud.get_category_by_label(user_id, label)
+
+        if not the_book:
+            the_book = crud.create_book(isbn, 
+                                        book['volumeInfo']['title'], 
+                                        book['volumeInfo']['authors'], 
+                                        book['volumeInfo']['description'], 
+                                        book['volumeInfo']['pageCount'], 
+                                        book['volumeInfo']['imageLinks']['thumbnail'])
+
+        # NEED TO DO THIS - to make sure a book doesn't get added to a category twice
+        # elif the_book in crud.get_all_books_in_category(user_id, label):
+        #     return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
+
+        added_books = crud.create_book_category(the_book, this_category)
+        # Right now, added_books is a list of all of the book objects in this_category
+        
+        return jsonify ({'success': f'{the_book.title} has been added to {this_category.label} books'})
+        # 'books_in_category': added_books
+
 
 
 
