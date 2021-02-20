@@ -28,7 +28,8 @@ function SearchResults(props) {
                     bookKey = book.volumeInfo.industryIdentifiers[1].identifier
                     // NEED TO FIX THIS! IF NO INDUSTRY INDETIFIERS, GET AN ERROR
                 } 
-                content.push(<BookTile key={bookKey} book={book} userLoggedIn={props.userLoggedIn} userCategories={props.userCategories} />);
+                content.push(<BookTile book={book} userLoggedIn={props.userLoggedIn} userCategories={props.userCategories} />); 
+                // key={bookKey}
             }
             else {
                 content.push(<BookTile book={book} userLoggedIn={props.userLoggedIn} userCategories={props.userCategories} />);

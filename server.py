@@ -89,6 +89,20 @@ def get_user_categories():
     return jsonify({'categories': categories})
 
 
+@app.route('/api/add-category', methods=["POST"])
+def add_user_category():
+    """Adds a new category to a user"""
+    print(session.get('user'))
+    if session.get('user'):
+        user_id = session['user']
+        label = request.json.get("label")
+
+        print("888888888888888888888", "label:", label, "88888888888888888888888888888")
+        user = crud.get_user_by_id(user_id)
+        new_category = crud.create_category(user_id, label)
+
+        return jsonify ({'success': f'{new_category.label} has been added to {user.first_name}\'s bookshelf!'})
+
 
 @app.route('/api/add-book-to-category', methods=["POST"])
 def add_user_book():

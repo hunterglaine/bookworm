@@ -37,10 +37,15 @@ function App() {
                   </Link>
                 </div>
                 <div>
+                  <Link to={userLoggedIn ? "/user" : "/create-account"}>
+                    {userLoggedIn ? "My Bookshelf" : "Create Account"}
+                  </Link>
+                </div>
+                {/* <div>
                   <Link to="/create-account">
                     Create Account
                   </Link>
-                </div>
+                </div> */}
               </nav>
               <Switch>
                 <Route path="/login">

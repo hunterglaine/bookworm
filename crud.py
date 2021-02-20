@@ -281,6 +281,15 @@ def change_password(user_id, new_password):
 
 #     return category.books
 
+def delete_category(label, user_id):
+    "Deletes a category and all book realtionships in it"
+
+    category_to_delete = Category.query.filter(Category.label == label, Category.\
+                                                user_id == user_id).first()
+
+    db.session.delete(category_to_delete)
+    db.session.commit()
+
 
 
 
