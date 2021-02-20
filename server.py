@@ -99,6 +99,10 @@ def add_user_category():
 
         print("888888888888888888888", "label:", label, "88888888888888888888888888888")
         user = crud.get_user_by_id(user_id)
+        
+        if get_category_by_label(user_id, label):
+            return ({'error': f'{label} is already in {user.first_name}\'s bookshelf!'})
+
         new_category = crud.create_category(user_id, label)
 
         return jsonify ({'success': f'{new_category.label} has been added to {user.first_name}\'s bookshelf!'})

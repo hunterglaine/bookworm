@@ -188,7 +188,7 @@ def get_category_by_label(user_id, label):
 
     category = Category.query.filter(Category.label == label, Category.\
                                     user_id == user_id).\
-                                    options(db.joinedload('books')).one()
+                                    options(db.joinedload('books')).first()
 
     return category
 
