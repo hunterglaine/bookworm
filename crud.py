@@ -167,6 +167,13 @@ def get_user_by_email(email):
     return user
 
 
+def get_all_categories():
+    """Returns all categories in database - for internal use"""
+
+    categories = Category.query.all()
+
+    return categories
+
 def get_all_user_categories(user_id):
     """Returns a list of all categories for given user"""
 

@@ -100,7 +100,7 @@ def add_user_category():
         print("888888888888888888888", "label:", label, "88888888888888888888888888888")
         user = crud.get_user_by_id(user_id)
         
-        if get_category_by_label(user_id, label):
+        if crud.get_category_by_label(user_id, label):
             return ({'error': f'{label} is already in {user.first_name}\'s bookshelf!'})
 
         new_category = crud.create_category(user_id, label)
@@ -126,7 +126,7 @@ def add_user_book():
         the_book = crud.get_book_by_isbn(isbn)
         this_category = crud.get_category_by_label(user_id, label)
 
-        if not the_book:
+        if the_book == None:
             the_book = crud.create_book(isbn, 
                                         book['volumeInfo']['title'], 
                                         book['volumeInfo']['authors'], 
@@ -139,6 +139,7 @@ def add_user_book():
         #     return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
 
         added_books = crud.create_book_category(the_book, this_category)
+        # FlushError: Can't flush None value found in collection Book.categories
         # Right now, added_books is a list of all of the book objects in this_category
         
         return jsonify ({'success': f'{the_book.title} has been added to {this_category.label} books'})

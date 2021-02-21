@@ -4,32 +4,40 @@ function BookTile(props) {
     const { book } = props;
     console.log(book.volumeInfo.title);
     console.log(props.userCategories);
+    const [addCategory, setAddCategory] = React.useState('');
+    const [categoryName, setCategoryName] = React.useState('');
+    console.log(categoryName);
 
     const addNewSelect = () => {
-        // console.log("Okay, so it registers a change.... ")
-        const newCategory = document.getElementById("new-category");
-        console.log(document.forms[1])
-        console.log(document.forms[1].chooseCategory)
-        if (document.forms[1].chooseCategory.options[document.forms[1].chooseCategory.selectedIndex].value === "add-new") {
-            newCategory.style.visibility = "visible"
-        }
-        else {
-            newCategory.style.visibility = "hidden";
-        }
-    }
+        
+        for (let i = 1; i < 11; i += 1) {
+            // console.log(`This is document.forms[${i}]`, document.forms[i])
+            // console.log(`This is document.forms[${i}].chooseCategory.options`, document.forms[i].chooseCategory.options)
+            // console.log(`This is document.forms[${i}].chooseCategory.options + all the selectedIndex stuff`,document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex])
+            // console.log(`This is the full thing`,document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex].value)
+            let newCategory = document.forms[i].newCategory;
+            console.log(newCategory)
+            if (document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex].value === "add-new") {
+                newCategory.style.visibility = "visible"
+                // setAddCategory("add-new")
+            }
+            else {
+                newCategory.style.visibility = "hidden";
+            }
+    }}
 
     function addToCategory(evt) {
         evt.preventDefault();
-        const category = document.getElementById("category-add").value
-        console.log(category)
-        let categoryDetails = {"label": category,
+        // const category = document.getElementById("category-add").value
+        console.log(categoryName)
+        let categoryDetails = {"label": categoryName,
                                 "book": book}
 
-        if (category === "add-new") {
-            const newCategory = document.getElementById("new-category").value
-            console.log(newCategory)
-            categoryDetails = {"label": newCategory,
-                                    "book": book}
+        if (addCategory === "add-new") {
+            // const newCategory = document.getElementById("new-category").value
+            // console.log(categoryName)
+            // categoryDetails = {"label": categoryName,
+            //                     "book": book}
             console.log(categoryDetails)
             fetch("/api/add-category", {
                 method: "POST",
@@ -41,21 +49,35 @@ function BookTile(props) {
             })
             .then (response => response.json())
             .then(data => console.log(data))
+            .then(fetch("/api/add-book-to-category", {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(categoryDetails),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then (response => response.json())
+            .then(data => console.log(data))
+        )
         }
-        
+        else {
         fetch("/api/add-book-to-category", {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify(categoryDetails),
                 headers: {
-                    // 'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                // mode: "cors"
             })
             .then (response => response.json())
             .then(data => console.log(data))
         }
+        document.getElementById("add-to-category").reset();
+        for (let i = 1; i < 11; i += 1) {
+            document.forms[i].newCategory.style.visibility = "hidden";
+        }
+    }
 
  
     if (props.userLoggedIn) {
@@ -63,7 +85,6 @@ function BookTile(props) {
             <div className="book-tile">
                 <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
                 <h2>{book.volumeInfo.title}</h2>
-                {/* <h3>{book.volumeInfo.authors}</h3> */}
                 {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
                             (<div><h3>{author}</h3></div>)) : ''
                         }
@@ -73,14 +94,17 @@ function BookTile(props) {
                     <label htmlFor="category-add">
                         Add to your bookshelf
                     </label>
-                    <select id="category-add" name="chooseCategory" onChange={addNewSelect} >
+                    <select id="category-add" name="chooseCategory" onChange={(e) => {
+                        setAddCategory(e.target.value);
+                        setCategoryName(e.target.value);
+                        addNewSelect();}} >
                         <option disabled selected value> -- Select a Category -- </option>
                         {props.userCategories.map(category => 
-                            (<option value={category.label}>{category.label} </option>))
+                            (<option value={category.label} >{category.label} </option>))
                         }
                         <option value="add-new">Add New Category</option>
                     </select>
-                    <input type="text" id="new-category" style={{visibility: "hidden"}} />
+                    <input type="text" name="newCategory" id="new-category" style={{visibility: "hidden"}} onChange={(e) => setCategoryName(e.target.value)} />
                     <input type="submit" />
                 </form>
                 <hr/>
