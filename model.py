@@ -26,6 +26,19 @@ class Book(db.Model):
         return f'<Book ISBN={self.isbn} title={self.title}>'
 
 
+    def to_dict(self):
+        """Turns book object into a dictionary"""
+
+        book = {"isbn": self.isbn,
+                "title": self.title,
+                "author": self.author,
+                "description": self.description,
+                "page_length": self.page_length,
+                "image": self.image}
+
+        return book
+
+
 class User(db.Model):
     """User class."""
 

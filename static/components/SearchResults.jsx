@@ -11,7 +11,6 @@ function SearchResults(props) {
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.bookQuery}&maxResults=10`)
         .then (response => response.json())
         .then (result => setBooks(result.items))
-        // .then(result => setBooks(result))
         }, [props.bookQuery])    
 
        console.log("These are the books", props.books)

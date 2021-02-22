@@ -63,9 +63,8 @@ def log_in_user():
 @app.route('/api/logout', methods=["POST"])
 def log_out_user():
     """Log a user out and show them they were successful or not."""
-    print('1111111111111111111111111', session.get('user'), '1111111111111111111')
+  
     user_id = session.pop('user')
-    print('22222222222222222222222222', session.get('user'), '22222222222222222222')
     user = crud.get_user_by_id(user_id)
 
     return jsonify ({'success': f'{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!'})
@@ -92,12 +91,11 @@ def get_user_categories():
 @app.route('/api/add-category', methods=["POST"])
 def add_user_category():
     """Adds a new category to a user"""
-    print(session.get('user'))
+
     if session.get('user'):
         user_id = session['user']
         label = request.json.get("label")
 
-        print("888888888888888888888", "label:", label, "88888888888888888888888888888")
         user = crud.get_user_by_id(user_id)
         
         if crud.get_category_by_label(user_id, label):
@@ -111,12 +109,10 @@ def add_user_category():
 @app.route('/api/add-book-to-category', methods=["POST"])
 def add_user_book():
     """Adds a new book to a user's books"""
-    print(session.get('user'))
     if session.get('user'):
         user_id = session['user']
         label = request.json.get("label")
         book = request.json.get("book")
-        print("999999999999999999", "label:", label, "book:", book, "99999999999999999999999999")
         
         if book['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_13': 
             isbn = book['volumeInfo']['industryIdentifiers'][0].get('identifier')
@@ -125,7 +121,7 @@ def add_user_book():
 
         the_book = crud.get_book_by_isbn(isbn)
         this_category = crud.get_category_by_label(user_id, label)
-
+        
         if the_book == None:
             the_book = crud.create_book(isbn, 
                                         book['volumeInfo']['title'], 
@@ -134,18 +130,50 @@ def add_user_book():
                                         book['volumeInfo']['pageCount'], 
                                         book['volumeInfo']['imageLinks']['thumbnail'])
 
-        # NEED TO DO THIS - to make sure a book doesn't get added to a category twice
-        # elif the_book in crud.get_all_books_in_category(user_id, label):
-        #     return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
+        if this_category == None:
+            this_category = crud.create_category(user_id, label)
+
+            added_books = crud.create_book_category(the_book, this_category)
+            return jsonify ({'success': f"""A new category, {this_category.label},
+                             has been added to your bookshelf and {the_book.title} 
+                             has been added to it"""})
+
+        if the_book in crud.get_all_books_in_category(user_id, label):
+            return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
 
         added_books = crud.create_book_category(the_book, this_category)
-        # FlushError: Can't flush None value found in collection Book.categories
         # Right now, added_books is a list of all of the book objects in this_category
         
         return jsonify ({'success': f'{the_book.title} has been added to {this_category.label} books'})
         # 'books_in_category': added_books
 
 
+@app.route('/api/user-data')
+def get_user_data():
+    """Returns user's categories and books within them"""
+
+    if session.get('user'):
+        user_id = session['user']
+
+        category_labels = crud.get_all_user_category_labels(user_id)
+        # A list of the user's category names
+
+        category_dict = {}
+        book_list = []
+        for category in category_labels:
+            books = crud.get_all_books_in_category(user_id, category)
+            for book in books:
+                book_list.append(book.to_dict())
+            
+            category_dict[category] = book_list
+            book_list = []
+        
+        print("LOOK AT THIS ----->", category_dict, "<----------")
+
+        return jsonify (category_dict)
+
+    else:
+        return jsonify ({'error': 'User must be logged in to view this page.'})
 
 
 if __name__ == '__main__':

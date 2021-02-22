@@ -182,6 +182,16 @@ def get_all_user_categories(user_id):
     return categories
 
 
+def get_all_user_category_labels(user_id):
+    """Returns a list of all categories for given user"""
+
+    categories = Category.query.filter(Category.user_id == user_id).all()
+
+    category_labels = [category.label for category in categories]
+
+    return category_labels
+
+
 def get_all_books_in_category(user_id, label):
     """Returns a list of all book objects in a given user's category"""
 

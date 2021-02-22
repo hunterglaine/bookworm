@@ -35,19 +35,23 @@ function App() {
                   <Link to={userLoggedIn ? "/logout" : "/login"}>
                     {userLoggedIn ? "Log Out" : "Log In"}
                   </Link>
+                  {/* <Link to={localStorage.getItem("userId") ? "/logout" : "/login"}>
+                    {localStorage.getItem("userId") ? "Log Out" : "Log In"}
+                  </Link> */}
                 </div>
                 <div>
                   <Link to={userLoggedIn ? "/user" : "/create-account"}>
                     {userLoggedIn ? "My Bookshelf" : "Create Account"}
                   </Link>
+                  {/* <Link to={localStorage.getItem("userId") ? "/user" : "/create-account"}>
+                    {localStorage.getItem("userId") ? "My Bookshelf" : "Create Account"}
+                  </Link> */}
                 </div>
-                {/* <div>
-                  <Link to="/create-account">
-                    Create Account
-                  </Link>
-                </div> */}
               </nav>
               <Switch>
+                <Route path="/login">
+                  <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
+                </Route>
                 <Route path="/login">
                   <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
                 </Route>

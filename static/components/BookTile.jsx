@@ -33,35 +33,42 @@ function BookTile(props) {
         let categoryDetails = {"label": categoryName,
                                 "book": book}
 
-        if (addCategory === "add-new") {
-            // const newCategory = document.getElementById("new-category").value
-            // console.log(categoryName)
-            // categoryDetails = {"label": categoryName,
-            //                     "book": book}
-            console.log(categoryDetails)
-            fetch("/api/add-category", {
-                method: "POST",
-                credentials: "include",
-                body: JSON.stringify(categoryDetails),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then (response => response.json())
-            .then(data => console.log(data))
-            .then(fetch("/api/add-book-to-category", {
-                method: "POST",
-                credentials: "include",
-                body: JSON.stringify(categoryDetails),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then (response => response.json())
-            .then(data => console.log(data))
-        )
-        }
-        else {
+        // if (addCategory === "add-new") {
+        //     // const newCategory = document.getElementById("new-category").value
+        //     // console.log(categoryName)
+        //     // categoryDetails = {"label": categoryName,
+        //     //                     "book": book}
+        //     console.log(categoryDetails)
+        //     fetch("/api/add-category", {
+        //         method: "POST",
+        //         credentials: "include",
+        //         body: JSON.stringify(categoryDetails),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //     })
+        //     .then (response => response.json())
+        //     .then(data => {
+        //         if ("error" in data) {
+        //             alert(data["error"]);
+        //         }
+        //         else {
+        //             alert(data["success"]); 
+        //         }
+        //     })
+        //     .then(fetch("/api/add-book-to-category", {
+        //         method: "POST",
+        //         credentials: "include",
+        //         body: JSON.stringify(categoryDetails),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //     })
+        //     .then (response => response.json())
+        //     .then(data => alert(data["success"]))
+        // )
+        // }
+        //  else {
         fetch("/api/add-book-to-category", {
                 method: "POST",
                 credentials: "include",
@@ -71,8 +78,14 @@ function BookTile(props) {
                 },
             })
             .then (response => response.json())
-            .then(data => console.log(data))
-        }
+            .then(data => {
+                if ("error" in data) {
+                    alert(data["error"]);
+                }
+                else {
+                    alert(data["success"]);
+                }
+            })
         document.getElementById("add-to-category").reset();
         for (let i = 1; i < 11; i += 1) {
             document.forms[i].newCategory.style.visibility = "hidden";
