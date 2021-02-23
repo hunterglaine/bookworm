@@ -8,11 +8,14 @@ function UserPage(props) {
         fetch("/api/user-data")
         .then (response => response.json())
         .then ((result) => Object.entries(result))
-        .then((data) => props.setUserCategories(data))
-        .then((data) => console.log("LOOK HERE", data))
+        // .then((data) => {
+        //     console.log(data)
+        //     return data})
+        .then((data) => props.setBookshelfCategories(data))
+        // .then((data) => console.log("LOOK HERE", data))
     }, [])
-    console.log("These are userCategories on the UserPage", props.userCategories)
-    for (const category of props.userCategories) {
+    console.log("These are bookshelfCategories on the UserPage", props.bookshelfCategories)
+    for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
                             title={category[0]} 
                             books={category[1]} 

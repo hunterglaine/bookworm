@@ -13,10 +13,15 @@ function App() {
     console.log(userLoggedIn)
     const [bookQuery, setBookQuery] = React.useState(null);
     const [userCategories, setUserCategories] = React.useState([]);
+    const [bookshelfCategories, setBookshelfCategories] = React.useState([]);
     const [bookForDetails, setBookForDetails] = React.useState({});
 
+    React.useEffect(() => {
+      if (localStorage.getItem("userId")) {
+      setUserLoggedIn({userId: localStorage.getItem("userId"), userFirstName: localStorage.getItem("userFirstName")})
+    }
+    }, [])
 
-  // if (!userLoggedIn) {
       return (
           <Router>
             <div>
@@ -66,7 +71,8 @@ function App() {
                   <UserPage 
                     userLoggedIn={userLoggedIn}
                     userCategories={userCategories}
-                    setUserCategories={setUserCategories}
+                    setBookshelfCategories={setBookshelfCategories}
+                    bookshelfCategories={bookshelfCategories}
                     setBookForDetails={setBookForDetails}
                    />
                 </Route>

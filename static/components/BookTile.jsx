@@ -2,8 +2,8 @@
 
 function BookTile(props) {
     const { book } = props;
-    console.log(book.volumeInfo.title);
-    console.log(props.userCategories);
+    // console.log(book.volumeInfo.title);
+    // console.log(props.userCategories);
     // const [addCategory, setAddCategory] = React.useState('');
     const [categoryName, setCategoryName] = React.useState('');
     console.log(categoryName);
