@@ -13,6 +13,7 @@ function App() {
     console.log(userLoggedIn)
     const [bookQuery, setBookQuery] = React.useState(null);
     const [userCategories, setUserCategories] = React.useState([]);
+    const [bookForDetails, setBookForDetails] = React.useState({});
 
 
   // if (!userLoggedIn) {
@@ -66,6 +67,7 @@ function App() {
                     userLoggedIn={userLoggedIn}
                     userCategories={userCategories}
                     setUserCategories={setUserCategories}
+                    setBookForDetails={setBookForDetails}
                    />
                 </Route>
                 <Route path="/book-search">
@@ -75,8 +77,8 @@ function App() {
                     userCategories={userCategories}
                     setUserCategories={setUserCategories} />
                 </Route>
-                <Route path={`/book-details/${book.isbn}`} >
-                  <BookDetails />
+                <Route path="/book-details" >
+                  <BookDetails bookForDetails={bookForDetails} />
                 </Route>
                 
               </Switch>

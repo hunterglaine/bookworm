@@ -8,10 +8,13 @@ function Book(props) {
     //     pass
     // }
 
+    const goToDetails = () => {
+        props.setBookForDetails(props.book)
+        history.push("/book-details")
+    }
+
     return (
-        <Link to={`/book-details/${book.isbn}`}>
-        <img src={props.book.image} className="book-cover" alt={props.book.title}/>
-        </Link>
+        <img src={props.book.image} className="book-cover" alt={props.book.title} onClick={goToDetails} />
         // onMouseOver={showTitleAuthor}
     )
 }

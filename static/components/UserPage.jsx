@@ -7,16 +7,16 @@ function UserPage(props) {
     React.useEffect(() =>  {
         fetch("/api/user-data")
         .then (response => response.json())
-        .then (result => Object.entries(result))
-        .then((data) => {
-            props.setUserCategories(data)
-        }
-    )
+        .then ((result) => Object.entries(result))
+        .then((data) => props.setUserCategories(data))
+        .then((data) => console.log("LOOK HERE", data))
     }, [])
-    console.log("this shows that userCategories were set!!!", props.userCategories)
-
+    console.log("These are userCategories on the UserPage", props.userCategories)
     for (const category of props.userCategories) {
-        userBookshelf.push(<CategoryContainer title={category[0]} books={category[1]} />)
+        userBookshelf.push(<CategoryContainer 
+                            title={category[0]} 
+                            books={category[1]} 
+                            setBookForDetails={props.setBookForDetails} />)
     }
     return (
         <div>

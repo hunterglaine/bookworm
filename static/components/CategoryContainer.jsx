@@ -3,9 +3,10 @@
 function CategoryContainer(props) {
     
     const booksInCategory = []
+    console.log("These are books in CategoryContainer", props.books)
 
     for (const book of props.books) {
-        booksInCategory.push(<Book key={book.isbn} book={book} />)
+        booksInCategory.push(<Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} />)
     }
 
     return ( 
