@@ -4,19 +4,16 @@ function BookTile(props) {
     const { book } = props;
     console.log(book.volumeInfo.title);
     console.log(props.userCategories);
-    const [addCategory, setAddCategory] = React.useState('');
+    // const [addCategory, setAddCategory] = React.useState('');
     const [categoryName, setCategoryName] = React.useState('');
     console.log(categoryName);
 
     const addNewSelect = () => {
         
         for (let i = 1; i < 11; i += 1) {
-            // console.log(`This is document.forms[${i}]`, document.forms[i])
-            // console.log(`This is document.forms[${i}].chooseCategory.options`, document.forms[i].chooseCategory.options)
-            // console.log(`This is document.forms[${i}].chooseCategory.options + all the selectedIndex stuff`,document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex])
-            // console.log(`This is the full thing`,document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex].value)
+            
             let newCategory = document.forms[i].newCategory;
-            console.log(newCategory)
+
             if (document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex].value === "add-new") {
                 newCategory.style.visibility = "visible"
                 // setAddCategory("add-new")
@@ -108,7 +105,7 @@ function BookTile(props) {
                         Add to your bookshelf
                     </label>
                     <select id="category-add" name="chooseCategory" onChange={(e) => {
-                        setAddCategory(e.target.value);
+                        // setAddCategory(e.target.value);
                         setCategoryName(e.target.value);
                         addNewSelect();}} >
                         <option disabled selected value> -- Select a Category -- </option>

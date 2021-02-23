@@ -1,16 +1,31 @@
 "use strict";
 
 function UserPage(props) {
-    
-    fetch("/api/user-data")
-    .then (response => response.json())
-    .then (result => console.log(result))
 
+    const userBookshelf = []
+    
+    React.useEffect(() =>  {
+        fetch("/api/user-data")
+        .then (response => response.json())
+        .then (result => Object.entries(result))
+        .then((data) => {
+            props.setUserCategories(data)
+        }
+    )
+    }, [])
+    console.log("this shows that userCategories were set!!!", props.userCategories)
+
+    for (const category of props.userCategories) {
+        userBookshelf.push(<CategoryContainer title={category[0]} books={category[1]} />)
+    }
     return (
-        <h1>
-            {props.userLoggedIn["userFirstName"]}'s Bookshelf
-            {/* {localStorage.getItem("userFirstName")}'s Bookshelf */}
-        </h1>
+        <div>
+            <h1>
+                {props.userLoggedIn["userFirstName"]}'s Bookshelf
+                {/* {localStorage.getItem("userFirstName")}'s Bookshelf */}
+            </h1>
+            <div>{userBookshelf}</div>
+        </div>
 
         // Display each of the user's categories, with the books in each one
         // Get a list of the user's categories

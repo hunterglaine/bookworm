@@ -62,7 +62,11 @@ function App() {
                   <CreateAccount />
                 </Route>
                 <Route path="/user">
-                  <UserPage userLoggedIn={userLoggedIn} />
+                  <UserPage 
+                    userLoggedIn={userLoggedIn}
+                    userCategories={userCategories}
+                    setUserCategories={setUserCategories}
+                   />
                 </Route>
                 <Route path="/book-search">
                   <SearchResults 
@@ -71,6 +75,10 @@ function App() {
                     userCategories={userCategories}
                     setUserCategories={setUserCategories} />
                 </Route>
+                <Route path={`/book-details/${book.isbn}`} >
+                  <BookDetails />
+                </Route>
+                
               </Switch>
           </div>
       </Router>
