@@ -73,11 +73,11 @@ def create_book_category(book, category):
     return category.books
 
 
-def create_event(host_id, city, start_datetime, end_datetime, state=None):
+def create_event(host_id, city, event_date, start_time, end_time, state=None):
     """Create and return a new event"""
 
-    event = Event(host_id=host_id, city=city, state=state, 
-                    start_datetime=start_datetime, end_datetime=end_datetime)
+    event = Event(host_id=host_id, city=city, state=state, event_date=event_date,
+                    start_time=start_time, end_time=end_time)
 
     db.session.add(event)
     db.session.commit()
@@ -305,6 +305,14 @@ def delete_category(label, user_id):
                                                 user_id == user_id).first()
 
     db.session.delete(category_to_delete)
+    db.session.commit()
+
+def delete_event(event_id, host_id):
+    "Deletes an event and all its attendees"
+
+    event_to_delete = Event.query.get(event_id)
+
+    db.session.delete(event_to_delete)
     db.session.commit()
 
 

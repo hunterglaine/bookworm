@@ -59,10 +59,11 @@ for n in range(10):
     host_id = n + 1
     city = f'City {n}'
     state = f'S{n}'
-    start_datetime = f'2021-02-0{n+1} 19:00'
-    end_datetime = f'2021-02-0{n+1} 21:00'
+    event_date = f'2021-02-1{n}'
+    start_time = f'1{n}:00'
+    end_time = f'20:1{n}'
 
-    new_event = crud.create_event(host_id, city, start_datetime, end_datetime, state)
+    new_event = crud.create_event(host_id, city, event_date, start_time, end_time, state)
 
     new_events.append(new_event)
 

@@ -132,8 +132,9 @@ class Event(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     city = db.Column(db.String(30), nullable=False)
     state = db.Column(db.String(2))
-    start_datetime = db.Column(db.DateTime(), nullable=False)
-    end_datetime = db.Column(db.DateTime(), nullable=False)
+    event_date = db.Column(db.Date(), nullable=False)
+    start_time = db.Column(db.Time(), nullable=False)
+    end_time = db.Column(db.Time(), nullable=False)
     is_private = db.Column(db.Boolean, default=False)
 
     users = db.relationship('User', secondary='users_events', backref='events')

@@ -6,7 +6,6 @@ function SearchBar(props) {
 
     function bookSearch(evt) {
         evt.preventDefault();
-        // var = document.getElementById("book-search")
         props.setBookQuery(document.getElementById("book-search").value)
         console.log("Clicked")
 

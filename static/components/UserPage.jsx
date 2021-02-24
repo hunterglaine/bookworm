@@ -17,7 +17,7 @@ function UserPage(props) {
     console.log("These are bookshelfCategories on the UserPage", props.bookshelfCategories)
     for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
-                            title={category[0]} 
+                            label={category[0]} 
                             books={category[1]} 
                             setBookForDetails={props.setBookForDetails} />)
     }
@@ -27,10 +27,12 @@ function UserPage(props) {
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
                 {/* {localStorage.getItem("userFirstName")}'s Bookshelf */}
             </h1>
+            <Link to="/create-event">
+                Create a New Book Club Event
+            </Link>
             <div>{userBookshelf}</div>
         </div>
 
-        // Display each of the user's categories, with the books in each one
         // Get a list of the user's categories
         // Ideally want a side bar with a list of all of the user's categories
     );

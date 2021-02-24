@@ -16,7 +16,7 @@ function LogOut(props) {
         })
         .then (response => response.json())
         .then(data => {
-                props.setUserLoggedIn(null);
+                props.setUserLoggedIn({userId: null, userFirstName: null});
                 localStorage.setItem("userId", null)
                 localStorage.setItem("userFirstName", null)
                 history.push("/")

@@ -9,16 +9,18 @@ const useHistory = ReactRouterDOM.useHistory;
 
 function App() {
 
-    const [userLoggedIn, setUserLoggedIn] = React.useState(null); // How do I set the initial state if I will be passing in an integer
+    const [userLoggedIn, setUserLoggedIn] = React.useState({userId: null, userFirstName: null}); // How do I set the initial state if I will be passing in an integer
     console.log(userLoggedIn)
+    console.log(localStorage)
+
     const [bookQuery, setBookQuery] = React.useState(null);
     const [userCategories, setUserCategories] = React.useState([]);
     const [bookshelfCategories, setBookshelfCategories] = React.useState([]);
     const [bookForDetails, setBookForDetails] = React.useState({});
 
     React.useEffect(() => {
-      if (localStorage.getItem("userId")) {
-      setUserLoggedIn({userId: localStorage.getItem("userId"), userFirstName: localStorage.getItem("userFirstName")})
+      if (localStorage.getItem("userId") !== "null") {
+        setUserLoggedIn({userId: localStorage.getItem("userId"), userFirstName: localStorage.getItem("userFirstName")})
     }
     }, [])
 
@@ -38,16 +40,16 @@ function App() {
                     />
                 </div>
                 <div>
-                  <Link to={userLoggedIn ? "/logout" : "/login"}>
-                    {userLoggedIn ? "Log Out" : "Log In"}
+                  <Link to={userLoggedIn.userId ? "/logout" : "/login"}>
+                    {userLoggedIn.userId ? "Log Out" : "Log In"}
                   </Link>
                   {/* <Link to={localStorage.getItem("userId") ? "/logout" : "/login"}>
                     {localStorage.getItem("userId") ? "Log Out" : "Log In"}
                   </Link> */}
                 </div>
                 <div>
-                  <Link to={userLoggedIn ? "/user" : "/create-account"}>
-                    {userLoggedIn ? "My Bookshelf" : "Create Account"}
+                  <Link to={userLoggedIn.userId ? "/user" : "/create-account"}>
+                    {userLoggedIn.userId ? "My Bookshelf" : "Create Account"}
                   </Link>
                   {/* <Link to={localStorage.getItem("userId") ? "/user" : "/create-account"}>
                     {localStorage.getItem("userId") ? "My Bookshelf" : "Create Account"}
@@ -86,7 +88,9 @@ function App() {
                 <Route path="/book-details" >
                   <BookDetails bookForDetails={bookForDetails} />
                 </Route>
-                
+                <Route path="/create-event" >
+                  <CreateEvent userLoggedIn={userLoggedIn} />
+                </Route>
               </Switch>
           </div>
       </Router>

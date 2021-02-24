@@ -176,6 +176,28 @@ def get_user_data():
         return jsonify ({'error': 'User must be logged in to view this page.'})
 
 
+@app.route('/api/new-event', methods=["POST"])
+def create_new_event():
+    """Creates a new event"""
+
+    if session.get('user'):
+        host_id = session['user']
+        city = request.json.get("city")
+        state = request.json.get("state")
+        eventDate = request.json.get("eventDate")
+        startTime = request.json.get("startTime")
+        endTime = request.json.get("endTime")
+
+        attendee = crud.get_user_by_id(host_id)
+        new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
+        crud.create_user_event(attendee, new_event)
+
+        return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
+
+    else:
+        return jsonify ({'error': 'There was an error creating this event.'})
+
+
 if __name__ == '__main__':
     connect_to_db(app, 'testbookworm')
     app.run(host='0.0.0.0', debug=True)
