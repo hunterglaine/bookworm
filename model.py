@@ -145,6 +145,20 @@ class Event(db.Model):
 
         return f'<Event id={self.id} city={self.city}>'
 
+    
+    def to_dict(self):
+        """Turns event object into a dictionary"""
+
+        event = {"host_id": self.host_id,
+                "city": self.city,
+                "state": self.state,
+                "event_date": self.event_date,
+                "start_time": str(self.start_time)[:5],
+                "end_time": str(self.end_time)[:5],
+                "is_private": self.is_private}
+
+        return event
+
 
 class EventBook(db.Model):
     """Book of a specific Event."""

@@ -40,20 +40,24 @@ function App() {
                     />
                 </div>
                 <div>
+                  <Link to="/all-events">
+                    <AllEvents />
+                  </Link>
+                </div>
+                <div>
                   <Link to={userLoggedIn.userId ? "/logout" : "/login"}>
                     {userLoggedIn.userId ? "Log Out" : "Log In"}
                   </Link>
-                  {/* <Link to={localStorage.getItem("userId") ? "/logout" : "/login"}>
-                    {localStorage.getItem("userId") ? "Log Out" : "Log In"}
-                  </Link> */}
+                </div>
+                <div>
+                  <Link to={userLoggedIn.userId ? "/user-events" : null }>
+                    {userLoggedIn.userId ? "My Events" : null }
+                  </Link>
                 </div>
                 <div>
                   <Link to={userLoggedIn.userId ? "/user" : "/create-account"}>
                     {userLoggedIn.userId ? "My Bookshelf" : "Create Account"}
                   </Link>
-                  {/* <Link to={localStorage.getItem("userId") ? "/user" : "/create-account"}>
-                    {localStorage.getItem("userId") ? "My Bookshelf" : "Create Account"}
-                  </Link> */}
                 </div>
               </nav>
               <Switch>
@@ -90,6 +94,12 @@ function App() {
                 </Route>
                 <Route path="/create-event" >
                   <CreateEvent userLoggedIn={userLoggedIn} />
+                </Route>
+                <Route path="/user-events" >
+                  <UserEvents userLoggedIn={userLoggedIn} />
+                </Route>
+                <Route path="/all-events" >
+                  <AllEvents />
                 </Route>
               </Switch>
           </div>

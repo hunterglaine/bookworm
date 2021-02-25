@@ -27,9 +27,7 @@ function UserPage(props) {
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
                 {/* {localStorage.getItem("userFirstName")}'s Bookshelf */}
             </h1>
-            <Link to="/create-event">
-                Create a New Book Club Event
-            </Link>
+            
             <div>{userBookshelf}</div>
         </div>
 

@@ -44,7 +44,6 @@ def log_in_user():
     
     email = request.json.get("email")
     password = request.json.get("password")
-    print("****", email, password, "*****")
 
     user = crud.get_user_by_email(email)
 
@@ -83,7 +82,6 @@ def get_user_categories():
 
             dict_category = category_object.to_dict()
             categories.append(dict_category)
-    # print('****'*5, categories, '****'*5)
 
     return jsonify({'categories': categories})
 
@@ -167,8 +165,6 @@ def get_user_data():
             
             category_dict[category] = book_list
             book_list = []
-        
-        print("LOOK AT THIS ----->", category_dict, "<----------")
 
         return jsonify (category_dict)
 
@@ -196,6 +192,34 @@ def create_new_event():
 
     else:
         return jsonify ({'error': 'There was an error creating this event.'})
+
+
+@app.route('/api/user-events')
+def get_user_events():
+    """Returns user's events, hosting and attending"""
+
+    if session.get('user'):
+        user_id = session['user']
+
+        users_events = crud.get_all_users_events(user_id)
+        # A list of the user's event objects
+
+        users_events_dict = {"hosting": [], "attending": []}
+
+        for event in users_events:
+            event = event.to_dict()
+            if event["host_id"] == user_id:
+                users_events_dict["hosting"].append(event)
+            else:
+                users_events_dict["attending"].append(event)
+
+        print("888888888888888", users_events_dict, "88888888888888888888")
+
+
+        return jsonify (users_events_dict)
+
+    else:
+        return jsonify ({'error': 'User must be logged in to view their events.'})
 
 
 if __name__ == '__main__':
