@@ -30,6 +30,7 @@ def create_new_user():
         return jsonify ({'error': 'An account with this email already exists.'})
     else:
         user = crud.create_user(first_name, last_name, email, password, city, state)
+        first_category = crud.create_category(user.id, "My Favorite Books")
         # return jsonify ({'status': '200',
         #                 'message': 'Account has successfully been created'})
         return jsonify ({'user': {'id': user.id, 
@@ -133,9 +134,7 @@ def add_user_book():
             this_category = crud.create_category(user_id, label)
 
             added_books = crud.create_book_category(the_book, this_category)
-            return jsonify ({'success': f"""A new category, {this_category.label},
-                             has been added to your bookshelf and {the_book.title} 
-                             has been added to it"""})
+            return jsonify ({'success': f"""A new category, {this_category.label}, has been added to your bookshelf and {the_book.title} has been added to it"""})
 
         if the_book in crud.get_all_books_in_category(user_id, label):
             return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
@@ -145,6 +144,23 @@ def add_user_book():
         
         return jsonify ({'success': f'{the_book.title} has been added to {this_category.label} books'})
         # 'books_in_category': added_books
+
+
+@app.route('/api/remove-book-from-category', methods=["POST"])
+def remove_book_from_category():
+    """Removes a user's book from a category"""
+
+    if session.get('user'):
+        user_id = session['user']
+        label = request.json.get("category")
+        isbn = request.json.get("isbn")
+        title = request.json.get("title")
+
+        this_category = crud.get_category_by_label(user_id, label)
+
+        crud.remove_book_from_category(isbn, this_category.id)
+
+    return jsonify ({'success': f"""{title} has successfully been removed from {label}."""})
 
 
 @app.route('/api/user-data')
@@ -172,6 +188,8 @@ def get_user_data():
     else:
         return jsonify ({'error': 'User must be logged in to view this page.'})
 
+
+#### EVENT ROUTES ####
 
 @app.route('/api/new-event', methods=["POST"])
 def create_new_event():
@@ -255,6 +273,7 @@ def add_event_attendee():
     print("888888888888888", attendees, "88888888888888888888")
 
     return jsonify ({"success": "You are now attending!"})
+
 
 if __name__ == '__main__':
     connect_to_db(app, 'testbookworm')

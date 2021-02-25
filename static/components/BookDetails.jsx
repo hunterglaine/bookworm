@@ -2,7 +2,26 @@
 
 function BookDetails(props) {
     
-    // fetch("/api/book-details")
+    let { categoryLabel } = useParams();
+    let history = useHistory();
+
+    const removeBook = (evt) => {
+        evt.preventDefault;
+
+        fetch("/api/remove-book-from-category", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({"category": categoryLabel,
+                                    "isbn": props.bookForDetails.isbn,
+                                    "title": props.bookForDetails.title}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => alert(data["success"]))
+        history.push("/user")
+    } 
     
     return (
         <div>
@@ -11,6 +30,7 @@ function BookDetails(props) {
             <p>Written By {props.bookForDetails.author}</p>
             <p>Number Of Pages: {props.bookForDetails.page_length}</p>
             <p>{props.bookForDetails.description}</p>
+            <button onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </button>
         </div>
     )
 }

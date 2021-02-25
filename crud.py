@@ -334,6 +334,18 @@ def delete_event(event_id, host_id):
     db.session.commit()
 
 
+def remove_book_from_category(isbn, category_id):
+    """Removes a particular book from a user's category"""
+
+    category = Category.query.filter(Category.id == category_id).options(db.\
+                            joinedload('books')).first()
+    # category is a category object that can reference the books table
+
+    
+    for book in category.books:
+        if book.isbn == isbn:
+            db.session.delete(book)
+            db.session.commit()
 
 
 if __name__ == '__main__':

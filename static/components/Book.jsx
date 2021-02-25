@@ -10,7 +10,7 @@ function Book(props) {
 
     const goToDetails = () => {
         props.setBookForDetails(props.book)
-        history.push("/book-details")
+        history.push(`/book-details/${props.categoryLabel}`)
     }
 
     return (

@@ -2,7 +2,9 @@
 
 function BookTile(props) {
     const { book } = props;
-    const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : '');
+    console.log("Look at this", props.userCategories)
+    const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : "");
+    // const [categoryName, setCategoryName] = React.useState(props.userCategories ? props.userCategories[0].label : "");
 
     const addNewSelect = () => {
         

@@ -3,6 +3,7 @@
 function SearchBar(props) {
     
     let history = useHistory();
+    console.log("This is before the fetch that reassigns",props.userCategories)
 
     function bookSearch(evt) {
         evt.preventDefault();
@@ -11,6 +12,7 @@ function SearchBar(props) {
 
         fetch("/api/categories")
         .then (response => response.json())
+        .then(result => {console.log(result["categories"]); return result;})
         .then((data) => props.setUserCategories(data["categories"]))
         .catch(console.error)
 

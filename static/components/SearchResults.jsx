@@ -5,18 +5,14 @@ function SearchResults(props) {
     const content = []
     const [books, setBooks] = React.useState([]);
     let bookKey = ''
-    
-    // const searchGoogle = (query)
+
     React.useEffect(() =>  {
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.bookQuery}&maxResults=10`)
         .then (response => response.json())
         .then (result => setBooks(result.items))
         }, [props.bookQuery])    
 
-       console.log("These are the books", props.books)
-    //    setBooks(books.items)
-
-        if (books.length === 0) return <div>Loading...</div>
+        // if (books.length === 0) return <div>Loading...</div>
         
         let i = 0
         for (const book of books) {

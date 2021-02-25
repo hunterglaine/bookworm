@@ -8,13 +8,9 @@ function UserPage(props) {
         fetch("/api/user-data")
         .then (response => response.json())
         .then ((result) => Object.entries(result))
-        // .then((data) => {
-        //     console.log(data)
-        //     return data})
         .then((data) => props.setBookshelfCategories(data))
-        // .then((data) => console.log("LOOK HERE", data))
     }, [])
-    console.log("These are bookshelfCategories on the UserPage", props.bookshelfCategories)
+
     for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
                             label={category[0]} 
@@ -25,7 +21,6 @@ function UserPage(props) {
         <div>
             <h1>
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
-                {/* {localStorage.getItem("userFirstName")}'s Bookshelf */}
             </h1>
             
             <div>{userBookshelf}</div>
