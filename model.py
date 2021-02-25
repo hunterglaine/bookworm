@@ -62,6 +62,19 @@ class User(db.Model):
         return f'<User id={self.id} email={self.email}>'
 
 
+    def to_dict(self):
+
+        user = {'id': self.id,
+                'first_name': self.first_name,
+                'last_name': self.last_name,
+                'email': self.email,
+                'city': self.city,
+                'state': self.state,
+                'is_searchable': self.is_searchable}
+        
+        return user
+
+
 # class UserBook(db.Model):
 #     """Book of a specific user."""
 
@@ -149,7 +162,8 @@ class Event(db.Model):
     def to_dict(self):
         """Turns event object into a dictionary"""
 
-        event = {"host_id": self.host_id,
+        event = {"id": self.id,
+                "host_id": self.host_id,
                 "city": self.city,
                 "state": self.state,
                 "event_date": self.event_date,

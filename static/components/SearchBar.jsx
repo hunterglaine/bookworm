@@ -11,9 +11,7 @@ function SearchBar(props) {
 
         fetch("/api/categories")
         .then (response => response.json())
-        // .then((result) => {console.log(result.categories); return result})
         .then((data) => props.setUserCategories(data["categories"]))
-            // console.log(`This is the data from request ${data.categories[0].id}`)})
         .catch(console.error)
 
         history.push("/book-search")

@@ -6,12 +6,8 @@ function UserEvents(props) {
 
     React.useEffect(() =>  {
         fetch("/api/user-events")
-        .then (response => response.json())
-        // .then ((result) => Object.entries(result))
+        .then(response => response.json())
         .then((data) => setMyEvents(data))
-        //     return data})
-        // .then((data) => props.setBookshelfCategories(data))
-        // // .then((data) => console.log("LOOK HERE", data))
     }, [])
     console.log(myEvents)
     return (

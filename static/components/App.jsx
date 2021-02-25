@@ -41,7 +41,7 @@ function App() {
                 </div>
                 <div>
                   <Link to="/all-events">
-                    <AllEvents />
+                    All Bookworm Events
                   </Link>
                 </div>
                 <div>
@@ -99,7 +99,7 @@ function App() {
                   <UserEvents userLoggedIn={userLoggedIn} />
                 </Route>
                 <Route path="/all-events" >
-                  <AllEvents />
+                  <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
               </Switch>
           </div>

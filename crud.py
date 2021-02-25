@@ -94,8 +94,11 @@ def create_event_book(event, book):
     return event.books
 
 
-def create_user_event(user, event):
+def create_user_event(user_id, event_id):
     """Create and return a new event_user (attendee)"""
+
+    user = get_user_by_id(user_id)
+    event = get_event_by_id(event_id)
 
     event.users.append(user)
     db.session.commit()
@@ -230,6 +233,21 @@ def get_all_users_events(user_id):
 
     return user.events
 
+def get_all_attendees(event_id):
+    """Returns a list of all user's attending an event."""
+
+    event = get_event_by_id(event_id)
+
+    return event.users
+
+
+def get_event_by_id(event_id):
+    """Returns an event object given an event id"""
+
+    event = Event.query.filter(Event.id == event_id).options(db.\
+                            joinedload('users')).first()
+
+    return event
 
 
 

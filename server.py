@@ -14,6 +14,7 @@ def show_homepage():
 
     return render_template('index.html')
 
+
 @app.route('/api/users', methods=["POST"])
 def create_new_user():
     """Create a new user."""
@@ -213,14 +214,47 @@ def get_user_events():
             else:
                 users_events_dict["attending"].append(event)
 
-        print("888888888888888", users_events_dict, "88888888888888888888")
-
 
         return jsonify (users_events_dict)
 
     else:
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
+
+@app.route('/api/all-events')
+def get_all_events():
+    """Returns all events that are not private"""
+
+    events = crud.get_all_events()
+
+    # all_events = [event.to_dict() for event in events]
+
+    all_events = []
+
+    for event in events:
+        event = event.to_dict()
+        attendee_users = crud.get_all_attendees(event["id"])
+        attendees = [attendee.to_dict() for attendee in attendee_users]
+        event["attending"] = attendees
+        all_events.append(event)
+
+    all_events_dict = {"events": all_events}
+
+    return jsonify (all_events_dict)
+
+
+@app.route('/api/add-attendee', methods=["POST"])
+def add_event_attendee():
+    """Adds a user to an event as an attendee"""
+
+    user_id = session.get("user")
+    event_id = request.json.get("event")
+
+    attendees = crud.create_user_event(user_id, event_id)
+
+    print("888888888888888", attendees, "88888888888888888888")
+
+    return jsonify ({"success": "You are now attending!"})
 
 if __name__ == '__main__':
     connect_to_db(app, 'testbookworm')

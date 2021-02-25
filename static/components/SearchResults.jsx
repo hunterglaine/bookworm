@@ -18,7 +18,7 @@ function SearchResults(props) {
 
         if (books.length === 0) return <div>Loading...</div>
         
-    
+        let i = 0
         for (const book of books) {
             // console.log(book.volumeInfo.industryIdentifiers[0])
             // if (book.volumeInfo.industryIdentifiers) {
@@ -33,7 +33,8 @@ function SearchResults(props) {
             //     // key={bookKey}
             // }
             // else {
-                content.push(<BookTile book={book} userLoggedIn={props.userLoggedIn} userCategories={props.userCategories} />);
+                content.push(<BookTile key={i} book={book} userLoggedIn={props.userLoggedIn} userCategories={props.userCategories} />);
+                i += 1
             // } 
         }
         
