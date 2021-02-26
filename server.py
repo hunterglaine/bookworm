@@ -106,6 +106,20 @@ def add_user_category():
         return jsonify ({'success': f'{new_category.label} has been added to {user.first_name}\'s bookshelf!'})
 
 
+@app.route('/api/update-category', methods=["POST"])
+def update_category_label():
+    """Updates a user's category label"""
+
+    if session.get('user'):
+        user_id = session['user']
+        old_label = request.json.get("old_label")
+        new_label = request.json.get("new_label")
+
+    crud.update_category_label(user_id, old_label, new_label)
+
+    return jsonify({"success": f"{old_label} has been changed to {new_label}!"})
+
+
 @app.route('/api/add-book-to-category', methods=["POST"])
 def add_user_book():
     """Adds a new book to a user's books"""
@@ -203,9 +217,9 @@ def create_new_event():
         startTime = request.json.get("startTime")
         endTime = request.json.get("endTime")
 
-        attendee = crud.get_user_by_id(host_id)
+        # attendee = crud.get_user_by_id(host_id)
         new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
-        crud.create_user_event(attendee, new_event)
+        crud.create_user_event(host_id, new_event.id)
 
         return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
 

@@ -4,7 +4,6 @@ function BookTile(props) {
     const { book } = props;
     let history = useHistory();
     const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : "");
-    // const [categoryName, setCategoryName] = React.useState(props.userCategories ? props.userCategories[0].label : "");
 
     const addNewSelect = () => {
         
@@ -18,7 +17,8 @@ function BookTile(props) {
             else {
                 newCategory.style.visibility = "hidden";
             }
-    }}
+    }
+    }
 
     function addToCategory(evt) {
         evt.preventDefault();
