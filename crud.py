@@ -36,21 +36,6 @@ def create_user(first_name, last_name, email, password, city=None,
 
     return user
 
-###REMOVED category
-# # def create_user_book(isbn, user_id, comment=''):
-# def create_user_book(user, book):
-#     """Create and return a new user_book"""
-
-#     # user_book = UserBook(isbn=isbn, user_id=user_id, comment=comment)
-
-#     # db.session.add(user_book)
-#     # db.session.commit()
-
-#     # return user_book
-#     user.books.append(book)
-#     db.session.commit()
-
-#     return user.books
 
 def create_category(user_id, label):
     """Create and return a new category"""
@@ -114,7 +99,7 @@ def get_book_by_isbn(isbn):
     """Returns a book with given ISBN if it exists in the database, otherwise, 
     returns None"""
 
-    book = Book.query.filter(Book.isbn == isbn).first()
+    book = Book.query.filter(Book.isbn == isbn).options(db.joinedload('categories')).first()
 
     return book
 
@@ -177,6 +162,7 @@ def get_all_categories():
 
     return categories
 
+
 def get_all_user_categories(user_id):
     """Returns a list of all categories for given user"""
 
@@ -233,6 +219,7 @@ def get_all_users_events(user_id):
 
     return user.events
 
+
 def get_all_attendees(event_id):
     """Returns a list of all user's attending an event."""
 
@@ -285,6 +272,15 @@ def change_password(user_id, new_password):
     db.session.commit()
 
 
+def update_category_label(user_id, old_label, new_label):
+    """Change a category label"""
+
+    category = Category.query.filter(Category.label == old_label, Category.\
+                                    user_id == user_id).first()
+    
+    category.label = new_label
+    db.session.commit()
+
 # Maybe add comments to book_categories?
 # def add_comment_to_user_book(user_book_id, new_comment):
 #     """Add a comment to user's book, given it's id"""
@@ -297,25 +293,6 @@ def change_password(user_id, new_password):
 
 
 # ***** DELETE Functions *****
-
-# def delete_user_book(book_id, user_id):
-#     """Deletes given user_book given user and book ids"""
-
-#     UserBook.query.filter(UserBook.id)
-#     db.session.commit()
-    
-
-# def delete_book_from_category(book, category):
-#     """Deletes a given book from a user'category"""
-
-#     BookCategory.query.filter(BookCategory.)
-
-
-#     book.categories.remove(category)
-#     db.session.commit()
-
-#     return category.books
-
 def delete_category(label, user_id):
     "Deletes a category and all book realtionships in it"
 
@@ -324,6 +301,7 @@ def delete_category(label, user_id):
 
     db.session.delete(category_to_delete)
     db.session.commit()
+
 
 def delete_event(event_id, host_id):
     "Deletes an event and all its attendees"
@@ -337,15 +315,11 @@ def delete_event(event_id, host_id):
 def remove_book_from_category(isbn, category_id):
     """Removes a particular book from a user's category"""
 
-    category = Category.query.filter(Category.id == category_id).options(db.\
-                            joinedload('books')).first()
+    category = Category.query.filter(Category.id == category_id).first()
     # category is a category object that can reference the books table
-
-    
-    for book in category.books:
-        if book.isbn == isbn:
-            db.session.delete(book)
-            db.session.commit()
+    book = get_book_by_isbn(isbn)
+    book.categories.remove(category)
+    db.session.commit()
 
 
 if __name__ == '__main__':

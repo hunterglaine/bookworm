@@ -2,7 +2,7 @@
 
 function BookTile(props) {
     const { book } = props;
-    console.log("Look at this", props.userCategories)
+    let history = useHistory();
     const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : "");
     // const [categoryName, setCategoryName] = React.useState(props.userCategories ? props.userCategories[0].label : "");
 
@@ -42,6 +42,7 @@ function BookTile(props) {
                 }
                 else {
                     alert(data["success"]);
+                    history.push("/user")
                 }
             })
         document.getElementById("add-to-category").reset();
