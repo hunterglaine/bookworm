@@ -8,10 +8,10 @@ import model
 import server
 from random import choice
 
-os.system('dropdb testbookworm')
-os.system('createdb testbookworm')
+os.system("dropdb testbookworm")
+os.system("createdb testbookworm")
 
-model.connect_to_db(server.app, 'testbookworm')
+model.connect_to_db(server.app, "testbookworm")
 model.db.create_all()
 
 
@@ -19,12 +19,12 @@ model.db.create_all()
 new_books = []
 
 for n in range(10):
-    isbn = f'testing12345{n}'
-    title = f'Test Title Book {n}'
-    author = f'Test Author {n}'
-    description = f'Test overview for book {n}'
+    isbn = f"testing12345{n}"
+    title = f"Test Title Book {n}"
+    author = f"Test Author {n}"
+    description = f"Test overview for book {n}"
     page_length = n
-    image = f'Test image path {n}'
+    image = f"Test image path {n}"
 
     new_book = crud.create_book(isbn, title, author, description, page_length, 
                                 image)
@@ -36,10 +36,10 @@ for n in range(10):
 new_users = []
 
 for n in range(10):
-    first_name = f'Test User First {n}'
-    last_name = f'Test User Last {n}'
-    email = f'user{n}@test.com'  
-    password = 'test'
+    first_name = f"Test User First {n}"
+    last_name = f"Test User Last {n}"
+    email = f"user{n}@test.com"
+    password = "test"
 
     new_user = crud.create_user(first_name, last_name, email, password)
 
@@ -57,11 +57,11 @@ new_events = []
 for n in range(10):
 
     host_id = n + 1
-    city = f'City {n}'
-    state = f'S{n}'
-    event_date = f'2021-02-1{n}'
-    start_time = f'1{n}:00'
-    end_time = f'20:1{n}'
+    city = f"City {n}"
+    state = f"S{n}"
+    event_date = f"2021-02-1{n}"
+    start_time = f"1{n}:00"
+    end_time = f"20:1{n}"
 
     new_event = crud.create_event(host_id, city, event_date, start_time, end_time, state)
 
@@ -85,7 +85,7 @@ for n in range(10):
 
     user_id = n + 1
     for i in range(10):
-        label = f'Category {i}'
+        label = f"Category {i}"
 
         new_category = crud.create_category(user_id, label)
 

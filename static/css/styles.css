@@ -14,6 +14,13 @@ button {
     display: inline;
 }
 
-img.book-cover{
+.book-tile img{
+    margin: 1rem;
+    width: 128px;
+    height: auto;
+}
+
+img.book-cover {
     margin: 1rem;
 }
+

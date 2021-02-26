@@ -99,7 +99,7 @@ def get_book_by_isbn(isbn):
     """Returns a book with given ISBN if it exists in the database, otherwise, 
     returns None"""
 
-    book = Book.query.filter(Book.isbn == isbn).options(db.joinedload('categories')).first()
+    book = Book.query.filter(Book.isbn == isbn).options(db.joinedload("categories")).first()
 
     return book
 
@@ -108,7 +108,7 @@ def get_all_user_books(user_id):
     """Returns all books for given user"""
 
     categories = Category.query.filter(Category.user_id == user_id).options(db.\
-                            joinedload('books')).all()
+                            joinedload("books")).all()
     # categories is a list of category objects belonging to given user
 
     users_books = []
@@ -194,7 +194,7 @@ def get_category_by_label(user_id, label):
 
     category = Category.query.filter(Category.label == label, Category.\
                                     user_id == user_id).\
-                                    options(db.joinedload('books')).first()
+                                    options(db.joinedload("books")).first()
 
     return category
 
@@ -215,7 +215,7 @@ def get_all_users_events(user_id):
     """Returns a list of all events for a given user"""
 
     user = User.query.filter(User.id == user_id).options(db.\
-                            joinedload('events')).first()
+                            joinedload("events")).first()
 
     return user.events
 
@@ -232,7 +232,7 @@ def get_event_by_id(event_id):
     """Returns an event object given an event id"""
 
     event = Event.query.filter(Event.id == event_id).options(db.\
-                            joinedload('users')).first()
+                            joinedload("users")).first()
 
     return event
 
@@ -322,7 +322,7 @@ def remove_book_from_category(isbn, category_id):
     db.session.commit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     from server import app
-    connect_to_db(app, 'testbookworm')
+    connect_to_db(app, "testbookworm")
 

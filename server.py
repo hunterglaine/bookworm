@@ -5,17 +5,17 @@ from model import connect_to_db
 import crud
 
 app = Flask(__name__)
-app.secret_key = 'BD647hgfyetEHU789hfehd9svsru5HwgYkghjwrfishvs'
+app.secret_key = "BD647hgfyetEHU789hfehd9svsru5HwgYkghjwrfishvs"
 
 
-@app.route('/')
+@app.route("/")
 def show_homepage():
     """Show the homepage"""
 
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-@app.route('/api/users', methods=["POST"])
+@app.route("/api/users", methods=["POST"])
 def create_new_user():
     """Create a new user."""
 
@@ -40,7 +40,7 @@ def create_new_user():
                                     'city': user.city,
                                     'state': user.state}})
 
-@app.route('/api/login', methods=["POST"])
+@app.route("/api/login", methods=["POST"])
 def log_in_user():
     """Log a user in and show them they were successful or not."""
     
@@ -51,67 +51,72 @@ def log_in_user():
 
     if user:
             if user.password == password:
-                session['user'] = user.id
-                return jsonify ({'success': 'Successfully logged in!',
-                                'user_id': user.id,
-                                'user_first_name': user.first_name})
+                session["user"] = user.id
+                # session["user"] = user
+                return jsonify ({"success": "Successfully logged in!",
+                                "user_id": user.id,
+                                "user_first_name": user.first_name})
             else:
-                return jsonify ({'error': 'Incorrect password. Please try again or create a new account.'})
+                return jsonify ({"error": "Incorrect password. Please try again or create a new account."})
     else:
-        return jsonify ({'error': 'Sorry, but no account exists with that email.'})
+        return jsonify ({"error": "Sorry, but no account exists with that email."})
 
 
-@app.route('/api/logout', methods=["POST"])
+@app.route("/api/logout", methods=["POST"])
 def log_out_user():
     """Log a user out and show them they were successful or not."""
   
-    user_id = session.pop('user')
+    user_id = session.pop("user")
+    # user = session.pop("user")
     user = crud.get_user_by_id(user_id)
 
-    return jsonify ({'success': f'{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!'})
+    return jsonify ({"success": f"{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!"})
 
 
-@app.route('/api/categories')
+@app.route("/api/categories")
 def get_user_categories():
     """Returns the categories for a given user."""
 
     categories = []
 
-    if session.get('user'):
-        category_objects = crud.get_all_user_categories(session['user'])
+    if session.get("user"):
+        category_objects = crud.get_all_user_categories(session["user"])
+        # category_objects = crud.get_all_user_categories(session["user"].id)
 
         for category_object in category_objects:
 
             dict_category = category_object.to_dict()
             categories.append(dict_category)
 
-    return jsonify({'categories': categories})
+    return jsonify({"categories": categories})
 
 
-@app.route('/api/add-category', methods=["POST"])
+@app.route("/api/add-category", methods=["POST"])
 def add_user_category():
     """Adds a new category to a user"""
 
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
+        # user = session["user"]
         label = request.json.get("label")
 
         user = crud.get_user_by_id(user_id)
         
         if crud.get_category_by_label(user_id, label):
-            return ({'error': f'{label} is already in {user.first_name}\'s bookshelf!'})
+            return ({"error": f"{label} is already in {user.first_name}'s bookshelf!"})
 
         new_category = crud.create_category(user_id, label)
 
-        return jsonify ({'success': f'{new_category.label} has been added to {user.first_name}\'s bookshelf!'})
+        return jsonify ({"success": f"{new_category.label} has been added to {user.first_name}'s bookshelf!"})
 
 
-@app.route('/api/update-category', methods=["POST"])
+@app.route("/api/update-category", methods=["POST"])
 def update_category_label():
     """Updates a user's category label"""
 
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
+        # user_id = session["user"].id
         old_label = request.json.get("old_label")
         new_label = request.json.get("new_label")
 
@@ -120,11 +125,11 @@ def update_category_label():
     return jsonify({"success": f"{old_label} has been changed to {new_label}!"})
 
 
-@app.route('/api/add-book-to-category', methods=["POST"])
+@app.route("/api/add-book-to-category", methods=["POST"])
 def add_user_book():
     """Adds a new book to a user's books"""
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
         label = request.json.get("label")
         book = request.json.get("book")
         
@@ -160,12 +165,12 @@ def add_user_book():
         # 'books_in_category': added_books
 
 
-@app.route('/api/remove-book-from-category', methods=["POST"])
+@app.route("/api/remove-book-from-category", methods=["POST"])
 def remove_book_from_category():
     """Removes a user's book from a category"""
 
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
         label = request.json.get("category")
         isbn = request.json.get("isbn")
         title = request.json.get("title")
@@ -174,15 +179,15 @@ def remove_book_from_category():
 
         crud.remove_book_from_category(isbn, this_category.id)
 
-    return jsonify ({'success': f"""{title} has successfully been removed from {label}."""})
+    return jsonify ({"success": f"{title} has successfully been removed from {label}."})
 
 
-@app.route('/api/user-data')
+@app.route("/api/user-data")
 def get_user_data():
     """Returns user's categories and books within them"""
 
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
 
         category_labels = crud.get_all_user_category_labels(user_id)
         # A list of the user's category names
@@ -205,12 +210,12 @@ def get_user_data():
 
 #### EVENT ROUTES ####
 
-@app.route('/api/new-event', methods=["POST"])
+@app.route("/api/new-event", methods=["POST"])
 def create_new_event():
     """Creates a new event"""
 
-    if session.get('user'):
-        host_id = session['user']
+    if session.get("user"):
+        host_id = session["user"]
         city = request.json.get("city")
         state = request.json.get("state")
         eventDate = request.json.get("eventDate")
@@ -224,15 +229,15 @@ def create_new_event():
         return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
 
     else:
-        return jsonify ({'error': 'There was an error creating this event.'})
+        return jsonify ({"error": "There was an error creating this event."})
 
 
-@app.route('/api/user-events')
+@app.route("/api/user-events")
 def get_user_events():
     """Returns user's events, hosting and attending"""
 
-    if session.get('user'):
-        user_id = session['user']
+    if session.get("user"):
+        user_id = session["user"]
 
         users_events = crud.get_all_users_events(user_id)
         # A list of the user's event objects
@@ -253,7 +258,7 @@ def get_user_events():
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
 
-@app.route('/api/all-events')
+@app.route("/api/all-events")
 def get_all_events():
     """Returns all events that are not private"""
 
@@ -275,20 +280,23 @@ def get_all_events():
     return jsonify (all_events_dict)
 
 
-@app.route('/api/add-attendee', methods=["POST"])
+@app.route("/api/add-attendee", methods=["POST"])
 def add_event_attendee():
     """Adds a user to an event as an attendee"""
 
     user_id = session.get("user")
     event_id = request.json.get("event")
 
-    attendees = crud.create_user_event(user_id, event_id)
+    user = crud.get_user_by_id(user_id)
+    attendees= crud.get_all_attendees(event_id)
+    if user in attendees:
+        return jsonify({"error": "You are already attending this event"})
 
-    print("888888888888888", attendees, "88888888888888888888")
+    crud.create_user_event(user_id, event_id)
 
     return jsonify ({"success": "You are now attending!"})
 
 
-if __name__ == '__main__':
-    connect_to_db(app, 'testbookworm')
-    app.run(host='0.0.0.0', debug=True)
+if __name__ == "__main__":
+    connect_to_db(app, "testbookworm")
+    app.run(host="0.0.0.0", debug=True)

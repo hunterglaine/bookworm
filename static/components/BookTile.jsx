@@ -8,16 +8,16 @@ function BookTile(props) {
     const addNewSelect = () => {
         
         for (let i = 1; i < 11; i += 1) {
-            
             let newCategory = document.forms[i].newCategory;
+            let chooseCategory = document.forms[i].chooseCategory;
 
-            if (document.forms[i].chooseCategory.options[document.forms[i].chooseCategory.selectedIndex].value === "add-new") {
+            if (chooseCategory.options[chooseCategory.selectedIndex].value === "add-new") {    
                 newCategory.style.visibility = "visible"
             }
             else {
                 newCategory.style.visibility = "hidden";
             }
-    }
+        }
     }
 
     function addToCategory(evt) {
@@ -60,7 +60,9 @@ function BookTile(props) {
                 <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
                 <h2>{book.volumeInfo.title}</h2>
                 {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
-                            (<div><h3>{author}</h3></div>)) : ''
+                            (<div>
+                                <h4>{author}</h4>
+                            </div>)) : ''
                         }
                 <p>{book.volumeInfo.description}</p>
                 
@@ -90,7 +92,7 @@ function BookTile(props) {
         <h2>{book.volumeInfo.title}</h2>
         {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
             (<div>
-                <h3>{author}</h3>
+                <h4>{author}</h4>
             </div>)) : ''
         }
         <p>{book.volumeInfo.description}</p>
