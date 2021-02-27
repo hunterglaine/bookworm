@@ -28,7 +28,7 @@ function AllEvents(props) {
 }
 
     React.useEffect(() => {
-        addAttendee()
+        if (currentEvent) addAttendee();
     }, [currentEvent])
 
     React.useEffect(() => {

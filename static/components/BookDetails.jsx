@@ -27,8 +27,8 @@ function BookDetails(props) {
         <div>
             <img src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
             <h2>{props.bookForDetails.title}</h2>
-            <p>Written By {props.bookForDetails.author}</p>
-            <p>Number Of Pages: {props.bookForDetails.page_length}</p>
+            <p>Written By {props.bookForDetails.author.slice(2,-2)}</p>
+            <p>Length: {props.bookForDetails.page_length} Pages</p>
             <p>{props.bookForDetails.description}</p>
             <button onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </button>
         </div>

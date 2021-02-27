@@ -133,35 +133,36 @@ def add_user_book():
         label = request.json.get("label")
         book = request.json.get("book")
         
-        if book['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_13': 
-            isbn = book['volumeInfo']['industryIdentifiers'][0].get('identifier')
-        else:
-            isbn = book['volumeInfo']['industryIdentifiers'][1].get('identifier')
+        # if book['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_13': 
+        #     isbn = book['volumeInfo']['industryIdentifiers'][0].get('identifier')
+        # else:
+        #     isbn = book['volumeInfo']['industryIdentifiers'][1].get('identifier')
+        isbn = book["id"]
 
         the_book = crud.get_book_by_isbn(isbn)
         this_category = crud.get_category_by_label(user_id, label)
         
         if the_book == None:
             the_book = crud.create_book(isbn, 
-                                        book['volumeInfo']['title'], 
-                                        book['volumeInfo']['authors'], 
-                                        book['volumeInfo']['description'], 
-                                        book['volumeInfo']['pageCount'], 
-                                        book['volumeInfo']['imageLinks']['thumbnail'])
+                                        book["volumeInfo"]["title"], 
+                                        book["volumeInfo"]["authors"], 
+                                        book["volumeInfo"]["description"], 
+                                        book["volumeInfo"]["pageCount"], 
+                                        book["volumeInfo"]["imageLinks"]["thumbnail"])
 
         if this_category == None:
             this_category = crud.create_category(user_id, label)
 
             added_books = crud.create_book_category(the_book, this_category)
-            return jsonify ({'success': f"""A new category, {this_category.label}, has been added to your bookshelf and {the_book.title} has been added to it"""})
+            return jsonify ({"success": f"""A new category, {this_category.label}, has been added to your bookshelf and {the_book.title} has been added to it"""})
 
         if the_book in crud.get_all_books_in_category(user_id, label):
-            return jsonify ({'error': f'{the_book.title} is already in your {this_category.label} books'})
+            return jsonify ({"error": f"{the_book.title} is already in your {this_category.label} books"})
 
         added_books = crud.create_book_category(the_book, this_category)
         # Right now, added_books is a list of all of the book objects in this_category
         
-        return jsonify ({'success': f'{the_book.title} has been added to {this_category.label} books'})
+        return jsonify ({"success": f"{the_book.title} has been added to {this_category.label} books"})
         # 'books_in_category': added_books
 
 

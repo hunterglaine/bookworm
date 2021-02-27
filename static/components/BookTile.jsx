@@ -18,6 +18,12 @@ function BookTile(props) {
                 newCategory.style.visibility = "hidden";
             }
         }
+        // if (document.getElementById(book.key).options[document.getElementById(book.key)].value === "add-new") {
+        //     document.getElementByName(`newCategory${book.key}`).style.visibility = "visible"
+        // }
+        // else {
+        //     document.getElementByName(`newCategory${book.key}`).style.visibility = "hidden"
+        // }
     }
 
     function addToCategory(evt) {
@@ -46,11 +52,14 @@ function BookTile(props) {
                 }
             })
         document.getElementById("add-to-category").reset();
+        // document.getElementById(book.key).reset();
         setCategoryName(props.userCategories[0].label)
 
         for (let i = 1; i < 11; i += 1) {
             document.forms[i].newCategory.style.visibility = "hidden";
+            
         }
+        // document.getElementByName(`newCategory${book.key}`).style.visibility = "hidden"
     }
 
  
@@ -71,6 +80,7 @@ function BookTile(props) {
                         Add to your bookshelf
                     </label>
                     <select id="category-add" name="chooseCategory" onChange={(e) => {
+                    {/* <select id={book.key} name="chooseCategory" onChange={(e) => { */}
                         setCategoryName(e.target.value);
                         addNewSelect();}} >
                         {props.userCategories.map(category => 
