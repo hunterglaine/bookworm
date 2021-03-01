@@ -68,20 +68,12 @@ function App() {
                   <CreateEvent userLoggedIn={userLoggedIn} />
                 </Route>
                 <Route path="/user-events" >
-                  <UserEvents userLoggedIn={userLoggedIn} />
+                  <UserEvents userLoggedIn={userLoggedIn}
+                              setBookForDetails={setBookForDetails} />
                 </Route>
                 <Route path="/all-events" >
                   <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
-                {/* <Route path="/user/:eventId">
-                  <UserPage 
-                    userLoggedIn={userLoggedIn}
-                    userCategories={userCategories}
-                    setBookshelfCategories={setBookshelfCategories}
-                    bookshelfCategories={bookshelfCategories}
-                    setBookForDetails={setBookForDetails}
-                   />
-                </Route> */}
                 <Route exact path="/book-details/:categoryLabel/:eventId" >
                   <BookDetails bookForDetails={bookForDetails} />
                 </Route>

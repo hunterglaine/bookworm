@@ -51,7 +51,7 @@ function UserEvents(props) {
                         <div className="book-tile">
                             <label htmlFor="book-suggestions">Book Suggestions</label>
                             {event.books.map(book =>
-                                 <img src={book.image} alt={book.title}/>
+                                <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
                             )}
                         </div>
                         }
