@@ -246,7 +246,12 @@ def get_user_events():
             users_events_dict = {"hosting": [], "attending": []}
 
             for event in users_events:
+                books = crud.get_all_events_books(event.id)
+
+                books = [book.to_dict() for book in books]
+
                 event = event.to_dict()
+                event["books"] = books
         
                 if event["host_id"] == user_id:
                     users_events_dict["hosting"].append(event)

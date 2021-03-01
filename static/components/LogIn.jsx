@@ -39,7 +39,7 @@ function LogIn(props) {
                     localStorage.setItem("userId", data["user_id"])
                     localStorage.setItem("userFirstName", data["user_first_name"])
                     props.setUserLoggedIn({userId: data["user_id"], userFirstName: data["user_first_name"]});
-                    history.push("/user")
+                    history.push("/user/home")
                 // redirect using useHistory to a User Detail page -> nav bar (w/ logout and search on top), horizontal row, category and books within for each
                 }
         });

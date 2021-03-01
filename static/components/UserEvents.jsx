@@ -47,6 +47,14 @@ function UserEvents(props) {
                     (<div>
                         <h2>On {event.event_date.slice(0,16)}, you are hosting a book club!</h2>
                         <h3>Location: {event.city}</h3>
+                        {event.books === [] ? null : 
+                        <div className="book-tile">
+                            <label htmlFor="book-suggestions">Book Suggestions</label>
+                            {event.books.map(book =>
+                                 <img src={book.image} alt={book.title}/>
+                            )}
+                        </div>
+                        }
                         {event.can_add_books ? 
                             <div>
                                 <button onClick={allowSuggestions(event.id, "suggest")}>
@@ -59,9 +67,6 @@ function UserEvents(props) {
                                 <button onClick={allowSuggestions(event.id, "suggest")}>
                                     Allow Book Suggestions
                                 </button>}
-                        {/* <button onClick={allowSuggestions(event.id, "suggest")}>
-                        //     {event.can_add_books ? "Stop Book Suggestions" : "Allow Book Suggestions"}
-                        // </button> */}
                     </div>)) : "You are not currently hosting any events"
                 }
             <h1>Book Club Meetings You Are Attending</h1>
