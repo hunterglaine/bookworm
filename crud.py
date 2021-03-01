@@ -220,6 +220,15 @@ def get_all_users_events(user_id):
     return user.events
 
 
+def get_all_events_books(event_id):
+    """Returns a list of all books for a given event"""
+
+    event = Event.query.filter(Event.id == event_id).options(db.\
+                                joinedload("books")).first()
+
+    return event.books
+
+
 def get_all_attendees(event_id):
     """Returns a list of all user's attending an event."""
 
@@ -290,6 +299,19 @@ def update_category_label(user_id, old_label, new_label):
 #     db.session.commit()
 
 #     return user_book
+
+
+def update_event_suggesting(event_id):
+    """Updates the event to allow or disallow books suggestions"""
+
+    event = get_event_by_id(event_id)  
+
+    if event.can_add_books:
+        event.can_add_books = False
+    else:
+        event.can_add_books = True
+    
+    db.session.commit()
 
 
 # ***** DELETE Functions *****

@@ -14,6 +14,7 @@ function CategoryContainer(props) {
             }
         else if (arg === 0) {
              document.getElementById(`change-label-${props.label}`).style.visibility="hidden";
+             document.getElementById(`change-label-${props.label}`).reset();
         }
     }
 
@@ -37,7 +38,7 @@ function CategoryContainer(props) {
     }
 
     for (const book of props.books) {
-        booksInCategory.push(<Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel={props.label} />)
+        booksInCategory.push(<Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel={props.label} eventId={props.eventId} />)
     }
     
     return ( 
@@ -50,6 +51,7 @@ function CategoryContainer(props) {
         </form>
         <button onClick={showForm(1)}>Change Category Name</button>
         <div>{booksInCategory}</div>
+        <img src="/static/img/single-shelf.PNG" alt=""/>
         </div>
     )
 }

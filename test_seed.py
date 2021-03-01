@@ -35,7 +35,7 @@ for n in range(10):
 #create fake users for testing
 new_users = []
 
-for n in range(10):
+for n in range(6):
     first_name = f"Test User First {n}"
     last_name = f"Test User Last {n}"
     email = f"user{n}@test.com"
@@ -45,16 +45,11 @@ for n in range(10):
 
     new_users.append(new_user)
 
-    # # Create fake user_books for testing
-    # for n in range(4):
-    #     random_book = choice(new_books)
-    #     user = new_user
-    #     user_books = crud.create_user_book(user, random_book)
 
 # Create fake events for testing
 new_events = []
 
-for n in range(10):
+for n in range(6):
 
     host_id = n + 1
     city = f"City {n}"
@@ -81,7 +76,7 @@ for n in range(10):
 # Create fake categories for testing
 new_categories = []
 
-for n in range(10):
+for n in range(6):
 
     user_id = n + 1
     for i in range(10):
@@ -92,7 +87,7 @@ for n in range(10):
         new_categories.append(new_category)
 
     # Create fake book_categories for testing
-        for n in range(1,10):
+        for n in range(1,6):
             random_book = choice(new_books)
             category = new_category
             book_categories = crud.create_book_category(random_book, category)

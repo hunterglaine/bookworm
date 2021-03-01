@@ -19,7 +19,7 @@ function LogOut(props) {
                 props.setUserLoggedIn({userId: null, userFirstName: null});
                 localStorage.setItem("userId", null)
                 localStorage.setItem("userFirstName", null)
-                history.push("/")
+                history.push("/login")
                 alert(data["success"])
             }
     )}, []);

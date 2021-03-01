@@ -2,6 +2,7 @@
 
 function UserPage(props) {
 
+    let { eventId } = useParams();
     const userBookshelf = []
     
     React.useEffect(() =>  {
@@ -15,11 +16,12 @@ function UserPage(props) {
         userBookshelf.push(<CategoryContainer 
                             label={category[0]} 
                             books={category[1]} 
-                            setBookForDetails={props.setBookForDetails} />)
+                            setBookForDetails={props.setBookForDetails}
+                            eventId={eventId} />)
     }
     return (
         <div>
-            <h1>
+            <h1 className="bookshelf-title">
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
             </h1>
             

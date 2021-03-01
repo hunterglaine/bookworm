@@ -26,39 +26,12 @@ function App() {
       return (
           <Router>
             <div>
-              <nav>
-                <div>
-                  <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/>
-                </div>
-                <div>
-                  <SearchBar 
-                    bookQuery={bookQuery} 
-                    setBookQuery={setBookQuery} 
-                    userCategories={userCategories} 
-                    setUserCategories={setUserCategories} 
-                    />
-                </div>
-                <div>
-                  <Link to="/all-events">
-                    All Bookworm Events
-                  </Link>
-                </div>
-                <div>
-                  <Link to={userLoggedIn.userId ? "/logout" : "/login"}>
-                    {userLoggedIn.userId ? "Log Out" : "Log In"}
-                  </Link>
-                </div>
-                <div>
-                  <Link to={userLoggedIn.userId ? "/user-events" : null }>
-                    {userLoggedIn.userId ? "My Events" : null }
-                  </Link>
-                </div>
-                <div>
-                  <Link to={userLoggedIn.userId ? "/user" : "/create-account"}>
-                    {userLoggedIn.userId ? "My Bookshelf" : "Create Account"}
-                  </Link>
-                </div>
-              </nav>
+              <TopNavigation
+                bookQuery={bookQuery} 
+                setBookQuery={setBookQuery} 
+                userCategories={userCategories} 
+                setUserCategories={setUserCategories}
+                userLoggedIn={userLoggedIn} />
               <Switch>
                 <Route path="/login">
                   <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
@@ -72,7 +45,7 @@ function App() {
                 <Route path="/create-account">
                   <CreateAccount />
                 </Route>
-                <Route path="/user">
+                <Route exact path="/user/:eventId">
                   <UserPage 
                     userLoggedIn={userLoggedIn}
                     userCategories={userCategories}
@@ -88,7 +61,7 @@ function App() {
                     userCategories={userCategories}
                     setUserCategories={setUserCategories} />
                 </Route>
-                <Route path="/book-details/:categoryLabel" >
+                <Route exact path="/book-details/:categoryLabel/:eventId" >
                   <BookDetails bookForDetails={bookForDetails} />
                 </Route>
                 <Route path="/create-event" >
@@ -99,6 +72,18 @@ function App() {
                 </Route>
                 <Route path="/all-events" >
                   <AllEvents userLoggedIn={userLoggedIn} />
+                </Route>
+                {/* <Route path="/user/:eventId">
+                  <UserPage 
+                    userLoggedIn={userLoggedIn}
+                    userCategories={userCategories}
+                    setBookshelfCategories={setBookshelfCategories}
+                    bookshelfCategories={bookshelfCategories}
+                    setBookForDetails={setBookForDetails}
+                   />
+                </Route> */}
+                <Route exact path="/book-details/:categoryLabel/:eventId" >
+                  <BookDetails bookForDetails={bookForDetails} />
                 </Route>
               </Switch>
           </div>

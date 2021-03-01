@@ -4,6 +4,7 @@ function BookDetails(props) {
     
     let { categoryLabel } = useParams();
     let history = useHistory();
+    const { eventId } = useParams();
 
     const removeBook = (evt) => {
         evt.preventDefault;
@@ -22,6 +23,31 @@ function BookDetails(props) {
         .then(data => alert(data["success"]))
         history.push("/user")
     } 
+
+    const addEventBook = (evt) => {
+        evt.preventDefault;
+
+        fetch("/api/add-book-to-event", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({"event_id": eventId,
+                                    "isbn": props.bookForDetails.isbn}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if ("error" in data) {
+                alert(data["error"])
+            }
+            else {
+                alert(data["success"])
+                history.push("/user-events")
+            } 
+        })
+        
+    } 
     
     return (
         <div>
@@ -31,6 +57,7 @@ function BookDetails(props) {
             <p>Length: {props.bookForDetails.page_length} Pages</p>
             <p>{props.bookForDetails.description}</p>
             <button onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </button>
+            {eventId === "home" ? null : <button onClick={addEventBook}>Suggest Book</button>}
         </div>
     )
 }

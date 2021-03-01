@@ -37,7 +37,7 @@ function CreateEvent(props) {
             }
             else {
                 alert(data["success"]);
-                history.push("/user");
+                history.push("/user-events");
             } 
         }
         )}

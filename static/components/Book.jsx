@@ -4,13 +4,9 @@ function Book(props) {
 
     let history = useHistory();
 
-    // const showTitleAuthor = (evt) => {
-    //     pass
-    // }
-
     const goToDetails = () => {
         props.setBookForDetails(props.book)
-        history.push(`/book-details/${props.categoryLabel}`)
+        history.push(`/book-details/${props.categoryLabel}/${props.eventId}`)
     }
 
     return (

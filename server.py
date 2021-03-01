@@ -242,22 +242,43 @@ def get_user_events():
 
         users_events = crud.get_all_users_events(user_id)
         # A list of the user's event objects
+        if users_events:
+            users_events_dict = {"hosting": [], "attending": []}
 
-        users_events_dict = {"hosting": [], "attending": []}
+            for event in users_events:
+                event = event.to_dict()
+        
+                if event["host_id"] == user_id:
+                    users_events_dict["hosting"].append(event)
+                else:
+                    users_events_dict["attending"].append(event)
+            
+            if len(users_events_dict["hosting"]) == 0:
+                users_events_dict["hosting"] = None
+            elif len(users_events_dict["attending"]) == 0:
+                users_events_dict["hosting"] = None
 
-        for event in users_events:
-            event = event.to_dict()
-            if event["host_id"] == user_id:
-                users_events_dict["hosting"].append(event)
-            else:
-                users_events_dict["attending"].append(event)
+            return jsonify (users_events_dict)
 
-
-        return jsonify (users_events_dict)
+        else:
+            return jsonify ({})
 
     else:
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
+
+@app.route("/api/update-event-books", methods=["POST"])
+def update_event_books():
+    """Updates the status if can_suggest_books and can_vote on an event"""
+
+    if session.get("user"):
+        event_id = request.json.get("event_id")
+        update_type = request.json.get("update_type")
+
+        if update_type == "suggest":
+            crud.update_event_suggesting(event_id)
+        
+            return jsonify({"success": f"Event books has been updated"})
 
 @app.route("/api/all-events")
 def get_all_events():
@@ -297,6 +318,23 @@ def add_event_attendee():
 
     return jsonify ({"success": "You are now attending!"})
 
+
+@app.route("/api/add-book-to-event", methods=["POST"])
+def add_book_to_event():
+
+    event_id = request.json.get("event_id")
+    isbn = request.json.get("isbn")
+
+    event = crud.get_event_by_id(event_id)
+    book = crud.get_book_by_isbn(isbn)
+
+    if book not in crud.get_all_events_books(event_id):
+        crud.create_event_book(event, book)
+
+        return jsonify({"success": f"You have suggested {book.title}"})
+    
+    else:
+        return jsonify({"error": f"That book has already been suggested for the event."})
 
 if __name__ == "__main__":
     connect_to_db(app, "testbookworm")

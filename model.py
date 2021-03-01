@@ -149,6 +149,8 @@ class Event(db.Model):
     start_time = db.Column(db.Time(), nullable=False)
     end_time = db.Column(db.Time(), nullable=False)
     is_private = db.Column(db.Boolean, default=False)
+    can_add_books = db.Column(db.Boolean, default=False)
+    can_vote = db.Column(db.Boolean, default=False)
 
     users = db.relationship("User", secondary="users_events", backref="events")
     books = db.relationship("Book", secondary="events_books", backref="events")
@@ -169,7 +171,10 @@ class Event(db.Model):
                 "event_date": self.event_date,
                 "start_time": str(self.start_time)[:5],
                 "end_time": str(self.end_time)[:5],
-                "is_private": self.is_private}
+                "is_private": self.is_private,
+                "can_add_books": self.can_add_books,
+                "can_vote": self.can_vote}
+                
 
         return event
 
