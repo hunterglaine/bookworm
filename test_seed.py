@@ -70,7 +70,7 @@ for n in range(6):
 
         # Create fake event_books for testing
         random_book = choice(new_books)
-        crud.create_event_book(event, random_book)
+        crud.create_event_book(event, random_book) # CHANGE
 
 
 # Create fake categories for testing

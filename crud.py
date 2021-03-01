@@ -70,13 +70,16 @@ def create_event(host_id, city, event_date, start_time, end_time, state=None):
     return event
 
 
-def create_event_book(event, book):
+def create_event_book(event, book): # CHANGED
     """Create and return a new event_book"""
 
-    event.books.append(book)
+    event_book = EventBook(isbn=book.isbn, event_id=event.id)
+    # event.books.append(book)
+    db.session.add(event_book)
     db.session.commit()
 
-    return event.books
+    # return event.books
+    return event_book
 
 
 def create_user_event(user_id, event_id):
@@ -220,13 +223,20 @@ def get_all_users_events(user_id):
     return user.events
 
 
-def get_all_events_books(event_id):
+def get_all_events_books(event_id): # CHANGED
     """Returns a list of all books for a given event"""
 
-    event = Event.query.filter(Event.id == event_id).options(db.\
-                                joinedload("books")).first()
+    # event = Event.query.filter(Event.id == event_id).options(db.\
+    #                             joinedload("books")).first()
 
-    return event.books
+    # return event.books
+    event = Event.query.options(db.joinedload("events_books")).get(event_id)
+    # .options(db.joinedload(EventEventBook.book))
+    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", event.events_books)
+
+    books = [event_book.book for event_book in event.events_books]
+    
+    return books
 
 
 def get_all_attendees(event_id):
@@ -301,7 +311,7 @@ def update_category_label(user_id, old_label, new_label):
 #     return user_book
 
 
-def update_event_suggesting(event_id):
+def update_event_suggesting(event_id): # MAYBE CHANGE (?)
     """Updates the event to allow or disallow books suggestions"""
 
     event = get_event_by_id(event_id)  
@@ -314,7 +324,7 @@ def update_event_suggesting(event_id):
     db.session.commit()
 
 
-def update_voting(event_id):
+def update_voting(event_id): # MAYBE CHANGE (?)
     """Updates the ability to vote on books for an event"""
 
     event = get_event_by_id(event_id) 

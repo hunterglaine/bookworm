@@ -238,12 +238,12 @@ def get_user_events():
 
         users_events = crud.get_all_users_events(user_id)
         # A list of the user's event objects
+        print("USERS EVENTS **************", users_events)
         if users_events:
             users_events_dict = {"hosting": [], "attending": []}
 
             for event in users_events:
-                books = crud.get_all_events_books(event.id)
-                print("IS THIS A THINGGGGGGGGGGG", event.books)
+                books = crud.get_all_events_books(event.id) # CHANGED
                 books = [book.to_dict() for book in books]
 
                 host = crud.get_user_by_id(event.host_id)
@@ -260,7 +260,7 @@ def get_user_events():
             if len(users_events_dict["hosting"]) == 0:
                 users_events_dict["hosting"] = None
             elif len(users_events_dict["attending"]) == 0:
-                users_events_dict["hosting"] = None
+                users_events_dict["attending"] = None
 
             return jsonify (users_events_dict)
 
@@ -340,8 +340,8 @@ def add_book_to_event():
     event = crud.get_event_by_id(event_id)
     book = crud.get_book_by_isbn(isbn)
 
-    if book not in crud.get_all_events_books(event_id):
-        crud.create_event_book(event, book)
+    if book not in crud.get_all_events_books(event_id): # CHANGED
+        crud.create_event_book(event, book) # CHANGED
 
         return jsonify({"success": f"You have suggested {book.title}"})
     

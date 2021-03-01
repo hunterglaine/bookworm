@@ -17,8 +17,9 @@ class Book(db.Model):
     page_length = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String)
 
-    ###REMOVE### users = a list of user objects, with secondary users_books
-    # events = a list of event objects, with secondary events_books
+    events_books = db.relationship("EventBook") # CHANGED
+    ###REMOVED### users = a list of user objects, with secondary users_books
+    # ** CHANGED ** events = a list of event objects, with secondary events_books
     # categories = a list of category objects, with secondary books_categories
 
     def __repr__(self):
@@ -53,7 +54,7 @@ class User(db.Model):
     state = db.Column(db.String(2))
     is_searchable = db.Column(db.Boolean, default=True) 
     
-    ###REMOVE### books = db.relationship("Book", secondary='users_books', backref='users')
+    ###REMOVED### books = db.relationship("Book", secondary='users_books', backref='users')
     # events = a list of event objects, with secondary users_events
     # categories = a list of category objects
 
@@ -153,8 +154,8 @@ class Event(db.Model):
     can_vote = db.Column(db.Boolean, default=False)
 
     users = db.relationship("User", secondary="users_events", backref="events")
-    books = db.relationship("Book", secondary="events_books", backref="events")
-    # events_books = db.relationship("EventBook")
+    # ** CHANGED ** books = db.relationship("Book", secondary="events_books", backref="events")
+    events_books = db.relationship("EventBook") # CHANGED
 
     def __repr__(self):
 
@@ -189,6 +190,9 @@ class EventBook(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey("events.id"))
     vote_count = db.Column(db.Integer, default=0)
     is_the_one = db.Column(db.Boolean, default=True)
+
+    event = db.relationship("Event") # CHANGED
+    book = db.relationship("Book") # CHANGED
 
 
     def __repr__(self):
