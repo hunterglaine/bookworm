@@ -133,10 +133,6 @@ def add_user_book():
         label = request.json.get("label")
         book = request.json.get("book")
         
-        # if book['volumeInfo']['industryIdentifiers'][0]['type'] == 'ISBN_13': 
-        #     isbn = book['volumeInfo']['industryIdentifiers'][0].get('identifier')
-        # else:
-        #     isbn = book['volumeInfo']['industryIdentifiers'][1].get('identifier')
         isbn = book["id"]
 
         the_book = crud.get_book_by_isbn(isbn)
@@ -247,11 +243,14 @@ def get_user_events():
 
             for event in users_events:
                 books = crud.get_all_events_books(event.id)
-
+                print("IS THIS A THINGGGGGGGGGGG", event.books)
                 books = [book.to_dict() for book in books]
+
+                host = crud.get_user_by_id(event.host_id)
 
                 event = event.to_dict()
                 event["books"] = books
+                event["host"] = f"{host.first_name} {host.last_name}"
         
                 if event["host_id"] == user_id:
                     users_events_dict["hosting"].append(event)
@@ -283,7 +282,12 @@ def update_event_books():
         if update_type == "suggest":
             crud.update_event_suggesting(event_id)
         
-            return jsonify({"success": f"Event books has been updated"})
+            return jsonify({"success": "Event books has been updated"})
+        
+        if update_type == "vote":
+            crud.update_voting(event_id)
+
+            return jsonify({"success": "Voting has been updated"})
 
 @app.route("/api/all-events")
 def get_all_events():
@@ -297,9 +301,12 @@ def get_all_events():
 
     for event in events:
         event = event.to_dict()
+        host = crud.get_user_by_id(event["host_id"]).to_dict()
         attendee_users = crud.get_all_attendees(event["id"])
-        attendees = [attendee.to_dict() for attendee in attendee_users]
+        attendees = [attendee.to_dict() for attendee in attendee_users if attendee.id != host["id"]]
+        
         event["attending"] = attendees
+        event["host"] = host
         all_events.append(event)
 
     all_events_dict = {"events": all_events}

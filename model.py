@@ -154,7 +154,7 @@ class Event(db.Model):
 
     users = db.relationship("User", secondary="users_events", backref="events")
     books = db.relationship("Book", secondary="events_books", backref="events")
-
+    # events_books = db.relationship("EventBook")
 
     def __repr__(self):
 

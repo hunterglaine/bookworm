@@ -48,7 +48,7 @@ function BookTile(props) {
                 }
                 else {
                     alert(data["success"]);
-                    history.push("/user")
+                    history.push("/user/home")
                 }
             })
         document.getElementById("add-to-category").reset();

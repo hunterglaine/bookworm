@@ -314,6 +314,18 @@ def update_event_suggesting(event_id):
     db.session.commit()
 
 
+def update_voting(event_id):
+    """Updates the ability to vote on books for an event"""
+
+    event = get_event_by_id(event_id) 
+
+    if event.can_vote:
+        event.can_vote = False
+    else:
+        event.can_vote = True
+    
+    db.session.commit()
+
 # ***** DELETE Functions *****
 def delete_category(label, user_id):
     "Deletes a category and all book realtionships in it"

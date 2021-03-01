@@ -20,7 +20,7 @@ function UserEvents(props) {
         })
     }, [changeInEvent])
 
-    const allowSuggestions = (event_id, type) => (evt) => {
+    const updateEventBooks = (event_id, type) => (evt) => {
         evt.preventDefault();
 
         fetch("/api/update-event-books", {
@@ -49,31 +49,50 @@ function UserEvents(props) {
                         <h3>Location: {event.city}</h3>
                         {event.books === [] ? null : 
                         <div className="book-tile">
-                            <label htmlFor="book-suggestions">Book Suggestions</label>
+                            <h3>Book Suggestions</h3>
                             {event.books.map(book =>
                                 <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
-                            )}
+                                )
+                            }
                         </div>
                         }
                         {event.can_add_books ? 
                             <div>
-                                <button onClick={allowSuggestions(event.id, "suggest")}>
+                                <button onClick={updateEventBooks(event.id, "suggest")}>
                                     Stop Book Suggestions
                                 </button>
                                 <button onClick={() => history.push(`/user/${event.id}`)}>
                                     Suggest a Book
                                 </button>
                             </div> :
-                                <button onClick={allowSuggestions(event.id, "suggest")}>
+                                <button onClick={updateEventBooks(event.id, "suggest")}>
                                     Allow Book Suggestions
-                                </button>}
+                                </button>
+                        }
+                        {event.can_vote ?
+                            <button onClick={updateEventBooks(event.id, "vote")}>
+                                Stop the Voting
+                            </button> :
+                            <button onClick={updateEventBooks(event.id, "vote")}>
+                                Start the Voting
+                            </button>
+                        }
                     </div>)) : "You are not currently hosting any events"
                 }
             <h1>Book Club Meetings You Are Attending</h1>
             {myEvents.attending ? myEvents.attending.map(event => 
                     (<div>
-                        <h2>On {event.event_date}, you are attending a book club!</h2>
+                        <h2>On {event.event_date.slice(0,16)}, you are attending a book club!</h2>
+                        <h3>Hosted by: {event.host}</h3>
                         <h3>Location: {event.city} </h3>
+                        {event.books === [] ? null : 
+                        <div className="book-tile">
+                            <h3>Book Suggestions</h3>
+                            {event.books.map(book =>
+                                <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
+                            )}
+                        </div>
+                        }
                         {event.can_add_books ? <button onClick={() => history.push(`/user/${event.id}`)}>Suggest a Book</button> : null}
                     </div>)) : "You are not currently attending any events"
                 }
