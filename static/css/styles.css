@@ -41,7 +41,7 @@ img#logo {
     padding:.5rem;
 }
 
-.search-bar {
+#search-bar {
     display: inline-block;
     margin: 2rem;
     /* padding:2rem; */
@@ -59,6 +59,14 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+
+div.event-book {
+    display: inline-block;
+}
+
+button.vote {
+    display: block;
 }
 
 .book-tile img{

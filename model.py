@@ -17,8 +17,8 @@ class Book(db.Model):
     page_length = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String)
 
-    events_books = db.relationship("EventBook") # CHANGED
-    ###REMOVED### users = a list of user objects, with secondary users_books
+    # events_books = db.relationship("EventBook") # CHANGED
+    # ###REMOVED### users = a list of user objects, with secondary users_books
     # ** CHANGED ** events = a list of event objects, with secondary events_books
     # categories = a list of category objects, with secondary books_categories
 
@@ -155,7 +155,7 @@ class Event(db.Model):
 
     users = db.relationship("User", secondary="users_events", backref="events")
     # ** CHANGED ** books = db.relationship("Book", secondary="events_books", backref="events")
-    events_books = db.relationship("EventBook") # CHANGED
+    # events_books = db.relationship("EventBook") # CHANGED
 
     def __repr__(self):
 
@@ -191,8 +191,8 @@ class EventBook(db.Model):
     vote_count = db.Column(db.Integer, default=0)
     is_the_one = db.Column(db.Boolean, default=True)
 
-    event = db.relationship("Event") # CHANGED
-    book = db.relationship("Book") # CHANGED
+    event = db.relationship("Event", backref="events_books") # CHANGED
+    book = db.relationship("Book", backref="events_books") # CHANGED
 
 
     def __repr__(self):
@@ -209,6 +209,10 @@ class UserEvent(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     event_id = db.Column(db.Integer, db.ForeignKey("events.id"))
     is_attending = db.Column(db.Boolean, default=True)
+    voted_for = db.Column(db.String, default="")
+
+    event = db.relationship("Event", backref="users_events")
+    user = db.relationship("User", backref="users_events")
 
 
     def __repr__(self):
@@ -216,6 +220,22 @@ class UserEvent(db.Model):
         return f"<UserEvent id={self.id}>"
 
     
+    def update_voted_for(self, isbn):
+        """Updates voted_for attribute to remove an isbn if it is already there
+        and add the isbn if it is not and the number of books already voted for
+        is 2 or less"""
+        vote_list = self.voted_for.split()
+
+        if isbn in self.voted_for:
+            vote_list.remove(isbn) 
+            self.voted_for = " ".join(vote_list)
+        else:
+            if len(vote_list) >= 2:
+                return
+            else:
+                self.voted_for += f"{isbn} "
+
+
 class Friendship(db.Model):
     """Friendship class."""
 

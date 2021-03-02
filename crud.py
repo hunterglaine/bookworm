@@ -223,20 +223,41 @@ def get_all_users_events(user_id):
     return user.events
 
 
-def get_all_events_books(event_id): # CHANGED
+def get_users_event_by_id(user_id, event_id):
+    """Returns a user event object for a given user and event"""
+
+    user_event = UserEvent.query.filter(UserEvent.user_id == user_id, UserEvent.\
+                                        event_id == event_id).first()
+    
+    return user_event
+
+
+def get_all_books_for_event(event_id): # CHANGED
     """Returns a list of all books for a given event"""
+    # event = Event.query.options(db.joinedload("events_books")).get(event_id)
 
-    # event = Event.query.filter(Event.id == event_id).options(db.\
-    #                             joinedload("books")).first()
+    events_books = get_all_events_books(event_id)
 
-    # return event.books
-    event = Event.query.options(db.joinedload("events_books")).get(event_id)
-    # .options(db.joinedload(EventEventBook.book))
-    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", event.events_books)
-
-    books = [event_book.book for event_book in event.events_books]
+    books = [event_book.book for event_book in events_books]
     
     return books
+
+
+def get_all_events_books(event_id):
+    """Returns a list of event_book objects for a given event"""
+    
+    # event = Event.query.options(db.joinedload("events_books")).get(event_id)
+    events_books = EventBook.query.filter(EventBook.event_id == event_id).options(db.joinedload("book")).all()
+
+    # return event.events_books
+    return events_books
+
+
+def get_event_book_by_isbn(event_id, isbn):
+
+    event_book = EventBook.query.filter(EventBook.event_id == event_id, EventBook.isbn == isbn).first()
+    
+    return event_book
 
 
 def get_all_attendees(event_id):
@@ -299,6 +320,14 @@ def update_category_label(user_id, old_label, new_label):
     
     category.label = new_label
     db.session.commit()
+
+
+def increase_event_book_vote_count(event_book):
+    """Updates the vote count on an event_book"""
+
+    event_book.vote_count += 1
+    db.session.commit()
+
 
 # Maybe add comments to book_categories?
 # def add_comment_to_user_book(user_book_id, new_comment):

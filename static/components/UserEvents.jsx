@@ -20,13 +20,13 @@ function UserEvents(props) {
         })
     }, [changeInEvent])
 
-    const updateEventBooks = (event_id, type) => (evt) => {
+    const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();
 
         fetch("/api/update-event-books", {
             method: "POST",
             credentials: "include",
-            body: JSON.stringify({"event_id": event_id,
+            body: JSON.stringify({"event_id": eventId,
                                 "update_type": type}),
             headers: {
                 'Content-Type': 'application/json'
@@ -35,6 +35,23 @@ function UserEvents(props) {
         .then(response => response.json())
         .then(data => setChangeInEvent(data["success"]))
         .then(() => setChangeInEvent(null))
+    }
+
+
+    const increaseVote = (eventId, bookIsbn) => (evt) => {
+        evt.preventDefault();
+        
+        fetch("/api/update-vote", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({"eventId": eventId,
+                                "bookIsbn": bookIsbn}),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => response.json())
+        .then(data => alert(data["success"]))
     }
 
     return (
@@ -50,8 +67,16 @@ function UserEvents(props) {
                         {event.books === [] ? null : 
                         <div className="book-tile">
                             <h3>Book Suggestions</h3>
-                            {event.books.map(book =>
-                                <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
+                            {event.books.map(book => 
+                                (<div className="event-book">
+                                    <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
+                                    {event.can_vote 
+                                    ? <div>
+                                        <p>Vote Count</p>
+                                        <button className="vote" id={book.isbn} onClick={increaseVote(event.id, book.isbn)} >Vote</button>
+                                    </div> 
+                                    : null}
+                                </div>)
                                 )
                             }
                         </div>
@@ -89,8 +114,12 @@ function UserEvents(props) {
                         <div className="book-tile">
                             <h3>Book Suggestions</h3>
                             {event.books.map(book =>
-                                <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
-                            )}
+                                (<div className="event-book">
+                                    <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
+                                    {event.can_vote ? <button className="vote">Vote</button> : null}
+                                </div>)
+                                )
+                            }
                         </div>
                         }
                         {event.can_add_books ? <button onClick={() => history.push(`/user/${event.id}`)}>Suggest a Book</button> : null}

@@ -243,7 +243,7 @@ def get_user_events():
             users_events_dict = {"hosting": [], "attending": []}
 
             for event in users_events:
-                books = crud.get_all_events_books(event.id) # CHANGED
+                books = crud.get_all_books_for_event(event.id) # CHANGED
                 books = [book.to_dict() for book in books]
 
                 host = crud.get_user_by_id(event.host_id)
@@ -288,6 +288,32 @@ def update_event_books():
             crud.update_voting(event_id)
 
             return jsonify({"success": "Voting has been updated"})
+
+
+@app.route("/api/update-vote", methods=["POST"])
+def update_event_book_votes():
+    """Increases the number of votes on a given event book"""
+
+    user_id = session.get("user")
+    event_id = request.json.get("eventId")
+    isbn = request.json.get("bookIsbn")
+
+    user_event = crud.get_users_event_by_id(user_id, event_id)
+    user_event.update_voted_for(isbn)
+    books_voted_for = user_event.voted_for.split()
+    print("THISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",books_voted_for)
+    if len(books_voted_for) >= 2:
+        print("YAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
+
+    book = crud.get_book_by_isbn(isbn)
+    event_book = crud.get_event_book_by_isbn(event_id, isbn)
+    crud.increase_event_book_vote_count(event_book)
+
+    return jsonify({"success": f"You voted for {book.title}"})
+    
+
+
+
 
 @app.route("/api/all-events")
 def get_all_events():
@@ -340,13 +366,14 @@ def add_book_to_event():
     event = crud.get_event_by_id(event_id)
     book = crud.get_book_by_isbn(isbn)
 
-    if book not in crud.get_all_events_books(event_id): # CHANGED
+    if book not in crud.get_all_books_for_event(event_id): # CHANGED
         crud.create_event_book(event, book) # CHANGED
 
         return jsonify({"success": f"You have suggested {book.title}"})
     
     else:
         return jsonify({"error": f"That book has already been suggested for the event."})
+
 
 if __name__ == "__main__":
     connect_to_db(app, "testbookworm")
