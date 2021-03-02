@@ -348,10 +348,7 @@ def update_event_suggesting(event_id): # MAYBE CHANGE (?)
 
     event = get_event_by_id(event_id)  
 
-    if event.can_add_books:
-        event.can_add_books = False
-    else:
-        event.can_add_books = True
+    event.can_add_books = not event.can_add_books
     
     db.session.commit()
 

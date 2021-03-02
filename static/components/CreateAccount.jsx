@@ -22,7 +22,6 @@ function CreateAccount() {
                                 "password": password,
                                 "city": city,
                                 "state": userState}
-        console.log(newUserDetails);
 
         fetch("/api/users", {
             method: "POST",

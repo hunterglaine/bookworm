@@ -27,18 +27,14 @@ def create_new_user():
     state = request.json.get("state")
 
     if crud.get_user_by_email(email):
-        return jsonify ({'error': 'An account with this email already exists.'})
-    else:
-        user = crud.create_user(first_name, last_name, email, password, city, state)
-        first_category = crud.create_category(user.id, "My Favorite Books")
-        # return jsonify ({'status': '200',
-        #                 'message': 'Account has successfully been created'})
-        return jsonify ({'user': {'id': user.id, 
-                                    'first_name': user.first_name,
-                                    'last_name': user.last_name,
-                                    'email': user.email,
-                                    'city': user.city,
-                                    'state': user.state}})
+        return jsonify ({"error": f"An account with the email, {email}, already exists."})
+        
+    user = crud.create_user(first_name, last_name, email, password, city, state)
+    first_category = crud.create_category(user.id, "My Favorite Books")
+    # return jsonify ({'status': '200',
+    #                 'message': 'Account has successfully been created'})
+    return jsonify ({"user": user.to_dict()})
+
 
 @app.route("/api/login", methods=["POST"])
 def log_in_user():
@@ -130,34 +126,34 @@ def add_user_book():
     if session.get("user"):
         user_id = session["user"]
         label = request.json.get("label")
-        book = request.json.get("book")
+        book_dict = request.json.get("book")
         
-        isbn = book["id"]
+        isbn = book_dict["id"]
 
-        the_book = crud.get_book_by_isbn(isbn)
-        this_category = crud.get_category_by_label(user_id, label)
+        book = crud.get_book_by_isbn(isbn)
+        category = crud.get_category_by_label(user_id, label)
         
-        if the_book == None:
-            the_book = crud.create_book(isbn, 
-                                        book["volumeInfo"]["title"], 
-                                        book["volumeInfo"]["authors"], 
-                                        book["volumeInfo"]["description"], 
-                                        book["volumeInfo"]["pageCount"], 
-                                        book["volumeInfo"]["imageLinks"]["thumbnail"])
+        if not book:
+            book = crud.create_book(isbn, 
+                                        book_dict["volumeInfo"]["title"], 
+                                        book_dict["volumeInfo"]["authors"], 
+                                        book_dict["volumeInfo"]["description"], 
+                                        book_dict["volumeInfo"]["pageCount"], 
+                                        book_dict["volumeInfo"]["imageLinks"]["thumbnail"])
 
-        if this_category == None:
-            this_category = crud.create_category(user_id, label)
+        if not category:
+            category = crud.create_category(user_id, label)
 
-            added_books = crud.create_book_category(the_book, this_category)
-            return jsonify ({"success": f"""A new category, {this_category.label}, has been added to your bookshelf and {the_book.title} has been added to it"""})
+            added_books = crud.create_book_category(book, category)
+            return jsonify ({"success": f"""A new category, {category.label}, has been added to your bookshelf and {book.title} has been added to it"""})
 
-        if the_book in crud.get_all_books_in_category(user_id, label):
-            return jsonify ({"error": f"{the_book.title} is already in your {this_category.label} books"})
+        if book in crud.get_all_books_in_category(user_id, label):
+            return jsonify ({"error": f"{book.title} is already in your {category.label} books"})
 
-        added_books = crud.create_book_category(the_book, this_category)
-        # Right now, added_books is a list of all of the book objects in this_category
+        added_books = crud.create_book_category(book, category)
+        # Right now, added_books is a list of all of the book objects in category
         
-        return jsonify ({"success": f"{the_book.title} has been added to {this_category.label} books"})
+        return jsonify ({"success": f"{book.title} has been added to {category.label} books"})
         # 'books_in_category': added_books
 
 
@@ -310,9 +306,6 @@ def update_event_book_votes():
 
     return jsonify({"success": f"You voted for {book.title}"})
     
-
-
-
 
 @app.route("/api/all-events")
 def get_all_events():

@@ -17,7 +17,6 @@ function LogIn(props) {
 
             const userDetails = {"email": userEmail,
                                 "password": userPassword};
-            console.log(userDetails);
     
             fetch("/api/login", {
                 method: "POST",
