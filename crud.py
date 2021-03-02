@@ -26,10 +26,11 @@ def create_user(first_name, last_name, email, password, city=None,
 
     user = User(first_name=first_name, 
                 last_name=last_name, 
-                email=email, 
-                password=password, 
+                email=email,  
                 city=city, 
                 state=state)
+
+    user.set_password(password)
 
     db.session.add(user)
     db.session.commit()
@@ -304,12 +305,14 @@ def update_user_location(user_id, new_city, new_state):
     db.session.commit()
 
 
-def change_password(user_id, new_password):
+def change_password(user_id, old_password, new_password):
     """Change given user's password"""
 
     user = get_user_by_id(user_id)
-    user.password = new_password
-    db.session.commit()
+
+    if user.check_password(old_password):
+        user.set_password(new_password)
+        db.session.commit()
 
 
 def update_category_label(user_id, old_label, new_label):

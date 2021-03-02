@@ -50,9 +50,8 @@ def log_in_user():
     user = crud.get_user_by_email(email)
 
     if user:
-            if user.password == password:
+            if user.check_password(password):
                 session["user"] = user.id
-                # session["user"] = user
                 return jsonify ({"success": "Successfully logged in!",
                                 "user_id": user.id,
                                 "user_first_name": user.first_name})
