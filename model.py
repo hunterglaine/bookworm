@@ -215,14 +215,17 @@ class UserEvent(db.Model):
         is 2 or less"""
         vote_list = self.voted_for.split()
 
-        if isbn in self.voted_for:
+        if isbn in vote_list:
             vote_list.remove(isbn) 
             self.voted_for = " ".join(vote_list)
-        else:
-            if len(vote_list) >= 2:
-                return
-            else:
-                self.voted_for += f"{isbn} "
+
+            return("removed")
+
+        if len(vote_list) < 2:
+            self.voted_for += f" {isbn} "
+
+            return("added")
+                
 
 
 class Friendship(db.Model):

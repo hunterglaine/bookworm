@@ -41,7 +41,7 @@ function UserEvents(props) {
     const increaseVote = (eventId, bookIsbn) => (evt) => {
         evt.preventDefault();
         
-        fetch("/api/update-vote", {
+        fetch("/api/vote", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"eventId": eventId,
@@ -51,7 +51,15 @@ function UserEvents(props) {
             },
         })
         .then(response => response.json())
-        .then(data => alert(data["success"]))
+        .then(data => {
+            if ("error" in data) {
+                alert(data["error"])
+            }
+            else {
+                alert(data["success"])
+            }
+            console.log(data)
+        })
     }
 
     return (
@@ -116,7 +124,11 @@ function UserEvents(props) {
                             {event.books.map(book =>
                                 (<div className="event-book">
                                     <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
-                                    {event.can_vote ? <button className="vote">Vote</button> : null}
+                                    {event.can_vote 
+                                    ? <div>
+                                        <button className="vote" id={book.isbn} onClick={increaseVote(event.id, book.isbn)} >Vote</button>
+                                    </div> 
+                                    : null}
                                 </div>)
                                 )
                             }

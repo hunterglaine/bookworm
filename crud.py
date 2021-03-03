@@ -325,10 +325,13 @@ def update_category_label(user_id, old_label, new_label):
     db.session.commit()
 
 
-def increase_event_book_vote_count(event_book):
+def update_event_book_vote_count(event_book, operation):
     """Updates the vote count on an event_book"""
+    if operation == "add":
+        event_book.vote_count += 1
+    elif operation =="remove":
+        event_book.vote_count -= 1
 
-    event_book.vote_count += 1
     db.session.commit()
 
 
@@ -358,10 +361,7 @@ def update_voting(event_id): # MAYBE CHANGE (?)
 
     event = get_event_by_id(event_id) 
 
-    if event.can_vote:
-        event.can_vote = False
-    else:
-        event.can_vote = True
+    event.can_vote = not event.can_vote
     
     db.session.commit()
 
@@ -392,6 +392,16 @@ def remove_book_from_category(isbn, category_id):
     # category is a category object that can reference the books table
     book = get_book_by_isbn(isbn)
     book.categories.remove(category)
+    db.session.commit()
+
+
+def remove_book_from_event(isbn, event_id):
+    """Removes a particular book from an event"""
+
+    event_book = EventBook.query.filter(EventBook.isbn == isbn, EventBook.event_id == event_id).first()
+    
+    event = get_event_by_id(event_id)
+    event.events_books.remove(event_book)
     db.session.commit()
 
 
