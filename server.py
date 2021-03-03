@@ -294,34 +294,38 @@ def update_event_book_votes():
     isbn = request.json.get("bookIsbn")
 
     user_event = crud.get_users_event_by_id(user_id, event_id)
-    print("THIS IS THE ISBN TRYING TO BE REMOVED", isbn)
-    print("THIS IS THE STRING IT IS BEING REMOVED FROM", user_event.voted_for)
+    books_voted_for = user_event.voted_for.split()
+    print("THISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", books_voted_for)
+ 
     update = user_event.update_voted_for(isbn) # returns, "removed", "added", or None
 
     if not update:
         # But buttons to vote should already be gone
-        return jsonify({"error": "You have already voted twice."})
+        return jsonify({"error": "You have already voted twice.",
+                        "booksVotedFor": books_voted_for + [user_event.event_id]})
     
     event_book = crud.get_event_book_by_isbn(event_id, isbn)
     book = crud.get_book_by_isbn(isbn)
+    books_voted_for = user_event.voted_for.split()
+    print("THISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", books_voted_for + [user_event.event_id])
 
     if update == "removed":
         crud.update_event_book_vote_count(event_book, "remove")
-        return jsonify({"success": f"You have successfully 'unvoted' for {book.title}."})
+        return jsonify({"success": f"You have successfully 'unvoted' for {book.title}.",
+                        "booksVotedFor": books_voted_for + [user_event.event_id]})
         # Maybe want to make the button Vote from Unvote?
     
     crud.update_event_book_vote_count(event_book, "add")
-    
-    books_voted_for = user_event.voted_for.split()
-    print("THISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", books_voted_for)
     
     if len(books_voted_for) >= 2:
         # Vote buttons on the front end should disappear (but unvote buttons should remain)
 
         return jsonify({"success": f"You voted for {book.title}",
+                        "booksVotedFor": books_voted_for + [user_event.event_id],
                         "buttons": "hidden"})
     
     return jsonify({"success": f"You voted for {book.title}",
+                    "booksVotedFor": books_voted_for + [user_event.event_id],
                     "buttons": "visible"})
     
 
