@@ -16,6 +16,7 @@ function App() {
     const [userCategories, setUserCategories] = React.useState();
     const [bookshelfCategories, setBookshelfCategories] = React.useState([]);
     const [bookForDetails, setBookForDetails] = React.useState({});
+    const [eventForDetails, setEventForDetails] = React.useState({});
 
     React.useEffect(() => {
       if (localStorage.getItem("userId") !== "null") {
@@ -69,13 +70,18 @@ function App() {
                 </Route>
                 <Route path="/user-events" >
                   <UserEvents userLoggedIn={userLoggedIn}
-                              setBookForDetails={setBookForDetails} />
+                              setBookForDetails={setBookForDetails}
+                              setEventForDetails={setEventForDetails} />
                 </Route>
                 <Route path="/all-events" >
                   <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
-                <Route exact path="/book-details/:categoryLabel/:eventId" >
+                {/* <Route exact path="/book-details/:categoryLabel/:eventId" >
                   <BookDetails bookForDetails={bookForDetails} />
+                </Route> */}
+                <Route exact path="/event-details/:type" >
+                  <EventDetails setBookForDetails={setBookForDetails}
+                                eventForDetails={eventForDetails} />
                 </Route>
               </Switch>
           </div>

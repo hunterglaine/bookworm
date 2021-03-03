@@ -11,6 +11,5 @@ function Book(props) {
 
     return (
         <img src={props.book.image} className="book-cover" alt={props.book.title} onClick={goToDetails} />
-        // onMouseOver={showTitleAuthor}
     )
 }
