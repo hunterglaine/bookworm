@@ -7,7 +7,7 @@ function Event(props) {
     const goToEventDetails = (type) => (evt) => {
         evt.preventDefault();
         props.setEventForDetails(event)
-        history.push(`/event-details/${type}`)
+        history.push(`/event-details/${event.id}/${type}`)
     }
 
     return (

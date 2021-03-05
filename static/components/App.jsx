@@ -17,6 +17,8 @@ function App() {
     const [bookshelfCategories, setBookshelfCategories] = React.useState([]);
     const [bookForDetails, setBookForDetails] = React.useState({});
     const [eventForDetails, setEventForDetails] = React.useState({});
+    const [newLabel, setNewLabel] = React.useState(null)
+  
 
     React.useEffect(() => {
       if (localStorage.getItem("userId") !== "null") {
@@ -46,13 +48,15 @@ function App() {
                 <Route path="/create-account">
                   <CreateAccount />
                 </Route>
-                <Route exact path="/user/:eventId">
+                <Route exact path="/user/:eventId/:type">
                   <UserPage 
                     userLoggedIn={userLoggedIn}
                     userCategories={userCategories}
                     setBookshelfCategories={setBookshelfCategories}
                     bookshelfCategories={bookshelfCategories}
                     setBookForDetails={setBookForDetails}
+                    newLabel={newLabel}
+                    setNewLabel={setNewLabel}
                    />
                 </Route>
                 <Route path="/book-search">
@@ -76,13 +80,13 @@ function App() {
                 <Route path="/all-events" >
                   <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
-                {/* <Route exact path="/book-details/:categoryLabel/:eventId" >
-                  <BookDetails bookForDetails={bookForDetails} />
-                </Route> */}
-                <Route exact path="/event-details/:type" >
-                  <EventDetails setBookForDetails={setBookForDetails}
-                                eventForDetails={eventForDetails} />
-                </Route>
+                {/* <Route exact path="/event-details/:eventId/:type" >
+                  {/* <EventDetails setBookForDetails={setBookForDetails}
+                                eventForDetails={eventForDetails}
+                //                 setChangeInEvent={setChangeInEvent}
+                //                 /> */}
+                               
+                {/*} </Route> */}
               </Switch>
           </div>
       </Router>

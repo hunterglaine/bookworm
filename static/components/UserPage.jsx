@@ -2,7 +2,8 @@
 
 function UserPage(props) {
 
-    let { eventId } = useParams();
+    const { eventId } = useParams();
+    const { type } = useParams();
     const userBookshelf = []
     
     React.useEffect(() =>  {
@@ -10,14 +11,16 @@ function UserPage(props) {
         .then (response => response.json())
         .then ((result) => Object.entries(result))
         .then((data) => props.setBookshelfCategories(data))
-    }, [])
+    }, [props.newLabel])
 
     for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
                             label={category[0]} 
                             books={category[1]} 
                             setBookForDetails={props.setBookForDetails}
-                            eventId={eventId} />)
+                            setNewLabel={props.setNewLabel}
+                            eventId={eventId}
+                            type={type} />)
     }
     return (
         <div>

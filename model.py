@@ -189,6 +189,18 @@ class EventBook(db.Model):
         return f"<EventBook id={self.id}>"
 
 
+    def to_dict(self):
+        """Turns event_book object into a dictionary"""
+
+        event_book = {"id": self.id,
+                    "isbn": self.isbn,
+                    "event_id": self.event_id,
+                    "vote_count": self.vote_count,
+                    "is_the_one": self.is_the_one}
+
+        return event_book
+
+
 class UserEvent(db.Model):
     """Event of a specific user."""
 
@@ -225,7 +237,12 @@ class UserEvent(db.Model):
             self.voted_for += f" {isbn} "
 
             return("added")
-                
+
+        
+        # def voted_to_dict(self):
+        #     """Returns a dicitionary..."""
+        #     user_event = {self.event_id: self.voted_for}
+
 
 
 class Friendship(db.Model):

@@ -42,7 +42,7 @@ function BookTile(props) {
                 }
                 else {
                     alert(data["success"]);
-                    history.push("/user/home")
+                    history.push("/user/home/browsing")
                 }
             })
         document.getElementById("add-to-category").reset();

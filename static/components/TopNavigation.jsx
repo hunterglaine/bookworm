@@ -41,7 +41,7 @@ function TopNavigation(props) {
                   </Link>
                 </li>
                 <li>
-                  <Link className="link-button" to={props.userLoggedIn.userId ? "/user/home" : "/create-account"}>
+                  <Link className="link-button" to={props.userLoggedIn.userId ? "/user/home/browsing" : "/create-account"}>
                     {props.userLoggedIn.userId ? "My Bookshelf" : "Create Account"}
                   </Link>
                 </li>

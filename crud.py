@@ -215,7 +215,7 @@ def get_all_events():
     return Event.query.filter(Event.is_private == False).all()
 
 
-def get_all_users_events(user_id):
+def get_all_events_for_user(user_id):
     """Returns a list of all events for a given user"""
 
     user = User.query.filter(User.id == user_id).options(db.\
@@ -231,6 +231,33 @@ def get_users_event_by_id(user_id, event_id):
                                         event_id == event_id).first()
     
     return user_event
+
+
+def get_all_users_events(user_id):
+    """Returns user event objects for a given user"""
+
+    users_events = UserEvent.query.filter(UserEvent.user_id == user_id, UserEvent.\
+                                        is_attending == True).all()
+    
+    return users_events
+
+
+def get_all_events_users(event_id):
+    """Returns user event objects for a given event"""
+
+    users_events = UserEvent.query.filter(UserEvent.event_id == event_id).all()
+    
+    return users_events
+
+
+def get_all_users_voted_for_books(user_id):
+    """Returns user event objects for a given user and event"""
+
+    users_events = get_all_users_events(user_id)
+    
+    user_event_voted_for = {user_event.event_id: user_event.voted_for.split() for user_event in users_events}
+    
+    return user_event_voted_for
 
 
 def get_all_books_for_event(event_id): # CHANGED
@@ -276,7 +303,6 @@ def get_event_by_id(event_id):
                             joinedload("users")).first()
 
     return event
-
 
 
 # ***** UPDATE Functions *****
@@ -364,6 +390,21 @@ def update_voting(event_id): # MAYBE CHANGE (?)
     event.can_vote = not event.can_vote
     
     db.session.commit()
+
+
+def reset_vote_count(event_book):
+    """Resets an event_book vote_count to 0"""
+
+    event_book.vote_count = 0
+    db.session.commit()
+
+
+def reset_voted_for(attendee):
+    """Reset voted_for for an attendee"""
+
+    attendee.voted_for = ""
+    db.session.commit()
+
 
 # ***** DELETE Functions *****
 def delete_category(label, user_id):
