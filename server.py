@@ -15,7 +15,7 @@ def show_homepage():
     return render_template("index.html")
 
 
-@app.route("/api/users", methods=["POST"])
+@app.route("/users", methods=["POST"])
 def create_new_user():
     """Create a new user."""
 
@@ -36,7 +36,7 @@ def create_new_user():
     return jsonify ({"user": user.to_dict()})
 
 
-@app.route("/api/login", methods=["POST"])
+@app.route("/login", methods=["POST"])
 def log_in_user():
     """Log a user in and show them they were successful or not."""
     
@@ -57,7 +57,7 @@ def log_in_user():
         return jsonify ({"error": "Sorry, but no account exists with that email."})
 
 
-@app.route("/api/logout", methods=["POST"])
+@app.route("/logout", methods=["POST"])
 def log_out_user():
     """Log a user out and show them they were successful or not."""
   
@@ -68,7 +68,7 @@ def log_out_user():
     return jsonify ({"success": f"{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!"})
 
 
-@app.route("/api/categories")
+@app.route("/categories")
 def get_user_categories():
     """Returns the categories for a given user."""
 
@@ -86,7 +86,7 @@ def get_user_categories():
     return jsonify({"categories": categories})
 
 
-@app.route("/api/add-category", methods=["POST"])
+@app.route("/add-category", methods=["POST"])
 def add_user_category():
     """Adds a new category to a user"""
 
@@ -105,7 +105,7 @@ def add_user_category():
         return jsonify ({"success": f"{new_category.label} has been added to {user.first_name}'s bookshelf!"})
 
 
-@app.route("/api/update-category", methods=["POST"])
+@app.route("/update-category", methods=["POST"])
 def update_category_label():
     """Updates a user's category label"""
 
@@ -123,7 +123,7 @@ def update_category_label():
                     "label": new_label})
 
 
-@app.route("/api/add-book-to-category", methods=["POST"])
+@app.route("/add-book-to-category", methods=["POST"])
 def add_user_book():
     """Adds a new book to a user's books"""
     if session.get("user"):
@@ -160,7 +160,7 @@ def add_user_book():
         # 'books_in_category': added_books
 
 
-@app.route("/api/remove-book-from-category", methods=["POST"])
+@app.route("/remove-book-from-category", methods=["POST"])
 def remove_book_from_category():
     """Removes a user's book from a category"""
 
@@ -177,7 +177,7 @@ def remove_book_from_category():
     return jsonify ({"success": f"{title} has successfully been removed from {label}."})
 
 
-@app.route("/api/user-data")
+@app.route("/user-data")
 def get_user_data():
     """Returns user's categories and books within them"""
 
@@ -205,7 +205,7 @@ def get_user_data():
 
 #### EVENT ROUTES ####
 
-@app.route("/api/new-event", methods=["POST"])
+@app.route("/new-event", methods=["POST"])
 def create_new_event():
     """Creates a new event"""
 
@@ -219,7 +219,7 @@ def create_new_event():
 
         # attendee = crud.get_user_by_id(host_id)
         new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
-        crud.create_user_event(host_id, new_event.id)
+        crud.create_event_attendee(host_id, new_event.id)
 
         return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
 
@@ -227,7 +227,7 @@ def create_new_event():
         return jsonify ({"error": "There was an error creating this event."})
 
 
-@app.route("/api/user-events")
+@app.route("/user-events")
 def get_user_events():
     """Returns user's events, hosting and attending"""
 
@@ -272,7 +272,7 @@ def get_user_events():
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
 
-@app.route("/api/update-event-books", methods=["POST"])
+@app.route("/update-event-books", methods=["POST"])
 def update_event_books():
     """Updates the status of can_suggest_books and can_vote on an event"""
 
@@ -304,7 +304,7 @@ def update_event_books():
                     else:
                         crud.reset_vote_count(event_book)
 
-                attendees = crud.get_all_events_users(event_id)
+                attendees = crud.get_all_events_attendees(event_id)
                 print("attendees", attendees)
                 for attendee in attendees:
                     crud.reset_voted_for(attendee)
@@ -313,25 +313,25 @@ def update_event_books():
             return jsonify({"success": "Voting has been updated"})
 
 
-@app.route("/api/vote", methods=["GET", "POST"])
+@app.route("/vote", methods=["GET", "POST"])
 def update_event_book_votes():
     """Increases the number of votes on a given event book"""
     user_id = session.get("user")
 
     if request.method == "GET":
         # get all of the user's event_books
-        users_events_dict = crud.get_all_users_voted_for_books(user_id)
-        print("THESE ARE USERS_EVENTS.voted_for", users_events_dict)
-        return jsonify(users_events_dict)
+        events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
+        print("THESE ARE EVENTS_ATTENDEE.voted_for", events_attendee_dict)
+        return jsonify(events_attendee_dict)
 
     else:
         event_id = request.json.get("eventId")
         isbn = request.json.get("bookIsbn")
 
-        user_event = crud.get_users_event_by_id(user_id, event_id)
+        event_attendee = crud.get_event_attendee_by_id(user_id, event_id)
     
-        update = user_event.update_voted_for(isbn) # returns, "removed", "added", or None
-        users_events_dict = crud.get_all_users_voted_for_books(user_id)
+        update = event_attendee.update_voted_for(isbn) # returns, "removed", "added", or None
+        events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
        
         events_books = crud.get_all_events_books(event_id)
         events_books = [event_book.to_dict() for event_book in events_books]
@@ -340,7 +340,7 @@ def update_event_book_votes():
         if not update:
             # But buttons to vote should already be gone
             return jsonify({"error": "You have already voted twice.",
-                            "booksVotedFor": users_events_dict,
+                            "booksVotedFor": events_attendee_dict,
                             "allEventsBooks": events_books})
         
         event_book = crud.get_event_book_by_isbn(event_id, isbn)
@@ -349,25 +349,25 @@ def update_event_book_votes():
         if update == "removed":
             crud.update_event_book_vote_count(event_book, "remove")
             return jsonify({"success": f"You have successfully 'unvoted' for {book.title}.",
-                            "booksVotedFor": users_events_dict,
+                            "booksVotedFor": events_attendee_dict,
                             "allEventsBooks": events_books})
            
         crud.update_event_book_vote_count(event_book, "add")
         
-        if len(users_events_dict[event_id]) >= 2:
+        if len(events_attendee_dict[event_id]) >= 2:
             # Vote buttons on the front end should disappear (but unvote buttons should remain)
             return jsonify({"success": f"You voted for {book.title}",
-                            "booksVotedFor": users_events_dict,
+                            "booksVotedFor": events_attendee_dict,
                             "buttons": "hidden",
                             "allEventsBooks": events_books})
         
         return jsonify({"success": f"You voted for {book.title}",
-                        "booksVotedFor": users_events_dict,
+                        "booksVotedFor": events_attendee_dict,
                         "buttons": "visible",
                         "allEventsBooks": events_books})
     
 
-@app.route("/api/all-events")
+@app.route("/all-events")
 def get_all_events():
     """Returns all events that are not private"""
 
@@ -392,7 +392,7 @@ def get_all_events():
     return jsonify (all_events_dict)
 
 
-@app.route("/api/add-attendee", methods=["POST"])
+@app.route("/add-attendee", methods=["POST"])
 def add_event_attendee():
     """Adds a user to an event as an attendee"""
 
@@ -404,12 +404,12 @@ def add_event_attendee():
     if user in attendees:
         return jsonify({"error": "You are already attending this event"})
 
-    crud.create_user_event(user_id, event_id)
+    crud.create_event_attendee(user_id, event_id)
 
     return jsonify ({"success": "You are now attending!"})
 
 
-@app.route("/api/add-book-to-event", methods=["POST"])
+@app.route("/add-book-to-event", methods=["POST"])
 def add_book_to_event():
 
     event_id = request.json.get("event_id")

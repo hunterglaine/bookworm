@@ -18,7 +18,7 @@ function LogIn(props) {
             const userDetails = {"email": userEmail,
                                 "password": userPassword};
     
-            fetch("/api/login", {
+            fetch("/login", {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify(userDetails),
@@ -48,7 +48,7 @@ function LogIn(props) {
         return (
         <div>
             <h1>Log In</h1>
-            <form action="/api/login" onSubmit={logUserIn}>
+            <form action="/login" onSubmit={logUserIn}>
                 <input type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} autoFocus required />
                 <input type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} required />
                 <input type="submit" value="Submit" />

@@ -53,7 +53,7 @@ class User(db.Model):
     state = db.Column(db.String(2))
     is_searchable = db.Column(db.Boolean, default=True) 
     
-    # events = backref to events table, with secondary users_events
+    # events = backref to events table, with secondary events_attendees
     # categories = backref to categories table
 
     def __repr__(self):
@@ -143,7 +143,7 @@ class Event(db.Model):
     can_add_books = db.Column(db.Boolean, default=False)
     can_vote = db.Column(db.Boolean, default=False)
 
-    users = db.relationship("User", secondary="users_events", backref="events")
+    users = db.relationship("User", secondary="events_attendees", backref="events")
     # events_books = backref to events_books table
 
     def __repr__(self):
@@ -201,10 +201,10 @@ class EventBook(db.Model):
         return event_book
 
 
-class UserEvent(db.Model):
-    """Event of a specific user."""
+class EventAttendee(db.Model): # chng
+    """Event a specific user is attending."""
 
-    __tablename__ = "users_events"
+    __tablename__ = "events_attendees"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -212,13 +212,13 @@ class UserEvent(db.Model):
     is_attending = db.Column(db.Boolean, default=True)
     voted_for = db.Column(db.String, default="")
 
-    event = db.relationship("Event", backref="users_events")
-    user = db.relationship("User", backref="users_events")
+    event = db.relationship("Event", backref="events_attendees")
+    user = db.relationship("User", backref="events_attendees")
 
 
     def __repr__(self):
 
-        return f"<UserEvent id={self.id}>"
+        return f"<EventAttendee id={self.id}>"
 
     
     def update_voted_for(self, isbn):
@@ -241,7 +241,7 @@ class UserEvent(db.Model):
         
         # def voted_to_dict(self):
         #     """Returns a dicitionary..."""
-        #     user_event = {self.event_id: self.voted_for}
+        #     event_attendee = {self.event_id: self.voted_for}
 
 
 

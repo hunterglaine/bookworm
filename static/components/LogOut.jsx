@@ -5,7 +5,7 @@ function LogOut(props) {
     let history = useHistory();
 
     React.useEffect(() =>  {
-        fetch("/api/logout", {
+        fetch("/logout", {
             method: "POST",
             credentials: "include",
             headers: {

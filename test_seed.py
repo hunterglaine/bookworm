@@ -63,10 +63,10 @@ for n in range(6):
     new_events.append(new_event)
 
     # Create fake user_events for testing
-    for n in range(4):
+    for n in range(4): 
         random_user = choice(new_users)
         event = new_event
-        crud.create_user_event(random_user.id, event.id)
+        crud.create_event_attendee(random_user.id, event.id)
 
         # Create fake event_books for testing
         random_book = choice(new_books)

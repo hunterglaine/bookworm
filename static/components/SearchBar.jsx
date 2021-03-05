@@ -8,7 +8,7 @@ function SearchBar(props) {
         evt.preventDefault();
         props.setBookQuery(document.getElementById("book-search").value)
 
-        fetch("/api/categories")
+        fetch("/categories")
         .then (response => response.json())
         .then(result => {console.log(result["categories"]); return result;})
         .then((data) => props.setUserCategories(data["categories"]))

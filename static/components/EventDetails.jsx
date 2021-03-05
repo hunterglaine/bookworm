@@ -9,7 +9,7 @@ function EventDetails(props) {
     let history = useHistory();
 
     React.useEffect(() => {
-        fetch("/api/vote", {
+        fetch("/vote", {
             method: "GET"
         })
         .then((response) => response.json())
@@ -21,7 +21,7 @@ function EventDetails(props) {
     const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();
 
-        fetch("/api/update-event-books", {
+        fetch("/update-event-books", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"event_id": eventId,
@@ -39,7 +39,7 @@ function EventDetails(props) {
         evt.preventDefault();
         console.log("this ran")
         
-        fetch("/api/vote", {
+        fetch("/vote", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"eventId": event.id,

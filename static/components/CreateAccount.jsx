@@ -23,7 +23,7 @@ function CreateAccount() {
                                 "city": city,
                                 "state": userState}
 
-        fetch("/api/users", {
+        fetch("/users", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(newUserDetails),

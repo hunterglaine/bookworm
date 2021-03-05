@@ -6,7 +6,7 @@ function UserEvents(props) {
     const [changeInEvent, setChangeInEvent] = React.useState(null)
 
     React.useEffect(() =>  {
-        fetch("/api/user-events")
+        fetch("/user-events")
         .then(response => response.json())
         .then(data => {
             if ("error" in data) {

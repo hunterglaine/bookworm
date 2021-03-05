@@ -7,7 +7,7 @@ function UserPage(props) {
     const userBookshelf = []
     
     React.useEffect(() =>  {
-        fetch("/api/user-data")
+        fetch("/user-data")
         .then (response => response.json())
         .then ((result) => Object.entries(result))
         .then((data) => props.setBookshelfCategories(data))

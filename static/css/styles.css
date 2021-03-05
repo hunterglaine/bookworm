@@ -83,3 +83,9 @@ h1.bookshelf-title {
     margin: 0;
     font: Luminari, fantasy;
 }
+
+/* div.scroll-shelf {
+    width: 95%;
+    overflow-x: scroll;
+    position: relative;
+} */

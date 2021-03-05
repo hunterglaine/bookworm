@@ -21,7 +21,7 @@ function CreateEvent(props) {
                                 "startTime": startTime,
                                 "endTime": endTime}
 
-        fetch("/api/new-event", {
+        fetch("/new-event", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(eventDetails),

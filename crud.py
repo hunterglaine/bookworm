@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-from model import db, Book, User, Category, BookCategory, Event, EventBook, UserEvent, Friendship, connect_to_db
+from model import db, Book, User, Category, BookCategory, Event, EventBook, EventAttendee, Friendship, connect_to_db
 
 
 # ***** CREATE FUNCTIONS *****
@@ -83,8 +83,8 @@ def create_event_book(event, book): # CHANGED
     return event_book
 
 
-def create_user_event(user_id, event_id):
-    """Create and return a new event_user (attendee)"""
+def create_event_attendee(user_id, event_id):
+    """Create and return a new event_attendee"""
 
     user = get_user_by_id(user_id)
     event = get_event_by_id(event_id)
@@ -224,40 +224,41 @@ def get_all_events_for_user(user_id):
     return user.events
 
 
-def get_users_event_by_id(user_id, event_id):
-    """Returns a user event object for a given user and event"""
+def get_event_attendee_by_id(user_id, event_id):
+    """Returns an event_attendee object for a given user and event"""
 
-    user_event = UserEvent.query.filter(UserEvent.user_id == user_id, UserEvent.\
+    event_attendee = EventAttendee.query.filter(EventAttendee.user_id == user_id, EventAttendee.\
                                         event_id == event_id).first()
     
-    return user_event
+    return event_attendee
 
 
-def get_all_users_events(user_id):
+def get_all_events_attendees_for_user(user_id):
     """Returns user event objects for a given user"""
 
-    users_events = UserEvent.query.filter(UserEvent.user_id == user_id, UserEvent.\
+    events_attendees = EventAttendee.query.filter(EventAttendee.user_id == user_id, EventAttendee.\
                                         is_attending == True).all()
     
-    return users_events
+    return events_attendees
 
 
-def get_all_events_users(event_id):
-    """Returns user event objects for a given event"""
+def get_all_events_attendees(event_id): #chng
+    """Returns event_attendee objects for a given event"""
 
-    users_events = UserEvent.query.filter(UserEvent.event_id == event_id).all()
+    events_attendees = EventAttendee.query.filter(EventAttendee.event_id == event_id).all()
     
-    return users_events
+    return events_attendees
 
 
 def get_all_users_voted_for_books(user_id):
     """Returns user event objects for a given user and event"""
 
-    users_events = get_all_users_events(user_id)
+    events_attendees = get_all_events_attendees_for_user(user_id)
     
-    user_event_voted_for = {user_event.event_id: user_event.voted_for.split() for user_event in users_events}
+    event_attendee_voted_for = {event_attendee.event_id: event_attendee.voted_for.\
+                                split() for event_attendee in events_attendees}
     
-    return user_event_voted_for
+    return event_attendee_voted_for
 
 
 def get_all_books_for_event(event_id): # CHANGED

@@ -9,7 +9,7 @@ function BookDetails(props) {
     const removeBook = (evt) => {
         evt.preventDefault;
 
-        fetch("/api/remove-book-from-category", {
+        fetch("/remove-book-from-category", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"category": categoryLabel,
@@ -27,7 +27,7 @@ function BookDetails(props) {
     const addEventBook = (evt) => {
         evt.preventDefault;
 
-        fetch("/api/add-book-to-event", {
+        fetch("/add-book-to-event", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"event_id": eventId,

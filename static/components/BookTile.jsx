@@ -27,7 +27,7 @@ function BookTile(props) {
         let categoryDetails = {"label": categoryName,
                                 "book": book}
 
-        fetch("/api/add-book-to-category", {
+        fetch("/add-book-to-category", {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify(categoryDetails),

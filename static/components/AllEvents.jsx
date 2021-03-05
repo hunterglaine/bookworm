@@ -8,7 +8,7 @@ function AllEvents(props) {
             
         console.log(currentEvent)
         
-        fetch('/api/add-attendee', {
+        fetch('/add-attendee', {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"event": currentEvent}),
@@ -32,7 +32,7 @@ function AllEvents(props) {
     }, [currentEvent])
 
     React.useEffect(() => {
-        fetch("/api/all-events")
+        fetch("/all-events")
         .then(response => response.json())
         .then(data => setAllEvents(data))
     }, [])
