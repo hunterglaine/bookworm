@@ -28,7 +28,7 @@ function UserEvents(props) {
             <h1>Book Club Meetings You Are Hosting</h1>
             {myEvents.hosting 
                 ? myEvents.hosting.map(event => 
-                <EventDetails event={event} type="hosting" setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails} />
+                <EventDetails event={event} type="hosting" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails} />
                 // <Event event={event} type="hosting" setEventForDetails={props.setEventForDetails} />
                 ) 
                 : "You are not currently hosting any events"
@@ -36,7 +36,7 @@ function UserEvents(props) {
             <h1>Book Club Meetings You Are Attending</h1>
             {myEvents.attending 
                 ? myEvents.attending.map(event => 
-                <EventDetails event={event} type="attending" setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails}  />
+                <EventDetails event={event} type="attending" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails}  />
                 // <Event event={event} type="attending" setEventForDetails={props.setEventForDetails} />
                 ) 
                 : "You are not currently attending any events"

@@ -177,27 +177,43 @@ def remove_book_from_category():
     return jsonify ({"success": f"{title} has successfully been removed from {label}."})
 
 
-@app.route("/user-data")
+@app.route("/user-data", methods=["GET", "POST"])
 def get_user_data():
     """Returns user's categories and books within them"""
 
     if session.get("user"):
         user_id = session["user"]
 
-        category_labels = crud.get_all_user_category_labels(user_id)
-        # A list of the user's category names
+        if request.method == "POST":
+            new_first_name = request.json.get("newFirstName")
+            new_last_name = request.json.get("newLastName")
+            new_email = request.json.get("newEmail")
+            new_city = request.json.get("newCity")
+            new_state = request.json.get("newState")
+            old_password = request.json.get("oldPassword")
+            new_password = request.json.get("newPassword")
 
-        category_dict = {}
-        book_list = []
-        for category in category_labels:
-            books = crud.get_all_books_in_category(user_id, category)
-            for book in books:
-                book_list.append(book.to_dict())
-            
-            category_dict[category] = book_list
+            crud.update_user_account(user_id, new_first_name, new_last_name, 
+                                    new_email, new_city, new_state, 
+                                    old_password, new_password)
+
+            return jsonify ({"success": "Your account has successfully been updated"})
+
+        if request.method == "GET":
+            category_labels = crud.get_all_user_category_labels(user_id)
+            # A list of the user's category names
+
+            category_dict = {}
             book_list = []
+            for category in category_labels:
+                books = crud.get_all_books_in_category(user_id, category)
+                for book in books:
+                    book_list.append(book.to_dict())
+                
+                category_dict[category] = book_list
+                book_list = []
 
-        return jsonify (category_dict)
+            return jsonify (category_dict)
 
     else:
         return jsonify ({'error': 'User must be logged in to view this page.'})
@@ -272,7 +288,7 @@ def get_user_events():
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
 
-@app.route("/update-event-books", methods=["POST"])
+@app.route("/event-books", methods=["POST"])
 def update_event_books():
     """Updates the status of can_suggest_books and can_vote on an event"""
 
@@ -321,6 +337,8 @@ def update_event_book_votes():
     if request.method == "GET":
         # get all of the user's event_books
         events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
+        # dictionary with event_id as key and list of book isbn's that the given
+        # user has voted for (if any) for each event
         print("THESE ARE EVENTS_ATTENDEE.voted_for", events_attendee_dict)
         return jsonify(events_attendee_dict)
 

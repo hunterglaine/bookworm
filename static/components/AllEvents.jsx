@@ -3,6 +3,7 @@
 function AllEvents(props) {
     const [allEvents, setAllEvents] = React.useState({})
     const [currentEvent, setCurrentEvent] = React.useState(null)
+    let history = useHistory();
 
     const addAttendee = () => {
             
@@ -22,7 +23,8 @@ function AllEvents(props) {
             alert(data["error"]);
         }
         else {
-            console.log(data["success"])
+            alert(data["success"])
+            history.push("/user-events")
         } 
     })
 }

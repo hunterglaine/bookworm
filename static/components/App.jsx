@@ -59,6 +59,11 @@ function App() {
                     setNewLabel={setNewLabel}
                    />
                 </Route>
+                <Route exact path="/update-account-info">
+                  <UpdateAccount 
+                    userLoggedIn={userLoggedIn}
+                   />
+                </Route>
                 <Route path="/book-search">
                   <SearchResults 
                     bookQuery={bookQuery} 
@@ -80,13 +85,6 @@ function App() {
                 <Route path="/all-events" >
                   <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
-                {/* <Route exact path="/event-details/:eventId/:type" >
-                  {/* <EventDetails setBookForDetails={setBookForDetails}
-                                eventForDetails={eventForDetails}
-                //                 setChangeInEvent={setChangeInEvent}
-                //                 /> */}
-                               
-                {/*} </Route> */}
               </Switch>
           </div>
       </Router>

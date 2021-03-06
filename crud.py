@@ -251,7 +251,7 @@ def get_all_events_attendees(event_id): #chng
 
 
 def get_all_users_voted_for_books(user_id):
-    """Returns user event objects for a given user and event"""
+    """Returns event_attendee objects for a given user and event"""
 
     events_attendees = get_all_events_attendees_for_user(user_id)
     
@@ -312,6 +312,35 @@ def make_user_private(user_id):
 
     user = get_user_by_id(user_id)
     user.is_searchable = False
+    db.session.commit()
+
+
+def update_user_account(user_id, new_first_name=None, new_last_name=None, 
+                        new_email=None, new_city=None, new_state=None,
+                        old_password=None, new_password=None):
+    """Update info for a given user's account"""
+
+    user = get_user_by_id(user_id)
+
+    if new_first_name:
+        user.first_name = new_first_name
+
+    if new_last_name:
+        user.last_name = new_last_name
+
+    if new_email:
+        user.email = new_email
+
+    if new_city:
+        user.city = new_city
+    
+    if new_state:
+        user.state = new_state
+
+    if new_password:
+        if user.check_password(old_password):
+            user.set_password(new_password)
+    
     db.session.commit()
 
 

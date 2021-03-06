@@ -16,12 +16,12 @@ function EventDetails(props) {
         .then((data) => {
             console.log(data)
             setBooksVotedFor(data)})
-    }, [])
-
+    }, [props.changeInEvent])
+    
     const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();
 
-        fetch("/update-event-books", {
+        fetch("/event-books", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"event_id": eventId,
@@ -103,18 +103,18 @@ function EventDetails(props) {
             <div>
                 {event.can_add_books 
                 ? <div>
-                        <button onClick={updateEventBooks(event.id, "suggest")}>
-                            Stop Book Suggestions
-                        </button>
-                        <button onClick={() => history.push(`/user/${event.id}/${props.type}`)}>
-                            Suggest a Book
-                        </button>
-                    </div> 
-                        : <button onClick={updateEventBooks(event.id, "suggest")}>
-                            Allow Book Suggestions
-                        </button>
+                    <button onClick={updateEventBooks(event.id, "suggest")}>
+                        Stop Book Suggestions
+                    </button>
+                    <button onClick={() => history.push(`/user/${event.id}/${props.type}`)}>
+                        Suggest a Book
+                    </button>
+                </div> 
+                : <button onClick={updateEventBooks(event.id, "suggest")}>
+                    Allow Book Suggestions
+                </button>
                 }
-                {event.can_vote 
+                {event.can_vote /*&& !event.can_add_books */
                     ? <button onClick={updateEventBooks(event.id, "vote")}>
                         Stop the Voting
                     </button> 

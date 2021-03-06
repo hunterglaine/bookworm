@@ -5,13 +5,22 @@ function UserPage(props) {
     const { eventId } = useParams();
     const { type } = useParams();
     const userBookshelf = []
+    let history = useHistory();
     
     React.useEffect(() =>  {
-        fetch("/user-data")
+        fetch("/user-data", {
+            method: "GET"
+        })
         .then (response => response.json())
         .then ((result) => Object.entries(result))
         .then((data) => props.setBookshelfCategories(data))
     }, [props.newLabel])
+
+
+    // const updateAccountForm = () => {
+    //     history.push("/update-account-info")
+    // }
+
 
     for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
@@ -27,7 +36,7 @@ function UserPage(props) {
             <h1 className="bookshelf-title">
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
             </h1>
-            
+            <button onClick={() => history.push("/update-account-info")} >Update My Account Info</button>
             <div>{userBookshelf}</div>
         </div>
 
