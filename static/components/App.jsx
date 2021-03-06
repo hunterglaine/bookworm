@@ -7,6 +7,12 @@ const Route = ReactRouterDOM.Route;
 const useHistory = ReactRouterDOM.useHistory;
 const useParams = ReactRouterDOM.useParams;
 
+const Navbar = ReactBootstrap.Navbar;
+const Nav = ReactBootstrap.Nav;
+const Form = ReactBootstrap.Form;
+const FormControl = ReactBootstrap.FormControl;
+const Button = ReactBootstrap.Button;
+
 
 function App() {
 

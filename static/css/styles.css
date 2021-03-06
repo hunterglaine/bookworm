@@ -3,6 +3,10 @@ body {
     font-family: Open Sans Condensed;
 }
 
+.color-nav {
+    background-color: #7db6a3;
+}
+
 nav ul {
     width: 100%;
     float: left;
@@ -26,7 +30,7 @@ nav li .link-button {
     text-decoration: none;
     font-weight: bold;
     color: #000000;
-    display: block;
+    /* display: block; */
     padding: 2rem;
 }
 

@@ -19,11 +19,14 @@ function SearchBar(props) {
     }
     
     return (
-            <form id="search-bar" onSubmit={bookSearch}>
-                <input  type="text" id="book-search" placeholder="Search for book by title or author" ></input>
-                {/* onChange={(e) => props.setBookQuery(e.target.value)} */}
-                <input type="submit" ></input>
-            </form>
+            // <form id="search-bar" onSubmit={bookSearch}>
+            <Form id="search-bar" onSubmit={bookSearch} inline>
+                <FormControl type="text" id="book-search" placeholder="Search for book by title or author" className="ml-sm-2" />
+                {/* <input  type="text" id="book-search" placeholder="Search for book by title or author" ></input> */}
+                <Button type="submit" variant="outline-dark" inline>Search</Button>
+                {/* <input type="submit" ></input> */}
+            </Form>
+            // </form>
     );
     
 }
