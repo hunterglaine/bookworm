@@ -61,7 +61,8 @@ function CategoryContainer(props) {
             <input type="submit" />
         </form>
         <button onClick={showForm(1)}>Change Category Name</button>
-        <div className="scroll-shelf">{booksInCategory}</div>
+        {/* <div className="scroll-shelf" >{booksInCategory}</div> */}
+        <div>{booksInCategory}</div>
         <img src="/static/img/single-shelf.PNG" alt=""/>
         </div>
     )

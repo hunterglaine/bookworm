@@ -18,7 +18,7 @@ function TopNavigation(props) {
         // </div>
 
         <Navbar variant="dark" className="color-nav" sticky="top" >
-          <Navbar.Brand href="#home"><img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/></Navbar.Brand>
+          <Navbar.Brand><img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/></Navbar.Brand>
           {/* <Form inline> */}
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-info" inline>Search</Button> */}
@@ -29,7 +29,13 @@ function TopNavigation(props) {
               setUserCategories={props.setUserCategories} 
             />
           {/* </Form> */}
+          
           <Nav as="ul">
+            <Nav.Item as="li" className="ml-auto">
+              {props.userLoggedIn.userId 
+                ? <Link className="link-button" to="/user-events">My Events</Link>
+                : null}
+            </Nav.Item>
             <Nav.Item as="li" className="ml-auto">
               <Link className="link-button" to="/all-events">
                 All Bookworm Events
@@ -40,14 +46,10 @@ function TopNavigation(props) {
                 {props.userLoggedIn.userId ? "Log Out" : "Log In"}
               </Link>
             </Nav.Item>
-            <Nav.Item as="li" className="ml-auto">
-              {props.userLoggedIn.userId 
-                ? <Link className="link-button" to="/user-events">My Events</Link>
-                : null}
                {/* <Link className="link-button" to={props.userLoggedIn.userId ? "/user-events" : null }>
                  {props.userLoggedIn.userId ? "My Events" : null }
                </Link> */}
-            </Nav.Item>
+           
             <Nav.Item as="li" className="ml-auto">
               <Link className="link-button" to={props.userLoggedIn.userId ? "/user/home/browsing" : "/create-account"}>
                 {props.userLoggedIn.userId ? "My Bookshelf" : "Create Account"}

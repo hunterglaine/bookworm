@@ -13,3 +13,5 @@ function Book(props) {
         <img src={props.book.image} className="book-cover" alt={props.book.title} onClick={goToDetails} />
     )
 }
+
+className="d-inline-block w-5" 
