@@ -37,7 +37,7 @@ function UserPage(props) {
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
             </h1>
             <button onClick={() => history.push("/update-account-info")} >Update My Account Info</button>
-            <div>{userBookshelf}</div>
+            <Container>{userBookshelf}</Container>
         </div>
 
         // Get a list of the user's categories

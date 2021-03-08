@@ -9,8 +9,8 @@ function BookDetails(props) {
     const removeBook = (evt) => {
         evt.preventDefault;
 
-        fetch("/remove-book-from-category", {
-            method: "POST",
+        fetch("/categories", {
+            method: "DELETE",
             credentials: "include",
             body: JSON.stringify({"category": categoryLabel,
                                     "isbn": props.bookForDetails.isbn,

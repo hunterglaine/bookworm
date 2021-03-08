@@ -13,6 +13,9 @@ const Form = ReactBootstrap.Form;
 const FormControl = ReactBootstrap.FormControl;
 const Button = ReactBootstrap.Button;
 const Carousel = ReactBootstrap.Carousel;
+const Container = ReactBootstrap.Container;
+const Row = ReactBootstrap.Row;
+const Col = ReactBootstrap.Col;
 
 
 function App() {

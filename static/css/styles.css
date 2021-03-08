@@ -74,12 +74,24 @@ button.vote {
     height: auto;
 }
 
-img.book-cover {
-    margin: 1rem;
-}
-
 h1.bookshelf-title {
-    margin: 0;
+    text-align: center;
+    margin: 2rem;
     font: Luminari, fantasy;
 }
 
+.scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+  
+.book-cover {
+    margin: 1rem;
+    flex: 0 0 auto;
+}
+
+.book-cover:hover {   
+    transform: scale(1.2);
+}

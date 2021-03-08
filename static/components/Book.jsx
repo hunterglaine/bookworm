@@ -10,8 +10,10 @@ function Book(props) {
     }
 
     return (
-        <img src={props.book.image} className="book-cover" alt={props.book.title} onClick={goToDetails} />
+        <div className="book-cover">
+            <img src={props.book.image} alt={props.book.title} onClick={goToDetails} />
+        </div>     
     )
 }
 
-className="d-inline-block w-5" 
+// className="d-inline-block w-5" 

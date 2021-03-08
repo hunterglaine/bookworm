@@ -1,6 +1,7 @@
 import unittest
 import server
 import crud
+import json
 
 
 class MyAppUnitTestCase(unittest.TestCase):
@@ -11,14 +12,22 @@ class MyAppUnitTestCase(unittest.TestCase):
         # self.assertIn(b"email='hunterglaine@gmail.com'>", result.data)
         # # crud.create_new_user()
        
-        # client = server.app.test_client()
-        # result = client.post("/users", data={"first_name": "Hunter",
-        #                         "last_name": "Laine",
-        #                         "email": "yichen@test.com",
-        #                         "password": "test",
-        #                         "city": "San Francisco",
-        #                         "state": "CA"})
-        # self.assertIn(b"""{"user": {"first_name": Hunter,""", result.data)
+        client = server.app.test_client()
+        result = client.post("/users", json={"first_name": "Yichen",
+                                "last_name": "Dai",
+                                "email": "yichen@test.com",
+                                "password": "test",
+                                "city": "San Francisco",
+                                "state": "CA"})
+        json_data = result.get_json()
+        self.assertIn(b"email: 'yichen@test.com'>", result.data)
+    #     with app.test_client() as c:
+    # rv = c.post('/api/auth', json={
+    #     'email': 'flask@example.com', 'password': 'secret'
+    # })
+    # json_data = rv.get_json()
+    # assert verify_token(email, json_data['token'])
+
 
 
 if __name__ == "__main__":

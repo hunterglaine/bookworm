@@ -23,12 +23,13 @@ function CategoryContainer(props) {
 
     const updateCategory = (evt) => {
         evt.preventDefault();
-        console.log("This is the labelChange.curretn useRef:", labelChange.current)
-            fetch("/update-category", {
+        console.log("This is the labelChange.current useRef:", labelChange.current)
+            // fetch("/update-category", {
+            fetch("/categories", {
                 method: "POST",
                 credentials: "include",
                 body: JSON.stringify({"old_label": props.label,
-                                        "new_label": labelChange.current}),
+                                    "new_label": labelChange.current}),
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -39,6 +40,23 @@ function CategoryContainer(props) {
                 props.setNewLabel(data.label)
                 document.getElementById(`change-label-${props.label}`).style.visibility="hidden";
                 document.getElementById(`change-label-${props.label}`).reset();
+        })
+    }
+
+    const deleteCategory = (evt) => {
+        evt.preventDefault();
+        fetch("/categories", {
+            method: "DELETE",
+            credentials: "include",
+            body: JSON.stringify({"label": props.label}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data["success"]);
+            props.setNewLabel(data.label);
         })
     }
 
@@ -53,17 +71,28 @@ function CategoryContainer(props) {
     }
     
     return ( 
-        <div>
-        <h1>{props.label}</h1>
-        <form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} >
-            <input type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
-            <input type="button" value="Nevermind" onClick={showForm(0)} />
-            <input type="submit" />
-        </form>
-        <button onClick={showForm(1)}>Change Category Name</button>
+        <Container>
+        <Row>
+            <Col><h3>{props.label}</h3></Col>
+            <Col>
+            <Form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} inline >
+                <FormControl type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
+                <Button type="button" onClick={showForm(0)}>Nevermind</Button>
+                <Button type="submit" >Submit</Button>
+            </Form>
+            </Col>
+        </Row>
+        <Row>
+            <Col sm={3}>
+            <Button onClick={showForm(1)}>Change Category Name</Button>
+            </Col>
+            <Col sm={3}>
+            <Button onClick={deleteCategory}>Delete Category</Button>
+            </Col>
+        </Row>
         {/* <div className="scroll-shelf" >{booksInCategory}</div> */}
-        <div>{booksInCategory}</div>
-        <img src="/static/img/single-shelf.PNG" alt=""/>
-        </div>
+        <div className="scrolling-wrapper-flexbox">{booksInCategory}</div>
+        <Row><img src="/static/img/single-shelf.PNG" alt=""/></Row>
+        </Container>
     )
 }

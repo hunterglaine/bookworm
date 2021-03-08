@@ -67,114 +67,95 @@ def log_out_user():
 
     return jsonify ({"success": f"{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!"})
 
-
-@app.route("/categories")
-def get_user_categories():
-    """Returns the categories for a given user."""
-
-    categories = []
-
-    if session.get("user"):
-        category_objects = crud.get_all_user_categories(session["user"])
-        # category_objects = crud.get_all_user_categories(session["user"].id)
-
-        for category_object in category_objects:
-
-            dict_category = category_object.to_dict()
-            categories.append(dict_category)
-
-    return jsonify({"categories": categories})
-
-
-@app.route("/add-category", methods=["POST"])
-def add_user_category():
-    """Adds a new category to a user"""
+@app.route("/categories", methods=["GET", "POST", "PUT", "DELETE"])
+def get_and_update_categories():
+    """Gets or updates a user's categories"""
 
     if session.get("user"):
         user_id = session["user"]
-        # user = session["user"]
-        label = request.json.get("label")
 
-        user = crud.get_user_by_id(user_id)
+        if request.method == "GET":
+            categories = []
+
+            category_objects = crud.get_all_user_categories(session["user"])
+            # category_objects = crud.get_all_user_categories(session["user"].id)
+
+            for category_object in category_objects:
+
+                dict_category = category_object.to_dict()
+                categories.append(dict_category)
+
+            return jsonify({"categories": categories})
+
+        elif request.method == "POST":
+            if request.json.get("label"):
+                label = request.json.get("label")
+
+                user = crud.get_user_by_id(user_id)
+            
+                if crud.get_category_by_label(user_id, label):
+                    return ({"error": f"{label} is already in {user.first_name}'s bookshelf!"})
+
+                new_category = crud.create_category(user_id, label)
+
+                return jsonify ({"success": f"{new_category.label} has been added to {user.first_name}'s bookshelf!"})
+            else:
+                old_label = request.json.get("old_label")
+                new_label = request.json.get("new_label")
+
+                crud.update_category_label(user_id, old_label, new_label)
+
+                return jsonify({"success": f"{old_label} has been changed to {new_label}!",
+                                "label": new_label})
+
+        elif request.method == "PUT":
+            label = request.json.get("label")
+            book_dict = request.json.get("book")
+            isbn = book_dict["id"]
+            book = crud.get_book_by_isbn(isbn)
+            category = crud.get_category_by_label(user_id, label)
         
-        if crud.get_category_by_label(user_id, label):
-            return ({"error": f"{label} is already in {user.first_name}'s bookshelf!"})
-
-        new_category = crud.create_category(user_id, label)
-
-        return jsonify ({"success": f"{new_category.label} has been added to {user.first_name}'s bookshelf!"})
-
-
-@app.route("/update-category", methods=["POST"])
-def update_category_label():
-    """Updates a user's category label"""
-
-    if session.get("user"):
-        user_id = session["user"]
-        # user_id = session["user"].id
-        old_label = request.json.get("old_label")
-        print("old_label", old_label)
-        new_label = request.json.get("new_label")
-        print("new_label", new_label)
-
-    crud.update_category_label(user_id, old_label, new_label)
-
-    return jsonify({"success": f"{old_label} has been changed to {new_label}!",
-                    "label": new_label})
-
-
-@app.route("/add-book-to-category", methods=["POST"])
-def add_user_book():
-    """Adds a new book to a user's books"""
-    if session.get("user"):
-        user_id = session["user"]
-        label = request.json.get("label")
-        book_dict = request.json.get("book")
-        
-        isbn = book_dict["id"]
-
-        book = crud.get_book_by_isbn(isbn)
-        category = crud.get_category_by_label(user_id, label)
-        
-        if not book:
-            book = crud.create_book(isbn, 
+            if not book:
+                book = crud.create_book(isbn, 
                                         book_dict["volumeInfo"]["title"], 
                                         book_dict["volumeInfo"]["authors"], 
                                         book_dict["volumeInfo"]["description"], 
                                         book_dict["volumeInfo"]["pageCount"], 
                                         book_dict["volumeInfo"]["imageLinks"]["thumbnail"])
 
-        if not category:
-            category = crud.create_category(user_id, label)
+            if not category:
+                category = crud.create_category(user_id, label)
+
+                added_books = crud.create_book_category(book, category)
+                return jsonify ({"success": f"""A new category, {category.label}, has been added to your bookshelf and {book.title} has been added to it"""})
+
+            if book in crud.get_all_books_in_category(user_id, label):
+                return jsonify ({"error": f"{book.title} is already in your {category.label} books"})
 
             added_books = crud.create_book_category(book, category)
-            return jsonify ({"success": f"""A new category, {category.label}, has been added to your bookshelf and {book.title} has been added to it"""})
-
-        if book in crud.get_all_books_in_category(user_id, label):
-            return jsonify ({"error": f"{book.title} is already in your {category.label} books"})
-
-        added_books = crud.create_book_category(book, category)
-        # Right now, added_books is a list of all of the book objects in category
+            # Right now, added_books is a list of all of the book objects in category
         
-        return jsonify ({"success": f"{book.title} has been added to {category.label} books"})
-        # 'books_in_category': added_books
+            return jsonify ({"success": f"{book.title} has been added to {category.label} books"})
+            # 'books_in_category': added_books
 
+        elif request.method == "DELETE":
+            if request.json.get("label"):
+                label = request.json.get("label")
+                crud.delete_category(label, user_id)
 
-@app.route("/remove-book-from-category", methods=["POST"])
-def remove_book_from_category():
-    """Removes a user's book from a category"""
+                return jsonify ({"success": f"{label} has successfully been removed from your bookshelf.",
+                                "label": ""})
 
-    if session.get("user"):
-        user_id = session["user"]
-        label = request.json.get("category")
-        isbn = request.json.get("isbn")
-        title = request.json.get("title")
+            else: 
+                label = request.json.get("category")
+                isbn = request.json.get("isbn")
+                title = request.json.get("title")
 
-        this_category = crud.get_category_by_label(user_id, label)
+                this_category = crud.get_category_by_label(user_id, label)
 
-        crud.remove_book_from_category(isbn, this_category.id)
+                crud.remove_book_from_category(isbn, this_category.id)
 
-    return jsonify ({"success": f"{title} has successfully been removed from {label}."})
+                return jsonify ({"success": f"{title} has successfully been removed from {label}.",})
 
 
 @app.route("/user-data", methods=["GET", "POST"])
@@ -221,7 +202,7 @@ def get_user_data():
 
 #### EVENT ROUTES ####
 
-@app.route("/new-event", methods=["POST"])
+@app.route("/new-event", methods=["POST"]) # PUT?
 def create_new_event():
     """Creates a new event"""
 
@@ -243,7 +224,7 @@ def create_new_event():
         return jsonify ({"error": "There was an error creating this event."})
 
 
-@app.route("/user-events")
+@app.route("/user-events") # GET
 def get_user_events():
     """Returns user's events, hosting and attending"""
 
@@ -288,7 +269,7 @@ def get_user_events():
         return jsonify ({'error': 'User must be logged in to view their events.'})
 
 
-@app.route("/event-books", methods=["POST"])
+@app.route("/event-books", methods=["POST"]) # Right as POST
 def update_event_books():
     """Updates the status of can_suggest_books and can_vote on an event"""
 
@@ -340,7 +321,10 @@ def update_event_book_votes():
         # dictionary with event_id as key and list of book isbn's that the given
         # user has voted for (if any) for each event
         print("THESE ARE EVENTS_ATTENDEE.voted_for", events_attendee_dict)
+        # events_books = crud.get_all_events_books(event_id)
+        # events_books = [event_book.to_dict() for event_book in events_books]
         return jsonify(events_attendee_dict)
+                        # "allEventsBooks": events_books})
 
     else:
         event_id = request.json.get("eventId")
@@ -385,13 +369,11 @@ def update_event_book_votes():
                         "allEventsBooks": events_books})
     
 
-@app.route("/all-events")
+@app.route("/all-events") # GET 
 def get_all_events():
     """Returns all events that are not private"""
 
     events = crud.get_all_events()
-
-    # all_events = [event.to_dict() for event in events]
 
     all_events = []
 
@@ -410,7 +392,7 @@ def get_all_events():
     return jsonify (all_events_dict)
 
 
-@app.route("/add-attendee", methods=["POST"])
+@app.route("/add-attendee", methods=["POST"])  # This could be PUT to combine routes
 def add_event_attendee():
     """Adds a user to an event as an attendee"""
 
@@ -427,7 +409,7 @@ def add_event_attendee():
     return jsonify ({"success": "You are now attending!"})
 
 
-@app.route("/add-book-to-event", methods=["POST"])
+@app.route("/add-book-to-event", methods=["POST"]) # Could also be PUT
 def add_book_to_event():
 
     event_id = request.json.get("event_id")

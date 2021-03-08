@@ -16,6 +16,14 @@ function EventDetails(props) {
         .then((data) => {
             console.log(data)
             setBooksVotedFor(data)})
+        fetch("/event-books", {
+            method: "GET"
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            setBooksVotedFor(data)})
+            // setEventsBooksVotes["allEventsBooks"]
     }, [props.changeInEvent])
     
     const updateEventBooks = (eventId, type) => (evt) => {
