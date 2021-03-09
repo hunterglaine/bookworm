@@ -43,7 +43,7 @@ def log_in_user():
     email = request.json.get("email")
     password = request.json.get("password")
 
-    user = crud.get_user_by_email(email)
+    user = crud.get_user_by_email(email.lower())
 
     if user:
             if user.check_password(password):

@@ -74,13 +74,13 @@ function BookTile(props) {
                             <p>{book.volumeInfo.description}</p>
                         </div>
                         <Form inline id="add-to-category" onSubmit={addToCategory} >
-                            <Row className="mt-3">
-                                <Col sm={3}>
+                            <Row className="mt-3" >
+                                <Col sm={2}>
                                     <h5>
-                                        Add to your bookshelf
+                                        Add to a Shelf
                                     </h5>
                                 </Col>
-                                <Col sm={3}>
+                                <Col sm={4}>
                                     <FormControl as="select" id="category-add" name="chooseCategory" onChange={(e) => {
                                         setCategoryName(e.target.value);
                                         addNewSelect();}} >
@@ -90,10 +90,10 @@ function BookTile(props) {
                                         <option value="add-new">Add New Category</option>
                                     </FormControl>
                                 </Col>
-                                <Col sm={3}>
+                                <Col sm={4}>
                                     <FormControl type="text" name="newCategory" id="new-category" style={{visibility: "hidden"}} onChange={(e) => setCategoryName(e.target.value)} />
                                 </Col>
-                                <Col sm={3}>
+                                <Col sm={2}>
                                     <Button className="button-bare" type="submit">Submit</Button>
                                 </Col>
                             </Row>

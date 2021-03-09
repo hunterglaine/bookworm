@@ -1,7 +1,7 @@
 "use strict";
 
 function EventDetails(props) {
-
+    
     const {event} = props
     const [booksVotedFor, setBooksVotedFor] = React.useState([])
     const [eventsBooksVotes, setEventsBooksVotes] = React.useState([])
@@ -60,8 +60,9 @@ function EventDetails(props) {
         })
         .then(response => response.json())
         .then(result => {
-            console.log("This is the result",result)
-            setBooksVotedFor(result["booksVotedFor"]); 
+            setBooksVotedFor(result["booksVotedFor"]);
+            // props.setChangeInEvent(result)
+            // props.setChangeInEvent(null)
             return result;
         })
         .then(data => {
@@ -71,6 +72,10 @@ function EventDetails(props) {
             else {
                 alert(data["success"])
                 setEventsBooksVotes(data["allEventsBooks"])
+                // allEventsBooks = data.allEventsBooks
+                // setEventsBooksVotes(eventsBooksVotes.filter((eventBook) => eventBook.vote_count !== data.allEventsBooks[0].vote_count).concat([data.allEventsBooks[0]]))
+                // props.setChangeInEvent(data)
+                // props.setChangeInEvent(null)
             }
             console.log(data)
         })

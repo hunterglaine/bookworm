@@ -23,7 +23,7 @@ def create_book(isbn, title, author, description, page_length, image):
 def create_user(first_name, last_name, email, password, city=None, 
                 state=None):
     """Create and return a new user"""
-
+    email = email.lower()
     user = User(first_name=first_name, 
                 last_name=last_name, 
                 email=email,  
@@ -218,10 +218,14 @@ def get_all_events():
 def get_all_events_for_user(user_id):
     """Returns a list of all events for a given user"""
 
-    user = User.query.filter(User.id == user_id).options(db.\
-                            joinedload("events")).first()
+    # user = User.query.filter(User.id == user_id).options(db.\
+    #                         joinedload("events")).first()
 
-    return user.events
+    events = Event.query.join(EventAttendee).filter(EventAttendee.user_id == user_id).\
+            order_by(Event.event_date.asc(), Event.start_time.asc()).all()
+      
+    return events
+    # return user.events
 
 
 def get_event_attendee_by_id(user_id, event_id):

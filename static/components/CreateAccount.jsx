@@ -78,7 +78,7 @@ function CreateAccount() {
                     <FormControl type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
                 </p>
                     <label htmlFor="your-sate">State</label>
-                    <select name="state" placeholder="California" onChange={(e) => setUserState(e.target.value)}>
+                    <FormControl as="select" name="state" placeholder="California" onChange={(e) => setUserState(e.target.value)}>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -130,7 +130,7 @@ function CreateAccount() {
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-                    </select>
+                    </FormControl>
                 <p>
                     <Button className="button" type="submit">Submit</Button>
                 </p>
