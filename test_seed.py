@@ -15,16 +15,9 @@ model.connect_to_db(server.app, "testbookworm")
 model.db.create_all()
 
 
-#create fake books for testing
+#create books for testing
 new_books = []
 
-# for n in range(10):
-#     isbn = f"testing12345{n}"
-#     title = f"Test Title Book {n}"
-#     author = f"Test Author {n}"
-#     description = f"Test overview for book {n}"
-#     page_length = n
-#     image = f"Test image path {n}"
 new_book = crud.create_book("oxxszQEACAAJ", "Harry Potter and the Half-Blood Prince", 
                             "J. K. Rowling", "Harry Potter, now sixteen-years-old, begins his sixth year at school in the midst of the battle between good and evil which has heated up with the return of the Dark Lord Voldemort.",
                             652, "http://books.google.com/books/content?id=oxxszQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
@@ -47,7 +40,7 @@ new_book = crud.create_book("BcG2dVRXKukC", "The Name of the Wind", "Patrick Rot
                             672, "http://books.google.com/books/content?id=BcG2dVRXKukC&printsec=frontcover&img=1&zoom=1&source=gbs_api")
 new_books.append(new_book)
 new_book = crud.create_book("vH3LDwAAQBAJ", "The Invisible Life of Addie LaRue",
-                            "V. E. Schwab", "AN INSTANT NEW YORK TIMES BESTSELLER USA TODAY BESTSELLER NATIONAL INDIE BESTSELLER THE WASHINGTON POST BESTSELLER #1 Indie Next Pick and #1 LibraryReads Pick - October 2020 Recommended by Entertainment Weekly, Real Simple, NPR, Slate, and Oprah Magazine A “Best Of” Book From: CNN *Amazon Editors * Goodreads * Bustle * PopSugar * BuzzFeed * Barnes & Noble * Kirkus Reviews * Lambda Literary * Nerdette * The Nerd Daily * Polygon * Library Reads * io9 * Smart Bitches Trashy Books * LiteraryHub * Medium * BookBub * The Mary Sue * Chicago Tribune * NY Daily News * SyFy Wire * Powells.com * Bookish * Book Riot * In the vein of The Time Traveler’s Wife and Life After Life, The Invisible Life of Addie LaRue is New York Times bestselling author V. E. Schwab’s genre-defying tour de force. A Life No One Will Remember. A Story You Will Never Forget. France, 1714: in a moment of desperation, a young woman makes a Faustian bargain to live forever—and is cursed to be forgotten by everyone she meets. Thus begins the extraordinary life of Addie LaRue, and a dazzling adventure that will play out across centuries and continents, across history and art, as a young woman learns how far she will go to leave her mark on the world. But everything changes when, after nearly 300 years, Addie stumbles across a young man in a hidden bookstore and he remembers her name. At the Publisher's request, this title is being sold without Digital Rights Management Software (DRM) applied.",,
+                            "V. E. Schwab", "AN INSTANT NEW YORK TIMES BESTSELLER USA TODAY BESTSELLER NATIONAL INDIE BESTSELLER THE WASHINGTON POST BESTSELLER #1 Indie Next Pick and #1 LibraryReads Pick - October 2020 Recommended by Entertainment Weekly, Real Simple, NPR, Slate, and Oprah Magazine A “Best Of” Book From: CNN *Amazon Editors * Goodreads * Bustle * PopSugar * BuzzFeed * Barnes & Noble * Kirkus Reviews * Lambda Literary * Nerdette * The Nerd Daily * Polygon * Library Reads * io9 * Smart Bitches Trashy Books * LiteraryHub * Medium * BookBub * The Mary Sue * Chicago Tribune * NY Daily News * SyFy Wire * Powells.com * Bookish * Book Riot * In the vein of The Time Traveler’s Wife and Life After Life, The Invisible Life of Addie LaRue is New York Times bestselling author V. E. Schwab’s genre-defying tour de force. A Life No One Will Remember. A Story You Will Never Forget. France, 1714: in a moment of desperation, a young woman makes a Faustian bargain to live forever—and is cursed to be forgotten by everyone she meets. Thus begins the extraordinary life of Addie LaRue, and a dazzling adventure that will play out across centuries and continents, across history and art, as a young woman learns how far she will go to leave her mark on the world. But everything changes when, after nearly 300 years, Addie stumbles across a young man in a hidden bookstore and he remembers her name. At the Publisher's request, this title is being sold without Digital Rights Management Software (DRM) applied.",
                             480, "http://books.google.com/books/content?id=vH3LDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api")
 new_books.append(new_book)
 new_book = crud.create_book("t_ZYYXZq4RgC", "Mistborn", "Brandon Sanderson",
@@ -62,13 +55,10 @@ new_book = crud.create_book("PxNcDwAAQBAJ", "The 7 1⁄2 Deaths of Evelyn Hardca
                             "Stuart Turton", "\"Agatha Christie meets Groundhog Day...quite unlike anything I've ever read, and altogether triumphant.\"—A. J. Finn, #1 New York Times-bestselling author of The Woman in the Window The Rules of Blackheath Evelyn Hardcastle will be murdered at 11:00 p.m. There are eight days, and eight witnesses for you to inhabit. We will only let you escape once you tell us the name of the killer. Understood? Then let's begin... *** Evelyn Hardcastle will die. Every day until Aiden Bishop can identify her killer and break the cycle. But every time the day begins again, Aiden wakes up in the body of a different guest. And some of his hosts are more helpful than others. For fans of Claire North and Kate Atkinson, The 71⁄2 Deaths of Evelyn Hardcastle is a breathlessly addictive novel that follows one man's race against time to find a killer—but an astonishing time-turning twist means that nothing and no one are quite what they seem. Praise for The 7 1⁄2 Deaths of Evelyn Hardcastle: Costa First Novel Award 2018 Winner One of Stylist Magazine's 20 Must-Read Books of 2018 One of Harper's Bazaar's 10 Must-Read Books of 2018 One of Guardian's Best Books of 2018",
                             480, "http://books.google.com/books/content?id=PxNcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api")
 new_books.append(new_book)
-    # new_book = crud.create_book(isbn, title, author, description, page_length, 
-    #                             image)
-
-    # new_books.append(new_book)
 
 
-#create fake users for testing
+
+#create users for testing
 new_users = []
 
 new_user = crud.create_user("Hunter", "Laine", "hunterglaine@gmail.com", "test")
@@ -84,44 +74,32 @@ new_users.append(new_user)
 new_user = crud.create_user("Jake", "Laine", "Jake@test.com", "test")
 new_users.append(new_user)
 
-# for n in range(6):
-#     first_name = f"Test User First {n}"
-#     last_name = f"Test User Last {n}"
-#     email = f"user{n}@test.com"
-#     password = "test"
-
-#     new_user = crud.create_user(first_name, last_name, email, password)
-
-#     new_users.append(new_user)
-
 
 # Create fake events for testing
 new_events = []
 
-for n in range(6):
-
-    host_id = n + 1
-#     city = f"City {n}"
-#     state = f"S{n}"
-#     event_date = f"2021-02-1{n}"
-#     start_time = f"1{n}:00"
-#     end_time = f"20:1{n}"
-
-#     new_event = crud.create_event(host_id, city, event_date, start_time, end_time, state)
-
-#     new_events.append(new_event)
-    new_event = crud.create_event(host_id, city, event_date, start_time, end_time, state)
-    new_events.append(new_event)
+new_event = crud.create_event(1, "Pleasanton", "2021-03-26", "18:00", "20:00", "CA")
+new_events.append(new_event)
+new_event = crud.create_event(2, "Berkeley", "2021-03-19", "19:00", "21:00", "CA")
+new_events.append(new_event)
+new_event = crud.create_event(3, "San Francisco", "2021-04-09", "20:00", "22:00", "CA")
+new_events.append(new_event)
+new_event = crud.create_event(4, "Remote", "2021-04-22", "18:00", "20:00")
+new_events.append(new_event)
+new_event = crud.create_event(5, "Lafayette", "2021-04-14", "17:00", "19:00", "CA")
+new_events.append(new_event)
+new_event = crud.create_event(6, "Oakland", "2021-05-05", "18:00", "20:00", "CA")
+new_events.append(new_event)
 
     # Create fake user_events for testing
-    for n in range(4): 
-        random_user = choice(new_users)
-        event = new_event
-        crud.create_event_attendee(random_user.id, event.id)
+for n in range(15): 
+    random_user = choice(new_users)
+    random_event = choice(new_events)
+    crud.create_event_attendee(random_user.id, random_event.id)
 
-        # Create fake event_books for testing
-        random_book = choice(new_books)
-        crud.create_event_book(event, random_book) # CHANGE
+    # Create fake event_books for testing
+    random_book = choice(new_books)
+    crud.create_event_book(random_event, random_book) # CHANGE
 
 
 # Create fake categories for testing
@@ -130,11 +108,14 @@ new_categories = []
 for n in range(6):
 
     user_id = n + 1
-    for i in range(10):
-        label = f"Category {i}"
+    for i in range(4):
+        labels = ["Book Club", "Want to Read", "Books to Recommend", "Classics",
+                "Sci Fi", "Childhood Faves", "Historical Fiction", 
+                "Books to Recommend", "Books I Hate", "Learn Something New",
+                "Non-Fiction", "Pure Fiction", "Beach Reads", "Thrillers",
+                "My Favorite Books"]
 
-        new_category = crud.create_category(user_id, label)
-
+        new_category = crud.create_category(user_id, choice(labels))
         new_categories.append(new_category)
 
     # Create fake book_categories for testing
