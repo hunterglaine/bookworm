@@ -77,19 +77,20 @@ function EventDetails(props) {
     }
 
     return (
-        (<div>
-            <h2>On {event.event_date.slice(0,16)}, you are {props.type === "hosting" ? "hosting" : "attending"} a book club!</h2>
-            {props.type === "hosting" ? null : <h3>Hosted by: {event.host}</h3>}
-            <h3>Time: {event.start_time} to {event.end_time}</h3>
-            <h3>Location: {event.city}</h3>
+        (<Card>
+            <h3>On {event.event_date.slice(0,16)}, you are {props.type === "hosting" ? "hosting" : "attending"} a book club!</h3>
+            {props.type === "hosting" ? null : <p><strong>Hosted by:</strong> {event.host}</p>}
+            <p><strong>Time:</strong> {event.start_time} to {event.end_time}</p>
+            <p><strong>Location:</strong> {event.city}</p>
             {event.books === [] 
             ? null 
             : <div className="book-tile">
-                <h3>Book Suggestions</h3>
+                {event.books.length === 1 ? <h4>We're Reading</h4> : <h4>Book Suggestions</h4>}
                 {event.books.map(book => 
                     // {eventsBooksVotes.map(eventBook => 
                     //     {eventBook.isbn === book.isbn && eventBook.is_the_one ? 
                     (<div className="event-book">
+                        <Card className="text-center" border="light">
                         <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
                         {event.can_vote 
                             ? <div>
@@ -103,6 +104,7 @@ function EventDetails(props) {
                                 </Button> 
                             </div> 
                             : null}
+                        </Card>
                     </div>)
                             // : null}
                         // )}
@@ -140,6 +142,6 @@ function EventDetails(props) {
                 : null}
             </div>
         }
-        </div>)
+        </Card>)
     )
 }

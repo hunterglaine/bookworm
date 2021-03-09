@@ -71,28 +71,28 @@ function CategoryContainer(props) {
     }
     
     return ( 
-        <Container>
+        <Container className="bookshelf">
         <Row>
-            <Col><h3>{props.label}</h3></Col>
-            <Col>
+            <Col sm={2}><h3>{props.label}</h3></Col>
+            <Col sm={6}>
             <Form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} inline >
                 <FormControl type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
                 <Button className="button" type="button" onClick={showForm(0)}>Nevermind</Button>
                 <Button className="button" type="submit" >Submit</Button>
             </Form>
             </Col>
-        </Row>
-        <Row>
-            <Col sm={3}>
-            <Button className="button" onClick={showForm(1)}>Change Category Name</Button>
+            <Col sm={2}>
+            <Button className="button" onClick={showForm(1)}>Change Shelf Name</Button>
             </Col>
-            <Col sm={3}>
-            <Button className="button" onClick={deleteCategory}>Delete Category</Button>
+            <Col sm={2}>
+            <Button className="button" onClick={deleteCategory}>Delete Shelf</Button>
             </Col>
         </Row>
+        
         {/* <div className="scroll-shelf" >{booksInCategory}</div> */}
         <div className="scrolling-wrapper-flexbox">{booksInCategory}</div>
-        <Row><img src="/static/img/single-shelf.PNG" alt=""/></Row>
+        <Row className="shelf-board"></Row>
+        {/* <Row><img src="/static/img/single-shelf.PNG" alt=""/></Row> */}
         </Container>
     )
 }

@@ -24,6 +24,6 @@ function SearchResults(props) {
             i += 1 
         }
         
-        return <div>{content ? content : "Nothing found!"}</div>
+        return <Container>{content ? content : "Nothing found!"}</Container>
 
 }

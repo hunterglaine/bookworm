@@ -1,6 +1,7 @@
 body {
     margin:0;
     font-family: Open Sans Condensed;
+    height: 100%;
 }
 
 .color-nav {
@@ -57,6 +58,18 @@ img#logo {
     font-size: 14px;
 }
 
+.button-bare {
+    margin: 0;
+    background-color: #7db6a3;
+    border: none;
+    color: #000000;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
 .button:hover {   
     background-color: #90ceba;
     color: #000000;
@@ -88,11 +101,25 @@ div.event-book {
     display: block;
 }
 
-.book-tile img{
+img.book-tile {
     margin: 1rem;
     width: 128px;
     height: auto;
+    float: left;
 }
+
+.wrapper p {
+    line-height: 1.6; 
+    text-align: justify;
+    margin: 0;
+    font-size: 14px;
+  }
+
+.wrapper h2, h3, h4, h5 {
+    line-height: 1.6; 
+    text-align: justify;
+    margin: 0;
+  }
 
 h1 {
     text-align: center;
@@ -114,4 +141,27 @@ h1 {
 
 .book-cover:hover {   
     transform: scale(1.2);
+}
+
+/* .bookshelf {
+    border: 1rem solid #e4d3bd;
+    padding-top: 2rem;
+    background: linear-gradient(#f3ebe1 calc(70% + 52px), #e4d3bd calc(30% + 22px))
+  
+} */
+
+.shelf-board {
+    border: .5rem solid #dabc96;
+  
+}
+
+.bookshelf {
+    border: 2rem solid #dabc96;
+    padding-top: 2rem;
+    background-color: #e4c9a7;
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
 }

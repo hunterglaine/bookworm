@@ -50,14 +50,24 @@ function BookDetails(props) {
     } 
     
     return (
-        <div className="book-tile">
-            <img src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
+        <Row>
+            <Col sm={1}></Col>
+            <Col sm={10} className="mt-4">
+            <Card className="text-center" border="light">
+            <div className="wrapper">
+            
+                <img className="book-tile"src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
             <h2>{props.bookForDetails.title}</h2>
-            <p>Written By {props.bookForDetails.author.slice(2,-2)}</p>
-            <p>Length: {props.bookForDetails.page_length} Pages</p>
+            <h4>Written By {props.bookForDetails.author.slice(2,-2)}</h4>
+            <h5>Length: {props.bookForDetails.page_length} Pages</h5>
+            <br/>
             <p>{props.bookForDetails.description}</p>
-            {eventId !== "home" ? null :<button onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </button>}
-            {eventId === "home" || categoryLabel === "event" ? null : <button onClick={addEventBook}>Suggest Book</button>}
-        </div>
+            {eventId !== "home" ? null :<Button className="button" onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </Button>}
+            {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>}
+            </div>
+            </Card>
+            </Col>
+            <Col sm={1}></Col>
+        </Row>
     )
 }

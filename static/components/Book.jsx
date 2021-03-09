@@ -11,7 +11,7 @@ function Book(props) {
 
     return (
         <div className="book-cover">
-            <img src={props.book.image} alt={props.book.title} onClick={goToDetails} />
+            <Card.Img src={props.book.image} alt={props.book.title} onClick={goToDetails} />
         </div>     
     )
 }

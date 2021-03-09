@@ -57,50 +57,77 @@ function BookTile(props) {
  
     if (props.userLoggedIn.userId) {
         return (
-            <div className="book-tile">
-                <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
-                <h2>{book.volumeInfo.title}</h2>
-                {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
-                            (<div>
-                                <h4>{author}</h4>
-                            </div>)) : ''
-                        }
-                <p>{book.volumeInfo.description}</p>
-                
-                <form id="add-to-category" onSubmit={addToCategory} >
-                    <label htmlFor="category-add">
-                        Add to your bookshelf
-                    </label>
-                    <select id="category-add" name="chooseCategory" onChange={(e) => {
-                    {/* <select id={book.key} name="chooseCategory" onChange={(e) => { */}
-                        setCategoryName(e.target.value);
-                        addNewSelect();}} >
-                        {props.userCategories.map(category => 
-                            (<option value={category.label} >{category.label} </option>))
-                        }
-                        <option value="add-new">Add New Category</option>
-                    </select>
-                    <input type="text" name="newCategory" id="new-category" style={{visibility: "hidden"}} onChange={(e) => setCategoryName(e.target.value)} />
-                    <input type="submit" />
-                </form>
-                <hr/>
-                </div>
-                )}
+            <Row>
+                <Col sm={1}></Col>
+                <Col sm={10} className="mt-4">
+                    <Card className="text-center" border="light">
+                        <div className="wrapper">
+                            <img className="book-tile" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
+                        
+                            <h3>{book.volumeInfo.title}</h3>
+                        
+                            {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
+                                (<div>
+                                    <h4>{author}</h4>
+                                </div>)) : ''
+                            }
+                            <p>{book.volumeInfo.description}</p>
+                        </div>
+                        <Form inline id="add-to-category" onSubmit={addToCategory} >
+                            <Row className="mt-3">
+                                <Col sm={3}>
+                                    <h5>
+                                        Add to your bookshelf
+                                    </h5>
+                                </Col>
+                                <Col sm={3}>
+                                    <FormControl as="select" id="category-add" name="chooseCategory" onChange={(e) => {
+                                        setCategoryName(e.target.value);
+                                        addNewSelect();}} >
+                                        {props.userCategories.map(category => 
+                                            (<option value={category.label} >{category.label} </option>))
+                                        }
+                                        <option value="add-new">Add New Category</option>
+                                    </FormControl>
+                                </Col>
+                                <Col sm={3}>
+                                    <FormControl type="text" name="newCategory" id="new-category" style={{visibility: "hidden"}} onChange={(e) => setCategoryName(e.target.value)} />
+                                </Col>
+                                <Col sm={3}>
+                                    <Button className="button-bare" type="submit">Submit</Button>
+                                </Col>
+                            </Row>
+                        </Form>
+                        <hr/>
+                    </Card>
+                </Col>
+                <Col sm={1}></Col>
+            </Row>
+        )
+    }
                 
     else {
         return (
-        <div className="book-tile">
-        <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
-        <h2>{book.volumeInfo.title}</h2>
-        {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
-            (<div>
-                <h4>{author}</h4>
-            </div>)) : ''
-        }
-        <p>{book.volumeInfo.description}</p>
-        <Link to="/create-account">Create an account to add a book to your shelf!</Link>
-        <hr/>
-        </div>
+            <Row>
+                <Col sm={1}></Col>
+                <Col sm={10} className="mt-4">
+                    <Card className="text-center" border="light">
+                        <div className="wrapper">
+                            <img className="book-tile" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
+                            <h3>{book.volumeInfo.title}</h3>
+                            {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
+                                (<div>
+                                    <h4>{author}</h4>
+                                </div>)) : ''
+                            }
+                            <p>{book.volumeInfo.description}</p>
+                        </div>
+                        <Link to="/create-account">Create an account to add a book to your shelf!</Link>
+                        <hr/>
+                    </Card>
+                </Col>
+                <Col sm={1}></Col>
+            </Row>
         )
     }
 }
