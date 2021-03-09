@@ -19,14 +19,10 @@ function SearchBar(props) {
     }
     
     return (
-            // <form id="search-bar" onSubmit={bookSearch}>
-            <Form id="search-bar" onSubmit={bookSearch} inline>
-                <FormControl type="text" id="book-search" placeholder="Search for book by title or author" className="ml-sm-2" />
-                {/* <input  type="text" id="book-search" placeholder="Search for book by title or author" ></input> */}
-                <Button type="submit" variant="outline-dark">Search</Button>
-                {/* <input type="submit" ></input> */}
+            <Form id="search-bar" onSubmit={bookSearch} className="mr-auto" inline>
+                <FormControl type="text" id="book-search" placeholder="Search for book by title or author" />
+                <Button className="button-search" type="submit" variant="outline-dark">Search</Button>
             </Form>
-            // </form>
     );
     
 }

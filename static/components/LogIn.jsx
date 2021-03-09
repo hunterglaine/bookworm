@@ -46,17 +46,21 @@ function LogIn(props) {
     
 
         return (
-        <div>
+        <Row>
+            <Col sm={4}></Col>
+            <Col sm={4}>
             <h1>Log In</h1>
-            <form action="/login" onSubmit={logUserIn}>
-                <input type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} autoFocus required />
-                <input type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} required />
-                <input type="submit" value="Submit" />
-            </form>
+            <Form action="/login" onSubmit={logUserIn}>
+                <FormControl type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} autoFocus required />
+                <FormControl type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} required />
+                <Button className="button" type="submit">Submit</Button>
+            </Form>
             <p>
                 Don't have an account yet? <Link to="/create-account">Create one here!</Link>
             </p>
-        </div>
+            </Col>
+            <Col sm={4}></Col>
+        </Row>
         );
     
     };

@@ -52,28 +52,30 @@ function CreateAccount() {
     return(
         <div>
             <h1>Welcome!</h1>
-
+            <Row>
+            <Col sm={4}></Col>
+            <Col sm={4}>
             <h2>Create an Account</h2>
-            <form onSubmit={createUser}>
+            <Form onSubmit={createUser}>
                 <p>
                     <label htmlFor="your-first-name">First Name* </label>
-                    <input type="text" placeholder="Jane" id="first-name" onChange={(e) => setFirstName(e.target.value)} required />
+                    <FormControl type="text" placeholder="Jane" id="first-name" onChange={(e) => setFirstName(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-last-name">Last Name* </label>
-                    <input type="text" placeholder="Doe" id="last-name" onChange={(e) => setLastName(e.target.value)} required />
+                    <FormControl type="text" placeholder="Doe" id="last-name" onChange={(e) => setLastName(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-email">Email* </label>
-                    <input type="text" placeholder="janedoe@text.com" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                    <FormControl type="text" placeholder="janedoe@text.com" id="email" onChange={(e) => setEmail(e.target.value)} required />
                 </p>        
                 <p>
                     <label htmlFor="your-password">Password* </label>
-                    <input type="password" placeholder="Up to 20 characters" name="password" onChange={(e) => setPassword(e.target.value)} required />
+                    <FormControl type="password" placeholder="Up to 20 characters" name="password" onChange={(e) => setPassword(e.target.value)} required />
                 </p>
                 <p>
                     <label htmlFor="your-city">City </label>
-                    <input type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
+                    <FormControl type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
                 </p>
                     <label htmlFor="your-sate">State</label>
                     <select name="state" placeholder="California" onChange={(e) => setUserState(e.target.value)}>
@@ -130,12 +132,15 @@ function CreateAccount() {
                     <option value="WY">Wyoming</option>
                     </select>
                 <p>
-                    <input type="submit" />
+                    <Button className="button" type="submit">Submit</Button>
                 </p>
-        </form>
+        </Form>
         <p>
             Already have an account? <Link to="/login">Log in here!</Link>
         </p>
+        </Col>
+        <Col sm={4}></Col>
+        </Row>
     </div>
   );
 }

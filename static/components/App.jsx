@@ -16,6 +16,7 @@ const Carousel = ReactBootstrap.Carousel;
 const Container = ReactBootstrap.Container;
 const Row = ReactBootstrap.Row;
 const Col = ReactBootstrap.Col;
+const Card = ReactBootstrap.Card;
 
 
 function App() {

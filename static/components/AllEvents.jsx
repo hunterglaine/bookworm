@@ -45,15 +45,15 @@ function AllEvents(props) {
             <h1>Book Club Meetings</h1>
             {allEvents.events ? allEvents.events.map(event => 
                     (<div>
-                        <h2>There is a book club on {event.event_date.slice(0,16)}!</h2>
-                        <h3>Location: {event.city} </h3>
-                        <h3>Hosted By: {event.host.first_name} {event.host.last_name}</h3>
-                        <h3>Attendees</h3>
+                        <h4>There is a book club on {event.event_date.slice(0,16)}!</h4>
+                        <p><strong>Location:</strong> {event.city} </p>
+                        <p><strong>Hosted By:</strong> {event.host.first_name} {event.host.last_name}</p>
+                        <p><strong>Attendees</strong></p>
                         {event.attending.map(attendee => 
                             (<p value={`${attendee.first_name} ${attendee.last_name}`} >{`${attendee.first_name} ${attendee.last_name}`}</p>))
                         }
                         {props.userLoggedIn.userId 
-                        ? <input type="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}} />
+                        ? <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
                         : <Link to="/create-account">Create an account or log in to attend an event</Link>}
                         <hr/>
                     </div>)) : ''

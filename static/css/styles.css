@@ -24,7 +24,7 @@ nav li .link-button {
     text-decoration: none;
     font-weight: bold;
     color: #000000;
-    vertical-align: middle;
+    vertical-align: right;
     /* display: block; */
     padding: 2rem;
 }
@@ -42,16 +42,13 @@ img#logo {
 
 #search-bar {
     display: inline-block;
-    /* margin: 2rem; */
-    /* padding:2rem; */
     vertical-align: middle;
 }
 
-button {
+.button {
     margin: 1rem;
     background-color: #7db6a3;
     border: none;
-    /* font-weight: bold; */
     color: #000000;
     padding: 10px 10px;
     text-align: center;
@@ -60,11 +57,34 @@ button {
     font-size: 14px;
 }
 
+.button:hover {   
+    background-color: #90ceba;
+    color: #000000;
+}
+
+.button-search {
+    margin: 1rem;
+    background-color: #7db6a3;
+    border-color: #000000;
+    color: #000000;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-search:hover {   
+    background-color: #90ceba;
+    color: #000000;
+}
+
 div.event-book {
     display: inline-block;
 }
 
-button.vote {
+.vote {
     display: block;
 }
 
@@ -74,7 +94,7 @@ button.vote {
     height: auto;
 }
 
-h1.bookshelf-title {
+h1 {
     text-align: center;
     margin: 2rem;
     font: Luminari, fantasy;

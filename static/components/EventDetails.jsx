@@ -15,15 +15,17 @@ function EventDetails(props) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            setBooksVotedFor(data)})
-        fetch("/event-books", {
-            method: "GET"
+            setBooksVotedFor(data["userVotedFor"])
+            setEventsBooksVotes(data["allEventsBooks"])
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            setBooksVotedFor(data)})
-            // setEventsBooksVotes["allEventsBooks"]
+        // fetch("/event-books", {
+        //     method: "GET"
+        // })
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     console.log(data)
+        //     setBooksVotedFor(data)})
+        //     // setEventsBooksVotes["allEventsBooks"]
     }, [props.changeInEvent])
     
     const updateEventBooks = (eventId, type) => (evt) => {
@@ -96,9 +98,9 @@ function EventDetails(props) {
                                         {eventBook.isbn === book.isbn ? eventBook.vote_count : null}
                                     </div>
                                 )}
-                                <button className="vote" id={book.isbn} onClick={updateVote(book.isbn)}>
+                                <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
                                     {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
-                                </button> 
+                                </Button> 
                             </div> 
                             : null}
                     </div>)
@@ -111,30 +113,30 @@ function EventDetails(props) {
             <div>
                 {event.can_add_books 
                 ? <div>
-                    <button onClick={updateEventBooks(event.id, "suggest")}>
+                    <Button className="button" onClick={updateEventBooks(event.id, "suggest")}>
                         Stop Book Suggestions
-                    </button>
-                    <button onClick={() => history.push(`/user/${event.id}/${props.type}`)}>
+                    </Button>
+                    <Button className="button" onClick={() => history.push(`/user/${event.id}/${props.type}`)}>
                         Suggest a Book
-                    </button>
+                    </Button>
                 </div> 
-                : <button onClick={updateEventBooks(event.id, "suggest")}>
+                : <Button className="button" onClick={updateEventBooks(event.id, "suggest")}>
                     Allow Book Suggestions
-                </button>
+                </Button>
                 }
                 {event.can_vote /*&& !event.can_add_books */
-                    ? <button onClick={updateEventBooks(event.id, "vote")}>
+                    ? <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
                         Stop the Voting
-                    </button> 
-                    : <button onClick={updateEventBooks(event.id, "vote")}>
+                    </Button> 
+                    : <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
                         Start the Voting
-                    </button>
+                    </Button>
                 }
             </div>
             : 
             <div>
             {event.can_add_books 
-                ? <button onClick={() => history.push(`/user/${event.id}/${props.type}`)}>Suggest a Book</button> 
+                ? <Button className="button" onClick={() => history.push(`/user/${event.id}/${props.type}`)}>Suggest a Book</Button> 
                 : null}
             </div>
         }

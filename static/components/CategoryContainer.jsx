@@ -77,17 +77,17 @@ function CategoryContainer(props) {
             <Col>
             <Form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} inline >
                 <FormControl type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
-                <Button type="button" onClick={showForm(0)}>Nevermind</Button>
-                <Button type="submit" >Submit</Button>
+                <Button className="button" type="button" onClick={showForm(0)}>Nevermind</Button>
+                <Button className="button" type="submit" >Submit</Button>
             </Form>
             </Col>
         </Row>
         <Row>
             <Col sm={3}>
-            <Button onClick={showForm(1)}>Change Category Name</Button>
+            <Button className="button" onClick={showForm(1)}>Change Category Name</Button>
             </Col>
             <Col sm={3}>
-            <Button onClick={deleteCategory}>Delete Category</Button>
+            <Button className="button" onClick={deleteCategory}>Delete Category</Button>
             </Col>
         </Row>
         {/* <div className="scroll-shelf" >{booksInCategory}</div> */}

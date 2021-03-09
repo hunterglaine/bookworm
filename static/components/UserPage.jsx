@@ -36,7 +36,7 @@ function UserPage(props) {
             <h1 className="bookshelf-title">
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
             </h1>
-            <button onClick={() => history.push("/update-account-info")} >Update My Account Info</button>
+            <Button className="button" onClick={() => history.push("/update-account-info")} >Update My Account Info</Button>
             <Container>{userBookshelf}</Container>
         </div>
 
