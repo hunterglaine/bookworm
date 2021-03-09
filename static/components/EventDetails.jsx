@@ -15,8 +15,8 @@ function EventDetails(props) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            setBooksVotedFor(data["userVotedFor"])
-            setEventsBooksVotes(data["allEventsBooks"])
+            setBooksVotedFor(data)
+            // setEventsBooksVotes(data["allEventsBooks"])
         })
         // fetch("/event-books", {
         //     method: "GET"
