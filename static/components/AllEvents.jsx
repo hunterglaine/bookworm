@@ -34,7 +34,7 @@ function AllEvents(props) {
     }, [currentEvent])
 
     React.useEffect(() => {
-        fetch("/all-events")
+        fetch("/events")
         .then(response => response.json())
         .then(data => setAllEvents(data))
     }, [])

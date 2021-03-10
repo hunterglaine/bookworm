@@ -6,33 +6,35 @@ import model
 import os
 import test_seed
 
-os.system("dropdb testbookworm")
-os.system("createdb testbookworm")
-
+# os.system("dropdb testbookworm")
+# os.system("createdb testbookworm")
 
 class MyAppUnitTestCase(unittest.TestCase):
 
-    def setUp(self):
-        model.connect_to_db(server.app, "testbookworm")
-        model.db.create_all()
-        test_seed.test_data()
+    # def setUp(self):
+    #     model.connect_to_db(server.app, "testbookworm")
+    #     model.db.create_all()   
+    #     test_seed.test_data()
 
-    def tearDown(self):
-        model.db.session.close()
-        model.db.drop_all()
+    # def tearDown(self):
+    #     model.db.session.close()
+    #     model.db.drop_all()
 
     def test_get_book_by_isbn(self):
         neverwhere = crud.get_book_by_isbn("yuCUZ3km3qIC")
         self.assertEqual(neverwhere.title, "Neverwhere")
 
     def test_get_user_by_id(self):
-        hunter = get_user_by_id(1)
-        self.asserEqual(hunter.email, "hunterglaine@gmail.com")
+        hunter = crud.get_user_by_id(1)
+        self.assertEqual(hunter.email, "hunterglaine@gmail.com")
 
     def test_get_user_by_email(self):
-        jake = get_user_by_email("jake@test.com")
-        self.asserEqual(jake.first_name, "Jake")
+        jake = crud.get_user_by_email("jake@test.com")
+        self.assertEqual(jake.first_name, "Jake")
 
+    def test_get_category_by_label(self):
+        category = crud.get_category_by_label(3, "Learn Something New") 
+        self.assertEqual(category.id, 8)
     # def test_get_user_by_email(self):
     #     # client = server.app.test_client()
     #     # result = crud.get_user_by_email("hunterglaine@gmail.com")

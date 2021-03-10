@@ -18,7 +18,7 @@ function TopNavigation(props) {
           <Nav as="ul">
             <Nav.Item as="li" className="ml-auto">
               {props.userLoggedIn.userId 
-                ? <Link className="link-button" to="/user-events">My Events</Link>
+                ? <Link className="link-button" to="/users-events">My Events</Link>
                 : null}
             </Nav.Item>
             <Nav.Item as="li" className="ml-auto">

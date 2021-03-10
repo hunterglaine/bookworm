@@ -7,9 +7,9 @@ import crud
 app = Flask(__name__)
 app.secret_key = "BD647hgfyetEHU789hfehd9svsru5HwgYkghjwrfishvs"
 
-
-@app.route("/")
-def show_homepage():
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def show_homepage(path):
     """Show the homepage"""
 
     return render_template("index.html")
@@ -368,7 +368,7 @@ def update_event_book_votes():
                         "allEventsBooks": events_books})
     
 
-@app.route("/all-events") # GET 
+@app.route("/events") # GET 
 def get_all_events():
     """Returns all events that are not private"""
 

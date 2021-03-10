@@ -89,7 +89,7 @@ function App() {
                 <Route path="/create-event" >
                   <CreateEvent userLoggedIn={userLoggedIn} />
                 </Route>
-                <Route path="/user-events" >
+                <Route path="/users-events" >
                   <UserEvents userLoggedIn={userLoggedIn}
                               setBookForDetails={setBookForDetails}
                               setEventForDetails={setEventForDetails} />
