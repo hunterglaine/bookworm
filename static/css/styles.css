@@ -141,9 +141,10 @@ h1 {
     /* flex: auto; */
     display: inline;
     /* -webkit-text-stroke: 1px #fff; width and color */
+    line-height: 2;
     margin: 1rem;
     color: #fff;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
     font-family: 'Shippori Mincho B1', serif;
     background-color: rgba(5, 4, 2, 0.5);

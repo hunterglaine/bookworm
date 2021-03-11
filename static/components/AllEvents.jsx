@@ -50,7 +50,7 @@ function AllEvents(props) {
                     </Col>
                     <Col sm={6} className="mt-4">
                         <Card className="text-center" border="light">
-                        <h4>There is a book club on {event.event_date.slice(0,16)}!</h4>
+                        <h4 style={{padding: "1rem"}}>There is a book club on {event.event_date.slice(0,16)}!</h4>
                         <p><strong>Location:</strong> {event.city} </p>
                         <p><strong>Hosted By:</strong> {event.host.first_name} {event.host.last_name}</p>
                         <p><strong>Attendees</strong></p>
@@ -60,7 +60,7 @@ function AllEvents(props) {
                         {props.userLoggedIn.userId 
                         ? <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
                         : <Link to="/create-account">Create an account or log in to attend an event</Link>}
-                    </Card>
+                        </Card>
                     </Col>
                     <Col sm={3}>
                     </Col>
