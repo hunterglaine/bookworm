@@ -212,7 +212,8 @@ def get_all_users():
 def get_all_events():
     """Returns a list of all events with is_private set to False"""
 
-    return Event.query.filter(Event.is_private == False).all()
+    return Event.query.filter(Event.is_private == False).order_by(Event.\
+                            event_date.asc(), Event.start_time.asc()).all()
 
 
 def get_all_events_for_user(user_id):
