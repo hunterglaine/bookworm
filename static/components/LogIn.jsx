@@ -46,7 +46,7 @@ function LogIn(props) {
     
 
         return (
-        <Row className="align-items-center">
+        <Row className="m-0">
             <Col sm={4}></Col>
             <Col sm={4}>
             <Card style={{padding: "2rem"}}>

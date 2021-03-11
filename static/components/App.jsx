@@ -48,6 +48,18 @@ function App() {
                 setUserCategories={setUserCategories}
                 userLoggedIn={userLoggedIn} />
               <Switch>
+              <Route exact path="/">
+                {userLoggedIn.userId 
+                ? <UserPage 
+                  userLoggedIn={userLoggedIn}
+                  userCategories={userCategories}
+                  setBookshelfCategories={setBookshelfCategories}
+                  bookshelfCategories={bookshelfCategories}
+                  setBookForDetails={setBookForDetails}
+                  newLabel={newLabel}
+                  setNewLabel={setNewLabel} />
+                : <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />}
+              </Route>
                 <Route path="/login">
                   <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
                 </Route>

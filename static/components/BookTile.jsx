@@ -60,7 +60,7 @@ function BookTile(props) {
             <Row>
                 <Col sm={1}></Col>
                 <Col sm={10} className="mt-4">
-                    <Card className="text-center" border="light">
+                    <Card className="text-center" border="light" style={{padding: "2rem"}}>
                         <div className="wrapper">
                             <img className="book-tile" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
                         
@@ -98,7 +98,6 @@ function BookTile(props) {
                                 </Col>
                             </Row>
                         </Form>
-                        <hr/>
                     </Card>
                 </Col>
                 <Col sm={1}></Col>

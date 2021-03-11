@@ -24,7 +24,7 @@ function AllEvents(props) {
         }
         else {
             alert(data["success"])
-            history.push("/user-events")
+            history.push("/users-events")
         } 
     })
 }
@@ -41,10 +41,15 @@ function AllEvents(props) {
 
     return (
         <div>
-            <hr/>
-            <h1>Book Club Meetings</h1>
+            <Row className="m-0">
+                <h1>Book Club Meetings</h1>
+            </Row>
             {allEvents.events ? allEvents.events.map(event => 
-                    (<div>
+                    (<Row className="m-0">
+                    <Col sm={3}>
+                    </Col>
+                    <Col sm={6} className="mt-4">
+                        <Card className="text-center" border="light">
                         <h4>There is a book club on {event.event_date.slice(0,16)}!</h4>
                         <p><strong>Location:</strong> {event.city} </p>
                         <p><strong>Hosted By:</strong> {event.host.first_name} {event.host.last_name}</p>
@@ -55,8 +60,11 @@ function AllEvents(props) {
                         {props.userLoggedIn.userId 
                         ? <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
                         : <Link to="/create-account">Create an account or log in to attend an event</Link>}
-                        <hr/>
-                    </div>)) : ''
+                    </Card>
+                    </Col>
+                    <Col sm={3}>
+                    </Col>
+                </Row>)) : ''
                 }
         </div>
     )

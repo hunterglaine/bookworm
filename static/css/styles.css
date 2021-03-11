@@ -3,14 +3,15 @@ body {
     font-family: Open Sans Condensed;
     /* font-family: 'Shippori Mincho B1', serif; */
     height: 100%;
+    width: auto;
     background-image: url("static/img/bookshelf-background.jpg") no-repeat center center;
     background-size: cover;
 }
-
-body.background-img {
-    background: url("static/img/bookshelf-background.jpg") no-repeat center center;
+/* 
+div.background-img {
+    background-image: url("static/img/bookshelf-background.jpg") no-repeat center center;
     background-size: cover;
-}
+} */
 
 .color-nav {
     background-color: #7db6a3;
@@ -137,7 +138,7 @@ img.book-tile {
 
 h1 {
     text-align: center;
-    flex: auto;
+    /* flex: auto; */
     display: inline;
     /* -webkit-text-stroke: 1px #fff; width and color */
     margin: 1rem;
@@ -150,6 +151,7 @@ h1 {
 
 h1.on-card {
     color: #000;
+    background-color: #fff;
 }
 
 .scrolling-wrapper-flexbox {
@@ -215,6 +217,8 @@ div.book-cover {
     linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
     background-size: 13px, 29px, 37px, 53px; */
 }
+
+
 /* 
 .bookshelf {
     width: 80%;

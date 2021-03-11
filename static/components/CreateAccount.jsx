@@ -51,9 +51,9 @@ function CreateAccount() {
 
     return(
         <div>
-            <Row>
-            <Col sm={4}></Col>
-            <Col sm={4}>
+            <Row className="m-0">
+            <Col sm={3}></Col>
+            <Col sm={6}>
             <Card style={{padding: "2rem"}}>
             <h1 className="on-card">Welcome</h1>
             <h2 >Create an Account</h2>
@@ -141,7 +141,7 @@ function CreateAccount() {
         </p>
         </Card>
         </Col>
-        <Col sm={4}></Col>
+        <Col sm={3}></Col>
         </Row>
         
     </div>

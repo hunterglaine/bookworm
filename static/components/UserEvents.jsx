@@ -4,6 +4,7 @@ function UserEvents(props) {
 
     const [myEvents, setMyEvents] = React.useState({})
     const [changeInEvent, setChangeInEvent] = React.useState(null)
+    let history = useHistory();
 
     React.useEffect(() =>  {
         fetch("/user-events")
@@ -22,22 +23,42 @@ function UserEvents(props) {
 
     return (
         <div>
-            <Link className="button" to="/create-event">
-                Create a New Book Club Event
-            </Link>
-            <h1>Book Club Meetings You Are Hosting</h1>
+            <Row className="m-0">
+            <Col sm={9}>
+                <h1>Book Clubs You're Hosting</h1>
+            </Col>
+            <Col sm={3} >
+                <Button className="button" onClick={() => history.push("/create-event")}>Host a New Book Club Event</Button>
+            </Col>
+            </Row>
             {myEvents.hosting 
                 ? myEvents.hosting.map(event => 
-                <EventDetails event={event} type="hosting" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails} />
-                // <Event event={event} type="hosting" setEventForDetails={props.setEventForDetails} />
+                <Row className="m-0">
+                    <Col sm={1}>
+                    </Col>
+                    <Col sm={10} className="mt-4">
+                        <Card className="text-center" border="light">
+                            <EventDetails event={event} type="hosting" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails} />
+                        </Card>
+                    </Col>
+                </Row>
                 ) 
                 : "You are not currently hosting any events"
             }
-            <h1>Book Club Meetings You Are Attending</h1>
+            <Row className="m-0">
+            <h1>Book Clubs You're Attending</h1>
+            </Row>
             {myEvents.attending 
                 ? myEvents.attending.map(event => 
-                <EventDetails event={event} type="attending" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails}  />
-                // <Event event={event} type="attending" setEventForDetails={props.setEventForDetails} />
+                <Row className="m-0">
+                    <Col sm={1}>
+                    </Col>
+                    <Col sm={10} className="mt-4">
+                        <Card className="text-center" border="light">
+                            <EventDetails event={event} type="attending" changeInEvent={changeInEvent} setChangeInEvent={setChangeInEvent} setBookForDetails={props.setBookForDetails}  />
+                        </Card>
+                    </Col>
+                </Row>
                 ) 
                 : "You are not currently attending any events"
             }
