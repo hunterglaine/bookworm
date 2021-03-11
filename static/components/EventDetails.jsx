@@ -5,6 +5,13 @@ function EventDetails(props) {
     const {event} = props
     const [booksVotedFor, setBooksVotedFor] = React.useState([])
     const [eventsBooksVotes, setEventsBooksVotes] = React.useState([])
+    // console.log("START", event.start_time)
+    // console.log("END", event.end_time)
+    // // var timeString = date.toLocaleString('en-US', options)
+    // let eventStart = new Date(event.start_time).toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})
+    // console.log("EVENTSTART", eventStart)
+    // let eventEnd = new Date(event.end_time).toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})
+    // console.log("EVENTEND", eventEnd)
   
     let history = useHistory();
 

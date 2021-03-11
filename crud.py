@@ -480,6 +480,15 @@ def remove_book_from_event(isbn, event_id):
     db.session.commit()
 
 
+def delete_book(isbn):
+    """Deletes a book from the database--internal use only"""
+
+    book = Book.query.filter(Book.isbn == isbn).first()
+
+    db.session.delete(book)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     from server import app
     connect_to_db(app, "testbookworm")

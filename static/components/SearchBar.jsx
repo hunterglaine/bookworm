@@ -6,6 +6,7 @@ function SearchBar(props) {
 
     function bookSearch(evt) {
         evt.preventDefault();
+        // const urlQuery = document.getElementById("book-search").value
         props.setBookQuery(document.getElementById("book-search").value)
 
         fetch("/categories")
@@ -14,7 +15,8 @@ function SearchBar(props) {
         .then((data) => props.setUserCategories(data["categories"]))
         .catch(console.error)
 
-        history.push("/book-search")
+         history.push("/book-search")
+        // history.push(`/book-search/${urlQuery}`)
         document.getElementById("search-bar").reset();
     }
     

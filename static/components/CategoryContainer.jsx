@@ -73,10 +73,10 @@ function CategoryContainer(props) {
     return ( 
         <Container className="bookshelf">
         <Row>
-            <Col sm={2}><h3>{props.label}</h3></Col>
-            <Col sm={6}>
-            <Form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} inline >
-                <FormControl type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
+            <Col sm={4}><h3 className="label-bg">{props.label}</h3></Col>
+            <Col sm={4}>
+            <Form id={`change-label-${props.label}`} onSubmit={updateCategory} style={{visibility: "hidden"}} >
+                <FormControl className="margin-down" type="text" placeholder={props.label} onChange={(e) => labelChange.current = (e.target.value)}  />
                 <Button className="button" type="button" onClick={showForm(0)}>Nevermind</Button>
                 <Button className="button" type="submit" >Submit</Button>
             </Form>

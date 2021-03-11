@@ -58,7 +58,8 @@ function BookDetails(props) {
             
                 <img className="book-tile"src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
             <h2>{props.bookForDetails.title}</h2>
-            <h4>Written By {props.bookForDetails.author.slice(2,-2)}</h4>
+            <h4>Written By {props.bookForDetails.author}</h4>
+            {/* <h4>Written By {props.bookForDetails.author.slice(2,-2)}</h4> */}
             <h5>Length: {props.bookForDetails.page_length} Pages</h5>
             <br/>
             <p>{props.bookForDetails.description}</p>

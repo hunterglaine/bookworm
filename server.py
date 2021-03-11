@@ -116,9 +116,14 @@ def get_and_update_categories():
             category = crud.get_category_by_label(user_id, label)
         
             if not book:
+                print("This is the format of the authors", book_dict["volumeInfo"]["authors"])
+                authors = ""
+                for author in book_dict["volumeInfo"]["authors"]:
+                    authors += f"{author} "
                 book = crud.create_book(isbn, 
                                         book_dict["volumeInfo"]["title"], 
-                                        book_dict["volumeInfo"]["authors"], 
+                                        # book_dict["volumeInfo"]["authors"], 
+                                        authors,
                                         book_dict["volumeInfo"]["description"], 
                                         book_dict["volumeInfo"]["pageCount"], 
                                         book_dict["volumeInfo"]["imageLinks"]["thumbnail"])

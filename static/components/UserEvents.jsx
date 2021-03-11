@@ -22,7 +22,7 @@ function UserEvents(props) {
 
     return (
         <div>
-            <Link to="/create-event">
+            <Link className="button" to="/create-event">
                 Create a New Book Club Event
             </Link>
             <h1>Book Club Meetings You Are Hosting</h1>

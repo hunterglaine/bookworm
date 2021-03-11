@@ -1,7 +1,15 @@
 body {
     margin:0;
     font-family: Open Sans Condensed;
+    /* font-family: 'Shippori Mincho B1', serif; */
     height: 100%;
+    background-image: url("static/img/bookshelf-background.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+body.background-img {
+    background: url("static/img/bookshelf-background.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .color-nav {
@@ -47,7 +55,7 @@ img#logo {
 }
 
 .button {
-    margin: 1rem;
+    margin: 2rem;
     background-color: #7db6a3;
     border: none;
     color: #000000;
@@ -68,6 +76,11 @@ img#logo {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+
+.button-bare:hover {   
+    background-color: #90ceba;
+    color: #000000;
 }
 
 .button:hover {   
@@ -117,15 +130,19 @@ img.book-tile {
 
 .wrapper h2, h3, h4, h5 {
     line-height: 1.6; 
-    text-align: justify;
+    /* text-align: justify; */
     margin: 0;
 
   }
 
 h1 {
     text-align: center;
-    margin: 2rem;
-    font: Luminari, fantasy;
+    /* -webkit-text-stroke: 2px #7db6a3; width and color */
+    margin: 1rem;
+    color: #000;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Shippori Mincho B1', serif;
 }
 
 .scrolling-wrapper-flexbox {
@@ -138,10 +155,24 @@ h1 {
 .book-cover {
     margin: 1rem;
     flex: 0 0 auto;
+    
+    
 }
+/* 
+ .book-cover img {
+    padding: .2rem;
+    background-color: #fff;
+}  */
+/* 
+div.book-cover {
+    vertical-align: middle;
+} */
 
 .book-cover:hover {   
-    transform: scale(1.2);
+    transform: scale(1.1);
+    /* padding: .1rem;
+    background-color: #fff;
+    vertical-align: middle */
 }
 
 /* .bookshelf {
@@ -152,17 +183,84 @@ h1 {
 } */
 
 .shelf-board {
-    border: .5rem solid #dabc96;
+    /* border: .5rem solid #814A2D; */
+    border-style: solid;
+    border-image: url(/static/img/Melamine-wood-004.png) 100 round;
+    border-image-width: .5rem;
   
 }
 
 .bookshelf {
-    border: 2rem solid #dabc96;
+    /* border: 2rem solid #814A2D; */
+    /* border: 2rem; */
+    border-style: solid;
+    /* border-radius: 5px; */
+    border-image: url(/static/img/Melamine-wood-004.png) 100 round;
+    border-image-width: 2.5rem;
     padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2.5rem;
     background-color: #e4c9a7;
-    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    background-image: url(/static/img/Melamine-wood-005.png);
+    /* background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
     linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
     linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
     linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
-    background-size: 13px, 29px, 37px, 53px;
+    background-size: 13px, 29px, 37px, 53px; */
 }
+/* 
+.bookshelf {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    border: 10px $brown solid;
+    overflow: hidden;
+    background-image: linear-gradient(darken($brown, 32%), darken($brown, 30%) 220px, 
+      lighten($brown, 4%) 220px, lighten($brown, 4%) 222px,
+      $brown 222px, $brown 228px,
+    darken($brown, 4%) 228px, darken($brown, 4%) 230px);
+    background-size: 10px 230px;
+    box-shadow: 0px 1000px 0px 400px #7A7668;
+  } */
+
+ .column {
+    padding-left: 0; 
+    padding-right: 0;
+ }
+
+ .label-bg {
+    line-height: 4;
+    margin-left: 2rem;
+    display: inline;
+    background-color: #fff;
+    border: .5rem solid #fff;
+    border-radius: 2px;
+    padding-right: 0;
+ }
+
+ .margin-down {
+    position: relative;
+    top: 5px;
+ }
+
+ /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #7db6a3; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #7db6a3; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #90ceba; 
+  }

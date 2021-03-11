@@ -2,6 +2,7 @@
 
 function SearchResults(props) {
 
+    // const { urlQuery } = useParams();
     const content = []
     const [books, setBooks] = React.useState([]);
     let bookKey = ''

@@ -46,9 +46,10 @@ function LogIn(props) {
     
 
         return (
-        <Row>
+        <Row className="align-items-center">
             <Col sm={4}></Col>
             <Col sm={4}>
+            <Card style={{padding: "2rem"}}>
             <h1>Log In</h1>
             <Form action="/login" onSubmit={logUserIn}>
                 <FormControl type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} autoFocus required />
@@ -58,6 +59,7 @@ function LogIn(props) {
             <p>
                 Don't have an account yet? <Link to="/create-account">Create one here!</Link>
             </p>
+            </Card>
             </Col>
             <Col sm={4}></Col>
         </Row>
