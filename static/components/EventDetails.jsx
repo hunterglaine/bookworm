@@ -21,19 +21,16 @@ function EventDetails(props) {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
-            setBooksVotedFor(data)
-            // setEventsBooksVotes(data["allEventsBooks"])
+            console.log(" What is going on here???",data)
+            setBooksVotedFor(data["booksVotedFor"])
+            setEventsBooksVotes(data["eventsBooks"])
         })
-        // fetch("/event-books", {
-        //     method: "GET"
-        // })
-        // .then((response) => response.json())
-        // .then((data) => {
-        //     console.log(data)
-        //     setBooksVotedFor(data)})
-        //     // setEventsBooksVotes["allEventsBooks"]
-    }, [props.changeInEvent])
+    }, [])
+    // [props.changeInEvent]
+
+    React.useEffect(() => {
+
+    }, [])
     
     const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();
@@ -111,6 +108,14 @@ function EventDetails(props) {
                                         {eventBook.isbn === book.isbn ? eventBook.vote_count : null}
                                     </div>
                                 )}
+                                {/* {eventsBooksVotes.map(eventBook => 
+                                    {eventBook.events_books.map(bookChoice =>
+                                    <div>
+                                        {console.log("checking vote count", bookChoice.isbn, book.isbn, bookChoice.vote_count)}
+                                        {bookChoice.isbn === book.isbn ? bookChoice.vote_count : null}
+                                    </div>
+                                )}
+                                )} */}
                                 <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
                                     {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
                                 </Button> 

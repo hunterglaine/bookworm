@@ -335,9 +335,16 @@ def update_event_book_votes():
         # dictionary with event_id as key and list of book isbn's that the given
         # user has voted for (if any) for each event
         # print("THESE ARE EVENTS_ATTENDEE.voted_for", events_attendee_dict)
-        # events_books = crud.get_all_events_books(7)
-        # events_books = [event_book.to_dict() for event_book in events_books]
-        return jsonify(events_attendee_dict)
+        events = crud.get_all_events_for_user(user_id)
+        all_events = []
+        for event in events:
+            events_books = crud.get_all_events_books(event.id)
+            event_dict = event.to_dict()
+            events_books = [event_book.to_dict() for event_book in events_books]
+            event_dict["events_books"] = events_books
+            all_events.append(event_dict)
+        return jsonify({"booksVotedFor": events_attendee_dict,
+                        "eventsBooks": all_events})
 
     else:
         event_id = request.json.get("eventId")
