@@ -137,12 +137,19 @@ img.book-tile {
 
 h1 {
     text-align: center;
-    /* -webkit-text-stroke: 2px #7db6a3; width and color */
+    flex: auto;
+    display: inline;
+    /* -webkit-text-stroke: 1px #fff; width and color */
     margin: 1rem;
-    color: #000;
+    color: #fff;
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Shippori Mincho B1', serif;
+    background-color: rgba(5, 4, 2, 0.5);
+}
+
+h1.on-card {
+    color: #000;
 }
 
 .scrolling-wrapper-flexbox {

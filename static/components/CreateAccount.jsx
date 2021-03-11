@@ -51,11 +51,12 @@ function CreateAccount() {
 
     return(
         <div>
-            <h1>Welcome!</h1>
             <Row>
             <Col sm={4}></Col>
             <Col sm={4}>
-            <h2>Create an Account</h2>
+            <Card style={{padding: "2rem"}}>
+            <h1 className="on-card">Welcome</h1>
+            <h2 >Create an Account</h2>
             <Form onSubmit={createUser}>
                 <p>
                     <label htmlFor="your-first-name">First Name* </label>
@@ -138,11 +139,11 @@ function CreateAccount() {
         <p>
             Already have an account? <Link to="/login">Log in here!</Link>
         </p>
+        </Card>
         </Col>
         <Col sm={4}></Col>
         </Row>
+        
     </div>
   );
 }
-
-// ReactDOM.render(<CreateAccount />, document.getElementById("root"));

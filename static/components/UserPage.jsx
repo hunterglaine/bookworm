@@ -33,10 +33,17 @@ function UserPage(props) {
     }
     return (
         <div>
+            <Row>
+            <Col sm={1}></Col>
+            <Col sm={8}>
             <h1 className="bookshelf-title">
                 {props.userLoggedIn["userFirstName"]}'s Bookshelf
             </h1>
+            </Col>
+            <Col sm={3}>
             <Button className="button" onClick={() => history.push("/update-account-info")} >Update My Account Info</Button>
+            </Col>
+            </Row>
             <div>{userBookshelf}</div>
         </div>
 

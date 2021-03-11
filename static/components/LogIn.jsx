@@ -50,7 +50,7 @@ function LogIn(props) {
             <Col sm={4}></Col>
             <Col sm={4}>
             <Card style={{padding: "2rem"}}>
-            <h1>Log In</h1>
+            <h1 className="on-card">Log In</h1>
             <Form action="/login" onSubmit={logUserIn}>
                 <FormControl type="text" id="login-email" name="email" placeholder="Your Email" onChange={(e) => setUserEmail(e.target.value)} autoFocus required />
                 <FormControl type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} required />
