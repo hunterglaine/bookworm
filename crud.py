@@ -71,15 +71,14 @@ def create_event(host_id, city, event_date, start_time, end_time, state=None):
     return event
 
 
-def create_event_book(event, book): # CHANGED
+def create_event_book(event, book):
     """Create and return a new event_book"""
 
     event_book = EventBook(isbn=book.isbn, event_id=event.id)
-    # event.books.append(book)
+
     db.session.add(event_book)
     db.session.commit()
 
-    # return event.books
     return event_book
 
 
@@ -219,14 +218,10 @@ def get_all_events():
 def get_all_events_for_user(user_id):
     """Returns a list of all events for a given user"""
 
-    # user = User.query.filter(User.id == user_id).options(db.\
-    #                         joinedload("events")).first()
-
     events = Event.query.join(EventAttendee).filter(EventAttendee.user_id == user_id).\
             order_by(Event.event_date.asc(), Event.start_time.asc()).all()
       
     return events
-    # return user.events
 
 
 def get_event_attendee_by_id(user_id, event_id):
@@ -247,7 +242,7 @@ def get_all_events_attendees_for_user(user_id):
     return events_attendees
 
 
-def get_all_events_attendees(event_id): #chng
+def get_all_events_attendees(event_id):
     """Returns event_attendee objects for a given event"""
 
     events_attendees = EventAttendee.query.filter(EventAttendee.event_id == event_id).all()
@@ -266,9 +261,8 @@ def get_all_users_voted_for_books(user_id):
     return event_attendee_voted_for
 
 
-def get_all_books_for_event(event_id): # CHANGED
+def get_all_books_for_event(event_id):
     """Returns a list of all books for a given event"""
-    # event = Event.query.options(db.joinedload("events_books")).get(event_id)
 
     events_books = get_all_events_books(event_id)
 

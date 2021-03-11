@@ -3,6 +3,19 @@
 
 function UpdateAccount() {
     let history = useHistory();
+    const [userInfo, setUserInfo] = React.useState({});
+
+    React.useEffect(() => {
+        fetch("/users", {
+            method: "GET"
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("THIS IS userInfo",data)
+            setUserInfo(data)
+        })
+    }, [])
+
 
     const updateAccount = (evt) => {
         evt.preventDefault();
@@ -41,18 +54,18 @@ function UpdateAccount() {
                         <Form onSubmit={updateAccount}>
                             <p>
                                 <label htmlFor="your-first-name">First Name </label>
-                                <FormControl type="text" placeholder="Jane" id="update-first-name" />
+                                <FormControl type="text" value={userInfo.first_name} id="update-first-name" />
                             </p>
                             <p>
                                 <label htmlFor="your-last-name">Last Name </label>
-                                <FormControl type="text" placeholder="Doe" id="update-last-name" />
+                                <FormControl type="text" value={userInfo.last_name} id="update-last-name" />
                             </p>
                             <p>
                                 <label htmlFor="your-email">Email </label>
-                                <FormControl type="text" placeholder="janedoe@text.com" id="update-email" />
+                                <FormControl type="text" value={userInfo.email} id="update-email" />
                             </p>        
                             <p>
-                                <label htmlFor="your-password">Old Password </label>
+                                <label htmlFor="your-password">Confirm Old Password </label>
                                 <FormControl type="password" placeholder="Up to 20 characters" id="password" />
                             </p>
                             <p>
@@ -61,10 +74,10 @@ function UpdateAccount() {
                             </p>
                             <p>
                                 <label htmlFor="your-city">City </label>
-                                <FormControl type="text" placeholder="San Fransisco" id="update-city" />
+                                <FormControl type="text" value={userInfo.city} id="update-city" />
                             </p>
-                                <label htmlFor="your-sate">State</label>
-                                <FormControl as="select" name="state" placeholder="California" id="update-state" >
+                                <label htmlFor="your-sate">State ({userInfo.state})</label>
+                                <FormControl as="select" name="state" id="update-state" >
                                     <option value="" defaultValue></option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
