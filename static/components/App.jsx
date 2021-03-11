@@ -30,6 +30,8 @@ function App() {
     const [bookForDetails, setBookForDetails] = React.useState({});
     const [eventForDetails, setEventForDetails] = React.useState({});
     const [newLabel, setNewLabel] = React.useState(null)
+
+    console.log("USERID????", userLoggedIn.userId)
   
 
     React.useEffect(() => {

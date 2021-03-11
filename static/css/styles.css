@@ -4,8 +4,12 @@ body {
     /* font-family: 'Shippori Mincho B1', serif; */
     height: 100%;
     width: auto;
-    background-image: url("static/img/bookshelf-background.jpg") no-repeat center center;
-    background-size: cover;
+    background-image: url("static/img/bookshelf-background-blur.jpg") center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    /*background-size: cover; */
+    background-size: contain;
 }
 /* 
 div.background-img {
@@ -138,7 +142,7 @@ img.book-tile {
 
 h1 {
     text-align: center;
-    /* flex: auto; */
+    flex: auto;
     display: inline;
     /* -webkit-text-stroke: 1px #fff; width and color */
     line-height: 2;
@@ -147,7 +151,7 @@ h1 {
     font-size: 3rem;
     font-weight: bold;
     font-family: 'Shippori Mincho B1', serif;
-    background-color: rgba(5, 4, 2, 0.5);
+    background-color: rgba(5, 4, 2, 0.1);
 }
 
 h1.on-card {
@@ -275,4 +279,9 @@ div.book-cover {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #90ceba; 
+  }
+
+  .card-color {
+    /* background-color: #f9f8e5; */
+    border: none;
   }

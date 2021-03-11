@@ -3,7 +3,7 @@
 function LogOut(props) {
     
     let history = useHistory();
-
+    
     React.useEffect(() =>  {
         fetch("/logout", {
             method: "POST",

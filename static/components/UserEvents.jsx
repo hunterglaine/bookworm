@@ -24,11 +24,12 @@ function UserEvents(props) {
     return (
         <div>
             <Row className="m-0">
-            <Col sm={9}>
+                <Col sm={2}></Col>
+            <Col sm={8} >
                 <h1>Book Clubs You're Hosting</h1>
             </Col>
-            <Col sm={3} >
-                <Button className="button" onClick={() => history.push("/create-event")}>Host a New Book Club Event</Button>
+            <Col sm={2} >
+                <Button className="button" onClick={() => history.push("/create-event")}>Host a Book Club</Button>
             </Col>
             </Row>
             {myEvents.hosting 

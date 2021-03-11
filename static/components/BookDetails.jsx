@@ -53,7 +53,7 @@ function BookDetails(props) {
         <Row>
             <Col sm={1}></Col>
             <Col sm={10} className="mt-4">
-            <Card className="text-center" border="light" style={{padding: "2rem"}}>
+            <Card className="card-color" border="light" style={{padding: "2rem"}}>
             <div className="wrapper">
             
                 <img className="book-tile"src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
