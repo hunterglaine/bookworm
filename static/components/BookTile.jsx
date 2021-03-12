@@ -4,7 +4,9 @@ function BookTile(props) {
     const { book } = props;
     let history = useHistory();
     const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : "");
-    // const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? localStorage["categories"][0].label : "");
+    // const [categoryName, setCategoryName] = React.useState("");
+    // let categories = localStorage.getItem("categories")
+    // (props.userLoggedIn.userId ? setCategoryName(categories[0].label) : "")
 
     const addNewSelect = () => {
         
@@ -47,8 +49,8 @@ function BookTile(props) {
                 }
             })
         document.getElementById("add-to-category").reset();
-        setCategoryName(props.userCategories[0].label)
-        // setCategoryName(localStorage["categories"].label)
+        setCategoryName(props.userCategories[0].label) // here
+        // setCategoryName(localStorage.getItem("categories")[0].label)
 
         for (let i = 1; i < 11; i += 1) {
             document.forms[i].newCategory.style.visibility = "hidden";

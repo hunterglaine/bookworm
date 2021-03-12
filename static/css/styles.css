@@ -12,21 +12,6 @@ body {
     background-size: contain;
 }
 
-/* .background-container {
-    background-image: url("static/img/bookshelf-background-blur.jpg") center center fixed;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    /*background-size: cover; */
-    background-size: contain;
-    /* height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-} */
-
 #background-image {
     height: 100%;
     width: 100%;
@@ -43,7 +28,6 @@ body {
 }
 
 nav ul {
-    /* width: 100%; */
     float: right;
     margin: 0;
     padding: 0;
