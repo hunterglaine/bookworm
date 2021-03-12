@@ -264,7 +264,7 @@ class Friendship(db.Model):
         return f"<Friendship id={self.id}>"
 
 
-def connect_to_db(flask_app, database="bookworm", echo=True):
+def connect_to_db(flask_app, database="bookworm", echo=False):
     """Connect to database."""
 
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql:///{database}" # DB_URI
@@ -278,4 +278,4 @@ def connect_to_db(flask_app, database="bookworm", echo=True):
 if __name__ == "__main__":
     from server import app
 
-    connect_to_db(app, "testbookworm")
+    connect_to_db(app)

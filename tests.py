@@ -9,7 +9,7 @@ import test_seed
 # os.system("dropdb testbookworm")
 # os.system("createdb testbookworm")
 
-class MyAppUnitTestCase(unittest.TestCase):
+class CrudTestCase(unittest.TestCase):
 
     # def setUp(self):
     #     model.connect_to_db(server.app, "testbookworm")
@@ -35,6 +35,49 @@ class MyAppUnitTestCase(unittest.TestCase):
     def test_get_category_by_label(self):
         category = crud.get_category_by_label(3, "Learn Something New") 
         self.assertEqual(category.id, 8)
+
+
+class FlaskTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.client = server.app.test_client()
+        server.app.config["TESTING"] = True
+
+        model.connect_to_db(server.app, "testbookworm")
+
+    def tearDown(self):
+        model.db.session.close()
+    
+    def test_root(self):
+        result = self.client.get("/")
+        self.assertIn(b'<div id="root">', result.data)
+
+    def test_create_new_user(self):
+        response = self.client.post("/users",
+                                    data = json.dumps({"first_name": "Richard",
+                                                        "last_name": "Mayhew",
+                                                        "email": "rmayhew@londonbelow.com",
+                                                        "password": "door",
+                                                        "city": "London",
+                                                        "state": "RE"}),
+                                    content_type = "application/json")
+        self.assertEqual(response.data, 
+                        b'{"user":{"city":"London","email":"rmayhew@londonbelow.com","first_name":"Richard","id":7,"is_searchable":true,"last_name":"Mayhew","state":"RE"}}\n')
+
+        response = self.client.get("/users",
+
+    def test_create_new_user(self):
+        response = self.client.get("/users",
+                                    data = json.dumps({"first_name": "Richard",
+                                                        "last_name": "Mayhew",
+                                                        "email": "rmayhew@londonbelow.com",
+                                                        "password": "door",
+                                                        "city": "London",
+                                                        "state": "RE"}),
+                                    content_type = "application/json")
+        self.assertEqual(response.data, 
+                        b'{"user":{"city":"London","email":"rmayhew@londonbelow.com","first_name":"Richard","id":7,"is_searchable":true,"last_name":"Mayhew","state":"RE"}}\n')
+
     # def test_get_user_by_email(self):
     #     # client = server.app.test_client()
     #     # result = crud.get_user_by_email("hunterglaine@gmail.com")

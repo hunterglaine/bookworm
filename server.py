@@ -17,7 +17,7 @@ def show_homepage(path):
 
 @app.route("/users", methods=["GET","POST"])
 def create_new_user():
-    """Create a new user."""
+    """Create a new user or get info about existing user."""
 
     if request.method == "GET":
         if session.get("user"):
@@ -129,12 +129,14 @@ def get_and_update_categories():
                 authors = ""
                 for author in book_dict["volumeInfo"]["authors"]:
                     authors += f"{author} "
+                page_count = book_dict["volumeInfo"].get("pageCount")
+                if not page_count:
+                    page_count = 000
                 book = crud.create_book(isbn, 
                                         book_dict["volumeInfo"]["title"], 
-                                        # book_dict["volumeInfo"]["authors"], 
                                         authors,
                                         book_dict["volumeInfo"]["description"], 
-                                        book_dict["volumeInfo"]["pageCount"], 
+                                        page_count, 
                                         book_dict["volumeInfo"]["imageLinks"]["thumbnail"])
 
             if not category:
@@ -449,5 +451,5 @@ def add_book_to_event():
 
 
 if __name__ == "__main__":
-    connect_to_db(app, "testbookworm")
+    connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
