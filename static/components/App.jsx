@@ -29,9 +29,7 @@ function App() {
     const [bookshelfCategories, setBookshelfCategories] = React.useState([]);
     const [bookForDetails, setBookForDetails] = React.useState({});
     const [eventForDetails, setEventForDetails] = React.useState({});
-    const [newLabel, setNewLabel] = React.useState(null)
-
-    console.log("USERID????", userLoggedIn.userId)
+    const [newLabel, setNewLabel] = React.useState(null);
   
 
     React.useEffect(() => {
@@ -43,6 +41,9 @@ function App() {
       return (
           <Router>
             <div>
+            {/* <div className="background-container"> */}
+            {/* <div className="background-container" background="static/img/bookshelf-background-blur.jpg"> */}
+              {/* <input id="background-image" type="image" src="static/img/bookshelf-background-blur.jpg" alt="Bookshelf Background"/> */}
               <TopNavigation
                 bookQuery={bookQuery} 
                 setBookQuery={setBookQuery} 
@@ -90,7 +91,7 @@ function App() {
                     userLoggedIn={userLoggedIn}
                    />
                 </Route>
-                <Route path="/book-search">
+                <Route path="/book-search/:urlQuery">
                   <SearchResults 
                     bookQuery={bookQuery} 
                     userLoggedIn={userLoggedIn} 

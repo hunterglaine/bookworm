@@ -23,10 +23,9 @@ function EventDetails(props) {
         .then((data) => {
             console.log(" What is going on here???",data)
             setBooksVotedFor(data["booksVotedFor"])
-            setEventsBooksVotes(data["eventsBooks"])
+            setEventsBooksVotes(data["allEventsBooks"])
         })
-    }, [])
-    // [props.changeInEvent]
+    }, [props.changeInEvent])
 
     React.useEffect(() => {
 
@@ -65,8 +64,6 @@ function EventDetails(props) {
         .then(response => response.json())
         .then(result => {
             setBooksVotedFor(result["booksVotedFor"]);
-            // props.setChangeInEvent(result)
-            // props.setChangeInEvent(null)
             return result;
         })
         .then(data => {
@@ -74,12 +71,11 @@ function EventDetails(props) {
                 alert(data["error"])
             }
             else {
-                alert(data["success"])
+                // alert(data["success"])
                 setEventsBooksVotes(data["allEventsBooks"])
-                // allEventsBooks = data.allEventsBooks
-                // setEventsBooksVotes(eventsBooksVotes.filter((eventBook) => eventBook.vote_count !== data.allEventsBooks[0].vote_count).concat([data.allEventsBooks[0]]))
-                // props.setChangeInEvent(data)
-                // props.setChangeInEvent(null)
+        
+                props.setChangeInEvent(data)
+                props.setChangeInEvent(null)
             }
             console.log(data)
         })
@@ -96,39 +92,26 @@ function EventDetails(props) {
             : <div className="book-tile">
                 {event.books.length === 1 ? <h4>We're Reading</h4> : <h4>Book Suggestions</h4>}
                 {event.books.map(book => 
-                    // {eventsBooksVotes.map(eventBook => 
-                    //     {eventBook.isbn === book.isbn && eventBook.is_the_one ? 
                     (<div className="event-book">
                         <Card className="text-center" border="light" className="card-color">
-                        <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
-                        {event.can_vote 
-                            ? <div>
-                                {eventsBooksVotes.map(eventBook => 
-                                    <div>
-                                        {eventBook.isbn === book.isbn ? eventBook.vote_count : null}
-                                    </div>
-                                )}
-                                {/* {eventsBooksVotes.map(eventBook => 
-                                    // {eventBook.id === event.id 
-                                    // ?
-                                    {eventBook.events_books.map(bookChoice =>
-                                    <div>
-                                        {console.log("checking vote count", bookChoice.isbn, book.isbn, bookChoice.vote_count)}
-                                        {bookChoice.isbn === book.isbn ? bookChoice.vote_count : null}
-                                    </div>
-                                 )} 
-                                :
-                                null}
-                                 )}*/}
-                                <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
-                                    {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
-                                </Button> 
-                            </div> 
-                            : null}
+                            <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
+                            {event.can_vote 
+                                ? <div>
+                                    {eventsBooksVotes[event.id]
+                                    ? (eventsBooksVotes[event.id].events_books.map(eventBook =>
+                                        <div>
+                                            {eventBook.isbn === book.isbn ? eventBook.vote_count : null}
+                                        </div>))
+                                    : null
+                                    }
+                                    <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
+                                        {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
+                                    </Button> 
+                                </div> 
+                                : null
+                            }
                         </Card>
                     </div>)
-                            // : null}
-                        // )}
                 )}
             </div>
             }
@@ -147,7 +130,7 @@ function EventDetails(props) {
                     Allow Book Suggestions
                 </Button>
                 }
-                {event.can_vote /*&& !event.can_add_books */
+                {event.can_vote
                     ? <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
                         Stop the Voting
                     </Button> 

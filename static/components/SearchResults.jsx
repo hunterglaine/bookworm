@@ -2,13 +2,14 @@
 
 function SearchResults(props) {
 
-    // const { urlQuery } = useParams();
+    const { urlQuery } = useParams();
     const content = []
     const [books, setBooks] = React.useState([]);
     let bookKey = ''
 
     React.useEffect(() =>  {
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.bookQuery}&maxResults=10`)
+        // fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.bookQuery}&maxResults=10`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${urlQuery}&maxResults=10`)
         .then (response => response.json())
         .then (result => setBooks(result.items))
         }, [props.bookQuery])    

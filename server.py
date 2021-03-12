@@ -329,22 +329,23 @@ def update_event_book_votes():
     """Increases the number of votes on a given event book"""
     user_id = session.get("user")
 
+    events = crud.get_all_events_for_user(user_id)
+    all_events = {}
+    for event in events:
+        events_books = crud.get_all_events_books(event.id)
+        event_dict = event.to_dict()
+        events_books = [event_book.to_dict() for event_book in events_books]
+        event_dict["events_books"] = events_books
+        all_events[event.id] = event_dict
+
     if request.method == "GET":
         # get all of the user's event_books
         events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
         # dictionary with event_id as key and list of book isbn's that the given
         # user has voted for (if any) for each event
-        # print("THESE ARE EVENTS_ATTENDEE.voted_for", events_attendee_dict)
-        events = crud.get_all_events_for_user(user_id)
-        all_events = []
-        for event in events:
-            events_books = crud.get_all_events_books(event.id)
-            event_dict = event.to_dict()
-            events_books = [event_book.to_dict() for event_book in events_books]
-            event_dict["events_books"] = events_books
-            all_events.append(event_dict)
+        
         return jsonify({"booksVotedFor": events_attendee_dict,
-                        "eventsBooks": all_events})
+                        "allEventsBooks": all_events})
 
     else:
         event_id = request.json.get("eventId")
@@ -355,15 +356,15 @@ def update_event_book_votes():
         update = event_attendee.update_voted_for(isbn) # returns, "removed", "added", or None
         events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
        
-        events_books = crud.get_all_events_books(event_id)
-        events_books = [event_book.to_dict() for event_book in events_books]
+        # events_books = crud.get_all_events_books(event_id)
+        # events_books = [event_book.to_dict() for event_book in events_books]
 
 
         if not update:
             # But buttons to vote should already be gone
             return jsonify({"error": "You have already voted twice.",
                             "booksVotedFor": events_attendee_dict,
-                            "allEventsBooks": events_books})
+                            "allEventsBooks": all_events})
         
         event_book = crud.get_event_book_by_isbn(event_id, isbn)
         book = crud.get_book_by_isbn(isbn)
@@ -372,7 +373,7 @@ def update_event_book_votes():
             crud.update_event_book_vote_count(event_book, "remove")
             return jsonify({"success": f"You have successfully 'unvoted' for {book.title}.",
                             "booksVotedFor": events_attendee_dict,
-                            "allEventsBooks": events_books})
+                            "allEventsBooks": all_events})
            
         crud.update_event_book_vote_count(event_book, "add")
         
@@ -381,12 +382,12 @@ def update_event_book_votes():
             return jsonify({"success": f"You voted for {book.title}",
                             "booksVotedFor": events_attendee_dict,
                             "buttons": "hidden",
-                            "allEventsBooks": events_books})
+                            "allEventsBooks": all_events})
         
         return jsonify({"success": f"You voted for {book.title}",
                         "booksVotedFor": events_attendee_dict,
                         "buttons": "visible",
-                        "allEventsBooks": events_books})
+                        "allEventsBooks": all_events})
     
 
 @app.route("/events") # GET 

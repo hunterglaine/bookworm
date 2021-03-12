@@ -6,17 +6,21 @@ function SearchBar(props) {
 
     function bookSearch(evt) {
         evt.preventDefault();
-        // const urlQuery = document.getElementById("book-search").value
+        const urlQuery = document.getElementById("book-search").value
         props.setBookQuery(document.getElementById("book-search").value)
 
         fetch("/categories")
         .then (response => response.json())
         .then(result => {console.log(result["categories"]); return result;})
-        .then((data) => props.setUserCategories(data["categories"]))
+        .then((data) => {
+            props.setUserCategories(data["categories"])
+            // localStorage.setItem("categories", data["categories"]) // here
+        })
         .catch(console.error)
 
          history.push("/book-search")
-        // history.push(`/book-search/${urlQuery}`)
+        // history.push(`/book-search/${querystring.stringify({bookQuery:urlQuery})}`)
+        history.push(`/book-search/${urlQuery}`)
         document.getElementById("search-bar").reset();
     }
     

@@ -4,18 +4,39 @@ body {
     /* font-family: 'Shippori Mincho B1', serif; */
     height: 100%;
     width: auto;
-    background-image: url("static/img/bookshelf-background-blur.jpg") center center fixed;
+    /* background-image: url("static/img/bookshelf-background-blur.jpg") center center fixed; */
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     /*background-size: cover; */
     background-size: contain;
 }
-/* 
-div.background-img {
-    background-image: url("static/img/bookshelf-background.jpg") no-repeat center center;
-    background-size: cover;
+
+/* .background-container {
+    background-image: url("static/img/bookshelf-background-blur.jpg") center center fixed;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    /*background-size: cover; */
+    background-size: contain;
+    /* height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 } */
+
+#background-image {
+    height: 100%;
+    width: 100%;
+    float: left;
+    top: 0;
+    padding: none;
+    position: fixed;
+    width: auto;
+    opacity: 0.7;
+  }
 
 .color-nav {
     background-color: #7db6a3;
@@ -151,7 +172,7 @@ h1 {
     font-size: 3rem;
     font-weight: bold;
     font-family: 'Shippori Mincho B1', serif;
-    background-color: rgba(5, 4, 2, 0.1);
+    background-color: rgba(5, 4, 2, 0.2);
 }
 
 h1.on-card {

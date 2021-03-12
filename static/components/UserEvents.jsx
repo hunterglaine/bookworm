@@ -33,7 +33,8 @@ function UserEvents(props) {
             </Col>
             </Row>
             {myEvents.hosting 
-                ? myEvents.hosting.map(event => 
+                ? 
+                myEvents.hosting.map(event => 
                 <Row className="m-0">
                     <Col sm={1}>
                     </Col>
