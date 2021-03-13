@@ -48,27 +48,25 @@ Create and activate a virtual environment:
 
 Mac:
 
-```$ virtualenv env```
-
-```$ source env/bin/activate```
+    $ virtualenv env
+    $ source env/bin/activate
 
 Windows:
 
-```$ virtualenv env --always-copy```
-
-```$ source env/bin/activate```
+    $ virtualenv env --always-copy
+    $ source env/bin/activate
 
 Install dependencies:
 
-```(env) $ pip3 install -r requirements.txt```
+    (env) $ pip3 install -r requirements.txt
 
 Create the database: 
 
-```(env) $ python3 seed_database.py```
+    (env) $ python3 seed_database.py
 
 Start the server:
 
-```(env) $ python3 server.py```
+    (env) $ python3 server.py
 
 Now, head to `http://localhost:5000/` to start curating your bookshelf and attending book clubs!
 
