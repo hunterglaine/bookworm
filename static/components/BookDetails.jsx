@@ -11,7 +11,7 @@ function BookDetails(props) {
       }, [])
 
     const removeBook = (evt) => {
-        evt.preventDefault;
+        evt.preventDefault();
 
         fetch("/categories", {
             method: "DELETE",
@@ -29,7 +29,7 @@ function BookDetails(props) {
     } 
 
     const addEventBook = (evt) => {
-        evt.preventDefault;
+        evt.preventDefault();
 
         fetch("/add-book-to-event", {
             method: "POST",

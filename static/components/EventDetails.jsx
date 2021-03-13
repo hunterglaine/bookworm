@@ -70,9 +70,34 @@ function EventDetails(props) {
                 props.setChangeInEvent(data)
                 props.setChangeInEvent(null)
             }
-            console.log(data)
         })
     }
+
+
+    const unAttend = (evt) => {
+        evt.preventDefault();
+
+        fetch("/attendee", {
+            method: "DELETE",
+            credentials: "include",
+            body: JSON.stringify({"event": event.id}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if ("error" in data) {
+                alert(data["error"])
+            }
+            else {
+                alert(data["success"])
+                props.setChangeInEvent(data)
+                props.setChangeInEvent(null)
+            }
+        })
+    } 
+
 
     return (
         (<Card className="card-color">
@@ -135,7 +160,10 @@ function EventDetails(props) {
             : 
             <div>
             {event.can_add_books 
-                ? <Button className="button" onClick={() => history.push(`/user/${event.id}/${props.type}`)}>Suggest a Book</Button> 
+                ? <div>
+                    <Button className="button" onClick={() => history.push(`/user/${event.id}/${props.type}`)}>Suggest a Book</Button> 
+                    <Button className="button" onClick={unAttend}>I can no longer attend</Button>
+                </div>
                 : null}
             </div>
         }
