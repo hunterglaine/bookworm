@@ -7,7 +7,9 @@ function TopNavigation(props) {
 
         <Navbar variant="dark" className="color-nav d-flex justify-content-start" sticky="top" >
           <Navbar.Brand className="p-2">
+            <Link to="/">
             <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/>
+            </Link>
           </Navbar.Brand>
             <SearchBar 
               bookQuery={props.bookQuery} 
