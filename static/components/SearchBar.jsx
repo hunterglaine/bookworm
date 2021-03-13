@@ -25,9 +25,9 @@ function SearchBar(props) {
     }
     
     return (
-            <Form id="search-bar" onSubmit={bookSearch} className="mr-auto" inline>
-                <FormControl type="text" id="book-search" placeholder="Search for book by title or author" />
-                <Button className="button-search" type="submit" variant="outline-dark">Search</Button>
+            <Form inline="true" id="search-bar" onSubmit={bookSearch} className="p-2"> {/* className="mr-auto"  */}
+                <FormControl type="text" id="book-search" placeholder="Search by title or author" style={{ display: "inline-block", width: "auto", lineHeight: "2"}}/>
+                <Button className="button-search" type="submit" variant="outline-primary">Search</Button>
             </Form>
     );
     

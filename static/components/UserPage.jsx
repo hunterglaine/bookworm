@@ -21,11 +21,6 @@ function UserPage(props) {
     }, [props.newLabel])
 
 
-    // const updateAccountForm = () => {
-    //     history.push("/update-account-info")
-    // }
-
-
     for (const category of props.bookshelfCategories) {
         userBookshelf.push(<CategoryContainer 
                             label={category[0]} 

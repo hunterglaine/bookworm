@@ -19,7 +19,6 @@ const Col = ReactBootstrap.Col;
 const Card = ReactBootstrap.Card;
 
 
-
 function App() {
 
     const [userLoggedIn, setUserLoggedIn] = React.useState({userId: null, userFirstName: null});
@@ -38,10 +37,6 @@ function App() {
     }
     window.scrollTo(0, 0)
     }, [])
-
-    // React.useEffect(() => {
-    //   window.scrollTo(0, 0)
-    // }, [])
 
       return (
           <Router>
