@@ -60,13 +60,7 @@ function AllEvents(props) {
                         }
                         {props.userLoggedIn.userId 
                         ? 
-                        // <Button className="button" value="Attend" id={event.id} onClick={addAttendee(event.id, )}>Attend</Button>
                         <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
-
-                        // <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
-                        // {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
-                        // </Button> 
-
                         : <Link to="/create-account">Create an account or log in to attend an event</Link>}
                         </div>
                         </Card>

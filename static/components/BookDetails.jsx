@@ -54,21 +54,21 @@ function BookDetails(props) {
     } 
     
     return (
-        <Row>
+        <Row className="m-0">
             <Col sm={1}></Col>
             <Col sm={10} className="mt-4">
             <Card className="card-color" border="light" style={{padding: "2rem"}}>
             <div className="wrapper">
-            
                 <img className="book-tile"src={props.bookForDetails.image} alt={props.bookForDetails.title}/>
-            <h2>{props.bookForDetails.title}</h2>
-            <h4>Written By {props.bookForDetails.author}</h4>
-            {/* <h4>Written By {props.bookForDetails.author.slice(2,-2)}</h4> */}
-            <h5>Length: {props.bookForDetails.page_length} Pages</h5>
-            <br/>
-            <p>{props.bookForDetails.description}</p>
-            {eventId !== "home" ? null :<Button className="button" onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel} </Button>}
-            {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>}
+                <h2>{props.bookForDetails.title}</h2>
+                <h4>Written By {props.bookForDetails.author}</h4>
+                <h5>Length: {props.bookForDetails.page_length} Pages</h5>
+                {eventId !== "home" ? null :<Button className="button" onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel}</Button>}
+                {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>}
+                <br/>
+                <p>{props.bookForDetails.description}</p>
+                {/* {eventId !== "home" ? null :<Button className="button" onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel}</Button>}
+                {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>} */}
             </div>
             </Card>
             </Col>
