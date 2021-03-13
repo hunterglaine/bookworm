@@ -12,26 +12,64 @@ Table of Contents
 
 [Installation](#installation)
 
+
+
 Tech Stack
 ------
 
 | <!-- -->    | <!-- -->    |
 |:-------------|:-------------|
-| Backend      | Python, SQLAlchemy, Flask |
-| Frontend     | JavaScript, React, Fetch, HTML, CSS, React-Bootstrap |
-| Database     | PostgreSQL |
-| APIs         | Google Books |
+| **Backend**      | Python, SQLAlchemy, Flask |
+| **Frontend**     | JavaScript, React, Fetch, HTML, CSS, React-Bootstrap |
+| **Database**     | PostgreSQL |
+| **APIs**         | Google Books |
 | <!-- -->    | <!-- -->    |
 
 
-### Backend
-
-### Frontend
-
-### 
 
 Features
 ------
 
+
+
 Installation
 ------
+In order to use Bookworm, you will first need:
++ Python 3.6.9
++ PostreSQL 10.15
+
+To install Bookworm:
+
+Clone this repository:
+
+```$ git clone https://github.com/hunterglaine/bookworm.git```
+
+Create and activate a virtual environment:
+
+Mac:
+
+```$ virtualenv env```
+
+```$ source env/bin/activate```
+
+Windows:
+
+```$ virtualenv env --always-copy```
+
+```$ source env/bin/activate```
+
+Install dependencies:
+
+```(env) $ pip3 install -r requirements.txt```
+
+Create the database: 
+
+```(env) $ python3 seed_database.py```
+
+Start the server:
+
+```(env) $ python3 server.py```
+
+Now, head to `http://localhost:5000/` to start curating your bookshelf and attending book clubs!
+
+### Happy Reading! 📚

@@ -7,6 +7,8 @@ import crud
 import model
 import server
 
+os.system("pg_dump bookworm > bookworm.sql")
+
 os.system("dropdb bookworm")
 os.system("createdb bookworm")
 
