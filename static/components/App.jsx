@@ -30,6 +30,7 @@ function App() {
     const [eventForDetails, setEventForDetails] = React.useState({});
     const [newLabel, setNewLabel] = React.useState(null);
   
+    let history = useHistory();
 
     React.useEffect(() => {
       if (localStorage.getItem("userId") !== "null") {
@@ -41,9 +42,6 @@ function App() {
       return (
           <Router>
             <div>
-            {/* <div className="background-container"> */}
-            {/* <div className="background-container" background="static/img/bookshelf-background-blur.jpg"> */}
-              {/* <input id="background-image" type="image" src="static/img/bookshelf-background-blur.jpg" alt="Bookshelf Background"/> */}
               <TopNavigation
                 bookQuery={bookQuery} 
                 setBookQuery={setBookQuery} 
@@ -53,14 +51,18 @@ function App() {
               <Switch>
               <Route exact path="/">
                 {userLoggedIn.userId 
-                ? <UserPage 
-                  userLoggedIn={userLoggedIn}
-                  userCategories={userCategories}
-                  setBookshelfCategories={setBookshelfCategories}
-                  bookshelfCategories={bookshelfCategories}
-                  setBookForDetails={setBookForDetails}
-                  newLabel={newLabel}
-                  setNewLabel={setNewLabel} />
+                ? <UserEvents 
+                    userLoggedIn={userLoggedIn}
+                    setBookForDetails={setBookForDetails}
+                    setEventForDetails={setEventForDetails} />
+                // <UserPage 
+                //   userLoggedIn={userLoggedIn}
+                //   userCategories={userCategories}
+                //   setBookshelfCategories={setBookshelfCategories}
+                //   bookshelfCategories={bookshelfCategories}
+                //   setBookForDetails={setBookForDetails}
+                //   newLabel={newLabel}
+                //   setNewLabel={setNewLabel} />
                 : <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />}
               </Route>
                 <Route path="/login">

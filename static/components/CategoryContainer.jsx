@@ -5,7 +5,7 @@ function CategoryContainer(props) {
     // const [newLabel, setNewLabel] = React.useState(null)
     const labelChange = React.useRef("");
     const booksInCategory = []
-    let history = useHistory();
+    // let history = useHistory();
     console.log("This is new label",props. newLabel)
     console.log("THIS is label up top", props.label)
 
@@ -65,7 +65,7 @@ function CategoryContainer(props) {
         booksInCategory.push(<Book key={book.isbn} 
                                     book={book} 
                                     setBookForDetails={props.setBookForDetails} 
-                                    categoryLabel={props.label} 
+                                    categoryLabel={props.label}
                                     eventId={props.eventId}
                                     type={props.type} />)
     }
