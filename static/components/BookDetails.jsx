@@ -6,6 +6,10 @@ function BookDetails(props) {
     let history = useHistory();
     const { eventId } = useParams();
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     const removeBook = (evt) => {
         evt.preventDefault;
 

@@ -415,21 +415,32 @@ def get_all_events():
     return jsonify (all_events_dict)
 
 
-@app.route("/add-attendee", methods=["POST"])  # This could be PUT to combine routes
-def add_event_attendee():
+@app.route("/attendee", methods=["DELETE", "POST"])  # This could be PUT to combine routes
+def update_event_attendee():
     """Adds a user to an event as an attendee"""
 
     user_id = session.get("user")
     event_id = request.json.get("event")
-
+    event = crud.get_event_by_id(event_id)
     user = crud.get_user_by_id(user_id)
-    attendees= crud.get_all_attendees(event_id)
-    if user in attendees:
-        return jsonify({"error": "You are already attending this event"})
+    attendees = crud.get_all_attendees(event_id)
 
-    crud.create_event_attendee(user_id, event_id)
+    if request.method == "DELETE":
+        if user not in attendees:
+            return jsonify({"error": "You are not attending this event"})
+        
+        crud.remove_attendee_from_event(user_id, event_id)
 
-    return jsonify ({"success": "You are now attending!"})
+        return jsonify ({"success": f"You are no longer attending the {event.city} book club on {event.event_date}"})
+
+    if request.method == "POST":
+        
+        if user in attendees:
+            return jsonify({"error": "You are already attending this event"})
+
+        crud.create_event_attendee(user_id, event_id)
+
+        return jsonify ({"success": f"You are now attending the {event.city} book club on {event.event_date}!"})
 
 
 @app.route("/add-book-to-event", methods=["POST"]) # Could also be PUT

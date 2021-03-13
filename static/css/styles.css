@@ -290,3 +290,8 @@ div.book-cover {
     /* background-color: #f9f8e5; */
     border: none;
   }
+
+  .logo-text {
+    font-size: .5rem;
+    padding-left: 5px;
+  }

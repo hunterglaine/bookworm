@@ -484,6 +484,16 @@ def delete_book(isbn):
     db.session.commit()
 
 
+def remove_attendee_from_event(user_id, event_id):
+    """Remove a particular attendee from a particular event"""
+
+    user = get_user_by_id(user_id)
+    event = get_event_by_id(event_id)
+
+    event.users.remove(user)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     from server import app
     connect_to_db(app)

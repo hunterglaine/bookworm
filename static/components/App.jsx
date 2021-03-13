@@ -36,7 +36,12 @@ function App() {
       if (localStorage.getItem("userId") !== "null") {
         setUserLoggedIn({userId: localStorage.getItem("userId"), userFirstName: localStorage.getItem("userFirstName")})
     }
+    window.scrollTo(0, 0)
     }, [])
+
+    // React.useEffect(() => {
+    //   window.scrollTo(0, 0)
+    // }, [])
 
       return (
           <Router>

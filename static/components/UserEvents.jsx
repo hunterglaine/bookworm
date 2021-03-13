@@ -45,7 +45,15 @@ function UserEvents(props) {
                     </Col>
                 </Row>
                 ) 
-                : "You are not currently hosting any events"
+                : <Row className="m-0">
+                <Col sm={1}>
+                </Col>
+                <Col sm={10} className="mt-4">
+                    <Card className="text-center" border="light">
+                        <h4>You are not currently hosting any events</h4>
+                    </Card>
+                </Col>
+            </Row>
             }
             <Row className="m-0">
             <h1>Book Clubs You're Attending</h1>
@@ -62,7 +70,15 @@ function UserEvents(props) {
                     </Col>
                 </Row>
                 ) 
-                : "You are not currently attending any events"
+                : <Row className="m-0">
+                <Col sm={1}>
+                </Col>
+                <Col sm={10} className="mt-4">
+                    <Card className="text-center" border="light">
+                        <h4>You are not currently attending any events</h4>
+                    </Card>
+                </Col>
+            </Row>
             }
         </div>
     )

@@ -6,6 +6,10 @@ function UserPage(props) {
     const { type } = useParams();
     const userBookshelf = []
     let history = useHistory();
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     
     React.useEffect(() =>  {
         fetch("/user-data", {

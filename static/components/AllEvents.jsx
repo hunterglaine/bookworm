@@ -9,7 +9,7 @@ function AllEvents(props) {
             
         console.log(currentEvent)
         
-        fetch('/add-attendee', {
+        fetch('/attendee', {
             method: "POST",
             credentials: "include",
             body: JSON.stringify({"event": currentEvent}),
@@ -59,7 +59,14 @@ function AllEvents(props) {
                             (<p value={`${attendee.first_name} ${attendee.last_name}`} >{`${attendee.first_name} ${attendee.last_name}`}</p>))
                         }
                         {props.userLoggedIn.userId 
-                        ? <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
+                        ? 
+                        // <Button className="button" value="Attend" id={event.id} onClick={addAttendee(event.id, )}>Attend</Button>
+                        <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
+
+                        // <Button className="button" id={book.isbn} onClick={updateVote(book.isbn)}>
+                        // {booksVotedFor[event.id] && booksVotedFor[event.id].includes(book.isbn) ? "Unvote" : "Vote"}
+                        // </Button> 
+
                         : <Link to="/create-account">Create an account or log in to attend an event</Link>}
                         </div>
                         </Card>
