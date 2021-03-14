@@ -424,7 +424,10 @@ def get_all_events():
 
     events = crud.get_all_events()
 
-    all_events = []
+    # all_events = []
+    today = date.today()
+
+    all_events = {"past": [], "upcoming": []}
 
     for event in events:
         event = event.to_dict()
@@ -434,11 +437,16 @@ def get_all_events():
         
         event["attending"] = attendees
         event["host"] = host
-        all_events.append(event)
+        if today <= event["event_date"]:
+            all_events["upcoming"].append(event)
+        else: 
+            all_events["past"].append(event)
+        # all_events.append(event)
 
-    all_events_dict = {"events": all_events}
+    # all_events_dict = {"events": all_events}
 
-    return jsonify (all_events_dict)
+    # return jsonify (all_events_dict)
+    return jsonify (all_events)
 
 
 @app.route("/attendee", methods=["DELETE", "POST"])  # This could be PUT to combine routes

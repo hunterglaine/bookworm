@@ -42,9 +42,9 @@ function AllEvents(props) {
     return (
         <div>
             <Row className="m-0">
-                <h1>Book Club Meetings</h1>
+                <h1>Upcoming Book Club Meetings</h1>
             </Row>
-            {allEvents.events ? allEvents.events.map(event => 
+            {allEvents.upcoming ? allEvents.upcoming.map(event => 
                     (<Row className="m-0">
                     <Col sm={3}>
                     </Col>
