@@ -41,15 +41,19 @@ function UserEvents(props) {
                 <Button className="button" onClick={() => history.push("/create-event")}>Host a Book Club</Button>
             </Col>
             <Col sm={2}>
-                {whichEvents === "upcoming" ? <Button className="button" onClick={() => setWhichEvents("past")}>Past Events</Button> : <Button className="button" onClick={() => setWhichEvents("upcoming")}>Upcoming Events</Button>}
+                <ToggleButtonGroup type="radio" name="which-events" value={whichEvents}>
+                    <ToggleButton className="toggle-button" value="upcoming" onClick={() => setWhichEvents("upcoming")}>Upcoming</ToggleButton>
+                    <ToggleButton className="toggle-button" value="past" onClick={() => setWhichEvents("past")}>Past</ToggleButton>
+                </ToggleButtonGroup>
+                {/* {whichEvents === "upcoming" ? <Button className="button" onClick={() => setWhichEvents("past")}>Past Events</Button> : <Button className="button" onClick={() => setWhichEvents("upcoming")}>Upcoming Events</Button>} */}
             </Col>
             </Row>
-            // {/* {myEvents.hosting  */}
+            {/* {myEvents.hosting  */}
             {myEvents.hosting[whichEvents]
                 ? 
                 // {/* myEvents.hosting.map(event =>  */}
-                myEvents.hosting[whichEvents].map(event =>
-                <Row className="m-0">
+                myEvents.hosting[whichEvents].map((event, idx) =>
+                <Row key={idx} className="m-0">
                     <Col sm={1}>
                     </Col>
                     <Col sm={10} className="mt-4">
@@ -75,9 +79,9 @@ function UserEvents(props) {
             {/* {myEvents.attending  */}
             {myEvents.attending[whichEvents]
                 ? 
-                myEvents.attending[whichEvents].map(event =>
+                myEvents.attending[whichEvents].map((event, idx) =>
                 // myEvents.attending.map(event => 
-                <Row className="m-0">
+                <Row key={idx} className="m-0">
                     <Col sm={1}>
                     </Col>
                     <Col sm={10} className="mt-4">

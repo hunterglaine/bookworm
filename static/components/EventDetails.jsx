@@ -109,15 +109,15 @@ function EventDetails(props) {
             ? null 
             : <div className="book-tile">
                 {event.books.length === 1 ? <h4>We're Reading</h4> : <h4>Book Suggestions</h4>}
-                {event.books.map(book => 
-                    (<div className="event-book">
+                {event.books.map((book, idx) => 
+                    (<div key={idx} className="event-book">
                         <Card className="text-center" border="light" className="card-color">
                             <Book key={book.isbn} book={book} setBookForDetails={props.setBookForDetails} categoryLabel="event" eventId={event.id} />
                             {event.can_vote 
                                 ? <div>
                                     {eventsBooksVotes[event.id]
-                                    ? (eventsBooksVotes[event.id].events_books.map(eventBook =>
-                                        <div>
+                                    ? (eventsBooksVotes[event.id].events_books.map((eventBook, idx) =>
+                                        <div key={idx}>
                                             {eventBook.isbn === book.isbn ? eventBook.vote_count : null}
                                         </div>))
                                     : null
@@ -149,22 +149,21 @@ function EventDetails(props) {
                 </Button>
                 }
                 {event.can_vote
-                    ? <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
-                        Stop the Voting
-                    </Button> 
-                    : <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
-                        Start the Voting
-                    </Button>
+                ? <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
+                    Stop the Voting
+                </Button> 
+                : <Button className="button" onClick={updateEventBooks(event.id, "vote")}>
+                    Start the Voting
+                </Button>
                 }
             </div>
             : 
             <div>
             {event.can_add_books 
-                ? <div>
+                ? 
                     <Button className="button" onClick={() => history.push(`/user/${event.id}/${props.type}`)}>Suggest a Book</Button> 
-                    <Button className="button" onClick={unAttend}>I can no longer attend</Button>
-                </div>
                 : null}
+                <Button className="button" onClick={unAttend}>I can no longer attend</Button>
             </div>
         }
         </Card>)

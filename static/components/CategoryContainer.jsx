@@ -36,7 +36,7 @@ function CategoryContainer(props) {
             })
             .then(response => response.json())
             .then(data => {
-                alert(data["success"])
+                // alert(data["success"])
                 props.setNewLabel(data.label)
                 document.getElementById(`change-label-${props.label}`).style.visibility="hidden";
                 document.getElementById(`change-label-${props.label}`).reset();
@@ -55,8 +55,9 @@ function CategoryContainer(props) {
         })
         .then(response => response.json())
         .then(data => {
-            alert(data["success"]);
-            props.setNewLabel(data.label);
+            // alert(data["success"]);
+            // props.setNewLabel(data.label);
+            props.setNewLabel(data["success"])
         })
     }
 
@@ -88,11 +89,8 @@ function CategoryContainer(props) {
             <Button className="button" onClick={deleteCategory}>Delete Shelf</Button>
             </Col>
         </Row>
-        
-        {/* <div className="scroll-shelf" >{booksInCategory}</div> */}
         <div className="scrolling-wrapper-flexbox">{booksInCategory}</div>
         <Row className="shelf-board"></Row>
-        {/* <Row><img src="/static/img/single-shelf.PNG" alt=""/></Row> */}
         </Container>
     )
 }

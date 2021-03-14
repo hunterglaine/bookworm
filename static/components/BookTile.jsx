@@ -70,8 +70,8 @@ function BookTile(props) {
                         
                             <h3>{book.volumeInfo.title}</h3>
                         
-                            {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
-                                (<div>
+                            {book.volumeInfo.authors ? book.volumeInfo.authors.map((author, idx) => 
+                                (<div key={idx}>
                                     <h4>{author}</h4>
                                 </div>)) : ''
                             }
@@ -88,8 +88,8 @@ function BookTile(props) {
                                     <FormControl as="select" id="category-add" name="chooseCategory" onChange={(e) => {
                                         setCategoryName(e.target.value);
                                         addNewSelect();}} >
-                                        {props.userCategories.map(category => 
-                                            (<option value={category.label} >{category.label} </option>))
+                                        {props.userCategories.map((category, idx) => 
+                                            (<option key={idx} value={category.label} >{category.label} </option>))
                                         }
                                         <option value="add-new">Add New Category</option>
                                     </FormControl>
@@ -118,8 +118,8 @@ function BookTile(props) {
                         <div className="wrapper">
                             <img className="book-tile" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "/static/img/no_book_cover.png"} alt="Book Cover" />
                             <h3>{book.volumeInfo.title}</h3>
-                            {book.volumeInfo.authors ? book.volumeInfo.authors.map(author => 
-                                (<div>
+                            {book.volumeInfo.authors ? book.volumeInfo.authors.map((author, idx) => 
+                                (<div key={idx}>
                                     <h4>{author}</h4>
                                 </div>)) : ''
                             }

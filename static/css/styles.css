@@ -50,7 +50,8 @@ nav li .link-button {
 }
 
 nav li .link-button:hover {   
-    background-color: #90ceba;
+    /* background-color: #90ceba; */
+    background-color: #a1d4c3;
 }
 
 img#logo {
@@ -64,6 +65,18 @@ img#logo {
     /* display: inline-block; */
     vertical-align: middle;
     /* margin: 0; */
+}
+
+.toggle-button {
+    margin: 2rem 0;
+    background-color: #7db6a3;
+    border: none;
+    color: #000000;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
 }
 
 .button {
@@ -89,14 +102,25 @@ img#logo {
     display: inline-block;
     font-size: 14px;
 }
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #000000;
+    background-color:#a1d4c3;
+    border-color: #a1d4c3;
+}
+
+.toggle-button:hover {   
+    background-color: #a1d4c3;
+    color: #000000;
+}
+
 
 .button-bare:hover {   
-    background-color: #90ceba;
+    background-color: #a1d4c3;
     color: #000000;
 }
 
 .button:hover {   
-    background-color: #90ceba;
+    background-color: #a1d4c3;
     color: #000000;
 }
 
@@ -115,7 +139,7 @@ img#logo {
 }
 
 .button-search:hover {   
-    background-color: #90ceba;
+    background-color: #a1d4c3;
     color: #000000;
 }
 
@@ -150,7 +174,7 @@ img.book-tile {
 
 h1 {
     text-align: center;
-    flex: auto;
+    /* flex: auto; */
     display: inline;
     /* -webkit-text-stroke: 1px #fff; width and color */
     line-height: 2;
@@ -160,6 +184,8 @@ h1 {
     font-weight: bold;
     font-family: 'Shippori Mincho B1', serif;
     background-color: rgba(5, 4, 2, 0.2);
+    padding:1rem;
+    border-radius: 10px;
 }
 
 h1.on-card {
@@ -177,32 +203,14 @@ h1.on-card {
 .book-cover {
     margin: 1rem;
     flex: 0 0 auto;
+    vertical-align: bottom;
     
     
 }
-/* 
- .book-cover img {
-    padding: .2rem;
-    background-color: #fff;
-}  */
-/* 
-div.book-cover {
-    vertical-align: middle;
-} */
 
 .book-cover:hover {   
-    transform: scale(1.1);
-    /* padding: .1rem;
-    background-color: #fff;
-    vertical-align: middle */
+    transform: scale(1.2);
 }
-
-/* .bookshelf {
-    border: 1rem solid #e4d3bd;
-    padding-top: 2rem;
-    background: linear-gradient(#f3ebe1 calc(70% + 52px), #e4d3bd calc(30% + 22px))
-  
-} */
 
 .shelf-board {
     /* border: .5rem solid #814A2D; */
@@ -220,32 +228,11 @@ div.book-cover {
     border-image: url(/static/img/Melamine-wood-004.png) 100 round;
     border-image-width: 2.5rem;
     padding-top: 2rem;
-    padding-left: 2rem;
+    padding-left: 2.5rem;
     padding-right: 2.5rem;
     background-color: #e4c9a7;
     background-image: url(/static/img/Melamine-wood-005.png);
-    /* background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
-    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
-    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
-    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
-    background-size: 13px, 29px, 37px, 53px; */
 }
-
-
-/* 
-.bookshelf {
-    width: 80%;
-    height: 100%;
-    margin: 0 auto;
-    border: 10px $brown solid;
-    overflow: hidden;
-    background-image: linear-gradient(darken($brown, 32%), darken($brown, 30%) 220px, 
-      lighten($brown, 4%) 220px, lighten($brown, 4%) 222px,
-      $brown 222px, $brown 228px,
-    darken($brown, 4%) 228px, darken($brown, 4%) 230px);
-    background-size: 10px 230px;
-    box-shadow: 0px 1000px 0px 400px #7A7668;
-  } */
 
  .column {
     padding-left: 0; 
@@ -256,10 +243,13 @@ div.book-cover {
     line-height: 4;
     margin-left: 2rem;
     display: inline;
-    background-color: #fff;
-    border: .5rem solid #fff;
-    border-radius: 2px;
-    padding-right: 0;
+    font-weight: bold;
+    /* background-color: #fff; */
+    background-color: rgb(255,255,255, 0.5);
+    /* border: x rgb(255,255,255, 0.4); */
+    border-radius: 10px;
+    padding-left: .5rem;
+    padding-right:.5rem;
  }
 
  .margin-down {
@@ -286,11 +276,10 @@ div.book-cover {
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #90ceba; 
+    background: #a1d4c3; 
   }
 
   .card-color {
-    /* background-color: #f9f8e5; */
     border: none;
   }
 
@@ -298,3 +287,7 @@ div.book-cover {
     font-size: .5rem;
     padding-left: 5px;
   }
+
+
+
+  /*old background-color: #7db6a3; old highlight: #90ceba;; */

@@ -1,3 +1,4 @@
+![Bookworm](/static/img/tiny_bookworm_logo.png "Bookworm")
 Bookworm
 ======
 
@@ -19,8 +20,8 @@ Tech Stack
 
 | <!-- -->    | <!-- -->    |
 |:-------------|:-------------|
-| **Backend**      | Python, SQLAlchemy, Flask |
-| **Frontend**     | JavaScript, React, Fetch, HTML, CSS, React-Bootstrap |
+| **Backend**      | Python 3, SQLAlchemy, Flask |
+| **Frontend**     | JavaScript, React, Fetch, HTML5, CSS3, React-Bootstrap |
 | **Database**     | PostgreSQL |
 | **APIs**         | Google Books |
 | <!-- -->    | <!-- -->    |

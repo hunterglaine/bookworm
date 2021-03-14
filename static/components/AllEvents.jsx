@@ -20,14 +20,14 @@ function AllEvents(props) {
         .then(response => response.json())
         .then(data => {
             if ("error" in data) {
-            alert(data["error"]);
-        }
-        else {
+                alert(data["error"]);
+            }
+            else {
             alert(data["success"])
             history.push("/users-events")
-        } 
-    })
-}
+            } 
+        })
+    }
 
     React.useEffect(() => {
         if (currentEvent) addAttendee();
@@ -44,8 +44,8 @@ function AllEvents(props) {
             <Row className="m-0">
                 <h1>Upcoming Book Club Meetings</h1>
             </Row>
-            {allEvents.upcoming ? allEvents.upcoming.map(event => 
-                    (<Row className="m-0">
+            {allEvents.upcoming ? allEvents.upcoming.map((event, idx) => 
+                    (<Row key={idx} className="m-0">
                     <Col sm={3}>
                     </Col>
                     <Col sm={6} className="mt-4">
@@ -55,8 +55,8 @@ function AllEvents(props) {
                         <p><strong>Location:</strong> {event.city} </p>
                         <p><strong>Hosted By:</strong> {event.host.first_name} {event.host.last_name}</p>
                         <p><strong>Attendees</strong></p>
-                        {event.attending.map(attendee => 
-                            (<p value={`${attendee.first_name} ${attendee.last_name}`} >{`${attendee.first_name} ${attendee.last_name}`}</p>))
+                        {event.attending.map((attendee, idx) => 
+                            (<p key={idx} value={`${attendee.first_name} ${attendee.last_name}`} >{`${attendee.first_name} ${attendee.last_name}`}</p>))
                         }
                         {props.userLoggedIn.userId 
                         ? 
