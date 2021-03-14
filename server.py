@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify, json
 from model import connect_to_db, db
 import crud
+from datetime import date
 
 app = Flask(__name__)
 app.secret_key = "BD647hgfyetEHU789hfehd9svsru5HwgYkghjwrfishvs"
@@ -251,7 +252,10 @@ def get_user_events():
         # A list of the user's event objects
         print("USERS EVENTS **************", users_events)
         if users_events:
-            users_events_dict = {"hosting": [], "attending": []}
+            # users_events_dict = {"hosting": [], "attending": []}
+
+            users_events_dict = {"hosting": {"past": [], "upcoming": []}, 
+                                "attending": {"past": [], "upcoming": []}}
 
             for event in users_events:
                 events_books = crud.get_all_events_books(event.id)
@@ -265,16 +269,38 @@ def get_user_events():
                 event["books"] = books
                 event["events_books"] = events_books
                 event["host"] = f"{host.first_name} {host.last_name}"
-        
+
+                today = date.today()
                 if event["host_id"] == user_id:
-                    users_events_dict["hosting"].append(event)
+                    if today <= event["event_date"]:
+                        users_events_dict["hosting"]["upcoming"].append(event)
+                    else: 
+                        users_events_dict["hosting"]["past"].append(event)
+
+                    # users_events_dict["hosting"].append(event)
                 else:
-                    users_events_dict["attending"].append(event)
+                    if today <= event["event_date"]:
+                        users_events_dict["attending"]["upcoming"].append(event)
+                    else: 
+                        users_events_dict["attending"]["past"].append(event)
+
+                    # users_events_dict["attending"].append(event)
             
-            if len(users_events_dict["hosting"]) == 0:
-                users_events_dict["hosting"] = None
-            elif len(users_events_dict["attending"]) == 0:
-                users_events_dict["attending"] = None
+            if len(users_events_dict["hosting"]["upcoming"]) == 0:
+                users_events_dict["hosting"]["upcoming"] = None
+            if len(users_events_dict["hosting"]["past"]) == 0:
+                users_events_dict["hosting"]["past"] = None
+
+            # if len(users_events_dict["hosting"]) == 0:
+            #     users_events_dict["hosting"] = None
+
+            elif len(users_events_dict["attending"]["upcoming"]) == 0:
+                users_events_dict["attending"]["upcoming"] = None
+            elif len(users_events_dict["attending"]["past"]) == 0:
+                users_events_dict["attending"]["past"] = None
+
+            # elif len(users_events_dict["attending"]) == 0:
+            #     users_events_dict["attending"] = None
 
             return jsonify (users_events_dict)
 

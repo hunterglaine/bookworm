@@ -17,6 +17,9 @@ const Container = ReactBootstrap.Container;
 const Row = ReactBootstrap.Row;
 const Col = ReactBootstrap.Col;
 const Card = ReactBootstrap.Card;
+// const ToggleButtonGroup = ReactBootstrap.ToggleButtonGroup;
+const ButtonGroup = ReactBootstrap.ButtonGroup;
+const ToggleButton = ReactBootstrap.ToggleButton;
 
 
 function App() {

@@ -70,4 +70,4 @@ Start the server:
 
 Now, head to `http://localhost:5000/` to start curating your bookshelf and attending book clubs!
 
-### Happy Reading! 📚
+## Happy Reading! 📚

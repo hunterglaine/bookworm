@@ -101,7 +101,7 @@ function EventDetails(props) {
 
     return (
         (<Card className="card-color">
-            <h3>On {event.event_date.slice(0,16)}, you are {props.type === "hosting" ? "hosting" : "attending"} a book club!</h3>
+            <h3>Book Club On {event.event_date.slice(0,16)}!</h3>
             {props.type === "hosting" ? null : <p><strong>Hosted by:</strong> {event.host}</p>}
             <p><strong>Time:</strong> {event.start_time} to {event.end_time}</p>
             <p><strong>Location:</strong> {event.city}</p>
