@@ -305,7 +305,8 @@ def get_user_events():
             return jsonify (users_events_dict)
 
         else:
-            return jsonify ({})
+            return jsonify ({"hosting": {"past": None, "upcoming": None}, 
+                            "attending": {"past": None, "upcoming": None}})
 
     else:
         return jsonify ({'error': 'User must be logged in to view their events.'})

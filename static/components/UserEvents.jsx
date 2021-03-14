@@ -19,7 +19,6 @@ function UserEvents(props) {
             }
             else {
                 setMyEvents(data)
-                console.log("It's doing this...")
             }
         })
     }, [changeInEvent])
