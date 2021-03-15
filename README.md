@@ -2,7 +2,7 @@
 Bookworm
 ======
 
-Bookworm is a  book database that gives avid readers the ability to search for, store, and categorize books from the GoogleBooks API into a personal bookshelf. Users can create and attend book club events, where all attendees can suggest books from their shelves, read further information about each suggested book, and ultimately vote on the book to read. The current vote count for each book is displayed to all attendees, and when voting is stopped, the book with the most votes is the one that remains.
+Bookworm is single-page application book database that gives avid readers the ability to search for, store, and categorize books from the GoogleBooks API into a personal bookshelf. Users can create and attend book club events, where all attendees can suggest books from their shelves, read further information about each suggested book, and ultimately vote on the book to read. The current vote count for each book is displayed to all attendees, and when voting is stopped, the book with the most votes is the one that remains.
 
 Table of Contents
 ------
@@ -31,6 +31,21 @@ Tech Stack
 Features
 ------
 
+<!-- + Create an account -->
+### Login/Logout
+![Login/Logout](/static/img/login-gif.gif)
+
+### Search for books and add to a category on your bookshelf
+![Search and add books](/static/img/search-and-add-to-category.gif)
+
+<!-- ### Update category names and remove books from category
++ See all Bookworm events and attend/unattend them 
++ See all upcoming/past book clubs hosted and attended
++ Create new book clubs
++ The host of a given event can allow and stop attendees from suggesting books
++ The host can start and stop the voting 
++ When voting is stopped, the book with the most votes wins!
++ In the event of a tie, the tied books both remain and the vote count is reset -->
 
 
 Installation
