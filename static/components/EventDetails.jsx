@@ -20,9 +20,9 @@ function EventDetails(props) {
         })
     }, [props.changeInEvent])
 
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-    }, [])
+    // }, [])
     
     const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();

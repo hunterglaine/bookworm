@@ -6,9 +6,9 @@ function TopNavigation(props) {
     return (
 
         <Navbar variant="dark" className="color-nav d-flex justify-content-start" sticky="top" >
-          <Navbar.Brand className="p-2">
-            <Link to="/user/home/browsing">
-              <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm Logo"/>
+          <Navbar.Brand className="p-2"> 
+            <Link to={props.userLoggedIn.userId ? "/user/home/browsing" : "/login"}>
+              <img id="logo" src="/static/img/bookworm_logo2.png" alt="Bookworm"/>
             </Link>
           </Navbar.Brand>
             <SearchBar 

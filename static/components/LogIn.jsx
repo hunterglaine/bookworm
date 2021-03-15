@@ -56,7 +56,7 @@ function LogIn(props) {
                 <FormControl type="password" id="login-password" name="password" placeholder="Your Password" onChange={(e) => setUserPassword(e.target.value)} required />
                 <Button className="button" type="submit">Submit</Button>
             </Form>
-            <p>
+            <p style={{fontSize: ".8rem"}}>
                 Don't have an account yet? <Link to="/create-account">Create one here!</Link>
             </p>
             </Card>

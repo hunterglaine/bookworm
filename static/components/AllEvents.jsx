@@ -61,7 +61,7 @@ function AllEvents(props) {
                         {props.userLoggedIn.userId 
                         ? 
                         <Button className="button" value="Attend" id={event.id} onClick={(e) => {setCurrentEvent(e.target.id)}}>Attend</Button>
-                        : <Link to="/create-account">Create an account or log in to attend an event</Link>}
+                        : <Link className="button" to="/create-account">Create an account or log in to attend</Link>}
                         </div>
                         </Card>
                     </Col>

@@ -56,7 +56,11 @@ function CreateAccount() {
                 <Col sm={6}>
                     <Card style={{padding: "2rem"}}>
                         <h1 className="on-card">Welcome</h1>
+                         
                         <h2 >Create an Account</h2>
+                        <p style={{fontSize: ".8rem"}}>
+                            Already have an account? <Link to="/login">Log in here!</Link>
+                        </p>
                         <Form onSubmit={createUser}>
                             <p>
                                 <label htmlFor="your-first-name">First Name* </label>
@@ -76,10 +80,10 @@ function CreateAccount() {
                             </p>
                             <p>
                                 <label htmlFor="your-city">City </label>
-                                <FormControl type="text" placeholder="San Fransisco" name="city" onChange={(e) => setCity(e.target.value)} />
+                                <FormControl type="text" placeholder="San Francisco" name="city" onChange={(e) => setCity(e.target.value)} />
                             </p>
                                 <label htmlFor="your-sate">State</label>
-                                <FormControl as="select" name="state" placeholder="California" onChange={(e) => setUserState(e.target.value)}>
+                                <FormControl as="select" name="state" onChange={(e) => setUserState(e.target.value)}>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -135,10 +139,7 @@ function CreateAccount() {
                             <p>
                                 <Button className="button" type="submit">Submit</Button>
                             </p>
-                        </Form>
-                        <p>
-                            Already have an account? <Link to="/login">Log in here!</Link>
-                        </p>    
+                        </Form>   
                     </Card>
                 </Col>
                 <Col sm={3}></Col>

@@ -15,5 +15,3 @@ function Book(props) {
         </div>     
     )
 }
-
-// className="d-inline-block w-5" 

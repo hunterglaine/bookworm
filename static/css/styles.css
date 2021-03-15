@@ -56,7 +56,7 @@ nav li .link-button:hover {
 
 img#logo {
     float: left;
-    height: 4rem;
+    width: 4.3rem;
     display: inline;
     /* padding:.5rem; */
 }
@@ -89,6 +89,7 @@ img#logo {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+    border-radius: 5px;
 }
 
 .button-bare {
@@ -122,6 +123,7 @@ img#logo {
 .button:hover {   
     background-color: #a1d4c3;
     color: #000000;
+    text-decoration: none;
 }
 
 .button-search {
