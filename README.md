@@ -38,14 +38,17 @@ Features
 ### Search for books and add to your bookshelf
 ![Search and add books](/static/img/search-and-add-to-category.gif)
 
-<!-- ### Update category names and remove books from category
-+ See all Bookworm events and attend/unattend them 
-+ See all upcoming/past book clubs hosted and attended
-+ Create new book clubs
-+ The host of a given event can allow and stop attendees from suggesting books
-+ The host can start and stop the voting 
-+ When voting is stopped, the book with the most votes wins!
-+ In the event of a tie, the tied books both remain and the vote count is reset -->
+### Parouse bookshelf of saved books
+![Parouse bookshelf](/static/img/parouse-bookshelf.gif)
+
+### See all upcoming/past book clubs hosted and attended
+![Upcoming and past events](/static/img/upcoming-and-past-events.gif)
+
+### Suggest books for book clubs
+![Suggest books](/static/img/suggest-book.gif)
+
+### Vote for books
+![Vote for books](/static/img/vote-for-books.gif)
 
 
 Installation
