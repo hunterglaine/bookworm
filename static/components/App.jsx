@@ -119,6 +119,12 @@ function App() {
                   <AllEvents userLoggedIn={userLoggedIn} />
                 </Route>
               </Switch>
+              {/* <footer className="color-nav">
+                <div style={{display: "block", padding: "0", height: "1rem", width: "100%"}}></div>
+                <div style={{ textAlign: "center", padding: "1rem", left: "0", bottom: "1rem", height: "4rem", width: "100%", fontWeight: "bold"}}>
+                  “A reader lives a thousand lives before he dies . . . The man who never reads lives only one.” – George R.R. Martin
+                </div>
+              </footer> */}
           </div>
       </Router>
       );

@@ -21,7 +21,7 @@ Tech Stack
 | <!-- -->    | <!-- -->    |
 |:-------------|:-------------|
 | **Backend**      | Python 3, SQLAlchemy, Flask |
-| **Frontend**     | JavaScript, React, Fetch, HTML5, CSS3, React-Bootstrap |
+| **Frontend**     | JavaScript, React, HTML5, CSS3, React-Bootstrap |
 | **Database**     | PostgreSQL |
 | **APIs**         | Google Books |
 | <!-- -->    | <!-- -->    |
@@ -35,7 +35,7 @@ Features
 ### Login/Logout
 ![Login/Logout](/static/img/login-gif.gif)
 
-### Search for books and add to a category on your bookshelf
+### Search for books and add to your bookshelf
 ![Search and add books](/static/img/search-and-add-to-category.gif)
 
 <!-- ### Update category names and remove books from category
@@ -85,5 +85,10 @@ Start the server:
     (env) $ python3 server.py
 
 Now, head to `http://localhost:5000/` to start curating your bookshelf and attending book clubs!
+
+
+Contact
+------
+If you want to contact me you can reach me at hunterglaine@gmail.com.
 
 ## Happy Reading! 📚
