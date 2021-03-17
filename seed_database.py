@@ -15,7 +15,7 @@ os.system("createdb bookworm")
 model.connect_to_db(server.app)
 # model.db.create_all()
 
-os.system("psql bookworm < bookworm.sql")
+# os.system("psql bookworm < bookworm.sql")
 
 # Create book-loving users
 # new_users = []
