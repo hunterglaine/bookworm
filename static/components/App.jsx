@@ -59,14 +59,6 @@ function App() {
                     userLoggedIn={userLoggedIn}
                     setBookForDetails={setBookForDetails}
                     setEventForDetails={setEventForDetails} />
-                // <UserPage 
-                //   userLoggedIn={userLoggedIn}
-                //   userCategories={userCategories}
-                //   setBookshelfCategories={setBookshelfCategories}
-                //   bookshelfCategories={bookshelfCategories}
-                //   setBookForDetails={setBookForDetails}
-                //   newLabel={newLabel}
-                //   setNewLabel={setNewLabel} />
                 : <LogIn userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />}
               </Route>
                 <Route path="/login">

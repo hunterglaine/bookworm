@@ -24,7 +24,6 @@ function CategoryContainer(props) {
     const updateCategory = (evt) => {
         evt.preventDefault();
         console.log("This is the labelChange.current useRef:", labelChange.current)
-            // fetch("/update-category", {
             fetch("/categories", {
                 method: "POST",
                 credentials: "include",

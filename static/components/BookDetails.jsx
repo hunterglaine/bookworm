@@ -67,8 +67,6 @@ function BookDetails(props) {
                 {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>}
                 <br/>
                 <p>{props.bookForDetails.description}</p>
-                {/* {eventId !== "home" ? null :<Button className="button" onClick={removeBook} >Remove {props.bookForDetails.title} from {categoryLabel}</Button>}
-                {eventId === "home" || categoryLabel === "event" ? null : <Button className="button" onClick={addEventBook}>Suggest Book</Button>} */}
             </div>
             </Card>
             </Col>

@@ -4,9 +4,6 @@ function BookTile(props) {
     const { book } = props;
     let history = useHistory();
     const [categoryName, setCategoryName] = React.useState(props.userLoggedIn.userId ? props.userCategories[0].label : "");
-    // const [categoryName, setCategoryName] = React.useState("");
-    // let categories = localStorage.getItem("categories")
-    // (props.userLoggedIn.userId ? setCategoryName(categories[0].label) : "")
 
     const addNewSelect = () => {
         
