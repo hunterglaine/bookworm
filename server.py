@@ -21,8 +21,8 @@ def create_new_user():
     """Create a new user or get info about existing user."""
 
     if request.method == "GET":
-        if session.get("user"):
-            user_id = session["user"]
+        if session.get("user_id"):
+            user_id = session["user_id"]
             user = crud.get_user_by_id(user_id)
             user = user.to_dict()
             print("USERUSERUSER", user)
@@ -57,7 +57,7 @@ def log_in_user():
 
     if user:
             if user.check_password(password):
-                session["user"] = user.id
+                session["user_id"] = user.id
                 return jsonify ({"success": "Successfully logged in!",
                                 "user_id": user.id,
                                 "user_first_name": user.first_name})
@@ -71,8 +71,8 @@ def log_in_user():
 def log_out_user():
     """Log a user out and show them they were successful or not."""
   
-    user_id = session.pop("user")
-    # user = session.pop("user")
+    user_id = session.pop("user_id")
+
     user = crud.get_user_by_id(user_id)
 
     return jsonify ({"success": f"{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!"})
@@ -81,14 +81,13 @@ def log_out_user():
 def get_and_update_categories():
     """Gets or updates a user's categories"""
 
-    if session.get("user"):
-        user_id = session["user"]
+    if session.get("user_id"):
+        user_id = session["user_id"]
 
         if request.method == "GET":
             categories = []
 
-            category_objects = crud.get_all_user_categories(session["user"])
-            # category_objects = crud.get_all_user_categories(session["user"].id)
+            category_objects = crud.get_all_user_categories(session["user_id"])
 
             for category_object in category_objects:
 
@@ -179,8 +178,8 @@ def get_and_update_categories():
 def get_user_data():
     """Returns user's categories and books within them"""
 
-    if session.get("user"):
-        user_id = session["user"]
+    if session.get("user_id"):
+        user_id = session["user_id"]
 
         if request.method == "POST":
             new_first_name = request.json.get("newFirstName")
@@ -219,104 +218,146 @@ def get_user_data():
 
 #### EVENT ROUTES ####
 
-@app.route("/new-event", methods=["POST"]) # PUT?
-def create_new_event():
-    """Creates a new event"""
+# @app.route("/new-event", methods=["POST"]) #####
+# def create_new_event():
+#     """Creates a new event"""
 
-    if session.get("user"):
-        host_id = session["user"]
-        city = request.json.get("city")
-        state = request.json.get("state")
-        eventDate = request.json.get("eventDate")
-        startTime = request.json.get("startTime")
-        endTime = request.json.get("endTime")
+#     if session.get("user"):
+#         host_id = session["user"]
+#         city = request.json.get("city")
+#         state = request.json.get("state")
+#         eventDate = request.json.get("eventDate")
+#         startTime = request.json.get("startTime")
+#         endTime = request.json.get("endTime")
 
-        # attendee = crud.get_user_by_id(host_id)
-        new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
-        crud.create_event_attendee(host_id, new_event.id)
+#         # attendee = crud.get_user_by_id(host_id)
+#         new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
+#         crud.create_event_attendee(host_id, new_event.id)
 
-        return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
+#         return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
 
-    else:
-        return jsonify ({"error": "There was an error creating this event."})
+#     else:
+#         return jsonify ({"error": "There was an error creating this event."})
 
 
-@app.route("/user-events") # GET
-def get_user_events():
-    """Returns user's events, hosting and attending"""
+@app.route("/user-events", methods=["GET", "POST", "PUT", "DELETE"])
+def get_create_user_events():
+    """Creates, adds, removes, or returns user's events, hosting and attending"""
 
-    if session.get("user"):
-        user_id = session["user"]
 
-        users_events = crud.get_all_events_for_user(user_id)
-        # A list of the user's event objects
-        print("USERS EVENTS **************", users_events)
-        if users_events:
-            # users_events_dict = {"hosting": [], "attending": []}
+    if request.method == "POST":
+        if session.get("user_id"):
+            host_id = session["user_id"]
+            city = request.json.get("city")
+            state = request.json.get("state")
+            eventDate = request.json.get("eventDate")
+            startTime = request.json.get("startTime")
+            endTime = request.json.get("endTime")
 
-            users_events_dict = {"hosting": {"past": [], "upcoming": []}, 
-                                "attending": {"past": [], "upcoming": []}}
+            new_event = crud.create_event(host_id, city, eventDate, startTime, endTime, state)
+            # Add host as an attendee of the event
+            crud.create_event_attendee(host_id, new_event.id)
 
-            for event in users_events:
-                events_books = crud.get_all_events_books(event.id)
-                events_books = [event_book.to_dict() for event_book in events_books]
-                books = crud.get_all_books_for_event(event.id) # CHANGED
-                books = [book.to_dict() for book in books]
-
-                host = crud.get_user_by_id(event.host_id)
-
-                event = event.to_dict()
-                event["books"] = books
-                event["events_books"] = events_books
-                event["host"] = f"{host.first_name} {host.last_name}"
-
-                today = date.today()
-                if event["host_id"] == user_id:
-                    if today <= event["event_date"]:
-                        users_events_dict["hosting"]["upcoming"].append(event)
-                    else: 
-                        users_events_dict["hosting"]["past"].append(event)
-
-                    # users_events_dict["hosting"].append(event)
-                else:
-                    if today <= event["event_date"]:
-                        users_events_dict["attending"]["upcoming"].append(event)
-                    else: 
-                        users_events_dict["attending"]["past"].append(event)
-
-                    # users_events_dict["attending"].append(event)
-            
-            if len(users_events_dict["hosting"]["upcoming"]) == 0:
-                users_events_dict["hosting"]["upcoming"] = None
-            if len(users_events_dict["hosting"]["past"]) == 0:
-                users_events_dict["hosting"]["past"] = None
-
-            # if len(users_events_dict["hosting"]) == 0:
-            #     users_events_dict["hosting"] = None
-
-            elif len(users_events_dict["attending"]["upcoming"]) == 0:
-                users_events_dict["attending"]["upcoming"] = None
-            elif len(users_events_dict["attending"]["past"]) == 0:
-                users_events_dict["attending"]["past"] = None
-
-            # elif len(users_events_dict["attending"]) == 0:
-            #     users_events_dict["attending"] = None
-
-            return jsonify (users_events_dict)
+            return jsonify ({"success": f"Your event has successfully been created for {eventDate} at {startTime}"})
 
         else:
-            return jsonify ({"hosting": {"past": None, "upcoming": None}, 
-                            "attending": {"past": None, "upcoming": None}})
+            return jsonify ({"error": "There was an error creating this event."})
 
-    else:
-        return jsonify ({'error': 'User must be logged in to view their events.'})
+
+    elif request.method == "GET":
+        if session.get("user_id"):
+            user_id = session["user_id"]
+            users_events = crud.get_all_events_for_user(user_id)
+            # A list of the user's event objects
+            
+            if users_events:
+                users_events_dict = {"hosting": {"past": [], "upcoming": []}, 
+                                    "attending": {"past": [], "upcoming": []}}
+
+                for event in users_events:
+                    events_books = crud.get_all_events_books(event.id)
+                    events_books = [event_book.to_dict() for event_book in events_books]
+                    books = crud.get_all_books_for_event(event.id) # CHANGED
+                    books = [book.to_dict() for book in books]
+
+                    host = crud.get_user_by_id(event.host_id)
+
+                    event = event.to_dict()
+                    event["books"] = books
+                    event["events_books"] = events_books
+                    event["host"] = f"{host.first_name} {host.last_name}"
+
+                    today = date.today()
+                    if event["host_id"] == user_id:
+                        if today <= event["event_date"]:
+                            users_events_dict["hosting"]["upcoming"].append(event)
+                        else: 
+                            users_events_dict["hosting"]["past"].append(event)
+
+                        # users_events_dict["hosting"].append(event)
+                    else:
+                        if today <= event["event_date"]:
+                            users_events_dict["attending"]["upcoming"].append(event)
+                        else: 
+                            users_events_dict["attending"]["past"].append(event)
+
+                        # users_events_dict["attending"].append(event)
+                
+                if len(users_events_dict["hosting"]["upcoming"]) == 0:
+                    users_events_dict["hosting"]["upcoming"] = None
+                if len(users_events_dict["hosting"]["past"]) == 0:
+                    users_events_dict["hosting"]["past"] = None
+
+                # if len(users_events_dict["hosting"]) == 0:
+                #     users_events_dict["hosting"] = None
+
+                elif len(users_events_dict["attending"]["upcoming"]) == 0:
+                    users_events_dict["attending"]["upcoming"] = None
+                elif len(users_events_dict["attending"]["past"]) == 0:
+                    users_events_dict["attending"]["past"] = None
+
+                # elif len(users_events_dict["attending"]) == 0:
+                #     users_events_dict["attending"] = None
+
+                return jsonify (users_events_dict)
+
+            else:
+                return jsonify ({"hosting": {"past": None, "upcoming": None}, 
+                                "attending": {"past": None, "upcoming": None}})
+
+        else:
+            return jsonify ({'error': 'User must be logged in to view their events.'})
+
+
+    user_id = session.get("user_id")
+    event_id = request.json.get("event")
+    event = crud.get_event_by_id(event_id)
+    user = crud.get_user_by_id(user_id)
+    attendees = crud.get_all_attendees(event_id)
+
+    if request.method == "DELETE":
+        if user not in attendees:
+            return jsonify({"error": "You are not attending this event"})
+        
+        crud.remove_attendee_from_event(user_id, event_id)
+
+        return jsonify ({"success": f"You are no longer attending the {event.city} book club on {event.event_date}"})
+
+    elif request.method == "PUT":
+        
+        if user in attendees:
+            return jsonify({"error": "You are already attending this event"})
+
+        crud.create_event_attendee(user_id, event_id)
+
+        return jsonify ({"success": f"You are now attending the {event.city} book club on {event.event_date}!"})
 
 
 @app.route("/event-books", methods=["POST"]) # Right as POST
 def update_event_books():
     """Updates the status of can_suggest_books and can_vote on an event"""
 
-    if session.get("user"):
+    if session.get("user_id"):
         event_id = request.json.get("event_id")
         update_type = request.json.get("update_type")
 
@@ -356,7 +397,7 @@ def update_event_books():
 @app.route("/vote", methods=["GET", "POST"])
 def update_event_book_votes():
     """Increases the number of votes on a given event book"""
-    user_id = session.get("user")
+    user_id = session.get("user_id")
 
     events = crud.get_all_events_for_user(user_id)
     all_events = {}
@@ -450,32 +491,32 @@ def get_all_events():
     return jsonify (all_events)
 
 
-@app.route("/attendee", methods=["DELETE", "POST"])  # This could be PUT to combine routes
-def update_event_attendee():
-    """Adds a user to an event as an attendee"""
+# @app.route("/attendee", methods=["DELETE", "POST"])  # This could be PUT to combine routes
+# def update_event_attendee():
+#     """Adds a user to an event as an attendee"""
 
-    user_id = session.get("user")
-    event_id = request.json.get("event")
-    event = crud.get_event_by_id(event_id)
-    user = crud.get_user_by_id(user_id)
-    attendees = crud.get_all_attendees(event_id)
+#     user_id = session.get("user")
+#     event_id = request.json.get("event")
+#     event = crud.get_event_by_id(event_id)
+#     user = crud.get_user_by_id(user_id)
+#     attendees = crud.get_all_attendees(event_id)
 
-    if request.method == "DELETE":
-        if user not in attendees:
-            return jsonify({"error": "You are not attending this event"})
+#     if request.method == "DELETE":
+#         if user not in attendees:
+#             return jsonify({"error": "You are not attending this event"})
         
-        crud.remove_attendee_from_event(user_id, event_id)
+#         crud.remove_attendee_from_event(user_id, event_id)
 
-        return jsonify ({"success": f"You are no longer attending the {event.city} book club on {event.event_date}"})
+#         return jsonify ({"success": f"You are no longer attending the {event.city} book club on {event.event_date}"})
 
-    if request.method == "POST":
+#     if request.method == "POST":
         
-        if user in attendees:
-            return jsonify({"error": "You are already attending this event"})
+#         if user in attendees:
+#             return jsonify({"error": "You are already attending this event"})
 
-        crud.create_event_attendee(user_id, event_id)
+#         crud.create_event_attendee(user_id, event_id)
 
-        return jsonify ({"success": f"You are now attending the {event.city} book club on {event.event_date}!"})
+#         return jsonify ({"success": f"You are now attending the {event.city} book club on {event.event_date}!"})
 
 
 @app.route("/add-book-to-event", methods=["POST"]) # Could also be PUT

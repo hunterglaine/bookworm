@@ -9,8 +9,8 @@ function AllEvents(props) {
             
         console.log(currentEvent)
         
-        fetch('/attendee', {
-            method: "POST",
+        fetch("/user-events", {
+            method: "PUT",
             credentials: "include",
             body: JSON.stringify({"event": currentEvent}),
             headers: {
