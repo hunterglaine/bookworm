@@ -96,7 +96,26 @@ function EventDetails(props) {
                 props.setChangeInEvent(null)
             }
         })
-    } 
+    }
+    
+    const deleteEvent = (eventId) => (evt) => {
+        evt.preventDefault();
+        console.log("Well, that's something...")
+
+        fetch("/events", {
+            method: "DELETE",
+            credentials: "include",
+            body: JSON.stringify({"event_id": eventId}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+                props.setChangeInEvent(data)
+                props.setChangeInEvent(null)
+            })
+        }
 
 
     return (
@@ -156,6 +175,9 @@ function EventDetails(props) {
                     Start the Voting
                 </Button>
                 }
+                <Button className="button" onClick={deleteEvent(event.id)}>
+                    Delete Event
+                </Button>
             </div>
             : 
             <div>

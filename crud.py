@@ -494,6 +494,19 @@ def remove_attendee_from_event(user_id, event_id):
     db.session.commit()
 
 
+def delete_event(event_id):
+    """Deletes an event"""
+
+    event = get_event_by_id(event_id)
+    attendees = get_all_events_attendees(event_id)
+    for attendee in attendees:
+        print(attendee)
+        db.session.delete(attendee)
+
+    db.session.delete(event)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     from server import app
     connect_to_db(app)

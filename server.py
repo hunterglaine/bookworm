@@ -277,7 +277,7 @@ def get_create_user_events():
                 for event in users_events:
                     events_books = crud.get_all_events_books(event.id)
                     events_books = [event_book.to_dict() for event_book in events_books]
-                    books = crud.get_all_books_for_event(event.id) # CHANGED
+                    books = crud.get_all_books_for_event(event.id)
                     books = [book.to_dict() for book in books]
 
                     host = crud.get_user_by_id(event.host_id)
@@ -294,30 +294,21 @@ def get_create_user_events():
                         else: 
                             users_events_dict["hosting"]["past"].append(event)
 
-                        # users_events_dict["hosting"].append(event)
                     else:
                         if today <= event["event_date"]:
                             users_events_dict["attending"]["upcoming"].append(event)
                         else: 
                             users_events_dict["attending"]["past"].append(event)
-
-                        # users_events_dict["attending"].append(event)
                 
                 if len(users_events_dict["hosting"]["upcoming"]) == 0:
                     users_events_dict["hosting"]["upcoming"] = None
                 if len(users_events_dict["hosting"]["past"]) == 0:
                     users_events_dict["hosting"]["past"] = None
 
-                # if len(users_events_dict["hosting"]) == 0:
-                #     users_events_dict["hosting"] = None
-
                 elif len(users_events_dict["attending"]["upcoming"]) == 0:
                     users_events_dict["attending"]["upcoming"] = None
                 elif len(users_events_dict["attending"]["past"]) == 0:
                     users_events_dict["attending"]["past"] = None
-
-                # elif len(users_events_dict["attending"]) == 0:
-                #     users_events_dict["attending"] = None
 
                 return jsonify (users_events_dict)
 
@@ -353,7 +344,7 @@ def get_create_user_events():
         return jsonify ({"success": f"You are now attending the {event.city} book club on {event.event_date}!"})
 
 
-@app.route("/event-books", methods=["POST"]) # Right as POST
+@app.route("/event-books", methods=["POST"])
 def update_event_books():
     """Updates the status of can_suggest_books and can_vote on an event"""
 
@@ -460,35 +451,37 @@ def update_event_book_votes():
                         "allEventsBooks": all_events})
     
 
-@app.route("/events") # GET 
+@app.route("/events", methods=["GET", "DELETE"]) 
 def get_all_events():
     """Returns all events that are not private"""
+    if request.method == "GET":
+        events = crud.get_all_events()
 
-    events = crud.get_all_events()
+        today = date.today()
 
-    # all_events = []
-    today = date.today()
+        all_events = {"past": [], "upcoming": []}
 
-    all_events = {"past": [], "upcoming": []}
+        for event in events:
+            event = event.to_dict()
+            host = crud.get_user_by_id(event["host_id"]).to_dict()
+            attendee_users = crud.get_all_attendees(event["id"])
+            attendees = [attendee.to_dict() for attendee in attendee_users if attendee.id != host["id"]]
+            
+            event["attending"] = attendees
+            event["host"] = host
+            if today <= event["event_date"]:
+                all_events["upcoming"].append(event)
+            else: 
+                all_events["past"].append(event)
+            # all_events.append(event)
 
-    for event in events:
-        event = event.to_dict()
-        host = crud.get_user_by_id(event["host_id"]).to_dict()
-        attendee_users = crud.get_all_attendees(event["id"])
-        attendees = [attendee.to_dict() for attendee in attendee_users if attendee.id != host["id"]]
-        
-        event["attending"] = attendees
-        event["host"] = host
-        if today <= event["event_date"]:
-            all_events["upcoming"].append(event)
-        else: 
-            all_events["past"].append(event)
-        # all_events.append(event)
+        return jsonify (all_events)
 
-    # all_events_dict = {"events": all_events}
+    if request.method == "DELETE":
+        event_id = request.json.get("event_id")
+        crud.delete_event(event_id)
 
-    # return jsonify (all_events_dict)
-    return jsonify (all_events)
+        return jsonify ({"success": f"Your event has been successfully deleted."})
 
 
 # @app.route("/attendee", methods=["DELETE", "POST"])  # This could be PUT to combine routes
