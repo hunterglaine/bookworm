@@ -450,6 +450,33 @@ PGR2AwAAQBAJ	To Kill a Mockingbird	Harper Lee 	Voted America's Best-Loved Novel 
 KR_twAEACAAJ	Harry Potter and the Chamber of Secrets	J. K. Rowling 	Harry Potter series #2.	341	http://books.google.com/books/content?id=KR_twAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
 6JBOxAEACAAJ	The House in the Cerulean Sea	TJ Klune 	Lambda Literary Award-winning author TJ Klune’s breakout contemporary fantasy Linus Baker is a by-the-book case worker in the Department in Charge of Magical Youth. He's tasked with determining whether six dangerous magical children are likely to bring about the end of the world. Arthur Parnassus is the master of the orphanage. He would do anything to keep the children safe, even if it means the world will burn. And his secrets will come to light. The House in the Cerulean Sea is an enchanting love story, masterfully told, about the profound experience of discovering an unlikely family in an unexpected place—and realizing that family is yours. "1984 meets The Umbrella Academy with a pinch of Douglas Adams thrown in." —Gail Carriger, New York Times bestselling author of Soulless	400	http://books.google.com/books/content?id=6JBOxAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
 d84AspgFjSwC	The Magicians	Lev Grossman 	The New York Times bestselling novel about a young man practicing magic in the real world, now an original series on SYFY “The Magicians is to Harry Potter as a shot of Irish whiskey is to a glass of weak tea. . . . Hogwarts was never like this.” —George R.R. Martin “Sad, hilarious, beautiful, and essential to anyone who cares about modern fantasy.” —Joe Hill “A very knowing and wonderful take on the wizard school genre.” —John Green “The Magicians may just be the most subversive, gripping and enchanting fantasy novel I’ve read this century.” —Cory Doctorow “This gripping novel draws on the conventions of contemporary and classic fantasy novels in order to upend them . . . an unexpectedly moving coming-of-age story.” —The New Yorker “The best urban fantasy in years.” —A.V. Club Quentin Coldwater is brilliant but miserable. A high school math genius, he’s secretly fascinated with a series of children’s fantasy novels set in a magical land called Fillory, and real life is disappointing by comparison. When Quentin is unexpectedly admitted to an elite, secret college of magic, it looks like his wildest dreams have come true. But his newfound powers lead him down a rabbit hole of hedonism and disillusionment, and ultimately to the dark secret behind the story of Fillory. The land of his childhood fantasies turns out to be much darker and more dangerous than he ever could have imagined. . . . The prequel to the New York Times bestselling book The Magician King and the #1 bestseller The Magician's Land, The Magicians is one of the most daring and inventive works of literary fantasy in years. No one who has escaped into the worlds of Narnia and Harry Potter should miss this breathtaking return to the landscape of the imagination.	416	http://books.google.com/books/content?id=d84AspgFjSwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+cLhVjQGs83QC	American Gods	Neil Gaiman 	Shadow is a man with a past. But now he wants nothing more than to live a quiet life with his wife and stay out of trouble. Until he learns that she's been killed in a terrible accident. Flying home for the funeral, as a violent storm rocks the plane, a strange man in the seat next to him introduces himself. The man calls himself Mr. Wednesday, and he knows more about Shadow than is possible. He warns Shadow that a far bigger storm is coming. And from that moment on, nothing will ever he the same...	624	http://books.google.com/books/content?id=cLhVjQGs83QC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+PuO3DwAAQBAJ	Little Eyes	Samanta Schweblin 	LONGLISTED FOR THE 2020 MAN BOOKER INTERNATIONAL PRIZE A NEW YORK TIMES NOTABLE BOOK OF THE YEAR "Her most unsettling work yet — and her most realistic." --New York Times Named a Best Book of the Year by The New York Times, O, The Oprah Magazine, NPR, Vulture, Bustle, Refinery29, and Thrillist A visionary novel about our interconnected present, about the collision of horror and humanity, from a master of the spine-tingling tale. They've infiltrated homes in Hong Kong, shops in Vancouver, the streets of in Sierra Leone, town squares in Oaxaca, schools in Tel Aviv, bedrooms in Indiana. They're everywhere. They're here. They're us. They're not pets, or ghosts, or robots. They're real people, but how can a person living in Berlin walk freely through the living room of someone in Sydney? How can someone in Bangkok have breakfast with your children in Buenos Aires, without your knowing? Especially when these people are completely anonymous, unknown, unfindable. The characters in Samanta Schweblin's brilliant new novel, Little Eyes, reveal the beauty of connection between far-flung souls—but yet they also expose the ugly side of our increasingly linked world. Trusting strangers can lead to unexpected love, playful encounters, and marvelous adventure, but what happens when it can also pave the way for unimaginable terror? This is a story that is already happening; it's familiar and unsettling because it's our present and we're living it, we just don't know it yet. In this prophecy of a story, Schweblin creates a dark and complex world that's somehow so sensible, so recognizable, that once it's entered, no one can ever leave.	256	http://books.google.com/books/content?id=PuO3DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+arDxAwAAQBAJ	How the Grinch Stole Christmas	Dr. Seuss 	Grow your heart three sizes and get in on all of the Grinch-mas cheer with this Christmas classic--the ultimate Dr. Seuss holiday book that no collection is complete without! Every Who down in Who-ville liked Christmas a lot . . . but the Grinch, who lived just north of Who-ville, did NOT! Not since "'Twas the night before Christmas" has the beginning of a Christmas tale been so instantly recognizable. This heartwarming story about the effects of the Christmas spirit will grow even the coldest and smallest of hearts. Like mistletoe, candy canes, and caroling, the Grinch is a mainstay of the holidays, and his story is the perfect gift for readers young and old. "Irrepressible and irresistible." --Kirkus Reviews	64	http://books.google.com/books/content?id=arDxAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+J0tIAgAAQBAJ	The Fifth Season	N. K. Jemisin 	At the end of the world, a woman must hide her secret power and find her kidnapped daughter in this "intricate and extraordinary" Hugo Award winning novel of power, oppression, and revolution. (The New York Times) This is the way the world ends. . .for the last time. It starts with the great red rift across the heart of the world's sole continent, spewing ash that blots out the sun. It starts with death, with a murdered son and a missing daughter. It starts with betrayal, and long dormant wounds rising up to fester. This is the Stillness, a land long familiar with catastrophe, where the power of the earth is wielded as a weapon. And where there is no mercy. Read the first book in the critically acclaimed, three-time Hugo award-winning trilogy by NYT bestselling author N. K. Jemisin.	512	http://books.google.com/books/content?id=J0tIAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+uYKDDwAAQBAJ	The Starless Sea	Erin Morgenstern 	From the New York Times bestselling author of The Night Circus, a timeless love story set in a secret underground world—a place of pirates, painters, lovers, liars, and ships that sail upon a starless sea. Zachary Ezra Rawlins is a graduate student in Vermont when he discovers a mysterious book hidden in the stacks. As he turns the pages, entranced by tales of lovelorn prisoners, key collectors, and nameless acolytes, he reads something strange: a story from his own childhood. Bewildered by this inexplicable book and desperate to make sense of how his own life came to be recorded, Zachary uncovers a series of clues—a bee, a key, and a sword—that lead him to a masquerade party in New York, to a secret club, and through a doorway to an ancient library hidden far below the surface of the earth. What Zachary finds in this curious place is more than just a buried home for books and their guardians—it is a place of lost cities and seas, lovers who pass notes under doors and across time, and of stories whispered by the dead. Zachary learns of those who have sacrificed much to protect this realm, relinquishing their sight and their tongues to preserve this archive, and also of those who are intent on its destruction. Together with Mirabel, a fierce, pink-haired protector of the place, and Dorian, a handsome, barefoot man with shifting alliances, Zachary travels the twisting tunnels, darkened stairwells, crowded ballrooms, and sweetly soaked shores of this magical world, discovering his purpose—in both the mysterious book and in his own life.	512	http://books.google.com/books/content?id=uYKDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+-cjWiI8DEywC	Sum	David Eagleman 	At once funny, wistful and unsettling, Sum is a dazzling exploration of unexpected afterlives—each presented as a vignette that offers a stunning lens through which to see ourselves in the here and now. In one afterlife, you may find that God is the size of a microbe and unaware of your existence. In another version, you work as a background character in other people’s dreams. Or you may find that God is a married couple, or that the universe is running backward, or that you are forced to live out your afterlife with annoying versions of who you could have been. With a probing imagination and deep understanding of the human condition, acclaimed neuroscientist David Eagleman offers wonderfully imagined tales that shine a brilliant light on the here and now.	128	http://books.google.com/books/content?id=-cjWiI8DEywC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+jxGuDwAAQBAJ	Livewired	David Eagleman 	"Eagleman renders the secrets of the brain’s adaptability into a truly compelling page-turner.” —Khaled Hosseini, author of The Kite Runner “Livewired reads wonderfully like what a book would be if it were written by Oliver Sacks and William Gibson, sitting on Carl Sagan’s front lawn.” —The Wall Street Journal What does drug withdrawal have in common with a broken heart? Why is the enemy of memory not time but other memories? How can a blind person learn to see with her tongue, or a deaf person learn to hear with his skin? Why did many people in the 1980s mistakenly perceive book pages to be slightly red in color? Why is the world’s best archer armless? Might we someday control a robot with our thoughts, just as we do our fingers and toes? Why do we dream at night, and what does that have to do with the rotation of the Earth? The answers to these questions are right behind our eyes. The greatest technology we have ever discovered on our planet is the three-pound organ carried in the vault of the skull. This book is not simply about what the brain is; it is about what it does. The magic of the brain is not found in the parts it’s made of but in the way those parts unceasingly reweave themselves in an electric, living fabric. In Livewired, you will surf the leading edge of neuroscience atop the anecdotes and metaphors that have made David Eagleman one of the best scientific translators of our generation. Covering decades of research to the present day, Livewired also presents new discoveries from Eagleman’s own laboratory, from synesthesia to dreaming to wearable neurotech devices that revolutionize how we think about the senses.	320	http://books.google.com/books/content?id=jxGuDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+5sWCDwAAQBAJ	The Ten Thousand Doors of January	Alix E. Harrow 	"A gorgeous, aching love letter to stories, storytellers and the doors they lead us through...absolutely enchanting."--Christina Henry, bestselling author of Alice and Lost Boys LOS ANGELES TIMES BESTSELLER! In the early 1900s, a young woman embarks on a fantastical journey of self-discovery after finding a mysterious book in this captivating and lyrical debut. In a sprawling mansion filled with peculiar treasures, January Scaller is a curiosity herself. As the ward of the wealthy Mr. Locke, she feels little different from the artifacts that decorate the halls: carefully maintained, largely ignored, and utterly out of place. Then she finds a strange book. A book that carries the scent of other worlds, and tells a tale of secret doors, of love, adventure and danger. Each page turn reveals impossible truths about the world and January discovers a story increasingly entwined with her own. Lush and richly imagined, a tale of impossible journeys, unforgettable love, and the enduring power of stories awaits in Alix E. Harrow's spellbinding debut--step inside and discover its magic.	384	http://books.google.com/books/content?id=5sWCDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+sh95DwAAQBAJ	The Unlikely Escape of Uriah Heep	H. G. Parry 	The ultimate book-lover's fantasy, this sparkling debut is a "delight of magic and literature, love and adventure" (Kat Howard) featuring a young scholar with the power to bring literary characters into the world. For his entire life, Charley Sutherland has concealed a magical ability he can't quite control: He can bring characters from books into the real world. But when literary characters start causing trouble throughout the city and threatening to destroying the world, he learns he's not the only one with his ability. Now it's up to Charley and his reluctant older brother, Rob, to stop them--hopefully before they reach The End. Praise for The Unlikely Escape of Uriah Heep: "A star-studded literary tour and a tangled mystery and a reflection on reading itself; it's a pure delight." --Alix E. Harrow, Hugo Award-winning author "This beautifully-written novel is an exploration of the power fiction wields -- the power to inform and to change, even to endanger, our everyday world." --Louisa Morgan, author of A Secret History of Witches "Equal parts sibling rivalry, crackling mystery, and Dickensian battle royale, it'll be one of your most fun reads this year." --Mike Chen, author of Here and Now and Then	464	http://books.google.com/books/content?id=sh95DwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
+526DDwAAQBAJ	The City We Became	N. K. Jemisin 	"A glorious fantasy."--Neil Gaiman Three-time Hugo Award-winning and New York Times bestselling author N.K. Jemisin crafts her most incredible novel yet, a story of culture, identity, magic, and myths in contemporary New York City. In Manhattan, a young grad student gets off the train and realizes he doesn't remember who he is, where he's from, or even his own name. But he can sense the beating heart of the city, see its history, and feel its power. In the Bronx, a Lenape gallery director discovers strange graffiti scattered throughout the city, so beautiful and powerful it's as if the paint is literally calling to her. In Brooklyn, a politician and mother finds she can hear the songs of her city, pulsing to the beat of her Louboutin heels. And they're not the only ones. Every great city has a soul. Some are ancient as myths, and others are as new and destructive as children. New York? She's got six.For more from N. K. Jemisin, check out: The Inheritance TrilogyThe Hundred Thousand KingdomsThe Broken KingdomsThe Kingdom of Gods The Inheritance Trilogy (omnibus edition)Shades in Shadow: An Inheritance Triptych (e-only short fiction)The Awakened Kingdom (e-only novella) Dreamblood DuologyThe Killing MoonThe Shadowed Sun The Dreamblood Duology (omnibus) The Broken EarthThe Fifth SeasonThe Obelisk GateThe Stone Sky How Long 'til Black Future Month? (short story collection)	448	http://books.google.com/books/content?id=526DDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+49RdDwAAQBAJ	The Priory of the Orange Tree	Samantha Shannon 	The New York Times bestselling "epic feminist fantasy perfect for fans of Game of Thrones" (Bustle). NAMED A BEST BOOK OF THE YEAR BY: AMAZON (Top 100 Editors Picks and Science Fiction and Fantasy) * CHICAGO PUBLIC LIBRARY * BOOKPAGE * AUTOSTRADDLE A world divided. A queendom without an heir. An ancient enemy awakens. The House of Berethnet has ruled Inys for a thousand years. Still unwed, Queen Sabran the Ninth must conceive a daughter to protect her realm from destruction--but assassins are getting closer to her door. Ead Duryan is an outsider at court. Though she has risen to the position of lady-in-waiting, she is loyal to a hidden society of mages. Ead keeps a watchful eye on Sabran, secretly protecting her with forbidden magic. Across the dark sea, Tané has trained all her life to be a dragonrider, but is forced to make a choice that could see her life unravel. Meanwhile, the divided East and West refuse to parley, and forces of chaos are rising from their sleep.	848	http://books.google.com/books/content?id=49RdDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+BFIxDwAAQBAJ	Arm of the Sphinx	Josiah Bancroft 	Senlin continues his ascent up the tower in the word-of-mouth phenomenon fantasy series about one man's dangerous journey through a labyrinthine world. "One of my favorite books of all time" - Mark Lawrence on Senlin Ascends The Tower of Babel is proving to be as difficult to reenter as it was to break out of. Forced into a life of piracy, Senlin and his eclectic crew are struggling to survive aboard their stolen airship as the hunt to rescue Senlin's lost wife continues. Hopeless and desolate, they turn to a legend of the Tower, the mysterious Sphinx. But help from the Sphinx never comes cheaply, and as Senlin knows, debts aren't always what they seem in the Tower of Babel. Time is running out, and now Senlin must choose between his friends, his freedom, and his wife. Does anyone truly escape the Tower? The Books of BabelSenlin AscendsArm of the SphinxThe Hod King	384	http://books.google.com/books/content?id=BFIxDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+CGVDDwAAQBAJ	Where the Crawdads Sing	Delia Owens 	#1 NEW YORK TIMES BESTSELLING PHENOMENON More than 6 million copies sold A Reese Witherspoon x Hello Sunshine Book Club Pick A Business Insider Defining Book of the Decade "I can't even express how much I love this book! I didn't want this story to end!"--Reese Witherspoon "Painfully beautiful."--The New York Times Book Review For years, rumors of the "Marsh Girl" have haunted Barkley Cove, a quiet town on the North Carolina coast. So in late 1969, when handsome Chase Andrews is found dead, the locals immediately suspect Kya Clark, the so-called Marsh Girl. But Kya is not what they say. Sensitive and intelligent, she has survived for years alone in the marsh that she calls home, finding friends in the gulls and lessons in the sand. Then the time comes when she yearns to be touched and loved. When two young men from town become intrigued by her wild beauty, Kya opens herself to a new life--until the unthinkable happens. Where the Crawdads Sing is at once an exquisite ode to the natural world, a heartbreaking coming-of-age story, and a surprising tale of possible murder. Owens reminds us that we are forever shaped by the children we once were, and that we are all subject to the beautiful and violent secrets that nature keeps.	384	http://books.google.com/books/content?id=CGVDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+OWCUDwAAQBAJ	The Dreamt Land	Mark Arax 	"A vivid, searching journey into California's complicated relationship to its water, from the Gold Rush to today -- an epic story of the struggle to overcome the constraints of nature Mark Arax is from a family of Central Valley farmers -- a journalist with deep ties to the land, who has watched as the battles over water have intensified even as the state lurches from drought to flood and back again. In The Dreamt Land he travels the state to explore the century-old water distribution system that is straining to keep up with California's relentless growth. This is a heartfelt, beautifully written book about land and the people who work on it, from the gold miners to the ranchers to the small farmers and today's big ag. Since the beginning, Californians have redirected rivers, drilled ever-deeper wells, and pushed the water supplies past their limits. The Dreamt Land brings to life the enterprising figures who have made a fortune off the land, and used that wealth to increase their leverage, as well as the people who have been left behind. It's a story of politics and hubris, but above all it's about the unceasing human ability to make things happen, and to endure in a hostile environment"--	576	http://books.google.com/books/content?id=OWCUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+AlIxDwAAQBAJ	Senlin Ascends	Josiah Bancroft 	The first book in the word-of-mouth phenomenon debut fantasy series about one man's dangerous journey through a labyrinthine world. "One of my favorite books of all time" - Mark Lawrence The Tower of Babel is the greatest marvel in the world. Immense as a mountain, the ancient Tower holds unnumbered ringdoms, warring and peaceful, stacked one on the other like the layers of a cake. It is a world of geniuses and tyrants, of luxury and menace, of unusual animals and mysterious machines. Soon after arriving for his honeymoon at the Tower, the mild-mannered headmaster of a small village school, Thomas Senlin, gets separated from his wife, Marya, in the overwhelming swarm of tourists, residents, and miscreants. Senlin is determined to find Marya, but to do so he'll have to navigate madhouses, ballrooms, and burlesque theaters. He must survive betrayal, assassins, and the illusions of the Tower. But if he hopes to find his wife, he will have to do more than just endure. This quiet man of letters must become a man of action. The Books of BabelSenlin AscendsArm of the Sphinx	384	http://books.google.com/books/content?id=AlIxDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+c74wDwAAQBAJ	The Poppy War	R. F. Kuang 	“I have no doubt this will end up being the best fantasy debut of the year [...] I have absolutely no doubt that [Kuang’s] name will be up there with the likes of Robin Hobb and N.K. Jemisin.” -- Booknest A Library Journal, Paste Magazine, Vulture, BookBub, and ENTROPY Best Books of 2018 pick! Washington Post "5 Best Science Fiction and Fantasy Novel of 2018" pick! A Bustle "30 Best Fiction Books of 2018" pick! A brilliantly imaginative talent makes her exciting debut with this epic historical military fantasy, inspired by the bloody history of China’s twentieth century and filled with treachery and magic, in the tradition of Ken Liu’s Grace of Kings and N.K. Jemisin’s Inheritance Trilogy. When Rin aced the Keju—the Empire-wide test to find the most talented youth to learn at the Academies—it was a shock to everyone: to the test officials, who couldn’t believe a war orphan from Rooster Province could pass without cheating; to Rin’s guardians, who believed they’d finally be able to marry her off and further their criminal enterprise; and to Rin herself, who realized she was finally free of the servitude and despair that had made up her daily existence. That she got into Sinegard—the most elite military school in Nikan—was even more surprising. But surprises aren’t always good. Because being a dark-skinned peasant girl from the south is not an easy thing at Sinegard. Targeted from the outset by rival classmates for her color, poverty, and gender, Rin discovers she possesses a lethal, unearthly power—an aptitude for the nearly-mythical art of shamanism. Exploring the depths of her gift with the help of a seemingly insane teacher and psychoactive substances, Rin learns that gods long thought dead are very much alive—and that mastering control over those powers could mean more than just surviving school. For while the Nikara Empire is at peace, the Federation of Mugen still lurks across a narrow sea. The militarily advanced Federation occupied Nikan for decades after the First Poppy War, and only barely lost the continent in the Second. And while most of the people are complacent to go about their lives, a few are aware that a Third Poppy War is just a spark away . . . Rin’s shamanic powers may be the only way to save her people. But as she finds out more about the god that has chosen her, the vengeful Phoenix, she fears that winning the war may cost her humanity . . . and that it may already be too late.	544	http://books.google.com/books/content?id=c74wDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+Coi9AwAAQBAJ	The Giver	Lois Lowry 	Living in a "perfect" world without social ills, a boy approaches the time when he will receive a life assignment from the Elders, but his selection leads him to a mysterious man known as the Giver, who reveals the dark secrets behind the utopian facade.	240	http://books.google.com/books/content?id=Coi9AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+wCP2qgXwXdUC	One Flew Over the Cuckoo's Nest	Ken Kesey 	A Penguin Classics Deluxe Edition of a counterculture classic, and the inspiration for the new Netflix original series Ratched, with a foreword by Chuck Palahniuk Boisterous, ribald, and ultimately shattering, Ken Kesey’s 1962 novel has left an indelible mark on the literature of our time. Now in a new deluxe edition with a foreword by Chuck Palahniuk and cover by Joe Sacco, here is the unforgettable story of a mental ward and its inhabitants, especially the tyrannical Big Nurse Ratched and Randle Patrick McMurphy, the brawling, fun-loving new inmate who resolves to oppose her. We see the struggle through the eyes of Chief Bromden, the seemingly mute half-Indian patient who witnesses and understands McMurphy’s heroic attempt to do battle with the powers that keep them all imprisoned. For more than seventy years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 1,700 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.	320	http://books.google.com/books/content?id=wCP2qgXwXdUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+9Z-DzQEACAAJ	West with Giraffes	Lynda Rutledge 	An emotional, rousing novel inspired by the incredible true story of two giraffes who made headlines and won the hearts of Depression-era America. "Few true friends have I known and two were giraffes..." Woodrow Wilson Nickel, age 105, feels his life ebbing away. But when he learns giraffes are going extinct, he finds himself recalling the unforgettable experience he cannot take to his grave. It's 1938. The Great Depression lingers. Hitler is threatening Europe, and world-weary Americans long for wonder. They find it in two giraffes who miraculously survive a hurricane while crossing the Atlantic. What follows is a twelve-day road trip in a custom truck to deliver Southern California's first giraffes to the San Diego Zoo. Behind the wheel is the young Dust Bowl rowdy Woodrow. Inspired by true events, the tale weaves real-life figures with fictional ones, including the world's first female zoo director, a crusty old man with a past, a young female photographer with a secret, and assorted reprobates as spotty as the giraffes. Part adventure, part historical saga, and part coming-of-age love story, West with Giraffes explores what it means to be changed by the grace of animals, the kindness of strangers, the passing of time, and a story told before it's too late.	372	http://books.google.com/books/content?id=9Z-DzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
+r119-dYq0mwC	A Wrinkle in Time	Madeleine L'Engle 	Madeleine L'Engle's ground-breaking science fiction and fantasy classic, now a major motion picture. It was a dark and stormy night; Meg Murry, her small brother Charles Wallace, and her mother had come down to the kitchen for a midnight snack when they were upset by the arrival of a most disturbing stranger. "Wild nights are my glory," the unearthly stranger told them. "I just got caught in a downdraft and blown off course. Let me sit down for a moment, and then I'll be on my way. Speaking of ways, by the way, there is such a thing as a tesseract." A tesseract (in case the reader doesn't know) is a wrinkle in time. To tell more would rob the reader of the enjoyment of Miss L'Engle's unusual book. A Wrinkle in Time, winner of the Newbery Medal in 1963, is the story of the adventures in space and time of Meg, Charles Wallace, and Calvin O'Keefe (athlete, student, and one of the most popular boys in high school). They are in search of Meg's father, a scientist who disappeared while engaged in secret work for the government on the tesseract problem. A Wrinkle in Time is the winner of the 1963 Newbery Medal. It is the first book in The Time Quintet, which consists of A Wrinkle in Time, A Wind in the Door, A Swiftly Tilting Planet, Many Waters, and An Acceptable Time. A Wrinkle in Time is now a movie from Disney, directed by Ava DuVernay, starring Storm Reid, Oprah Winfrey, Reese Witherspoon and Mindy Kaling. This title has Common Core connections. Books by Madeleine L'Engle A Wrinkle in Time Quintet A Wrinkle in Time A Wind in the Door A Swiftly Tilting Planet Many Waters An Acceptable Time A Wrinkle in Time: The Graphic Novel by Madeleine L'Engle; adapted & illustrated by Hope Larson Intergalactic P.S. 3 by Madeleine L'Engle; illustrated by Hope Larson: A standalone story set in the world of A Wrinkle in Time. The Austin Family Chronicles Meet the Austins (Volume 1) The Moon by Night (Volume 2) The Young Unicorns (Volume 3) A Ring of Endless Light (Volume 4) A Newbery Honor book! Troubling a Star (Volume 5) The Polly O'Keefe books The Arm of the Starfish Dragons in the Waters A House Like a Lotus And Both Were Young Camilla The Joys of Love	216	http://books.google.com/books/content?id=r119-dYq0mwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+2ycnxnTmiAYC	First Test	Tamora Pierce 	Kel will not allow this first test to be her last. Her adventure begins in the New York Times bestselling series from the fantasy author who is a legend herself: TAMORA PIERCE. Keladry of Mindelan is the first girl who dares to take advantage of a new rule in Tortall—one that allows females to train for knighthood. After years in the Yamani Islands, she knows that women can be warriors, and now that she’s returned home, Kel is determined to achieve her goal. She believes she is ready for the traditional hazing and grueling schedule of a page. But standing in Kel’s way is Lord Wyldon. The training master is dead set against girls becoming knights. He says she must pass a one-year trial that no male page has ever had to endure. It’s just one more way to separate Kel from her fellow trainees. But she is not to be underestimated. She will fight to succeed, even when the test is unfair. More timely than ever, the Protector of the Small series is Anti-Bullying 101 while also touching on issues of bravery, friendship, and dealing humanely with refugees against a backdrop of an action-packed fantasy adventure. "Tamora Pierce's books shaped me not only as a young writer but also as a young woman. She is a pillar, an icon, and an inspiration. Cracking open one of her marvelous novels always feels like coming home." —SARAH J. MAAS, #1 New York Times bestselling author "Tamora Pierce didn't just blaze a trail. Her heroines cut a swath through the fantasy world with wit, strength, and savvy. Her stories still lead the vanguard today. Pierce is the real lioness, and we're all just running to keep pace." —LEIGH BARDUGO, #1 New York Times bestselling author	240	http://books.google.com/books/content?id=2ycnxnTmiAYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+FmyBAwAAQBAJ	Sapiens	Yuval Noah Harari 	New York Times Bestseller A Summer Reading Pick for President Barack Obama, Bill Gates, and Mark Zuckerberg From a renowned historian comes a groundbreaking narrative of humanity’s creation and evolution—a #1 international bestseller—that explores the ways in which biology and history have defined us and enhanced our understanding of what it means to be “human.” One hundred thousand years ago, at least six different species of humans inhabited Earth. Yet today there is only one—homo sapiens. What happened to the others? And what may happen to us? Most books about the history of humanity pursue either a historical or a biological approach, but Dr. Yuval Noah Harari breaks the mold with this highly original book that begins about 70,000 years ago with the appearance of modern cognition. From examining the role evolving humans have played in the global ecosystem to charting the rise of empires, Sapiens integrates history and science to reconsider accepted narratives, connect past developments with contemporary concerns, and examine specific events within the context of larger ideas. Dr. Harari also compels us to look ahead, because over the last few decades humans have begun to bend laws of natural selection that have governed life for the past four billion years. We are acquiring the ability to design not only the world around us, but also ourselves. Where is this leading us, and what do we want to become? Featuring 27 photographs, 6 maps, and 25 illustrations/diagrams, this provocative and insightful work is sure to spark debate and is essential reading for aficionados of Jared Diamond, James Gleick, Matt Ridley, Robert Wright, and Sharon Moalem.	464	http://books.google.com/books/content?id=FmyBAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+8lqL52xT1q4C	Letters of Note	Shaun Usher 	Letters of Note is a collection of over one hundred of the world's most entertaining, inspiring and unusual letters, based on the seismically popular website of the same name – an online museum of correspondence visited by over 70 million people. From Virginia Woolf's heart-breaking suicide letter, to Queen Elizabeth II's recipe for drop scones sent to President Eisenhower; from the first recorded use of the expression 'OMG' in a letter to Winston Churchill, to Gandhi's appeal for calm to Hitler; and from Iggy Pop's beautiful letter of advice to a troubled young fan, to Leonardo da Vinci's remarkable job application letter, Letters of Note is a celebration of the power of written correspondence which captures the humour, seriousness, sadness and brilliance that make up all of our lives.	384	http://books.google.com/books/content?id=8lqL52xT1q4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+O0iSDwAAQBAJ	The House in the Cerulean Sea	TJ Klune 	A NEW YORK TIMES, USA TODAY, and WASHINGTON POST BESTSELLER! A 2021 Alex Award winner! The 2021 RUSA Reading List: Fantasy Winner! An Indie Next Pick! One of Publishers Weekly's "Most Anticipated Books of Spring 2020" One of Book Riot’s “20 Must-Read Feel-Good Fantasies” Lambda Literary Award-winning author TJ Klune’s bestselling, breakout contemporary fantasy that's "1984 meets The Umbrella Academy with a pinch of Douglas Adams thrown in." (Gail Carriger) Linus Baker is a by-the-book case worker in the Department in Charge of Magical Youth. He's tasked with determining whether six dangerous magical children are likely to bring about the end of the world. Arthur Parnassus is the master of the orphanage. He would do anything to keep the children safe, even if it means the world will burn. And his secrets will come to light. The House in the Cerulean Sea is an enchanting love story, masterfully told, about the profound experience of discovering an unlikely family in an unexpected place—and realizing that family is yours. "1984 meets The Umbrella Academy with a pinch of Douglas Adams thrown in." —Gail Carriger, New York Times bestselling author of Soulless At the Publisher's request, this title is being sold without Digital Rights Management Software (DRM) applied.	305	http://books.google.com/books/content?id=O0iSDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+ORN0AwAAQBAJ	Smoke Gets in Your Eyes: And Other Lessons from the Crematory	Caitlin Doughty 	"Morbid and illuminating" (Entertainment Weekly)—a young mortician goes behind the scenes of her curious profession. Armed with a degree in medieval history and a flair for the macabre, Caitlin Doughty took a job at a crematory and turned morbid curiosity into her life’s work. She cared for bodies of every color, shape, and affliction, and became an intrepid explorer in the world of the dead. In this best-selling memoir, brimming with gallows humor and vivid characters, she marvels at the gruesome history of undertaking and relates her unique coming-of-age story with bold curiosity and mordant wit. By turns hilarious, dark, and uplifting, Smoke Gets in Your Eyes reveals how the fear of dying warps our society and "will make you reconsider how our culture treats the dead" (San Francisco Chronicle).	272	http://books.google.com/books/content?id=ORN0AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+LyV8zQEACAAJ	The House in the Cerulean Sea	TJ Klune 	Lambda Literary Award-winning author TJ Klune’s bestselling, breakout contemporary fantasy that's "1984 meets The Umbrella Academy with a pinch of Douglas Adams thrown in." (Gail Carriger) A USA Today Bestseller! An Indie Next Pick! One of Publishers Weekly's "Most Anticipated Books of Spring 2020" One of Book Riot’s “20 Must-Read Feel-Good Fantasies” A magical island. A dangerous task. A burning secret. Linus Baker leads a quiet, solitary life. At forty, he lives in a tiny house with a devious cat and his old records. As a Case Worker at the Department in Charge Of Magical Youth, he spends his days overseeing the well-being of children in government-sanctioned orphanages. When Linus is unexpectedly summoned by Extremely Upper Management he's given a curious and highly classified assignment: travel to Marsyas Island Orphanage, where six dangerous children reside: a gnome, a sprite, a wyvern, an unidentifiable green blob, a were-Pomeranian, and the Antichrist. Linus must set aside his fears and determine whether or not they’re likely to bring about the end of days. But the children aren’t the only secret the island keeps. Their caretaker is the charming and enigmatic Arthur Parnassus, who will do anything to keep his wards safe. As Arthur and Linus grow closer, long-held secrets are exposed, and Linus must make a choice: destroy a home or watch the world burn. An enchanting story, masterfully told, The House in the Cerulean Sea is about the profound experience of discovering an unlikely family in an unexpected place—and realizing that family is yours.	400	http://books.google.com/books/content?id=LyV8zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
+2PJFDDjs40MC	Monstrous Regiment	Terry Pratchett 	War has come to Discworld ... again. And, to no one's great surprise, the conflict centers around the small, arrogantly fundamentalist duchy of Borogravia, which has long prided itself on its unrelenting aggressiveness. A year ago, Polly Perks's brother marched off to battle, and Polly's willing to resort to drastic measures to find him. So she cuts off her hair, dons masculine garb, and -- aided by a well-placed pair of socks -- sets out to join this man's army. Since a nation in such dire need of cannon fodder can't afford to be too picky, Polly is eagerly welcomed into the fighting fold—along with a vampire, a troll, an Igor, a religious fanatic, and two uncommonly close "friends." It would appear that Polly "Ozzer" Perks isn't the only grunt with a secret. But duty calls, the battlefield beckons. And now is the time for all good ... er ... "men" to come to the aid of their country.	416	http://books.google.com/books/content?id=2PJFDDjs40MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 \.
 
 
@@ -473,16 +500,9 @@ COPY public.books_categories (id, isbn, category_id) FROM stdin;
 14	vPNaAAAAMAAJ	2
 15	rR0ZEAAAQBAJ	14
 16	swJWQ5qq804C	2
-17	BcG2dVRXKukC	1
-18	dLo_GyEykjQC	1
-19	QVn-CgAAQBAJ	1
-20	t_ZYYXZq4RgC	1
-21	yuCUZ3km3qIC	1
 22	bxahDwAAQBAJ	15
 23	PxNcDwAAQBAJ	15
-24	MA78DwAAQBAJ	15
 25	D5RbDwAAQBAJ	15
-26	Vu8vDwAAQBAJ	15
 27	uXtLDwAAQBAJ	15
 28	AIjCDwAAQBAJ	15
 29	vH3LDwAAQBAJ	15
@@ -491,9 +511,7 @@ COPY public.books_categories (id, isbn, category_id) FROM stdin;
 32	JoecDwAAQBAJ	16
 33	BFlADwAAQBAJ	16
 34	n09kDwAAQBAJ	16
-35	oaqRDwAAQBAJ	16
 36	QCPBDwAAQBAJ	16
-38	-vnoDwAAQBAJ	16
 39	obAHf43THvQC	16
 40	0AGrDwAAQBAJ	16
 41	ilc0DwAAQBAJ	3
@@ -536,8 +554,23 @@ COPY public.books_categories (id, isbn, category_id) FROM stdin;
 86	dXLWAAAAMAAJ	4
 87	KR_twAEACAAJ	4
 88	OQR4BgAAQBAJ	4
-89	6JBOxAEACAAJ	1
-90	d84AspgFjSwC	1
+91	yuCUZ3km3qIC	18
+92	cLhVjQGs83QC	18
+98	aFapBAAAQBAJ	16
+100	jxGuDwAAQBAJ	16
+101	5sWCDwAAQBAJ	16
+102	sh95DwAAQBAJ	16
+106	49RdDwAAQBAJ	16
+107	BFIxDwAAQBAJ	16
+111	vFYRDgAAQBAJ	10
+114	9Z-DzQEACAAJ	16
+123	-vnoDwAAQBAJ	16
+130	CGVDDwAAQBAJ	8
+134	8lqL52xT1q4C	15
+135	O0iSDwAAQBAJ	15
+136	ORN0AwAAQBAJ	16
+138	526DDwAAQBAJ	16
+139	2PJFDDjs40MC	16
 \.
 
 
@@ -557,12 +590,13 @@ COPY public.categories (id, user_id, label) FROM stdin;
 10	10	My Favorite Books
 12	12	My Favorite Books
 14	2	Classics
-15	1	Book Club
 16	1	Want to Read
 13	13	Favorite Adventures
 11	11	Favorites
 17	9	Favorite Women
-1	1	Fantasy Faves
+18	14	My Favorite Books
+25	15	My Favorite Books
+15	1	My Book Clubs
 \.
 
 
@@ -571,12 +605,17 @@ COPY public.categories (id, user_id, label) FROM stdin;
 --
 
 COPY public.events (id, host_id, city, state, event_date, start_time, end_time, is_private, can_add_books, can_vote) FROM stdin;
-2	2	Berkeley	CA	2021-03-19	19:00:00	21:00:00	f	t	f
 3	3	San Francisco	CA	2021-04-09	20:00:00	22:00:00	f	t	f
 6	6	Oakland	CA	2021-05-05	18:00:00	20:00:00	f	t	f
 5	5	Lafayette	CA	2021-04-14	17:00:00	19:00:00	f	t	f
 4	4	Remote	\N	2021-04-22	18:00:00	20:00:00	f	t	f
-1	1	Pleasanton	CA	2021-03-26	18:00:00	20:00:00	f	f	t
+7	1	Helsinki	\N	2021-03-11	19:00:00	21:00:00	f	f	f
+8	5	Concord	MA	2021-02-26	19:00:00	21:00:00	f	f	f
+9	10	Springfield	IL	2021-03-13	18:00:00	20:00:00	f	f	f
+2	2	Berkeley	CA	2021-03-19	19:00:00	21:00:00	f	f	f
+1	1	Pleasanton	CA	2021-03-26	18:00:00	20:00:00	f	f	f
+11	1	Mountain View	CA	2021-05-07	19:00:00	21:00:00	f	f	f
+10	1	San Francisco 	CA	2021-04-30	19:00:00	21:00:00	f	t	f
 \.
 
 
@@ -586,8 +625,6 @@ COPY public.events (id, host_id, city, state, event_date, start_time, end_time, 
 
 COPY public.events_attendees (id, user_id, event_id, is_attending, voted_for) FROM stdin;
 6	4	2	t	
-7	13	2	t	
-9	2	2	t	
 10	6	3	t	
 11	5	3	t	
 12	2	3	t	
@@ -604,15 +641,30 @@ COPY public.events_attendees (id, user_id, event_id, is_attending, voted_for) FR
 24	12	6	t	
 25	6	6	t	
 26	4	6	t	
-3	3	1	t	
 4	9	1	t	
-5	8	1	t	
-29	5	1	t	
 32	12	5	t	
 33	12	3	t	
+37	5	7	t	
+36	1	7	t	
+38	13	5	t	
+71	1	3	t	
+72	1	11	t	
+73	1	4	t	
+74	2	11	t	
+41	5	8	t	
+43	5	9	t	
+44	1	9	t	
+42	10	9	t	
+47	1	10	t	
+39	6	2	t	
+40	3	2	t	
+9	2	2	t	
 35	1	2	t	
-2	2	1	t	 bxahDwAAQBAJ 
-1	1	1	t	 tWwuCgAAQBAJ 
+5	8	1	t	
+29	5	1	t	
+3	3	1	t	
+2	2	1	t	
+1	1	1	t	
 \.
 
 
@@ -621,28 +673,74 @@ COPY public.events_attendees (id, user_id, event_id, is_attending, voted_for) FR
 --
 
 COPY public.events_books (id, isbn, event_id, vote_count, is_the_one) FROM stdin;
-1	-xyzCwAAQBAJ	2	0	t
 2	JoecDwAAQBAJ	\N	0	t
-4	PxNcDwAAQBAJ	1	0	t
-5	n09kDwAAQBAJ	2	0	t
 7	vFYRDgAAQBAJ	3	0	t
 8	OYtkbGl2j0sC	3	0	t
 9	kotPYEqx7kMC	6	0	t
 10	ZrsVZKWJg4UC	6	0	t
 11	aFapBAAAQBAJ	3	0	t
 12	Q12MCgAAQBAJ	6	0	t
-13	Y7sOAAAAIAAJ	2	0	t
 14	zaynQgAACAAJ	6	0	t
-15	Hg0jKHsj6DMC	1	0	t
 16	v0iuYlsc8EIC	5	0	t
 17	rR0ZEAAAQBAJ	3	0	t
-18	OQR4BgAAQBAJ	2	0	t
 19	PGR2AwAAQBAJ	4	0	t
 20	KR_twAEACAAJ	4	0	t
 21	sUtrdMJvFXAC	5	0	t
-22	6JBOxAEACAAJ	2	0	t
-3	bxahDwAAQBAJ	1	1	t
-6	tWwuCgAAQBAJ	1	1	t
+23	Vu8vDwAAQBAJ	7	0	t
+24	Jy8S_9fN5wAC	5	0	t
+66	BFlADwAAQBAJ	10	0	t
+52	sh95DwAAQBAJ	\N	0	t
+68	49RdDwAAQBAJ	10	0	t
+34	526DDwAAQBAJ	\N	0	t
+13	Y7sOAAAAIAAJ	\N	0	t
+3	bxahDwAAQBAJ	\N	0	t
+56	D5RbDwAAQBAJ	\N	0	t
+4	PxNcDwAAQBAJ	\N	0	t
+26	BcG2dVRXKukC	\N	0	t
+35	CGVDDwAAQBAJ	\N	0	t
+55	sh95DwAAQBAJ	\N	0	t
+37	bxahDwAAQBAJ	\N	0	t
+36	526DDwAAQBAJ	\N	0	t
+51	5sWCDwAAQBAJ	\N	0	t
+39	bxahDwAAQBAJ	\N	0	t
+29	v0iuYlsc8EIC	8	0	t
+31	55AFYh5XadkC	\N	0	t
+30	vFYRDgAAQBAJ	9	0	t
+1	-xyzCwAAQBAJ	\N	0	t
+38	CGVDDwAAQBAJ	\N	0	t
+32	bxahDwAAQBAJ	3	0	t
+5	n09kDwAAQBAJ	2	0	t
+33	jxGuDwAAQBAJ	\N	0	t
+25	OYtkbGl2j0sC	\N	1	t
+27	ZSu2DQAAQBAJ	\N	0	t
+18	OQR4BgAAQBAJ	\N	1	t
+22	6JBOxAEACAAJ	\N	1	t
+40	526DDwAAQBAJ	\N	0	t
+28	-vnoDwAAQBAJ	\N	0	t
+6	tWwuCgAAQBAJ	\N	0	t
+15	Hg0jKHsj6DMC	\N	0	t
+57	0AGrDwAAQBAJ	\N	0	t
+41	bxahDwAAQBAJ	\N	0	t
+53	526DDwAAQBAJ	1	0	t
+43	CGVDDwAAQBAJ	\N	0	t
+42	jxGuDwAAQBAJ	\N	0	t
+44	526DDwAAQBAJ	\N	0	t
+60	BcG2dVRXKukC	4	0	t
+46	bxahDwAAQBAJ	\N	0	t
+45	CGVDDwAAQBAJ	\N	0	t
+47	jxGuDwAAQBAJ	\N	0	t
+50	6JBOxAEACAAJ	\N	0	t
+49	D5RbDwAAQBAJ	\N	0	t
+58	FmyBAwAAQBAJ	\N	0	t
+48	526DDwAAQBAJ	\N	0	t
+54	D5RbDwAAQBAJ	\N	0	t
+62	obAHf43THvQC	11	0	t
+63	0AGrDwAAQBAJ	11	0	t
+61	ORN0AwAAQBAJ	\N	0	t
+59	O0iSDwAAQBAJ	10	0	t
+64	jxGuDwAAQBAJ	10	0	t
+65	J0tIAgAAQBAJ	11	0	t
+67	5sWCDwAAQBAJ	10	0	t
 \.
 
 
@@ -670,8 +768,10 @@ COPY public.users (id, first_name, last_name, email, password_hash, city, state,
 10	Lisa	Simpson	lisa@bookworm.com	pbkdf2:sha256:150000$dfrGfg6m$278c73a7597289d021cfa42024220e7c907e4bde7033e0da41f749cb4aab4a33	\N	\N	t
 12	Klaus	Baudelaire	klaus@bookworm.com	pbkdf2:sha256:150000$1IYAhzeJ$10ccd0ffe10b7fd28046f3a758ebc5f04ab25fff05da5e761bc5451ff4f26968	\N	\N	t
 13	Belle	Beauty	belle@bookworm.com	pbkdf2:sha256:150000$7LD1q1C5$d5bb5a22faec719ff08f54747a812f33a7b4d357f47e9aaf0f277433a3b602e2	\N	\N	t
-1	Hunter	Laine	hunterglaine@gmail.com	pbkdf2:sha256:150000$QrHkFnNc$f140a559661b18668a291a227ae3d13bc5da22db101eef9f1599bfffad78da63	Pleasanton	CA	t
 11	Bernard	Black	bernard@bookworm.com	pbkdf2:sha256:150000$mT1fpEqm$466f5763c3f518f655ef90e0c51036cc5f79e3e2d11eee10ecc4aa538eb7be0a	London	\N	t
+14	Richard	Mayhe	richard@bookworm.com	pbkdf2:sha256:150000$cQdcJf0W$450ffd54d5e061eeb16b603e918e6a7e773cbe038a5621b4c0b81ba25cb07179	London	CA	t
+15	Hunter	Laine	hunter@test.com	pbkdf2:sha256:150000$Q5npAugV$59a3b81af61a3fe609cf78674afb738ab6df4dad84ed26a636dd838cd9107ae2	Pleasanton	CA	t
+1	Hunter	Laine	hunterglaine@gmail.com	pbkdf2:sha256:150000$QrHkFnNc$f140a559661b18668a291a227ae3d13bc5da22db101eef9f1599bfffad78da63	San Francisco	CA	t
 \.
 
 
@@ -679,35 +779,35 @@ COPY public.users (id, first_name, last_name, email, password_hash, city, state,
 -- Name: books_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.books_categories_id_seq', 90, true);
+SELECT pg_catalog.setval('public.books_categories_id_seq', 139, true);
 
 
 --
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.categories_id_seq', 17, true);
+SELECT pg_catalog.setval('public.categories_id_seq', 33, true);
 
 
 --
 -- Name: events_attendees_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.events_attendees_id_seq', 35, true);
+SELECT pg_catalog.setval('public.events_attendees_id_seq', 81, true);
 
 
 --
 -- Name: events_books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.events_books_id_seq', 22, true);
+SELECT pg_catalog.setval('public.events_books_id_seq', 68, true);
 
 
 --
 -- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.events_id_seq', 6, true);
+SELECT pg_catalog.setval('public.events_id_seq', 15, true);
 
 
 --
@@ -721,7 +821,7 @@ SELECT pg_catalog.setval('public.friendships_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 13, true);
+SELECT pg_catalog.setval('public.users_id_seq', 15, true);
 
 
 --

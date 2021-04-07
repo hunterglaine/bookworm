@@ -500,7 +500,6 @@ def delete_event(event_id):
     event = get_event_by_id(event_id)
     attendees = get_all_events_attendees(event_id)
     for attendee in attendees:
-        print(attendee)
         db.session.delete(attendee)
 
     db.session.delete(event)

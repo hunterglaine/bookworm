@@ -31,8 +31,8 @@ function BookDetails(props) {
     const addEventBook = (evt) => {
         evt.preventDefault();
 
-        fetch("/add-book-to-event", {
-            method: "POST",
+        fetch("/event-books", {
+            method: "PUT",
             credentials: "include",
             body: JSON.stringify({"event_id": eventId,
                                     "isbn": props.bookForDetails.isbn}),
