@@ -6,8 +6,6 @@ function AllEvents(props) {
     let history = useHistory();
 
     const addAttendee = () => {
-            
-        console.log(currentEvent)
         
         fetch("/user-events", {
             method: "PUT",

@@ -23,7 +23,6 @@ function BookTile(props) {
     function addToCategory(evt) {
         evt.preventDefault();
 
-        console.log(categoryName)
         let categoryDetails = {"label": categoryName,
                                 "book": book}
 

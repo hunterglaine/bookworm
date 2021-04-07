@@ -35,7 +35,6 @@ function CreateAccount() {
         })
         .then (response => response.json())
         .then(data => {
-            console.log(data);
             if ("error" in data) {
                 alert(data["error"]);
                 history.push("/create-account");

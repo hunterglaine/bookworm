@@ -12,7 +12,6 @@ function CreateEvent(props) {
 
     const makeNewEvent = (evt) => {
         evt.preventDefault();
-        console.log(date, startTime, endTime)
 
         const eventDetails = {"host_id": props.userLoggedIn.userId,
                                 "city": eventCity,

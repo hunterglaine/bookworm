@@ -11,7 +11,7 @@ function SearchBar(props) {
 
         fetch("/categories")
         .then (response => response.json())
-        .then(result => {console.log(result["categories"]); return result;})
+        // .then(result => {console.log(result["categories"]); return result;})
         .then((data) => {
             props.setUserCategories(data["categories"])
             // localStorage.setItem("categories", data["categories"]) // here

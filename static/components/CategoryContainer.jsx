@@ -2,12 +2,8 @@
 
 function CategoryContainer(props) {
     
-    // const [newLabel, setNewLabel] = React.useState(null)
     const labelChange = React.useRef("");
     const booksInCategory = []
-    // let history = useHistory();
-    console.log("This is new label",props. newLabel)
-    console.log("THIS is label up top", props.label)
 
     const showForm = (arg) => (evt) => {
         evt.preventDefault();
@@ -23,7 +19,6 @@ function CategoryContainer(props) {
 
     const updateCategory = (evt) => {
         evt.preventDefault();
-        console.log("This is the labelChange.current useRef:", labelChange.current)
             fetch("/categories", {
                 method: "POST",
                 credentials: "include",

@@ -14,7 +14,6 @@ function EventDetails(props) {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(" What is going on here???",data)
             setBooksVotedFor(data["booksVotedFor"])
             setEventsBooksVotes(data["allEventsBooks"])
         })
@@ -43,7 +42,6 @@ function EventDetails(props) {
 
     const updateVote = (bookIsbn) => (evt) => {
         evt.preventDefault();
-        console.log("this ran")
         
         fetch("/vote", {
             method: "POST",
@@ -100,7 +98,6 @@ function EventDetails(props) {
     
     const deleteEvent = (eventId) => (evt) => {
         evt.preventDefault();
-        console.log("Well, that's something...")
 
         fetch("/events", {
             method: "DELETE",

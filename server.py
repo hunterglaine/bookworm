@@ -25,7 +25,6 @@ def create_new_user():
             user_id = session["user_id"]
             user = crud.get_user_by_id(user_id)
             user = user.to_dict()
-            print("USERUSERUSER", user)
             return jsonify (user)
 
     if request.method == "POST":
@@ -125,7 +124,6 @@ def get_and_update_categories():
             category = crud.get_category_by_label(user_id, label)
         
             if not book:
-                print("This is the format of the authors", book_dict["volumeInfo"]["authors"])
                 authors = ""
                 for author in book_dict["volumeInfo"]["authors"]:
                     authors += f"{author} "
@@ -354,7 +352,6 @@ def update_event_books():
                         crud.reset_vote_count(event_book)
 
                 attendees = crud.get_all_events_attendees(event_id)
-                print("attendees", attendees)
                 for attendee in attendees:
                     crud.reset_voted_for(attendee)
                 
