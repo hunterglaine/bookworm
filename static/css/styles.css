@@ -1,6 +1,6 @@
 body {
     margin:0;
-    font-family: Open Sans Condensed;
+    font-family: Open Sans Condensed !important;
     /* font-family: 'Shippori Mincho B1', serif; */
     height: 100%;
     width: auto;
@@ -69,80 +69,80 @@ img#logo {
 
 .toggle-button {
     margin: 2rem 0;
-    background-color: #7db6a3;
-    border: none;
-    color: #000000;
-    padding: 10px 10px;
+    background-color: #7db6a3 !important;
+    border: none !important;
+    color: #000000 !important;
+    padding: 10px 10px !important;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 14px !important;
 }
 
 .button {
-    margin: 2rem;
-    background-color: #7db6a3;
-    border: none;
-    color: #000000;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 5px;
+    margin: 2rem !important;
+    background-color: #7db6a3 !important;
+    border: none !important;
+    color: #000000 !important;
+    padding: 10px 10px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    border-radius: 5px !important;
 }
 
 .button-bare {
     margin: 0;
-    background-color: #7db6a3;
+    background-color: #7db6a3 !important;
     border: none;
-    color: #000000;
+    color: #000000 !important;
     padding: 10px 10px;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none !important;
     display: inline-block;
     font-size: 14px;
 }
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    color: #000000;
-    background-color:#a1d4c3;
-    border-color: #a1d4c3;
+    color: #000000 !important;
+    background-color:#a1d4c3 !important;
+    border-color: #a1d4c3 !important;
 }
 
 .toggle-button:hover {   
-    background-color: #a1d4c3;
-    color: #000000;
+    background-color: #a1d4c3 !important;
+    color: #000000 !important;
 }
 
 
 .button-bare:hover {   
-    background-color: #a1d4c3;
-    color: #000000;
+    background-color: #a1d4c3 !important;
+    color: #000000 !important;
 }
 
 .button:hover {   
-    background-color: #a1d4c3;
-    color: #000000;
-    text-decoration: none;
+    background-color: #a1d4c3 !important;
+    color: #000000 !important;
+    text-decoration: none !important;
 }
 
 .button-search {
     margin: 1rem;
     background-color: #7db6a3;
-    border-color: #000000;
-    color: #000000;
+    border-color: #000000 !important;
+    color: #000000 !important;
     padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 16px !important;
     font-weight: bold;
     display: inline-block;
 }
 
 .button-search:hover {   
-    background-color: #a1d4c3;
-    color: #000000;
+    background-color: #a1d4c3 !important;
+    color: #000000 !important;
 }
 
 div.event-book {
@@ -164,7 +164,7 @@ img.book-tile {
     line-height: 1.6; 
     text-align: justify;
     margin: 0;
-    font-size: 14px;
+    font-size: 14px !important;
   }
 
 .wrapper h2, h3, h4, h5 {
@@ -179,11 +179,11 @@ h1 {
     /* flex: auto; */
     display: inline;
     /* -webkit-text-stroke: 1px #fff; width and color */
-    line-height: 2;
+    line-height: 2 !important;
     margin: 1rem;
     color: #fff;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 3rem !important;
+    font-weight: bold !important;
     font-family: 'Shippori Mincho B1', serif;
     background-color: rgba(5, 4, 2, 0.2);
     padding:1rem;

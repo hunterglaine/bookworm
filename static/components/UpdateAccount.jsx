@@ -53,15 +53,15 @@ function UpdateAccount() {
                         <Form onSubmit={updateAccount}>
                             <p>
                                 <label htmlFor="your-first-name">First Name </label>
-                                <FormControl type="text" value={userInfo.first_name} id="update-first-name" />
+                                <FormControl type="text" placeholder={userInfo.first_name} id="update-first-name" />
                             </p>
                             <p>
                                 <label htmlFor="your-last-name">Last Name </label>
-                                <FormControl type="text" value={userInfo.last_name} id="update-last-name" />
+                                <FormControl type="text" placeholder={userInfo.last_name} id="update-last-name" />
                             </p>
                             <p>
                                 <label htmlFor="your-email">Email </label>
-                                <FormControl type="text" value={userInfo.email} id="update-email" />
+                                <FormControl type="text" placeholder={userInfo.email} id="update-email" />
                             </p>        
                             <p>
                                 <label htmlFor="your-password">Confirm Old Password </label>
@@ -73,7 +73,7 @@ function UpdateAccount() {
                             </p>
                             <p>
                                 <label htmlFor="your-city">City </label>
-                                <FormControl type="text" value={userInfo.city} id="update-city" />
+                                <FormControl type="text" placeholder={userInfo.city} id="update-city" />
                             </p>
                                 <label htmlFor="your-sate">State ({userInfo.state})</label>
                                 <FormControl as="select" name="state" id="update-state" >
