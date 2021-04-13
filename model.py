@@ -180,8 +180,8 @@ class EventBook(db.Model):
     vote_count = db.Column(db.Integer, default=0)
     is_the_one = db.Column(db.Boolean, default=True)
 
-    event = db.relationship("Event", backref="events_books") # CHANGED
-    book = db.relationship("Book", backref="events_books") # CHANGED
+    event = db.relationship("Event", backref="events_books")
+    book = db.relationship("Book", backref="events_books")
 
 
     def __repr__(self):
@@ -201,7 +201,7 @@ class EventBook(db.Model):
         return event_book
 
 
-class EventAttendee(db.Model): # chng
+class EventAttendee(db.Model):
     """Event a specific user is attending."""
 
     __tablename__ = "events_attendees"

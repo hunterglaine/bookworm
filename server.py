@@ -17,7 +17,7 @@ def show_homepage(path):
 
 
 @app.route("/users", methods=["GET","POST"])
-def create_new_user():
+def create_or_get_user():
     """Create a new user or get info about existing user."""
 
     if request.method == "GET":
@@ -40,8 +40,6 @@ def create_new_user():
             
         user = crud.create_user(first_name, last_name, email, password, city, state)
         first_category = crud.create_category(user.id, "My Favorite Books")
-        # return jsonify ({'status': '200',
-        #                 'message': 'Account has successfully been created'})
         return jsonify ({"user": user.to_dict()})
 
 
@@ -86,7 +84,7 @@ def get_and_update_categories():
         if request.method == "GET":
             categories = []
 
-            category_objects = crud.get_all_user_categories(session["user_id"])
+            category_objects = crud.get_all_user_categories(user_id)
 
             for category_object in category_objects:
 
@@ -147,10 +145,7 @@ def get_and_update_categories():
                 return jsonify ({"error": f"{book.title} is already in your {category.label} books"})
 
             added_books = crud.create_book_category(book, category)
-            # Right now, added_books is a list of all of the book objects in category
-        
             return jsonify ({"success": f"{book.title} has been added to {category.label} books"})
-            # 'books_in_category': added_books
 
         elif request.method == "DELETE":
             if request.json.get("label"):
@@ -211,7 +206,7 @@ def get_user_data():
             return jsonify (category_dict)
 
     else:
-        return jsonify ({'error': 'User must be logged in to view this page.'})
+        return jsonify ({"error": "User must be logged in to view this page."})
 
 
 @app.route("/user-events", methods=["GET", "POST", "PUT", "DELETE"])
@@ -374,7 +369,6 @@ def update_event_books():
             return jsonify({"error": f"That book has already been suggested for the event."})
 
 
-
 @app.route("/vote", methods=["GET", "POST"])
 def update_event_book_votes():
     """Increases the number of votes on a given event book"""
@@ -406,13 +400,8 @@ def update_event_book_votes():
     
         update = event_attendee.update_voted_for(isbn) # returns, "removed", "added", or None
         events_attendee_dict = crud.get_all_users_voted_for_books(user_id)
-       
-        # events_books = crud.get_all_events_books(event_id)
-        # events_books = [event_book.to_dict() for event_book in events_books]
-
 
         if not update:
-            # But buttons to vote should already be gone
             return jsonify({"error": "You have already voted twice.",
                             "booksVotedFor": events_attendee_dict,
                             "allEventsBooks": all_events})
@@ -429,7 +418,6 @@ def update_event_book_votes():
         crud.update_event_book_vote_count(event_book, "add")
         
         if len(events_attendee_dict[event_id]) >= 2:
-            # Vote buttons on the front end should disappear (but unvote buttons should remain)
             return jsonify({"success": f"You voted for {book.title}",
                             "booksVotedFor": events_attendee_dict,
                             "buttons": "hidden",
@@ -463,7 +451,6 @@ def get_all_events():
                 all_events["upcoming"].append(event)
             else: 
                 all_events["past"].append(event)
-            # all_events.append(event)
 
         return jsonify (all_events)
 
