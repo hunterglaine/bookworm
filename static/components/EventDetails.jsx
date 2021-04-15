@@ -18,10 +18,6 @@ function EventDetails(props) {
             setEventsBooksVotes(data["allEventsBooks"])
         })
     }, [props.changeInEvent])
-
-    // React.useEffect(() => {
-
-    // }, [])
     
     const updateEventBooks = (eventId, type) => (evt) => {
         evt.preventDefault();

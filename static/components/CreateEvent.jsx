@@ -108,10 +108,6 @@ function CreateEvent(props) {
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
                             </FormControl>
-            {/* <p>
-                <label htmlFor="event-state">State </label>
-                <input type="text" name="event-state" placeholder="Leave Blank if Remote" onChange={(e) => setEventState(e.target.value)} />
-            </p> */}
                                 <p>
                                     <label htmlFor="event-date">What day do you want to host your book club?</label>
                                     <FormControl type="date" name="date" max="2030-12-31" onChange={(date) => setDate(date.target.value)} />

@@ -8,14 +8,11 @@ function SearchResults(props) {
     let bookKey = ''
 
     React.useEffect(() =>  {
-        // fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.bookQuery}&maxResults=10`)
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${urlQuery}&maxResults=20`)
         .then (response => response.json())
         .then (result => setBooks(result.items))
         .then(window.scrollTo(0, 0))
         }, [props.bookQuery])    
-
-        // if (books.length === 0) return <div>Loading...</div>
         
         let i = 0
         for (const book of books) {

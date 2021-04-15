@@ -45,9 +45,8 @@ function BookTile(props) {
                 }
             })
         document.getElementById("add-to-category").reset();
-        setCategoryName(props.userCategories[0].label) // here
-        // setCategoryName(localStorage.getItem("categories")[0].label)
-
+        setCategoryName(props.userCategories[0].label)
+    
         for (let i = 1; i < 11; i += 1) {
             document.forms[i].newCategory.style.visibility = "hidden";
             

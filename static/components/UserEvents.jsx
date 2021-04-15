@@ -33,7 +33,6 @@ function UserEvents(props) {
     return (
         <div>
             <Row className="m-0">
-                {/* <Col sm={2}></Col> */}
             <Col sm={8} >
                 <h1>{whichEvents === "upcoming" ? "Book Clubs You're Hosting" : "Book Clubs You Hosted"}</h1>
             </Col>
@@ -45,13 +44,10 @@ function UserEvents(props) {
                     <ToggleButton className="toggle-button" value="upcoming" onClick={() => setWhichEvents("upcoming")}>Upcoming</ToggleButton>
                     <ToggleButton className="toggle-button" value="past" onClick={() => setWhichEvents("past")}>Past</ToggleButton>
                 </ToggleButtonGroup>
-                {/* {whichEvents === "upcoming" ? <Button className="button" onClick={() => setWhichEvents("past")}>Past Events</Button> : <Button className="button" onClick={() => setWhichEvents("upcoming")}>Upcoming Events</Button>} */}
             </Col>
             </Row>
-            {/* {myEvents.hosting  */}
             {myEvents.hosting[whichEvents]
                 ? 
-                // {/* myEvents.hosting.map(event =>  */}
                 myEvents.hosting[whichEvents].map((event, idx) =>
                 <Row key={idx} className="m-0">
                     <Col sm={1}>
@@ -76,11 +72,9 @@ function UserEvents(props) {
             <Row className="m-0">
             <h1>{whichEvents === "upcoming" ? "Book Clubs You're Attending" : "Book Clubs You Attended"}</h1>
             </Row>
-            {/* {myEvents.attending  */}
             {myEvents.attending[whichEvents]
                 ? 
                 myEvents.attending[whichEvents].map((event, idx) =>
-                // myEvents.attending.map(event => 
                 <Row key={idx} className="m-0">
                     <Col sm={1}>
                     </Col>

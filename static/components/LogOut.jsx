@@ -9,10 +9,8 @@ function LogOut(props) {
             method: "POST",
             credentials: "include",
             headers: {
-                // 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            // mode: "cors"
         })
         .then (response => response.json())
         .then(data => {
