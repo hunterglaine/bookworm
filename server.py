@@ -166,6 +166,8 @@ def get_and_update_categories():
 
                 return jsonify ({"success": f"{title} has successfully been removed from {label}.",})
 
+    else:
+        return jsonify ({"error": "User must be logged in to view this page."})
 
 @app.route("/user-data", methods=["GET", "POST"])
 def get_user_data():
