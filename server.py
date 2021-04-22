@@ -74,6 +74,7 @@ def log_out_user():
 
     return jsonify ({"success": f"{user.first_name}, you have been successfully logged out! Come back soon, and happy reading!"})
 
+
 @app.route("/categories", methods=["GET", "POST", "PUT", "DELETE"])
 def get_and_update_categories():
     """Gets or updates a user's categories"""
@@ -169,6 +170,7 @@ def get_and_update_categories():
     else:
         return jsonify ({"error": "User must be logged in to view this page."})
 
+
 @app.route("/user-data", methods=["GET", "POST"])
 def get_user_data():
     """Returns user's categories and books within them"""
@@ -177,6 +179,7 @@ def get_user_data():
         user_id = session["user_id"]
 
         if request.method == "POST":
+            # Updates user account information 
             new_first_name = request.json.get("newFirstName")
             new_last_name = request.json.get("newLastName")
             new_email = request.json.get("newEmail")
