@@ -7,7 +7,7 @@ import crud
 import model
 import server
 
-os.system("pg_dump bookworm > bookworm.sql")
+# os.system("pg_dump bookworm > bookworm.sql")
 
 os.system("dropdb bookworm")
 os.system("createdb bookworm")
@@ -15,7 +15,7 @@ os.system("createdb bookworm")
 model.connect_to_db(server.app)
 # model.db.create_all()
 
-# os.system("psql bookworm < bookworm.sql")
+os.system("psql bookworm < bookworm.sql")
 
 # Create book-loving users
 # new_users = []

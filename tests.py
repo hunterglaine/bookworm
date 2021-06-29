@@ -64,7 +64,7 @@ class FlaskTestCase(unittest.TestCase):
         self.assertEqual(response.data, 
                         b'{"user":{"city":"London","email":"rmayhew@londonbelow.com","first_name":"Richard","id":7,"is_searchable":true,"last_name":"Mayhew","state":"RE"}}\n')
 
-        response = self.client.get("/users",
+        response = self.client.get("/users")
 
     def test_create_new_user(self):
         response = self.client.get("/users",

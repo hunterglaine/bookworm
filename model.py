@@ -2,6 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 
 db = SQLAlchemy()
 
@@ -267,7 +268,7 @@ class Friendship(db.Model):
 def connect_to_db(flask_app, database="bookworm", echo=False):
     """Connect to database."""
 
-    flask_app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql:///{database}" # DB_URI
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://hunterlaine:{os.environ['DB_PASS']}@localhost/{database}" # DB_URI
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

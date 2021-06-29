@@ -478,12 +478,9 @@ ORN0AwAAQBAJ	Smoke Gets in Your Eyes: And Other Lessons from the Crematory	Caitl
 LyV8zQEACAAJ	The House in the Cerulean Sea	TJ Klune 	Lambda Literary Award-winning author TJ Klune’s bestselling, breakout contemporary fantasy that's "1984 meets The Umbrella Academy with a pinch of Douglas Adams thrown in." (Gail Carriger) A USA Today Bestseller! An Indie Next Pick! One of Publishers Weekly's "Most Anticipated Books of Spring 2020" One of Book Riot’s “20 Must-Read Feel-Good Fantasies” A magical island. A dangerous task. A burning secret. Linus Baker leads a quiet, solitary life. At forty, he lives in a tiny house with a devious cat and his old records. As a Case Worker at the Department in Charge Of Magical Youth, he spends his days overseeing the well-being of children in government-sanctioned orphanages. When Linus is unexpectedly summoned by Extremely Upper Management he's given a curious and highly classified assignment: travel to Marsyas Island Orphanage, where six dangerous children reside: a gnome, a sprite, a wyvern, an unidentifiable green blob, a were-Pomeranian, and the Antichrist. Linus must set aside his fears and determine whether or not they’re likely to bring about the end of days. But the children aren’t the only secret the island keeps. Their caretaker is the charming and enigmatic Arthur Parnassus, who will do anything to keep his wards safe. As Arthur and Linus grow closer, long-held secrets are exposed, and Linus must make a choice: destroy a home or watch the world burn. An enchanting story, masterfully told, The House in the Cerulean Sea is about the profound experience of discovering an unlikely family in an unexpected place—and realizing that family is yours.	400	http://books.google.com/books/content?id=LyV8zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
 2PJFDDjs40MC	Monstrous Regiment	Terry Pratchett 	War has come to Discworld ... again. And, to no one's great surprise, the conflict centers around the small, arrogantly fundamentalist duchy of Borogravia, which has long prided itself on its unrelenting aggressiveness. A year ago, Polly Perks's brother marched off to battle, and Polly's willing to resort to drastic measures to find him. So she cuts off her hair, dons masculine garb, and -- aided by a well-placed pair of socks -- sets out to join this man's army. Since a nation in such dire need of cannon fodder can't afford to be too picky, Polly is eagerly welcomed into the fighting fold—along with a vampire, a troll, an Igor, a religious fanatic, and two uncommonly close "friends." It would appear that Polly "Ozzer" Perks isn't the only grunt with a secret. But duty calls, the battlefield beckons. And now is the time for all good ... er ... "men" to come to the aid of their country.	416	http://books.google.com/books/content?id=2PJFDDjs40MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 \.
-
-
 --
 -- Data for Name: books_categories; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.books_categories (id, isbn, category_id) FROM stdin;
 1	F7IqEFlwXkkC	14
 2	XV8XAAAAYAAJ	14
@@ -572,12 +569,9 @@ COPY public.books_categories (id, isbn, category_id) FROM stdin;
 138	526DDwAAQBAJ	16
 139	2PJFDDjs40MC	16
 \.
-
-
 --
 -- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.categories (id, user_id, label) FROM stdin;
 2	2	My Favorite Books
 3	3	My Favorite Books
@@ -598,12 +592,9 @@ COPY public.categories (id, user_id, label) FROM stdin;
 25	15	My Favorite Books
 15	1	My Book Clubs
 \.
-
-
 --
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.events (id, host_id, city, state, event_date, start_time, end_time, is_private, can_add_books, can_vote) FROM stdin;
 3	3	San Francisco	CA	2021-04-09	20:00:00	22:00:00	f	t	f
 6	6	Oakland	CA	2021-05-05	18:00:00	20:00:00	f	t	f
@@ -617,12 +608,9 @@ COPY public.events (id, host_id, city, state, event_date, start_time, end_time, 
 11	1	Mountain View	CA	2021-05-07	19:00:00	21:00:00	f	f	f
 10	1	San Francisco 	CA	2021-04-30	19:00:00	21:00:00	f	t	f
 \.
-
-
 --
 -- Data for Name: events_attendees; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.events_attendees (id, user_id, event_id, is_attending, voted_for) FROM stdin;
 6	4	2	t	
 10	6	3	t	
@@ -666,12 +654,9 @@ COPY public.events_attendees (id, user_id, event_id, is_attending, voted_for) FR
 2	2	1	t	
 1	1	1	t	
 \.
-
-
 --
 -- Data for Name: events_books; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.events_books (id, isbn, event_id, vote_count, is_the_one) FROM stdin;
 2	JoecDwAAQBAJ	\N	0	t
 7	vFYRDgAAQBAJ	3	0	t
@@ -742,20 +727,14 @@ COPY public.events_books (id, isbn, event_id, vote_count, is_the_one) FROM stdin
 65	J0tIAgAAQBAJ	11	0	t
 67	5sWCDwAAQBAJ	10	0	t
 \.
-
-
 --
 -- Data for Name: friendships; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.friendships (id, requestor_id, is_friend, pending) FROM stdin;
 \.
-
-
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
-
 COPY public.users (id, first_name, last_name, email, password_hash, city, state, is_searchable) FROM stdin;
 2	Matilda	Wormwood	matilda@bookworm.com	pbkdf2:sha256:150000$ZyWxqBB2$ae4e7ac97512d3df44ab0daaa59acea725a9b635e5c977af1828e9ae5ef289f2	\N	\N	t
 3	Hermione	Granger	hermione@bookworm.com	pbkdf2:sha256:150000$yKOqo8Sa$d6bbbd5d96a46a2d0d0eaeb67f9567116be93fe32ff840c332bc6d2d86985e9e	\N	\N	t
@@ -773,202 +752,124 @@ COPY public.users (id, first_name, last_name, email, password_hash, city, state,
 15	Hunter	Laine	hunter@test.com	pbkdf2:sha256:150000$Q5npAugV$59a3b81af61a3fe609cf78674afb738ab6df4dad84ed26a636dd838cd9107ae2	Pleasanton	CA	t
 1	Hunter	Laine	hunterglaine@gmail.com	pbkdf2:sha256:150000$QrHkFnNc$f140a559661b18668a291a227ae3d13bc5da22db101eef9f1599bfffad78da63	San Francisco	CA	t
 \.
-
-
 --
 -- Name: books_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.books_categories_id_seq', 139, true);
-
-
 --
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.categories_id_seq', 33, true);
-
-
 --
 -- Name: events_attendees_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.events_attendees_id_seq', 81, true);
-
-
 --
 -- Name: events_books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.events_books_id_seq', 68, true);
-
-
 --
 -- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.events_id_seq', 15, true);
-
-
 --
 -- Name: friendships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.friendships_id_seq', 1, false);
-
-
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
-
 SELECT pg_catalog.setval('public.users_id_seq', 15, true);
-
-
 --
 -- Name: books_categories books_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.books_categories
     ADD CONSTRAINT books_categories_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.books
     ADD CONSTRAINT books_pkey PRIMARY KEY (isbn);
-
-
 --
 -- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.categories
     ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: events_attendees events_attendees_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_attendees
     ADD CONSTRAINT events_attendees_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: events_books events_books_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_books
     ADD CONSTRAINT events_books_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: friendships friendships_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.friendships
     ADD CONSTRAINT friendships_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_email_key UNIQUE (email);
-
-
 --
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
 --
 -- Name: books_categories books_categories_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.books_categories
     ADD CONSTRAINT books_categories_category_id_fkey FOREIGN KEY (category_id) REFERENCES public.categories(id);
-
-
 --
 -- Name: books_categories books_categories_isbn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.books_categories
     ADD CONSTRAINT books_categories_isbn_fkey FOREIGN KEY (isbn) REFERENCES public.books(isbn);
-
-
 --
 -- Name: categories categories_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.categories
     ADD CONSTRAINT categories_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
 --
 -- Name: events_attendees events_attendees_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_attendees
     ADD CONSTRAINT events_attendees_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id);
-
-
 --
 -- Name: events_attendees events_attendees_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_attendees
     ADD CONSTRAINT events_attendees_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
 --
 -- Name: events_books events_books_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_books
     ADD CONSTRAINT events_books_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id);
-
-
 --
 -- Name: events_books events_books_isbn_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events_books
     ADD CONSTRAINT events_books_isbn_fkey FOREIGN KEY (isbn) REFERENCES public.books(isbn);
-
-
 --
 -- Name: events events_host_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_host_id_fkey FOREIGN KEY (host_id) REFERENCES public.users(id);
-
-
 --
 -- Name: friendships friendships_requestor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
 --
-
 ALTER TABLE ONLY public.friendships
     ADD CONSTRAINT friendships_requestor_id_fkey FOREIGN KEY (requestor_id) REFERENCES public.users(id);
-
-
 --
 -- PostgreSQL database dump complete
 --
-
